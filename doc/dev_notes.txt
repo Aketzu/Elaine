@@ -1,0 +1,65 @@
+What happen?!
+
+-Toimittajat syöttävät ja päivittävät ohjelmien tietoja
+-Ohjelmat koostuvat eventeistä
+-Eventit voivat olla nauhalla olevaa materiaalia (esim. yksittäinen demo) tai suoraa materiaalia jostain studiosta tai sali-av:sta
+-Vain ohjelma voidaan lähettää (ei pelkkää eventtiä)
+-Eventti voi tietysti kuulua useaan ohjelmaan (esim. nauhalla oleva demo voi olla yksittäisenä ohjelmana ja lisäksi jonkun ohjelman yksi pala)
+
+-Jos ohjelma on suora, eventtien pohjalta toimitaan lähetysyksikössä eli leikellään eri lähteitä yms.
+-Nauhoitettavat ohjelmat nauhoitetaan yleensä suoranomaisesti (live on tape), joten niissäkin käytetään eventtejä avuksi
+
+-Kun ohjelma on nauhoitettu (suoralla 1. näyttökerran yhteydessä), sille syötetään tiedot nauhasta ja tiedostopolusta fileserverillä
+-Tämän jälkeen eventit piilotetaan (pitää klikata erikseen näkyviin), koska ohjelma on suoraan yhtenä palana olemassa
+
+-Ohjelmilla on elinkaari, jotta tiedetään miten valmiita ne ovat
+
+Yllä olevista ainakin seuraavat:
+-Toimittajan muokkausnäkymät
+ -Mahdollisuus linkittää ohjelmaan nauha ja tiedostopolku (sama näkymä?)
+-Ohjelmien ja eventtien hakumahdollisuudet
+ -Sisältäen eventtien metsästämisen ohjelmaa varten
+-Nauhojen luonti- ja hakunäkymät (voi selata dada nauhojen kautta)
+-Live-on-tape -studiolle joku sopiva näkymä, johon voi hakea ohjelman ohjaamista varten
+-Lähetysyksikölle ajolistanäkymä, josta alla lisää
+
+-Ajolistasta vastaava tyyppi kokoaa ohjelmista ajolistan
+-Ajolistalla on kiinteitä ohjelmia (compot) ja liukuvia ohjelmia, joiden paikka muuttuu lennossa, kun lisätään ja poistetaan muita ohjelmia
+-Voiko ajolistalla olla tyhjää?
+-Tästä siis ajolistan muokkausnäkymä, johon pitää voida hakea ohjelmia
+-Lisäksi tässä näkymässä korostetaan ohjelmat, joiden lähetysaika on lähempänä kuin x (esim. 2h) ja joilta puuttuu a) tiedostopolku (nauha pitää saada hollille) tai b) lisäksi nauhamerkintä (paha juttu)
+-Ohjelmilla voi olla min ja max -näyttömäärät, joista myös jotenkin varoitellaan
+-Varmaan tarvitaan haku, jolla saa ohjelmat (min - toteunut) -järkässä, niin nähdään jos jotain ei ole näytetty tarpeeksi.
+
+-Ohjaamossa seurataan yllä muokattua ajolistaa ja kliksutetaan ohjelmia lähetetyiksi
+-Ehkä kliksutetaan myös aloitetuiksi?
+-Täältäkin pitää voida muokata ajolistaa (linkki yllä olevaan), jos tulee joku problem ja totuus poikkesi suunnitelmasta
+-Ohjelmien lähetyskerrat kirjataan (broadcast log), kun ne merkataan lähetetyiksi. Tämä taas vaikuttaa yllä olevaan.
+
+-Vod-systeemit. Eli ohjelmilla on dovod-bitti. Sen pohjalta tarjotaan vodimyllyttimelle tietoa vielä vodaamattomista ohjelmista, joita vodimyllytin sitten enkoodaa ja tuuppii nettisivuille.
+-Vodimyllyttimen skriptapuolessa pitäisi saada apua tj:ltä.
+
+-Sali-av:lla on compojen dadat tietyssä muodossa (tekstitiedosto ptn:stä). Se pitää lukea sisään ja kopioida tiedostot samasta hakemistosta, jotta saadaan compoista downloadattavia ohjelmia ja uusintamahdollisuus.
+-Tähänkin tj:llä on viime vuodelta jotain skriptaa
+
+Yllä olevat ovat olennaisin ydintoiminnallisuus, jota ilman tulee kuolo. Päälle on paljon muuta, kuten:
+
+-Mahdollisuus hallinnoida referenssinauhoja erillisestä näkymästä. Kerrotaan mikä nauha on nauhurissa menossa -> broadcast logiin tehdyt merkinnät viedään automaagisesti reffinauhalle
+
+-Ohjelmatiedot webbisivuille ja flashiksi eri tarkkuuksilla (joko ohjelmatyypin tarkkuudella tai tarkemmin)
+
+-Vodimyllytin palauttaa tehdyn vodin tiedot, jotka pannaan vod-tauluun. Sen pohjalta ruokitaan nettisivusysteemin tietoja (kuvaukset ja tekniset tiedot) tarjolla olevista clipeistä
+
+-TG-kamaa (text generator). Eli ohjelmaan liitetään tietoa tarvittavista tekstiplansseista (+aikaoffsetit noin suunnilleen), jotta ne saadaan näytettyä ohjaajan toimesta. Tätä varten on myös people-taulu, jos halutaan kirjata ihmisten tietoja. Joskus tämä on jopa väännetty flashiksi alpha-kanavalla, mutta tuskin tänä vuonna (ei sopivaa rautaa)
+
+-Erilaiset kooste- ja kotinäkymät käyttäjän mukaan.
+-Moninaiset hakutoiminnot
+-Tietovirtoja ulos (RSS, yms.) ja ehkä myös sisään
+
+-Kivoja infonäkymiä työtilojen seinille (ne isot näytöt)
+-Viivakoodipohjainen nauhojen metsästys (no ei kyllä ihan pian)
+
+-Varmasti tulee erinäistä esiin tässä työn kuluessa
+
+-Ja lisäksi pitää tehdä ne streamit :)
+

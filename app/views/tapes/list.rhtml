@@ -1,0 +1,27 @@
+<h1>Listing tapes</h1>
+
+<table>
+  <tr>
+  <% for column in Tape.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for tape in @tapes %>
+  <tr>
+  <% for column in Tape.content_columns %>
+    <td><%=h tape.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => tape %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => tape %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => tape }, :confirm => 'Are you sure?', :post => true %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @tape_pages.current.previous } if @tape_pages.current.previous %>
+<%= link_to 'Next page', { :page => @tape_pages.current.next } if @tape_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New tape', :action => 'new' %>
