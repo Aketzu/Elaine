@@ -1,8 +1,16 @@
-<% for column in Tape.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @tape.send(column.name) %>
-</p>
-<% end %>
+<p><b>Code:</b> <%=h @tape.code %></p>
+<p><b>Title:</b> <%=h @tape.title %></p>
+<p><b>Length:</b> <%=h @tape.formatted_length %></p>
+<p><b>Category: </b><%=h TapeCategory.find(@tape.category_id).name %></p>
+<p><b>Owner: </b><%=h User.find(@tape.owner_id).username %></p>
+<p><b>Media Type: </b><%=h TapeMedia.find(@tape.media_id).name %></p>
+
+<%= render :partial => 'events' %>
+
+<%= start_form_tag :controller => 'tape_event_links', :action => 'create' %>
+  <%= render :partial => 'add_event' %>
+  <%= submit_tag "Add" %>
+<%= end_form_tag %>
 
 <%= link_to 'Edit', :action => 'edit', :id => @tape %> |
 <%= link_to 'Back', :action => 'list' %>

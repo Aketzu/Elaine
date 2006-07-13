@@ -23,6 +23,6 @@ class CreateVods < ActiveRecord::Migration
 
   def self.down
     execute "ALTER TABLE vods DROP CONSTRAINT program;"
-    Drop_table :vods
+    drop_table :vods
   end
 end

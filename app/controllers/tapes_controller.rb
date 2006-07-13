@@ -9,13 +9,13 @@ class TapesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @tape_pages, @tapes = paginate (:tapes, 
-                                    :joins => :TapeMedias.(:name, , 
-                                    :per_page => 10)
+    @tape_pages, @tapes = paginate :tapes, 
+                                   :per_page => 10
   end
 
   def show
-    @tape = Tape.find(params[:id])
+    @tape  = Tape.find(params[:id])
+    @event = Event.new
   end
 
   def new
@@ -38,12 +38,20 @@ class TapesController < ApplicationController
 
   def update
     @tape = Tape.find(params[:id])
-    if @tape.update_attributes(params[:tape])
-      flash[:notice] = 'Tape was successfully updated.'
+     if @tape.update_attributes(params[:tape])
+      flash[:notice] = 'Tape was successfully updated'
       redirect_to :action => 'show', :id => @tape
     else
       render :action => 'edit'
     end
+  end
+
+  def add_event
+    @tapeevent = TapeEventLink.new(params[:tapeevent])
+    @newtape   = Tape.find(@tapeevent.tape_id)
+    @newtape.Events << @tapeevent
+
+    redirect_to :action => 'show', :id => @tapeevent.tape_id
   end
 
   def destroy

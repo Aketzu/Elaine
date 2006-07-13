@@ -2,7 +2,7 @@ class CreateTapeEventLinks < ActiveRecord::Migration
   def self.up
     create_table :tape_event_links do |t|
       # t.column :name, :string
-      t.column :offset,   :time
+      t.column :offset,   :integer
       t.column :tape_id,  :integer
       t.column :event_id, :integer
     end

@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20) do
   end
 
   create_table "tape_event_links", :force => true do |t|
-    t.column "offset", :time
+    t.column "offset", :integer
     t.column "tape_id", :integer
     t.column "event_id", :integer
   end
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20) do
   end
 
   create_table "tape_program_links", :force => true do |t|
-    t.column "offset", :time
+    t.column "offset", :integer
     t.column "tape_id", :integer
     t.column "program_id", :integer
   end
