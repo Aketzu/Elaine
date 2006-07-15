@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   include TimeHelper
 
+belongs_to :Program
 belongs_to :Location
 belongs_to :EventType
 
