@@ -1,0 +1,30 @@
+<%= error_messages_for 'event' %>
+
+<!--[form:event]-->
+<p><label for="event_title">Title</label><br/>
+<%= text_field 'event', 'title'  %></p>
+
+<p><label for="event_script">Script</label><br/>
+<%= text_area 'event', 'script'  %></p>
+
+<p><label for="location_id">Location</label><br/>
+<%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+
+<p><label for="event_type_id">Event type</label><br/>
+<%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+
+<p><label for="event_notes">Notes</label><br/>
+<%= text_area 'event', 'notes'  %></p>
+
+<p><label for="formatted_length">Length (hh:mm:ss)</label><br/>
+<%= text_field 'event', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
+
+<p><label for="event_quarantine">Quarantine</label><br/>
+<%= datetime_select 'event', 'quarantine' %></p>
+
+<p><label for="event_created">Created</label><br/>
+<%= @event.created %></p>
+
+<p><label for="event_modified">Modified</label><br/>
+<%= @event.modified %></p>
+<!--[eoform:event]-->

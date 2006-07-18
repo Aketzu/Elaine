@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Programs: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'elaine' %>
+  <%= javascript_include_tag 'formating' %>
+  <%= if @timeline then '<script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
+  <%= if !@timeline then '<script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>' end %>
+  <%= if @timeline then '<script src="/javascripts/timeline.js" type="text/javascript"></script>' end %>
+</head>
+<body onload="onLoad();" onresize="onResize();">
+
+<table class="header_links">
+  <tr>
+    <th width="100px"><h1>Elaine2</h1></th>
+    <td width="*"></td>
+    <th width="100px"><%= link_to 'Playlists', :controller => 'playlists', :action => 'list' %></th>
+    <th width="100px"><%= link_to 'Timeline', :controller => 'playlists', :action => 'timeline' %></th>
+    <th width="100px"><%= link_to 'Programs', :controller => 'programs', :action => 'list' %></th>
+    <th width="100px"><%= link_to 'Tapes',    :controller => 'tapes',    :action => 'list' %></th>
+    <th width="100px"><%= link_to 'Events',   :controller => 'events',   :action => 'list' %></th>
+    <td width="*"></td>
+  </tr>
+</table>
+
+<div class="flash"><%= flash[:notice] %></div>
+
+<div class="content">
+<%= @content_for_layout %>
+</div>
+
+</body>
+</html>

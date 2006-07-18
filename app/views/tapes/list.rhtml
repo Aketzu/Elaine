@@ -1,26 +1,32 @@
 <h1>Listing tapes</h1>
 
 <table>
-  <tr>
+  <tr class="header">
     <th>Code</th>
     <th>Title</th>
     <th>Length</th>
     <th>Category</th>
     <th>Owner</th>
-    <th>Media Type</th>
+    <th>Type</th>
+    <th>Programs</th>
+    <th>Events</th>
+    <th>Actions</th>
   </tr>
   
 <% for tape in @tapes %>
-  <tr>
-    <td><%=h tape.code %></td>
-    <td><%=h tape.title %></td>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%= link_to tape.code, :action => 'show', :id => tape %></td>
+    <td><%= link_to tape.title, :action => 'show', :id => tape %></td>
     <td><%=h tape.formatted_length %></td>
     <td><%= link_to TapeCategory.find(tape.category_id).name, :controller => 'tape_categorys', :action => 'show', :id => tape.category_id %></td>
     <td><%= link_to User.find(tape.owner_id).username,        :controller => 'users',          :action => 'show', :id => tape.owner_id %></td>
     <td><%= link_to TapeMedia.find(tape.media_id).name,       :controller => 'tape_medias',    :action => 'show', :id => tape.media_id %></td>
-    <td><%= link_to 'Show', :action => 'show', :id => tape %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => tape %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => tape }, :confirm => 'Are you sure?', :post => true %></td>
+    <td><%= tape.Programs.count %></td>
+    <td><%= tape.Events.count %></td>
+    <td>[
+    <%= link_to 'Edit', :action => 'edit', :id => tape %>
+    <%= link_to 'Destroy', { :action => 'destroy', :id => tape }, :confirm => 'Are you sure?', :post => true %>
+    ]</td>
   </tr>
 <% end %>
 </table>

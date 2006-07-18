@@ -1,0 +1,40 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr class="header">
+    <th>Title</th>
+<!--     <th>Script</th> -->
+    <th>Location</th>
+    <th>Event Type</th>
+<!--     <th>Notes</th> -->
+    <th>Length</th>
+    <th>Quarintine until</th>
+    <th>Created<br>Modified</th>
+    <th>Actions</th>
+  </tr>
+
+<% for event in @events %>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%=h event.title %></td>
+<!--     <td><%=h event.script %></td> -->
+    <td><%= link_to Location.find(event.location_id).name, :controller => 'locations', :action => 'show', :id => event.location_id %></td>
+    <td><%= link_to EventType.find(event.event_type_id).name, :controller => 'event_types', :action => 'show', :id => event.event_type_id %></td>
+<!--     <td><%=h event.notes %></td> -->
+    <td><%=h event.formatted_length %></td>
+    <td><%=h event.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td><%=h event.created.strftime("%a %d.%m.%Y %H:%M") %><br><%=h event.modified.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td>[
+    <%= link_to 'Show', :action => 'show', :id => event %>
+    <%= link_to 'Edit', :action => 'edit', :id => event %>
+    <%= link_to 'Destroy', { :action => 'destroy', :id => event }, :confirm => 'Are you sure?', :post => true %>
+    ]</td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @event_pages.current.previous } if @event_pages.current.previous %>
+<%= link_to 'Next page', { :page => @event_pages.current.next } if @event_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New event', :action => 'new' %>

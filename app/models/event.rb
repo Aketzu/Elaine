@@ -5,8 +5,8 @@ belongs_to :Program
 belongs_to :Location
 belongs_to :EventType
 
-has_many :TapeEventLinks
-has_many :Tapes, :through => :TapeEventLinks
+has_many :tape_event_links, :dependent => :destroy
+has_many :Tapes, :through => :tape_event_links
 
 validates_associated :Location
 validates_associated :EventType

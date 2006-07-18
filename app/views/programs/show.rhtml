@@ -1,0 +1,34 @@
+<p><b>Length:</b> <%=h @program.formatted_length %></p>
+<p><b>Notes:</b> <%=h @program.notes %></p>
+<p><b>Min. show:</b> <%=h @program.min_show %></p>
+<p><b>Max. show:</b> <%=h @program.max_show %></p>
+<p><b>Do VOD?:</b> <%=h @program.do_vod %></p>
+<p><b>Created:</b> <%=h @program.created %></p>
+<p><b>Modified:</b> <%=h @program.modified %></p>
+<p><b>Preview image offset:</b> <%=h @program.formatted_preview_image_offset %></p>
+<p><b>Preview video offset:</b> <%=h @program.formatted_preview_video_offset %></p>
+<p><b>Owner:</b> <%= link_to User.find(@program.owner_id).username,
+                      :controller => 'users',
+                      :action => 'show', 
+                      :id => @program.owner_id %></p>
+<p><b>Status:</b> <%= link_to ProgramStatus.find(@program.status_id).name,
+                       :controller => 'program_statuses',
+                       :action => 'show',
+                       :id => @program.status_id %></p>
+
+
+<p><strong>Events:</strong></p>
+<div style="padding-left: 20px;">
+<%= render(:partial => 'events', :object => @program.program_event_links) %>
+
+<%= start_form_tag :controller => 'program_event_links', :action => 'create' %>
+  <%= render :partial => 'add_event' %>
+<%= end_form_tag %>
+</div>
+
+<%= render :partial => "program_descriptions/program_description", :collection => @program.ProgramDescriptions %>
+
+<%= render :partial => 'vods' %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @program %> |
+<%= link_to 'Back', :action => 'list' %>

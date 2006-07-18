@@ -1,0 +1,29 @@
+<table>
+  <p><strong>Events:</strong></p>
+  <% for link in @tape.tape_event_links.find(:all, :order => 'start_time') %>
+  <% event = Event.find(link.event_id) %>
+  <tr>
+    <td>
+    <%= link.formatted_start_time %>
+    </td>
+    <td>
+    ->
+    </td>
+    <td>
+    <%= format_length(link.start_time + event.length) %>
+    <td>
+    <%= link_to event.title, 
+              :controller => 'events', 
+              :action => 'show', 
+              :id => event.id %>
+    </td>
+    <td>
+    [<%= link_to 'x', {:controller => 'tape_event_links', 
+                       :action => 'destroy', 
+                       :id => link.id}, 
+           :confirm => 'Are you sure?',
+           :post => 'true' %>]
+    </td>
+  </tr>
+  <% end %>
+</table>

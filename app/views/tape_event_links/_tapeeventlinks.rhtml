@@ -1,0 +1,14 @@
+<%= error_messages_for 'tape_event_link' %>
+
+<!--[form:tape_event_link]-->
+<p><label for="tape_id">Tape</label><br/>
+<%= select("tape_event_link", "tape_id", Tape.find_all.collect {|t| [ t.title, t.id ] }) %></p>
+
+<p><label for="event_id">Event</label><br/>
+<%= select("tape_event_link", "event_id", Event.find_all.collect {|t| [ t.title, t.id ] }) %></p>
+
+<p><label for="formatted_offset">Offset (hh:mm:ss)</label><br/>
+<%= text_field 'tape_event_link', 'formatted_offset', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
+
+<!--[eoform:tape_event_link]-->
+

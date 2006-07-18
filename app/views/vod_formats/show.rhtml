@@ -1,0 +1,8 @@
+<% for column in VodFormat.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @vod_format.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @vod_format %> |
+<%= link_to 'Back', :action => 'list' %>

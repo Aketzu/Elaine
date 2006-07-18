@@ -1,0 +1,27 @@
+<h1>Listing program_descriptions</h1>
+
+<table>
+  <tr>
+  <% for column in ProgramDescription.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for program_descriptions in @program_descriptions %>
+  <tr>
+  <% for column in ProgramDescription.content_columns %>
+    <td><%=h program_descriptions.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => program_descriptions %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => program_descriptions %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => program_descriptions }, :confirm => 'Are you sure?', :post => true %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @program_descriptions_pages.current.previous } if @program_descriptions_pages.current.previous %>
+<%= link_to 'Next page', { :page => @program_descriptions_pages.current.next } if @program_descriptions_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New program_descriptions', :action => 'new' %>

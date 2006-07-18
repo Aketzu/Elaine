@@ -1,0 +1,9 @@
+<h1>Editing program</h1>
+
+<%= start_form_tag :action => 'update', :id => @program %>
+  <%= render :partial => 'program' %>
+  <%= submit_tag 'Edit' %>
+<%= end_form_tag %>
+
+<%= link_to 'Show', :action => 'show', :id => @program %> |
+<%= link_to 'Back', :action => 'list' %>

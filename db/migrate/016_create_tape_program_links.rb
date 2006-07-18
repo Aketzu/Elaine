@@ -2,7 +2,7 @@ class CreateTapeProgramLinks < ActiveRecord::Migration
   def self.up
     create_table :tape_program_links do |t|
       # t.column :name, :string
-      t.column :offset,     :integer
+      t.column :start_time,     :integer
       t.column :tape_id,    :integer
       t.column :program_id, :integer
     end

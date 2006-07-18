@@ -1,0 +1,16 @@
+<%= error_messages_for 'tape_event_link' %>
+
+<!--[form:event]-->
+<%= hidden_field 'tape_event_link', 'tape_id', :value => @tape.id %>
+
+<p>
+<label for="event_id">Add event</label>
+<%= select("tape_event_link", "event_id", Event.find_all.collect {|u| [ u.title, u.id ] }) %>
+
+<label for="formatted_offset">with offset (hh:mm:ss)</label>
+<%= text_field 'tape_event_link', 'formatted_start_time', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %>
+
+<%= submit_tag "Add" %>
+</p>
+
+<!--[eoform:event]-->

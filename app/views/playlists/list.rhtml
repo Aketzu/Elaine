@@ -1,0 +1,62 @@
+<div></div>
+<h1><%= Channel.find(@channel_id).name %> playlist</h1>
+
+<%= start_form_tag :action => 'list' %>
+  <select name="channel_id" onChange="javascript: this.form.submit()">
+    <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
+  </select>
+<%= submit_tag "Update" %>
+<%= end_form_tag %>
+
+<table>
+  <tr class="header">
+    <th>Program</th>
+    <th>Start time</th>
+    <th>Length</th>
+    <th>End time</th>
+    <th>Movable</th>
+    <th>Actions</th>
+  </tr>
+
+<%
+unless @playlists.first.nil? 
+  end_time = @playlists.first.start_time
+else
+  end_time = Time.at(0) 
+end
+%>
+<% @playlists.each_with_index {|playlist, index| %>
+  <% if playlist.start_time > (end_time + 60) %>
+  <tr>
+    <td class="error-gap" colspan="6"><%= format_length(playlist.start_time - end_time) %> gap</td>
+  </tr>
+  <% end %>
+  <% if playlist.start_time < end_time %>
+  <tr>
+    <td class="error-overlap" colspan="6"><%= format_length(end_time - playlist.start_time) %> overlap</td>
+  </tr>
+  <% end %>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%= link_to playlist.Program.title, :controller => 'programs', :action => 'show', :id => playlist.program_id %></td>
+    <td><%= playlist.start_time.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td><%= playlist.Program.formatted_length %></td>
+    <td><%= playlist.end_time.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td><%= playlist.movable %></td>
+    <td>[
+      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
+      <%= link_to 'Destroy', { :action => 'destroy', :id => playlist }, :confirm => 'Are you sure?', :post => true %>
+    ]</td>
+  </tr>
+  <% end_time = playlist.end_time %>
+<% } %>
+</table>
+
+<%= link_to 'Previous page', { :page => @playlist_pages.current.previous } if @playlist_pages.current.previous %>
+<%= link_to 'Next page', { :page => @playlist_pages.current.next } if @playlist_pages.current.next %> 
+
+<br />
+
+<%= start_form_tag :action => 'create' %>
+  <%= render :partial => 'playlist', :object => @channel_id %>
+  <%= submit_tag "Add" %>
+<%= end_form_tag %>

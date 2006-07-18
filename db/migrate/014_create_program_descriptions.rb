@@ -7,6 +7,7 @@ class CreateProgramDescriptions < ActiveRecord::Migration
       t.column :title,               :string
       t.column :program_id,          :integer
       t.column :language_id,         :integer, :default => Language.find(:first, :conditions => [ "name = ?",'English' ]).id
+      t.column :position,            :integer
     end
 
     execute "ALTER TABLE program_descriptions ADD CONSTRAINT program FOREIGN KEY

@@ -3,9 +3,12 @@ class CreateLanguages < ActiveRecord::Migration
     create_table :languages do |t|
       # t.column :name, :string
       t.column :name, :string
+      t.column :compulsory, :boolean, :default => true
     end
     Language.create(
-    :name => 'English')
+    :name => 'English', :compulsory => true)
+    Language.create(
+    :name => 'Finnish', :compulsory => true)
 
   end
 

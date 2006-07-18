@@ -6,12 +6,28 @@ belongs_to :ProgramStatus
 
 has_many   :ProgramDescriptions
 
-has_many   :TapeProgramLinks
-has_many   :Tapes,  :through => :TapeProgramLinks
-has_many   :ProgramEventLinks, :order => :position
+has_many   :tape_program_links, :dependent => :destroy
+has_many   :Tapes,  :through => :tape_program_links
+has_many   :program_event_links, :order => :position, :dependent => :destroy
+has_many   :Events, :through => :program_event_links
 
 validates_associated :User
 validates_associated :ProgramStatus
+
+def quarantine
+  self.Events.maximum('quarantine') || self.created
+end
+
+def length
+  self.Events.sum('length') || 0 
+end
+
+def title  # might require some tunkking yet
+  @descriptor = self.ProgramDescriptions.find(:first)
+  if (@descriptor) then
+    @descriptor.title || "-"
+  end
+end
 
 def formatted_length
   format_length(length)

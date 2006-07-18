@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 21) do
+ActiveRecord::Schema.define(:version => 25) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "time", :datetime
@@ -32,8 +32,15 @@ ActiveRecord::Schema.define(:version => 21) do
     t.column "modified", :datetime
   end
 
+  create_table "file_locations", :force => true do |t|
+    t.column "name", :string
+    t.column "description", :text
+    t.column "url", :string
+  end
+
   create_table "languages", :force => true do |t|
     t.column "name", :string
+    t.column "compulsory", :boolean
   end
 
   create_table "locations", :force => true do |t|
@@ -50,7 +57,7 @@ ActiveRecord::Schema.define(:version => 21) do
   end
 
   create_table "playlists", :force => true do |t|
-    t.column "time", :datetime
+    t.column "start_time", :datetime
     t.column "movable", :boolean
     t.column "program_id", :integer
     t.column "channel_id", :integer, :default => 1
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(:version => 21) do
     t.column "title", :string
     t.column "program_id", :integer
     t.column "language_id", :integer, :default => 1
+    t.column "position", :integer
   end
 
   create_table "program_event_links", :force => true do |t|
@@ -76,7 +84,6 @@ ActiveRecord::Schema.define(:version => 21) do
   end
 
   create_table "programs", :force => true do |t|
-    t.column "length", :integer
     t.column "notes", :text
     t.column "min_show", :integer
     t.column "max_show", :integer
@@ -103,7 +110,7 @@ ActiveRecord::Schema.define(:version => 21) do
   end
 
   create_table "tape_event_links", :force => true do |t|
-    t.column "offset", :integer
+    t.column "start_time", :integer
     t.column "tape_id", :integer
     t.column "event_id", :integer
   end
@@ -114,7 +121,7 @@ ActiveRecord::Schema.define(:version => 21) do
   end
 
   create_table "tape_program_links", :force => true do |t|
-    t.column "offset", :integer
+    t.column "start_time", :integer
     t.column "tape_id", :integer
     t.column "program_id", :integer
   end
@@ -122,8 +129,8 @@ ActiveRecord::Schema.define(:version => 21) do
   create_table "tapes", :force => true do |t|
     t.column "code", :string
     t.column "title", :text
-    t.column "owner_id", :integer
     t.column "length", :integer
+    t.column "owner_id", :integer
     t.column "media_id", :integer, :default => 2
     t.column "category_id", :integer, :default => 1
   end

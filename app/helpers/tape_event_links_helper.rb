@@ -1,0 +1,2 @@
+module TapeEventLinksHelper
+end

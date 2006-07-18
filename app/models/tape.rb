@@ -5,10 +5,10 @@ belongs_to :User
 belongs_to :TapeMedia
 belongs_to :TapeCategory
 
-has_many :TapeProgramLinks
-has_many :TapeEventLinks
-has_many :Programs, :through => :TapeProgramLinks
-has_many :Events,   :through => :TapeEventLinks
+has_many :tape_program_links, :dependent => :destroy
+has_many :tape_event_links, :dependent => :destroy
+has_many :Programs, :through => :tape_program_links
+has_many :Events,   :through => :tape_event_links
 
 validates_presence_of :code
 validates_uniqueness_of :code

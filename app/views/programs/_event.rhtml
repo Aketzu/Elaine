@@ -1,0 +1,32 @@
+<% index = 0 %>
+<% offset = 0 %>
+<% for program_event in event %>
+<div class="events_in_program_list">
+  <div><b><%= index += 1 %>.</b>
+  <%= format_length(offset) %>
+
+  <% offset += program_event.Event.length %>
+  <%= format_length(offset) %>
+
+  <%= link_to program_event.Event.title,
+        :controller => 'events',
+        :action => 'show',
+        :id => program_event.event_id %>
+  </div>
+  <div class="actions">
+  [
+  <%= link_to 'up', :action => 'move_event_up',
+                    :id => program_event.program_id,
+                    :program_event_id => program_event.id%>
+  <%= link_to 'down', :action => 'move_event_down',
+                      :id => program_event.program_id,
+                      :program_event_id => program_event.id %>
+  <%= link_to 'remove', {:controller => 'program_event_links',
+                         :action => 'destroy',
+                         :id => program_event.id},
+                         :confirm => 'Are you sure?',
+                         :post => 'true' %>
+  ]
+  </div>
+</div>
+<% end %>

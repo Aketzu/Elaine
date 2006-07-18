@@ -1,0 +1,71 @@
+<h1>Listing programs</h1>
+
+<table>
+  <tr class="header">
+    <th>Title</th>
+    <th>Length</th>
+<!--     <th>Notes</th> -->
+    <th>Created<br>Modified</th>
+<!--     <th>Preview image offset (hh:mm:ss)</th> -->
+<!--     <th>Preview video offset (hh:mm:ss)</th> -->
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Do VOD?</th>
+    <th>Min. show</th>
+    <th>Max. show</th>
+    <th>Quarantine</th>
+    <th>Actions</th>
+  </tr>
+
+<% for program in @programs %>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%=h program.title %></td>
+    <td><%=h program.formatted_length %></td>
+<!--     <td><%=h program.notes %></td> -->
+    <td><%=h program.created.strftime("%a %d.%m.%Y %H:%M") %><br><%=h program.modified.strftime("%a %d.%m.%Y %H:%M") %></td>
+<!--     <td><%=h program.formatted_preview_image_offset %></td> -->
+<!--     <td><%=h program.formatted_preview_video_offset %></td> -->
+    <td><%= link_to User.find(program.owner_id).username,
+              :controller => 'users',
+              :action => 'show', 
+              :id => program.owner_id %></td>
+    <td><%= link_to ProgramStatus.find(program.status_id).name,
+              :controller => 'program_statuses',
+              :action => 'show',
+              :id => program.owner_id %></td>
+    <td><%=h program.do_vod %></td>
+    <td><%=h program.min_show %></td>
+    <td><%=h program.max_show %></td>
+    <td><%= program.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td>[
+      <%= link_to 'Show', :action => 'show', :id => program %>
+      <%= link_to 'Edit', :action => 'edit', :id => program %>
+      <%= link_to 'Destroy', { :action => 'destroy', :id => program }, 
+              :confirm => 'Are you sure?', 
+              :post => true %>
+    ]</td>
+  </tr>
+
+  <tr class="<%= @current_cycle %>">
+    <td colspan="12"><%= render(:partial => 'event', :object => program.program_event_links) %></td>
+  </tr>
+
+<% end %>
+</table>
+
+<!--<table>
+  <tr>
+    <td>
+      <td>heip-</td>
+      <td>pa</td>
+    </td>
+  </tr>
+</table>-->
+
+
+<%= link_to 'Previous page', { :page => @program_pages.current.previous } if @program_pages.current.previous %>
+<%= link_to 'Next page', { :page => @program_pages.current.next } if @program_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New program', :action => 'new' %>

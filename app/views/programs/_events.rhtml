@@ -1,0 +1,41 @@
+<table>
+  <% offset = 0 %>
+  <tr class="header">
+     <td>Begin</td>
+     <td>End</td>
+     <td>Title</td>
+     <td>Actions</td>
+  </tr>
+  <% for program_event in events %>
+    <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+      <td>
+      <%= format_length(offset) %>
+      </td>
+    <% offset += program_event.Event.length %>
+    <td>
+      <%= format_length(offset) %>
+      </td>
+      <td>
+      <%= link_to program_event.Event.title, 
+            :controller => 'events', 
+            :action => 'show', 
+            :id => program_event.event_id %>
+      </td>
+      <td>
+      [
+      <%= link_to 'up', :action => 'move_event_up',
+                      :id => @program.id,
+                      :program_event_id => program_event.id %>
+      <%= link_to 'down', :action => 'move_event_down',
+                      :id => @program.id,
+                      :program_event_id => program_event.id %>
+      <%= link_to 'remove', {:controller => 'program_event_links',
+                        :action => 'destroy',
+                        :id => program_event.id},
+                      :confirm => 'Are you sure?',
+                      :post => 'true' %>
+      ]
+      </td>
+    </tr>
+  <% end %>
+</table>
