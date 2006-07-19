@@ -1,4 +1,4 @@
-class FileLocations < ActiveRecord::Migration
+class CreateFileLocations < ActiveRecord::Migration
   def self.up
     create_table :file_locations do |t|
       t.column :name,   :string

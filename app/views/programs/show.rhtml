@@ -3,8 +3,8 @@
 <p><b>Min. show:</b> <%=h @program.min_show %></p>
 <p><b>Max. show:</b> <%=h @program.max_show %></p>
 <p><b>Do VOD?:</b> <%=h @program.do_vod %></p>
-<p><b>Created:</b> <%=h @program.created %></p>
-<p><b>Modified:</b> <%=h @program.modified %></p>
+<p><b>Created:</b> <%=h @program.created_at %></p>
+<p><b>Modified:</b> <%=h @program.updated_at %></p>
 <p><b>Preview image offset:</b> <%=h @program.formatted_preview_image_offset %></p>
 <p><b>Preview video offset:</b> <%=h @program.formatted_preview_video_offset %></p>
 <p><b>Owner:</b> <%= link_to User.find(@program.owner_id).username,
@@ -26,7 +26,7 @@
 <%= end_form_tag %>
 </div>
 
-<%= render :partial => "program_descriptions/program_description", :collection => @program.ProgramDescriptions %>
+<%= render :partial => "program_descriptions/program_description", :collection => @program.program_descriptions %>
 
 <%= render :partial => 'vods' %>
 

@@ -5,7 +5,7 @@ belongs_to :User
 belongs_to :ProgramStatus
 has_many   :Playlist
 
-has_many   :ProgramDescriptions
+has_many   :program_descriptions, :dependent => :destroy
 
 has_many   :tape_program_links, :dependent => :destroy
 has_many   :Tapes,  :through => :tape_program_links
@@ -16,7 +16,7 @@ validates_associated :User
 validates_associated :ProgramStatus
 
 def quarantine
-  self.Events.maximum('quarantine') || self.created
+  self.Events.maximum('quarantine') || self.created_at
 end
 
 def length
@@ -24,7 +24,7 @@ def length
 end
 
 def title  # might require some tunkking yet
-  @descriptor = self.ProgramDescriptions.find(:first)
+  @descriptor = self.program_descriptions.find(:first)
   if (@descriptor) then
     @descriptor.title || "-"
   end

@@ -7,21 +7,23 @@ function onLoad() {
         <% @playlists.each_with_index {|playlist, index| %>
             {   start:    "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
                 end:      "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-                magnify:  5,
+                magnify:  6,
                 unit:     Timeline.DateTime.MINUTE
             }<% if @playlists.length - index > 1 %>,<% end %>
         <% } %>
         ],
         eventSource:    eventSource,
         width:          "70%",
-        date:           "Jul 16 2006 18:00:00 GMT",
+        date:           "Jul 17 2006 18:00:00 GMT",
+/*        date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
         intervalUnit:   Timeline.DateTime.HOUR,
         intervalPixels: 100
     }),
     Timeline.createBandInfo({
         eventSource:    eventSource,
         width:          "30%",
-        date:           "Jul 16 2006 18:00:00 GMT",
+        date:           "Jul 17 2006 18:00:00 GMT",
+/*        date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
         intervalUnit:   Timeline.DateTime.DAY,
         intervalPixels: 200
     })

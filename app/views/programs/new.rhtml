@@ -2,6 +2,8 @@
 
 <%= start_form_tag :action => 'create' %>
   <%= render :partial => 'program' %>
+ 
+  <%= render :partial => 'program_descriptions/program_descriptions_form', :object => @program_descriptions %>
   <%= submit_tag "Create" %>
 <%= end_form_tag %>
 

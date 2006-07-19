@@ -2,10 +2,7 @@
 
 <%= start_form_tag :action => 'update', :id => @program %>
   <%= render :partial => 'program' %>
-  <% for description in @program.ProgramDescriptions %>
-    <% @program_descriptions = description %>
-    <%= render :partial => 'program_descriptions/program_description' %>
-  <% end %>
+  <%= render :partial => 'program_descriptions/program_descriptions_form', :object => @program.program_descriptions %>
   <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
 

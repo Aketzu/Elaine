@@ -22,19 +22,24 @@ class ProgramsController < ApplicationController
 
   def new
     @program          = Program.new
-    @program.created  = Time.now
-    @program.modified = Time.now
+    @program_descriptions = []
+    for language in Language.get_compulsory
+      @program_descriptions << ProgramDescription.new(:language_id => language.id)
+    end
   end
 
   def create
-    @program          = Program.new(params[:program])
-    @program.created  = Time.now
-    @program.modified = Time.now
-    if @program.save
-      for language in Language.get_compulsory
-        description = ProgramDescription.new(:language_id => language.id, :program_id => @program.id)
-        description.save
+    Program.transaction do
+      @program          = Program.new(params[:program])
+      params[:program_description].each do |key, val|
+        unless @program.program_descriptions << ProgramDescription.new(val)
+          flash[:error] = 'Problem with' + Language.find(val[language_id]) + 'description'
+          render :action => 'new'
+        end
       end
+    end #end transaction
+
+    if @program.save
       flash[:notice] = 'Program was successfully created.'
       redirect_to :action => 'list'
     else
@@ -45,18 +50,21 @@ class ProgramsController < ApplicationController
   def edit
     session[:original_uri] = request.request_uri
     @program          = Program.find(params[:id])
-    @program.modified = Time.now
   end
 
   def update
-    @program          = Program.find(params[:id])
-    @program.modified = DateTime.now
-    i = 0 
-    for(description in params[:program_descriptions])
-      i++
-    end
+    Program.transaction do
+      @program          = Program.find(params[:id])
+      params[:program_description].each do |key, val|
+  	  description = ProgramDescription.find(key)
+          unless description.update_attributes(val)
+            flash[:error] = 'Problem with' + description.language.name + 'description'
+            render :action => 'edit'
+          end 
+      end
+    end # end transaction
     if @program.update_attributes(params[:program])
-      flash[:notice] = 'Program was successfully updated.' + i
+      flash[:notice] = 'Program was successfully updated.'
       redirect_to :action => 'show', :id => @program
     else
       render :action => 'edit'

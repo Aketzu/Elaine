@@ -1,13 +1,10 @@
-<%= error_messages_for 'program_descriptions' %>
+<% langname = program_description.language.name %>
 
-<!--[form:program_descriptions]-->
-<p><label for="program_descriptions_private_description">Private description</label><br/>
-<%= text_area 'program_descriptions[]', 'private_description'  %></p>
+<p><label for="program_description_title"><%= langname %> Title</label><br/>
+<%= program_description.title %></p>
 
-<p><label for="program_descriptions_public_description">Public description</label><br/>
-<%= text_area 'program_descriptions[]', 'public_description'  %></p>
+<p><label for="program_description_public_description"><%= langname %> Public description</label><br/>
+<%= program_description.public_description %></p>
 
-<p><label for="program_descriptions_title">Title</label><br/>
-<%= text_field 'program_descriptions[]', 'title'  %></p>
-<!--[eoform:program_descriptions]-->
-
+<p><label for="program_description_private_description"><%= langname %> Private description</label><br/>
+<%= program_description.private_description %></p>

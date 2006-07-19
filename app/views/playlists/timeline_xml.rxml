@@ -1,9 +1,9 @@
 xml.data() do
-  for playlist in @playlist
+  for playlist in @playlists
     xml.event(playlist.formatted_length + ", " + playlist.Program.title,
       :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :isDuration => 'true',
-      :title      => playlist.Program.title)
+      :title      => playlist.start_time.strftime("%H:%M:%S") + ": " + playlist.Program.title)
   end
 end

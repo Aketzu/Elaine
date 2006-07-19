@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 25) do
+ActiveRecord::Schema.define(:version => 500) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "time", :datetime
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(:version => 25) do
     t.column "notes", :text
     t.column "length", :integer
     t.column "quarantine", :datetime
-    t.column "created", :datetime
-    t.column "modified", :datetime
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+    t.column "filename", :string
+    t.column "file_location_id", :integer
   end
 
   create_table "file_locations", :force => true do |t|
@@ -88,12 +90,14 @@ ActiveRecord::Schema.define(:version => 25) do
     t.column "min_show", :integer
     t.column "max_show", :integer
     t.column "do_vod", :boolean
-    t.column "created", :datetime
-    t.column "modified", :datetime
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
     t.column "preview_image_offset", :integer
     t.column "preview_video_offset", :integer
     t.column "owner_id", :integer
     t.column "status_id", :integer, :default => 1
+    t.column "filename", :string
+    t.column "file_location_id", :integer
   end
 
   create_table "sessions", :force => true do |t|
@@ -153,7 +157,7 @@ ActiveRecord::Schema.define(:version => 25) do
 
   create_table "vods", :force => true do |t|
     t.column "filename", :string
-    t.column "path", :string
+    t.column "file_location_id", :integer
     t.column "length", :integer
     t.column "filesize", :integer
     t.column "vcodec", :string
@@ -163,7 +167,7 @@ ActiveRecord::Schema.define(:version => 25) do
     t.column "abitrate", :integer
     t.column "width", :integer
     t.column "height", :integer
-    t.column "modified", :datetime
+    t.column "updated_at", :datetime
     t.column "program_id", :integer
   end
 

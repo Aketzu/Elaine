@@ -1,0 +1,25 @@
+<%= error_messages_for 'program_description_form' %>
+
+
+
+<% program_descriptions_form.each_with_index do |@program_description, i| %>
+
+<!--[form:program_description]-->
+
+<% langname = @program_description.language.name %>
+<% index = @program_description.id || i %>
+
+<%= hidden_field 'program_description', 'language_id', 'index' => index %>
+
+<p><label for="program_description_title"><%= langname %> Title</label><br/>
+<%= text_field 'program_description', 'title', 'index' => index %></p>
+
+<p><label for="program_description_public_description"><%= langname %> Public description</label><br/>
+<%= text_area 'program_description', 'public_description', 'index' => index %></p>
+
+<p><label for="program_description_private_description"><%= langname %> Private description</label><br/>
+<%= text_area 'program_description', 'private_description', 'index' => index %></p>
+
+<!--[eoform:program_description]-->
+
+<% end %>

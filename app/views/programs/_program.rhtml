@@ -15,10 +15,10 @@
 <select id="program_do_vod" name="program[do_vod]"><option value="false">False</option><option value="true">True</option></select></p>
 
 <p><label for="program_created">Created</label><br/>
-<%= @program.created %></p>
+<%= @program.created_at %></p>
 
 <p><label for="event_modified">Modified</label><br/>
-<%= @program.modified %></p>
+<%= @program.updated_at %></p>
 
 <p><label for="formatted_preview_image_offset">Preview image offset (hh:mm:ss)</label><br/>
 <%= text_field 'program', 'formatted_preview_image_offset', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
