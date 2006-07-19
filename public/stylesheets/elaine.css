@@ -22,13 +22,13 @@ tr {
   margin:  0px;
 }
 tr.header {
-  background: #eeeefe;
+  background: #ddddfe;
 }
 tr.odd {
-  background: #eeeefe;
+  background: #ddddfe;
 }
 tr.even {
-  background: #fafaff;
+  background: #eaeaff;
 }
 tr.error { background: #ff4550; }
 td.error { background: #ff4550; }

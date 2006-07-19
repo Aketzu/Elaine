@@ -13,7 +13,7 @@ class CreateVods < ActiveRecord::Migration
       t.column :abitrate,   :integer
       t.column :width,      :integer
       t.column :height,     :integer
-      t.column :modified,   :timestamp
+      t.column :updated_on, :timestamp
       t.column :program_id, :integer
     end
 

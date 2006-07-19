@@ -3,6 +3,7 @@ class Program < ActiveRecord::Base
 
 belongs_to :User
 belongs_to :ProgramStatus
+has_many   :Playlist
 
 has_many   :ProgramDescriptions
 

@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  layout 'application', :except => [:timeline_xml, :bandinfo_xml]
+  layout 'application', :except => [:timeline_xml, :timeline_config, :bandinfo_xml]
 
   def index
     list
@@ -25,11 +25,24 @@ class PlaylistsController < ApplicationController
 
   def timeline
     @timeline = true
+    @channel_id = params[:channel_id].to_i
+    if(@channel_id == 0)
+      @channel_id = Channel.find(:first).id
+    end
     @playlist = Playlist.find_all
   end
 
   def timeline_xml
     @playlist = Playlist.find_all
+  end
+
+  def timeline_config
+    @channels = Channel.find(:all)
+    @channel_id = params[:channel_id].to_i
+    if(@channel_id == 0)
+      @channel_id = Channel.find(:first).id
+    end
+    @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
   end
 
   def new

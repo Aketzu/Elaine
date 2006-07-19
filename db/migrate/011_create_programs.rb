@@ -6,8 +6,8 @@ class CreatePrograms < ActiveRecord::Migration
       t.column :min_show,             :integer
       t.column :max_show,             :integer
       t.column :do_vod,               :boolean
-      t.column :created,              :timestamp
-      t.column :modified,             :timestamp
+      t.column :created_on,           :timestamp
+      t.column :updated_on,           :timestamp
       t.column :preview_image_offset, :integer
       t.column :preview_video_offset, :integer
       t.column :owner_id,             :integer

@@ -1,3 +1,10 @@
 <p>The timeline display gives you detailed information about broadcasting playlist. You can drag the timeline and click on the items to get more information.</p>
 
-<div id="playlist-timeline" style="height: 300px; border: 1px solid #aaa"></div>
+<%= start_form_tag :action => 'timeline' %>
+  <select name="channel_id" onChange="javascript: this.form.submit()">
+    <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
+  </select>
+<%= submit_tag "Update" %>
+<%= end_form_tag %>
+
+<div id="playlist-timeline" style="height: 600px; border: 1px solid #aaa"></div>

@@ -8,8 +8,8 @@ class CreateEvents < ActiveRecord::Migration
       t.column :notes,	       :text
       t.column :length,        :integer
       t.column :quarantine,    :timestamp
-      t.column :created,       :timestamp
-      t.column :modified,      :timestamp
+      t.column :created_on,    :timestamp
+      t.column :updated_on,    :timestamp
       # t.column :name, :string
     end
 

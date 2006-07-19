@@ -51,8 +51,12 @@ class ProgramsController < ApplicationController
   def update
     @program          = Program.find(params[:id])
     @program.modified = DateTime.now
+    i = 0 
+    for(description in params[:program_descriptions])
+      i++
+    end
     if @program.update_attributes(params[:program])
-      flash[:notice] = 'Program was successfully updated.'
+      flash[:notice] = 'Program was successfully updated.' + i
       redirect_to :action => 'show', :id => @program
     else
       render :action => 'edit'
