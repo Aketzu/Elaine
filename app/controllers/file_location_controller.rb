@@ -1,3 +1,3 @@
-class FileLocationController < ApplicationController
+usclass FileLocationController < ApplicationController
   scaffold :FileLocation
 end
