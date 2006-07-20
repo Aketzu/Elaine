@@ -1,30 +1,59 @@
 <%= error_messages_for 'event' %>
 
+
 <!--[form:event]-->
-<p><label for="event_title">Title</label><br/>
-<%= text_field 'event', 'title'  %></p>
+<tr>
+<th class="edit">Title</th>
+<td class="edit"><%= text_field 'event', 'title'  %></td>
+</tr>
 
-<p><label for="event_script">Script</label><br/>
-<%= text_area 'event', 'script'  %></p>
+<tr>
+<th class="edit">Script</th>
+<td class="edit"><%= text_area 'event', 'script'  %></td>
+</tr>
 
-<p><label for="location_id">Location</label><br/>
-<%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+<tr>
+<th class="edit">Location</th>
+<td class="edit"><%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+</tr>
 
-<p><label for="event_type_id">Event type</label><br/>
-<%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+<tr>
+<th class="edit">Event type</th>
+<td class="edit"><%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+</tr>
 
-<p><label for="event_notes">Notes</label><br/>
-<%= text_area 'event', 'notes'  %></p>
+<tr>
+<th class="edit">Notes</th>
+<td class="edit"><%= text_area 'event', 'notes'  %></td>
+</tr>
 
-<p><label for="formatted_length">Length (hh:mm:ss)</label><br/>
-<%= text_field 'event', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
+<tr>
+<th class="edit">Length (hh:mm:ss)</th>
+<td class="edit"><%= text_field 'event', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+</tr>
 
-<p><label for="event_quarantine">Quarantine</label><br/>
-<%= datetime_select 'event', 'quarantine' %></p>
+<tr>
+<th class="edit">Quarantine</th>
+<td class="edit"><%= datetime_select 'event', 'quarantine' %></td>
+</tr>
 
-<p><label for="event_created">Created</label><br/>
-<%= @event.created %></p>
+<tr>
+<th class="edit">File location</th>
+<td class="edit"><%= select('event', 'file_location_id', FileLocation.find_all.collect { |t| [t.name, t.id] }) %></td>
+</tr>
 
-<p><label for="event_modified">Modified</label><br/>
-<%= @event.modified %></p>
+<tr>
+<th class="edit"><label for"event_filename">Filename (descriptive part)</th>
+<td class="edit"><%= text_field 'event', 'filename' %></td>
+</tr>
+
+<tr>
+<th class="edit">Created</th>
+<td class="edit"><%= @event.created_at %></td>
+</tr>
+
+<tr>
+<th class="edit">Modified</th>
+<td class="edit"><%= @event.updated_at %></td>
+</tr>
 <!--[eoform:event]-->

@@ -1,0 +1,18 @@
+<%= error_messages_for 'tape_program_link' %>
+
+<h1>Editing start time for program <%= @tape_program_link.Program.title %> on tape <%= @tape_program_link.Tape.title %></h1>
+
+<%= start_form_tag :action => 'update_program_link', :id => @tape_program_link %>
+
+<%= hidden_field 'tape_program_link', 'tape_id' %>
+<%= hidden_field 'tape_program_link', 'program_id' %>
+
+<p><label for="formatted_start_time">Start time (hh:mm:ss)</label><br/>
+<%= text_field 'tape_program_link', 'formatted_start_time', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
+
+<%= submit_tag 'Edit' %>
+<%= end_form_tag %>
+
+<%= link_to 'Back', :action => 'show', :id => @tape_program_link.tape_id %>
+
+

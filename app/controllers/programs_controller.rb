@@ -16,8 +16,8 @@ class ProgramsController < ApplicationController
 
   def show
     session[:original_uri] = request.request_uri
-    @program         = Program.find(params[:id])
-    @program_events  = @program.program_event_links #Event.find(event).title
+    @program               = Program.find(params[:id])
+    @program_events        = @program.program_event_links #Event.find(event).title
   end
 
   def new
@@ -49,7 +49,8 @@ class ProgramsController < ApplicationController
 
   def edit
     session[:original_uri] = request.request_uri
-    @program          = Program.find(params[:id])
+    @program               = Program.find(params[:id])
+    @program_events        = @program.program_event_links #Event.find(event).title
   end
 
   def update

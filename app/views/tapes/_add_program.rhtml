@@ -1,0 +1,16 @@
+<%= error_messages_for 'tape_program_link' %>
+
+<!--[form:add_program]-->
+<%= hidden_field 'tape_program_link', 'tape_id', :value => add_program.id %>
+
+<p>
+<label for="program_id">Add program</label>
+<%= select("tape_program_link", "program_id", Program.find_all.collect {|u| [ u.title, u.id ] }) %>
+
+<label for="formatted_start_time">with start time (hh:mm:ss)</label>
+<%= text_field 'tape_program_link', 'formatted_start_time', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %>
+
+<%= submit_tag "Add" %>
+</p>
+
+<!--[eoform:add_program]-->

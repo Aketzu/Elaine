@@ -1,5 +1,7 @@
 <p>The timeline display gives you detailed information about broadcasting playlist. You can drag the timeline and click on the items to get more information.</p>
 
+<p>Timeline will focus on current moment after 60 seconds so that this page can also be left open. It will also reload the data at that time.</p>
+
 <%= start_form_tag :action => 'timeline' %>
   <select name="channel_id" onChange="javascript: this.form.submit()">
     <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
@@ -7,4 +9,9 @@
 <%= submit_tag "Update" %>
 <%= end_form_tag %>
 
+
 <div id="playlist-timeline" style="height: 600px; border: 1px solid #aaa"></div>
+<a href="javascript:centerTimeline()">test</a>
+
+<div class="controls" id="controls">
+</div>

@@ -1,0 +1,8 @@
+<tr>
+  <th class="edit">Belongs to tapes</th>
+  <td>
+  <% for tape_link in belongs_to_tapes %>
+    <div><%= link_to tape_link.formatted_start_time + " " + tape_link.Tape.title, :controller => 'tapes', :action => 'show', :id => tape_link.tape_id %></div>
+  <% end %>
+  </td>
+</tr>

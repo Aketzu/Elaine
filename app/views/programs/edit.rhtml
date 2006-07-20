@@ -1,10 +1,36 @@
 <h1>Editing program</h1>
 
-<%= start_form_tag :action => 'update', :id => @program %>
+<%= start_form_tag [:action => 'update', :id => @program], :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
+<table>
   <%= render :partial => 'program' %>
   <%= render :partial => 'program_descriptions/program_descriptions_form', :object => @program.program_descriptions %>
-  <%= submit_tag 'Edit' %>
+
+  <tr>
+  <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
+  <td class="edit"><%= submit_tag 'Edit' %></td>
+  </tr>
 <%= end_form_tag %>
+
+  <tr>
+  <td colspan=2><hr></td>
+  </tr>
+
+  <%= render :partial => "events/belongs_to_tapes", :object => @program.tape_program_links %>
+</table>
+
+<p><strong>Events:</strong></p>
+
+<div style="padding-left: 20px;">
+<%= render(:partial => 'events', :object => @program.program_event_links) %>
+
+<%= start_form_tag :controller => 'program_event_links', :action => 'create' %>
+  <%= render :partial => 'add_event' %>
+<%= end_form_tag %>
+</div>
+
+<%= render :partial => "program_descriptions/program_description", :collection => @program.program_descriptions %>
+
+<%= render :partial => 'vods' %>
 
 <%= link_to 'Show', :action => 'show', :id => @program %> |
 <%= link_to 'Back', :action => 'list' %>

@@ -1,8 +1,26 @@
 <h1>Editing tape</h1>
 
-<%= start_form_tag :action => 'update', :id => @tape %>
+<%= start_form_tag [:action => 'update', :id => @tape], :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
+<table>
   <%= render :partial => 'tape' %>
-  <%= submit_tag 'Edit' %>
+
+  <tr>
+  <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
+  <td class="edit"><%= submit_tag 'Edit' %></td>
+  </tr>
+</table>
+<%= end_form_tag %>
+
+<%= render :partial => 'programs', :object => @programs %>
+
+<%= start_form_tag :action => 'add_program' %>
+  <%= render :partial => 'add_program', :object => @tape %>
+<%= end_form_tag %>
+
+<%= render :partial => 'events', :object => @events %>
+
+<%= start_form_tag :action => 'add_event' %>
+  <%= render :partial => 'add_event', :object => @tape %>
 <%= end_form_tag %>
 
 <%= link_to 'Show', :action => 'show', :id => @tape %> |

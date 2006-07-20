@@ -5,11 +5,18 @@
 <p><b>Owner: </b><%=h User.find(@tape.owner_id).username %></p>
 <p><b>Media Type: </b><%=h TapeMedia.find(@tape.media_id).name %></p>
 
-<%= render :partial => 'events' %>
+<%= render :partial => 'programs', :object => @programs %>
 
-<%= start_form_tag :controller => 'tape_event_links', :action => 'create' %>
-  <%= render :partial => 'add_event' %>
+<%= start_form_tag :action => 'add_program' %>
+  <%= render :partial => 'add_program', :object => @tape %>
 <%= end_form_tag %>
+
+<%= render :partial => 'events', :object => @events %>
+
+<%= start_form_tag :action => 'add_event' %>
+  <%= render :partial => 'add_event', :object => @tape %>
+<%= end_form_tag %>
+
 
 <%= link_to 'Edit', :action => 'edit', :id => @tape %> |
 <%= link_to 'Back', :action => 'list' %>

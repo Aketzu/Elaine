@@ -1,14 +1,16 @@
 var tl;
+var eventSource = new Timeline.DefaultEventSource();
+
 function onLoad() {
-  var eventSource   = new Timeline.DefaultEventSource();
   var bandInfos = [
     Timeline.createHotZoneBandInfo({
         zones: [
         <% @playlists.each_with_index {|playlist, index| %>
-            {   start:    "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-                end:      "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-                magnify:  6,
-                unit:     Timeline.DateTime.MINUTE
+            {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+                end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+                magnify:    5,
+                unit:       Timeline.DateTime.MINUTE,
+                multiple:   10,
             }<% if @playlists.length - index > 1 %>,<% end %>
         <% } %>
         ],
@@ -25,22 +27,32 @@ function onLoad() {
         date:           "Jul 17 2006 18:00:00 GMT",
 /*        date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
         intervalUnit:   Timeline.DateTime.DAY,
-        intervalPixels: 200
+        intervalPixels: 50
     })
   ];
   bandInfos[1].syncWith = 0;
   bandInfos[1].highlight = true;
 
-  var tl = Timeline.create(document.getElementById("playlist-timeline"), bandInfos);
+  tl = Timeline.create(document.getElementById("playlist-timeline"), bandInfos);
   Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
+  setTimeout("centerTimeline()", 60000);
+  setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1], theme);
+}
+
+function centerTimeline() {
+  eventSource = new Timeline.DefaultEventSource();
+  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
+  tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
+  tl.getBand(1).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
+  setTimeout("centerTimeline()", 60000);
 }
 
 var resizeTimerID = null;
 function onResize() {
-    if (resizeTimerID == null) {
-        resizeTimerID = window.setTimeout(function() {
-            resizeTimerID = null;
-            tl.layout();
-        }, 500);
-    }
+  if (resizeTimerID == null) {
+    resizeTimerID = window.setTimeout(function() {
+      resizeTimerID = null;
+      tl.layout();
+    }, 500);
+  }
 }

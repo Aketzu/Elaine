@@ -6,20 +6,25 @@
 
 <!--[form:program_description]-->
 
-<% langname = @program_description.language.name %>
-<% index = @program_description.id || i %>
+<tr>
+<th class="edit"><% langname = @program_description.language.name %></th>
+<td class="edit"><% index = @program_description.id || i %><%= hidden_field 'program_description', 'language_id', 'index' => index %></td>
+</tr>
 
-<%= hidden_field 'program_description', 'language_id', 'index' => index %>
+<tr>
+<th class="edit"><%= langname %> Title</th>
+<td class="edit"><%= text_field 'program_description', 'title', 'index' => index %></td>
+</tr>
 
-<p><label for="program_description_title"><%= langname %> Title</label><br/>
-<%= text_field 'program_description', 'title', 'index' => index %></p>
+<tr>
+<th class="edit"><%= langname %> Public description</th>
+<td class="edit"><%= text_area 'program_description', 'public_description', 'index' => index %></td>
+</tr>
 
-<p><label for="program_description_public_description"><%= langname %> Public description</label><br/>
-<%= text_area 'program_description', 'public_description', 'index' => index %></p>
-
-<p><label for="program_description_private_description"><%= langname %> Private description</label><br/>
-<%= text_area 'program_description', 'private_description', 'index' => index %></p>
-
+<tr>
+<th class="edit"><%= langname %> Private description</th>
+<td class="edit"><%= text_area 'program_description', 'private_description', 'index' => index %></td>
+</tr>
 <!--[eoform:program_description]-->
 
 <% end %>

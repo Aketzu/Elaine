@@ -18,15 +18,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event          = Event.new
-    @event.created  = Time.now
-    @event.modified = Time.now
-    end
+    @event   = Event.new
+  end
 
   def create
     @event          = Event.new(params[:event])
-    @event.created  = Time.now
-    @event.modified = Time.now
     if @event.save
       flash[:notice] = 'Event was successfully created.'
       redirect_to :action => 'list'
@@ -36,14 +32,13 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event          = Event.find(params[:id])
-    @event.modified = Time.now
-    end
+    @event = Event.find(params[:id])
+  end
 
   def update
-    @event          = Event.find(params[:id])
-    @event.modified = DateTime.now
-    if @event.update_attributes(params[:event])
+    @event           = Event.find(params[:id])
+    @tape_event_link = TapeEventLink.find(:first, :conditions => ["event_id = ?", @event.id])
+    if @event.update_attributes(params[:event]) && @tape_event_link.update_attributes(params[:tape_event_link])
       flash[:notice] = 'Event was successfully updated.'
       redirect_to :action => 'show', :id => @event
     else

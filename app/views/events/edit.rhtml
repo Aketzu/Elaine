@@ -1,9 +1,22 @@
 <h1>Editing event</h1>
 
-<%= start_form_tag :action => 'update', :id => @event %>
+<%= start_form_tag [:action => 'update', :id => @event], :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
+<table>
   <%= render :partial => 'event' %>
-  <%= submit_tag 'Edit' %>
+
+  <tr>
+  <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
+  <td class="edit"><%= submit_tag 'Edit' %></td>
+  </tr>
 <%= end_form_tag %>
+
+  <tr>
+  <td colspan=2><hr></td>
+  </tr>
+
+<%= render :partial => "belongs_to_tapes", :object => @event.tape_event_links %>
+<%= render :partial => "belongs_to_programs", :object => @event.Programs %>
+</table>
 
 <%= link_to 'Show', :action => 'show', :id => @event %> |
 <%= link_to 'Back', :action => 'list' %>

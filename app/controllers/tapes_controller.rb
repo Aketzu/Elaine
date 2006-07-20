@@ -15,7 +15,8 @@ class TapesController < ApplicationController
 
   def show
     @tape  = Tape.find(params[:id])
-    @event = Event.new
+    @programs = @tape.tape_program_links.find(:all, :order => 'start_time')
+    @events = @tape.tape_event_links.find(:all, :order => 'start_time')
   end
 
   def new
@@ -33,7 +34,9 @@ class TapesController < ApplicationController
   end
 
   def edit
-    @tape = Tape.find(params[:id])
+    @tape  = Tape.find(params[:id])
+    @programs = @tape.tape_program_links.find(:all, :order => 'start_time')
+    @events = @tape.tape_event_links.find(:all, :order => 'start_time')
   end
 
   def update
@@ -47,12 +50,53 @@ class TapesController < ApplicationController
   end
 
   def add_event
-    @tapeevent = TapeEventLink.new(params[:tapeevent])
-    @newtape   = Tape.find(@tapeevent.tape_id)
-    @newtape.Events << @tapeevent
+    @tape_event_link = TapeEventLink.new(params[:tape_event_link])
 
-    redirect_to :action => 'show', :id => @tapeevent.tape_id
+    if @tape_event_link.save
+      flash[:notice] = 'The event was successfully added.'
+    end     
+    redirect_to :action => 'show',
+                  :id => @tape_event_link.tape_id
   end
+
+  def edit_event_link
+    @tape_event_link = TapeEventLink.find(params[:id])
+  end
+
+  def update_event_link
+    @tape_event_link = TapeEventLink.find(params[:id])
+    if @tape_event_link.update_attributes(params[:tape_event_link])
+      flash[:notice] = 'The event was successfully moved'
+      redirect_to :action => 'show', :id => @tape_event_link.tape_id
+    else
+      render :action => 'edit_event_link'
+    end
+  end
+
+  def add_program
+    @tape_program_link = TapeProgramLink.new(params[:tape_program_link])
+
+    if @tape_program_link.save
+      flash[:notice] = 'The program was successfully added.'
+    end     
+    redirect_to :action => 'show',
+                  :id => @tape_program_link.tape_id
+  end
+
+  def edit_program_link
+    @tape_program_link = TapeProgramLink.find(params[:id])
+  end
+
+  def update_program_link
+    @tape_program_link = TapeProgramLink.find(params[:id])
+    if @tape_program_link.update_attributes(params[:tape_program_link])
+      flash[:notice] = 'The program was successfully moved'
+      redirect_to :action => 'show', :id => @tape_program_link.tape_id
+    else
+      render :action => 'edit_program_link'
+    end
+  end
+
 
   def destroy
     Tape.find(params[:id]).destroy

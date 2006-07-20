@@ -4,7 +4,7 @@
   <tr>
     <th>Tape</th>
     <th>Event</th>
-    <th>Offset</th>
+    <th>Start time</th>
   </tr>
   
 <% for tape_event_link in @tape_event_links %>
@@ -17,7 +17,7 @@
               :controller => 'events', 
               :action => 'show', 
               :id => tape_event_link.event_id %></td>
-    <td><%=h tape_event_link.formatted_offset %></td>
+    <td><%=h tape_event_link.formatted_start_time %></td>
     <td><%= link_to 'Show', :action => 'show', :id => tape_event_link %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => tape_event_link %></td>
     <td><%= link_to 'Destroy', { :action => 'destroy', :id => tape_event_link }, :confirm => 'Are you sure?', :post => true %></td>

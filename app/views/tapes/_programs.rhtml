@@ -1,4 +1,4 @@
-  <p><strong>Events:</strong><p>
+  <p><strong>Programs:</strong><p>
 <table>
   <tr class="header">
     <th>Start</th>
@@ -7,8 +7,8 @@
     <th>Title</th>
     <th></th>
   </tr>
-  <% for link in events %>
-  <% event = Event.find(link.event_id) %>
+  <% for link in programs %>
+  <% program = Program.find(link.program_id) %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
     <td>
     <%= link.formatted_start_time %>
@@ -17,16 +17,16 @@
     ->
     </td>
     <td>
-    <%= format_length(link.start_time + event.length) %>
+    <%= format_length(link.start_time + program.length) %>
     <td>
-    <%= link_to event.title, 
-              :controller => 'events', 
+    <%= link_to program.title, 
+              :controller => 'programs', 
               :action => 'show', 
-              :id => event.id %>
+              :id => program.id %>
     </td>
     <td>
-    [<%= link_to 'move', {:action => 'edit_event_link', :id => link.id} %>, 
-     <%= link_to 'x', {:controller => 'tape_event_links', 
+    [<%= link_to 'move', {:action => 'edit_program_link', :id => link.id} %>, 
+     <%= link_to 'x', {:controller => 'tape_program_links', 
                        :action => 'destroy', 
                        :id => link.id}, 
            :confirm => 'Are you sure?',

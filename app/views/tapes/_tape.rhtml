@@ -1,23 +1,34 @@
 <%= error_messages_for 'tape' %>
 
 <!--[form:tape]-->
-<p><label for="tape_code">Code</label><br/>
-<%= text_field 'tape', 'code'  %></p>
+<tr>
+<th class="edit">Code</th>
+<td class="edit"><%= text_field 'tape', 'code'  %></td>
+</tr>
 
-<p><label for="tape_title">Title</label><br/>
-<%= text_area 'tape', 'title'  %></p>
+<tr>
+<th class="edit">Title</th>
+<td class="edit"><%= text_area 'tape', 'title'  %></td>
+</tr>
 
-<p><label for="owner_id">Owner</label><br/>
-<%= select("tape", "owner_id", User.find_all.collect {|u| [ u.username, u.id ] }) %></p>
+<tr>
+<th class="edit">Owner</th>
+<td class="edit"><%= select("tape", "owner_id", User.find_all.collect {|u| [ u.username, u.id ] }) %></td>
+</tr>
 
-<p><label for="category_id">Category</label><br/>
-<%= select("tape", "category_id", TapeCategory.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+<tr>
+<th class="edit">Category</th>
+<td class="edit"><%= select("tape", "category_id", TapeCategory.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+</tr>
 
-<p><label for="media_id">Media type</label><br/>
-<%= select("tape", "media_id", TapeMedia.find_all.collect {|t| [ t.name, t.id ] }) %></p>
+<tr>
+<th class="edit">Media type</th>
+<td class="edit"><%= select("tape", "media_id", TapeMedia.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+</tr>
 
-<p><label for="formatted_length">Length (hh:mm:ss)</label><br/>
-<%= text_field 'tape', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
-
+<tr>
+<th class="edit">Length (hh:mm:ss)</th>
+<td class="edit"><%= text_field 'tape', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+</tr>
 <!--[eoform:tape]-->
 

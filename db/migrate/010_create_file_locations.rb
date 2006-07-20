@@ -4,6 +4,7 @@ class CreateFileLocations < ActiveRecord::Migration
       t.column :name,   :string
       t.column :description, :text
       t.column :url,    :string
+      t.column :checker_url, :string
     end
   end
 

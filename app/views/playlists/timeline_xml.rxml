@@ -1,9 +1,39 @@
 xml.data() do
   for playlist in @playlists
-    xml.event(playlist.formatted_length + ", " + playlist.Program.title,
+    current_time = playlist.start_time
+    for event in playlist.Program.Events
+      xml.event(
+      event.title + ", ",
+#       playlist.Program.title +
+#       " [" +
+#       '<a href="http://www.google.fi/">Planning</a>' + "|" +
+#       '<a href="http://www.google.fi/">Production</a>' + "|" +
+#       '<a href="http://www.google.fi/">Complete</a>' + "|" +
+#       "]",
+      :start      => current_time.strftime("%B %d %Y %H:%M:%S GMT"),
+      :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S GMT"),
+#       :isDuration => 'true',
+#       :link       => "/playlists/edit/" + playlist.id.to_s,
+      :title      =>
+        event.title
+      )
+      current_time += event.length
+    end
+    xml.event(
+      playlist.formatted_length + ", " + 
+      playlist.Program.title +
+      " [" +
+      '<a href="http://www.google.fi/">Planning</a>' + "|" +
+      '<a href="http://www.google.fi/">Production</a>' + "|" +
+      '<a href="http://www.google.fi/">Complete</a>' + "|" +
+      "]",
       :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :isDuration => 'true',
-      :title      => playlist.start_time.strftime("%H:%M:%S") + ": " + playlist.Program.title)
+      :link       => "/playlists/edit/" + playlist.id.to_s,
+      :title      =>
+        playlist.start_time.strftime("%H:%M:%S") + " " +
+        playlist.Program.title
+    )
   end
 end

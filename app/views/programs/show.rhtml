@@ -17,7 +17,10 @@
                        :id => @program.status_id %></p>
 
 
+<%= render :partial => "events/belongs_to_tapes", :object => @program.tape_program_links %>
+
 <p><strong>Events:</strong></p>
+
 <div style="padding-left: 20px;">
 <%= render(:partial => 'events', :object => @program.program_event_links) %>
 

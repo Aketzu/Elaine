@@ -48,7 +48,7 @@ class CreateTestdata < ActiveRecord::Migration
     :created_at           => 'July 16 2006 17:37:10 GMT',
     :updated_at           => 'July 16 2006 18:52:10 GMT',
     :file_location_id     => 1,
-    :filename             => '01_filename_event.avi')
+    :filename             => 'filename_event_1')
     Event.create(
     :title                => 'Event 2',
     :script               => 'Script 534',
@@ -60,7 +60,7 @@ class CreateTestdata < ActiveRecord::Migration
     :created_at           => 'July 16 2006 17:37:20 GMT',
     :updated_at           => 'July 16 2006 18:52:20 GMT',
     :file_location_id     => 1,
-    :filename             => '02_filename_event.avi')
+    :filename             => 'filename_event_2')
     Event.create(
     :title                => 'Event 3',
     :script               => 'Script 123',
@@ -72,7 +72,7 @@ class CreateTestdata < ActiveRecord::Migration
     :created_at           => 'July 16 2006 17:37:30 GMT',
     :updated_at           => 'July 16 2006 18:52:30 GMT',
     :file_location_id     => 1,
-    :filename             => '03_filename_event.avi')
+    :filename             => 'filename_event_3')
 
 #     People.create(
 #     :name                 => '',
@@ -124,7 +124,7 @@ class CreateTestdata < ActiveRecord::Migration
     :owner_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
-    :filename             => '01_filename.avi')
+    :filename             => 'eka_tiedosto')
     Program.create(
     :notes                => 'Notes for Program 2',
     :min_show             => 2,
@@ -137,7 +137,7 @@ class CreateTestdata < ActiveRecord::Migration
     :owner_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
-    :filename             => '02_filename.avi')
+    :filename             => 'toka_tiedosto')
     Program.create(
     :notes                => 'Notes for Program 3',
     :min_show             => 2,
@@ -150,7 +150,7 @@ class CreateTestdata < ActiveRecord::Migration
     :owner_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
-    :filename             => '03_filename.avi')
+    :filename             => 'kolmas_tiedosto')
 
 #     Playlist.create(
 #     :start_time           => '',
@@ -279,15 +279,15 @@ class CreateTestdata < ActiveRecord::Migration
 #     :event_id             => '')
 
     TapeEventLink.create(
-    :start_time           => 'July 17 2006 18:00:00 GMT',
+    :start_time           => 0,
     :tape_id              => 1,
     :event_id             => 1)
     TapeEventLink.create(
-    :start_time           => 'July 17 2006 19:00:00 GMT',
+    :start_time           => 810,
     :tape_id              => 1,
     :event_id             => 2)
     TapeEventLink.create(
-    :start_time           => 'July 17 2006 20:00:00 GMT',
+    :start_time           => 1967,
     :tape_id              => 1,
     :event_id             => 3)
 
