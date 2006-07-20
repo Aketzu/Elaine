@@ -4,12 +4,12 @@
 <!--[form:event]-->
 <tr>
 <th class="edit">Title</th>
-<td class="edit"><%= text_field 'event', 'title'  %></td>
+<td class="edit"><%= text_field 'event', 'title', 'class' => "text" %></td>
 </tr>
 
 <tr>
 <th class="edit">Script</th>
-<td class="edit"><%= text_area 'event', 'script'  %></td>
+<td class="edit"><%= text_area 'event', 'script' %></td>
 </tr>
 
 <tr>
@@ -29,12 +29,13 @@
 
 <tr>
 <th class="edit">Length (hh:mm:ss)</th>
-<td class="edit"><%= text_field 'event', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+<td class="edit"><%= text_field 'event', 'formatted_length', 'class' => "time",
+                       'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 
 <tr>
 <th class="edit">Quarantine</th>
-<td class="edit"><%= datetime_select 'event', 'quarantine' %></td>
+<td class="edit"><%= textfield 'event', 'quarantine' %></td>
 </tr>
 
 <tr>
@@ -44,7 +45,7 @@
 
 <tr>
 <th class="edit"><label for"event_filename">Filename (descriptive part)</th>
-<td class="edit"><%= text_field 'event', 'filename' %></td>
+<td class="edit"><%= text_field 'event', 'filename', 'class' => "text" %></td>
 </tr>
 
 <tr>

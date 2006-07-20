@@ -12,6 +12,7 @@ has_many :Programs, :through => :program_event_links
 
 validates_associated :Location
 validates_associated :EventType
+validates_date_time  :quarantine
 
 def formatted_length
   format_length(length)

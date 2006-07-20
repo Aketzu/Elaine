@@ -3,7 +3,7 @@
 <!--[form:tape]-->
 <tr>
 <th class="edit">Code</th>
-<td class="edit"><%= text_field 'tape', 'code'  %></td>
+<td class="edit"><%= text_field 'tape', 'code', 'class' => "text" %></td>
 </tr>
 
 <tr>
@@ -28,7 +28,8 @@
 
 <tr>
 <th class="edit">Length (hh:mm:ss)</th>
-<td class="edit"><%= text_field 'tape', 'formatted_length', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+<td class="edit"><%= text_field 'tape', 'formatted_length', 'class' => "time",
+                       'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 <!--[eoform:tape]-->
 

@@ -50,7 +50,19 @@ td.edit {
 }
 
 textarea {
-  height: 100px;
+  height: 7em;
+  width: 20em;
+}
+
+input.time {
+  width: 6em;
+}
+input.text {
+  width: 20em;
+}
+
+select {
+  min-width: 12em;
 }
 
 div.content {
