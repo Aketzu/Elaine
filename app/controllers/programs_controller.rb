@@ -35,10 +35,13 @@ class ProgramsController < ApplicationController
       params[:program_description].each do |key, val|
         @program_descriptions << ProgramDescription.new(val)
       end
-      params[:program_description].each do |key, val|
-        unless @program.program_descriptions << ProgramDescription.new(val)
-          render :action => 'new'
-        end
+#      params[:program_description].each do |key, val|
+#        unless @program.program_descriptions << ProgramDescription.new(val)
+#          render :action => 'new'
+#        end
+#     end
+      unless @program.program_descriptions << @program_descriptions
+        render :action => 'new'
       end
     end #end transaction
 
