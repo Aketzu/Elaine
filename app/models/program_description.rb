@@ -5,6 +5,7 @@ belongs_to :Language
 
 validates_associated :Program
 validates_associated :Language
+validates_presence_of :title
 
 acts_as_list :scope => :program_id
 
