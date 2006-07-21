@@ -1,6 +1,6 @@
 <h1>New program</h1>
 
-<%= start_form_tag :action => 'create', :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
+<%= start_form_tag({:action => 'create'}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
 <table>
   <%= render :partial => 'program' %>
   <%= render :partial => 'program_descriptions/program_descriptions_form', :object => @program_descriptions %>
