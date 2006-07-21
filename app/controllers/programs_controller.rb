@@ -31,7 +31,10 @@ class ProgramsController < ApplicationController
   def create
     Program.transaction do
       @program          = Program.new(params[:program])
-      @program_descriptions = ProgramDescription.new(params[:program_description])
+      @program_descriptions = []    
+      params[:program_description].each do |key, val|
+        @program_descriptions << ProgramDescription.new(val)
+      end
       params[:program_description].each do |key, val|
         unless @program.program_descriptions << ProgramDescription.new(val)
           render :action => 'new'
