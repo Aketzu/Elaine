@@ -12,6 +12,8 @@ has_many :Programs, :through => :program_event_links
 
 validates_associated :Location
 validates_associated :EventType
+validates_presence_of(:formatted_length, :message => "can not be empty")
+validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]+$/, :message => "contains illegal characters.")
 
 def formatted_length
   format_length(length)

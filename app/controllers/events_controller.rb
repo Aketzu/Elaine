@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @event          = Event.new(params[:event])
     if @event.save
       flash[:notice] = 'Event was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => 'edit', :id => @event.id
     else
       render :action => 'new'
     end
@@ -38,7 +38,8 @@ class EventsController < ApplicationController
   def update
     @event           = Event.find(params[:id])
     @tape_event_link = TapeEventLink.find(:first, :conditions => ["event_id = ?", @event.id])
-    if @event.update_attributes(params[:event]) && @tape_event_link.update_attributes(params[:tape_event_link])
+    if @event.update_attributes(params[:event]) && 
+       (@tape_event_link.nil? || @tape_event_link.update_attributes(params[:tape_event_link]))
       flash[:notice] = 'Event was successfully updated.'
       redirect_to :action => 'show', :id => @event
     else

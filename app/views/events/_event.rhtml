@@ -35,7 +35,7 @@
 
 <tr>
 <th class="edit">Quarantine</th>
-<td class="edit"><%= textfield 'event', 'quarantine' %></td>
+<td class="edit"><%= datetime_select 'event', 'quarantine' %></td>
 </tr>
 
 <tr>
@@ -48,6 +48,7 @@
 <td class="edit"><%= text_field 'event', 'filename', 'class' => "text" %></td>
 </tr>
 
+<% unless @event.created_at.nil? %>
 <tr>
 <th class="edit">Created</th>
 <td class="edit"><%= @event.created_at %></td>
@@ -57,4 +58,5 @@
 <th class="edit">Modified</th>
 <td class="edit"><%= @event.updated_at %></td>
 </tr>
+<% end %>
 <!--[eoform:event]-->

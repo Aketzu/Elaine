@@ -15,8 +15,8 @@
   
 <% for tape in @tapes %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td><%= link_to tape.code, :action => 'show', :id => tape %></td>
-    <td><%= link_to tape.title, :action => 'show', :id => tape %></td>
+    <td><%= link_to tape.code, :action => 'edit', :id => tape %></td>
+    <td><%= link_to tape.title, :action => 'edit', :id => tape %></td>
     <td><%=h tape.formatted_length %></td>
     <td><%= link_to TapeCategory.find(tape.category_id).name, :controller => 'tape_categorys', :action => 'show', :id => tape.category_id %></td>
     <td><%= link_to User.find(tape.owner_id).username,        :controller => 'users',          :action => 'show', :id => tape.owner_id %></td>

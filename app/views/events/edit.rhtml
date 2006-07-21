@@ -1,6 +1,6 @@
 <h1>Editing event</h1>
 
-<%= start_form_tag [:action => 'update', :id => @event], :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
+<%= start_form_tag :action => 'update', :id => @event, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false" %>
 <table>
   <%= render :partial => 'event' %>
 

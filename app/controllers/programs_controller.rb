@@ -41,7 +41,7 @@ class ProgramsController < ApplicationController
 
     if @program.save
       flash[:notice] = 'Program was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => 'edit', :id => @program.id
     else
       render :action => 'new'
     end
