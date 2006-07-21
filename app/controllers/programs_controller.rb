@@ -31,7 +31,7 @@ class ProgramsController < ApplicationController
   def create
     Program.transaction do
       @program          = Program.new(params[:program])
-      @program_descriptions = ProgramDescription.new(params[:program_description])
+#      @program_descriptions = ProgramDescription.new(params[:program_description])
       params[:program_description].each do |key, val|
         unless @program.program_descriptions << ProgramDescription.new(val)
           flash[:error] = 'Problem with' + Language.find(val[language_id]) + 'description'
