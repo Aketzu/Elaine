@@ -1,37 +1,41 @@
-  <p><strong>Programs:</strong><p>
-<table>
-  <tr class="header">
-    <th>Start</th>
-    <th></th>
-    <th>End</th>
-    <th>Title</th>
-    <th></th>
-  </tr>
-  <% for link in programs %>
-  <% program = Program.find(link.program_id) %>
-  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td>
-    <%= link.formatted_start_time %>
-    </td>
-    <td>
-    ->
-    </td>
-    <td>
-    <%= format_length(link.start_time + program.length) %>
-    <td>
-    <%= link_to program.title, 
-              :controller => 'programs', 
-              :action => 'show', 
-              :id => program.id %>
-    </td>
-    <td>
-    [<%= link_to 'move', {:action => 'edit_program_link', :id => link.id} %>, 
-     <%= link_to 'x', {:controller => 'tape_program_links', 
-                       :action => 'destroy', 
-                       :id => link.id}, 
-           :confirm => 'Are you sure?',
-           :post => 'true' %>]
-    </td>
-  </tr>
-  <% end %>
-</table>
+<tr>
+  <th class="edit">Programs</th>
+  <td class="edit">
+    <table>
+      <tr class="header">
+        <th>Start</th>
+        <th></th>
+        <th>End</th>
+        <th>Title</th>
+        <th></th>
+      </tr>
+      <% for link in programs %>
+      <% program = Program.find(link.program_id) %>
+      <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+        <td>
+        <%= link.formatted_start_time %>
+        </td>
+        <td>
+        ->
+        </td>
+        <td>
+        <%= format_length(link.start_time + program.length) %>
+        <td>
+        <%= link_to program.title, 
+                  :controller => 'programs', 
+                  :action => 'show', 
+                  :id => program.id %>
+        </td>
+        <td>
+        [<%= link_to 'move', {:action => 'edit_program_link', :id => link.id} %>, 
+         <%= link_to 'x', {:controller => 'tape_program_links', 
+                           :action => 'destroy', 
+                           :id => link.id}, 
+               :confirm => 'Are you sure?',
+               :post => 'true' %>]
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </td>
+</tr>

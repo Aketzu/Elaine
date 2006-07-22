@@ -1,37 +1,41 @@
-  <p><strong>Events:</strong><p>
-<table>
-  <tr class="header">
-    <th>Start</th>
-    <th></th>
-    <th>End</th>
-    <th>Title</th>
-    <th></th>
-  </tr>
-  <% for link in events %>
-  <% event = Event.find(link.event_id) %>
-  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td>
-    <%= link.formatted_start_time %>
-    </td>
-    <td>
-    ->
-    </td>
-    <td>
-    <%= format_length(link.start_time + event.length) %>
-    <td>
-    <%= link_to event.title, 
-              :controller => 'events', 
-              :action => 'show', 
-              :id => event.id %>
-    </td>
-    <td>
-    [<%= link_to 'move', {:action => 'edit_event_link', :id => link.id} %>, 
-     <%= link_to 'x', {:controller => 'tape_event_links', 
-                       :action => 'destroy', 
-                       :id => link.id}, 
-           :confirm => 'Are you sure?',
-           :post => 'true' %>]
-    </td>
-  </tr>
-  <% end %>
-</table>
+<tr>
+  <th class="edit">Events</th>
+  <td class="edit">
+    <table>
+      <tr class="header">
+        <th>Start</th>
+        <th></th>
+        <th>End</th>
+        <th>Title</th>
+        <th></th>
+      </tr>
+      <% for link in events %>
+      <% event = Event.find(link.event_id) %>
+      <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+        <td>
+        <%= link.formatted_start_time %>
+        </td>
+        <td>
+        ->
+        </td>
+        <td>
+        <%= format_length(link.start_time + event.length) %>
+        <td>
+        <%= link_to event.title, 
+                  :controller => 'events', 
+                  :action => 'show', 
+                  :id => event.id %>
+        </td>
+        <td>
+        [<%= link_to 'move', {:action => 'edit_event_link', :id => link.id} %>, 
+         <%= link_to 'x', {:controller => 'tape_event_links', 
+                           :action => 'destroy', 
+                           :id => link.id}, 
+               :confirm => 'Are you sure?',
+               :post => 'true' %>]
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </td>
+</tr>

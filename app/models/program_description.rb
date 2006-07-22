@@ -5,7 +5,7 @@ belongs_to :Language
 
 validates_associated :Program
 validates_associated :Language
-validates_presence_of (:title, :message => "Title must be entered.")
+validates_presence_of(:title, :message => "Title must be entered.")
 
 acts_as_list :scope => :program_id
 
