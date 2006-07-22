@@ -49,6 +49,11 @@ class TapesController < ApplicationController
     end
   end
 
+  def destroy
+    Tape.find(params[:id]).destroy
+    redirect_to :action => 'list'
+  end
+
   def add_event
     @tape_event_link = TapeEventLink.new(params[:tape_event_link])
 
@@ -71,6 +76,15 @@ class TapesController < ApplicationController
     else
       render :action => 'edit_event_link'
     end
+  end
+  
+  def remove_event
+    @tape_event_link = TapeEventLink.find(params[:id])
+    @redirect_id     = @tape_event_link.tape_id
+    @tape_event_link.destroy
+    flash[:notice] = 'The event was successfully removed'
+    redirect_to :action => 'edit',
+                :id => @redirect_id  
   end
 
   def add_program
@@ -97,9 +111,15 @@ class TapesController < ApplicationController
     end
   end
 
-
-  def destroy
-    Tape.find(params[:id]).destroy
-    redirect_to :action => 'list'
+  def remove_program
+    @tape_program_link = TapeProgramLink.find(params[:id])
+    @redirect_id     = @tape_program_link.tape_id
+    @tape_program_link.destroy
+    flash[:notice] = 'The program was successfully removed'
+    redirect_to :action => 'edit',
+                :id => @redirect_id  
   end
+
+
+
 end

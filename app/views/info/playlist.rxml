@@ -1,15 +1,19 @@
-xml.playlist(:channel => @channel.name) do
-  for item in @items
-    program = item.Program
-    xml.program(:id => program.id) do
-      xml.starttime(item.start_time.strftime("%Y-%m-%dT%H:%M:%S"))
-      xml.length(program.formatted_length)
-      for desc in program.program_descriptions
-        xml.desc(:language => desc.language.name) do
-           xml.title(desc.title)
-           xml.description(desc.public_description)
+unless @channel.nil?
+  xml.playlist(:channel => @channel.name) do
+    for item in @items
+      program = item.Program
+      xml.program(:id => program.id) do
+        xml.starttime(item.start_time.strftime("%Y-%m-%dT%H:%M:%S"))
+        xml.length(program.formatted_length)
+        for desc in program.program_descriptions
+          xml.desc(:language => desc.language.name) do
+             xml.title(desc.title)
+             xml.description(desc.public_description)
+          end
         end
       end
     end
   end
+else
+  xml.error("No such channel")
 end

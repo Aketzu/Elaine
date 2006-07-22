@@ -28,8 +28,7 @@
         </td>
         <td>
         [<%= link_to 'move', {:action => 'edit_event_link', :id => link.id} %>, 
-         <%= link_to 'x', {:controller => 'tape_event_links', 
-                           :action => 'destroy', 
+         <%= link_to 'x', {:action => 'remove_event', 
                            :id => link.id}, 
                :confirm => 'Are you sure?',
                :post => 'true' %>]

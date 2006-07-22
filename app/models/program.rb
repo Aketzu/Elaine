@@ -15,7 +15,7 @@ has_many   :Events, :through => :program_event_links
 validates_associated :User
 validates_associated :ProgramStatus
 validates_presence_of(:formatted_length, :message => "can not be empty")
-validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]+$/, :message => "contains illegal characters.")
+validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "contains illegal characters.")
 
 def quarantine
   self.Events.maximum('quarantine') || self.created_at
@@ -30,6 +30,42 @@ def title  # might require some tunkking yet
   if (@descriptor) then
     @descriptor.title || "-"
   end
+end
+
+def contains_live?
+  typeid = EventType.find(:first, :conditions => ["name = ?", "live"]).id
+  if(self.Events.count(:conditions => ["event_type_id = ?", typeid]) > 0)
+    true
+  else 
+    false
+  end  
+end
+
+def contains_insert?
+  typeid = EventType.find(:first, :conditions => ["name = ?", "insert"]).id
+  if(self.Events.count(:conditions => ["event_type_id = ?", typeid]) > 0)
+    true
+  else 
+    false
+  end
+end
+
+def source?
+  if(self.Tapes.size > 0)
+    "Tape"
+  else
+    live = contains_live?
+    insert = contains_insert?
+    if(live and insert)
+      "Live and insert"
+    elsif(live)
+      "Live"
+    elsif(insert)
+      "Insert"
+    else
+      "Empty!"
+    end
+  end 
 end
 
 def formatted_length

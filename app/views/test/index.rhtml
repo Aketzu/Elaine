@@ -1,4 +1,8 @@
 <h1>test index</h1>
 
-<%=  File.exists?("/home/stream/xorg.conf") %><br/>
-<%= TEST_SETTING %>
+<p>
+<% programs = Program.find(:all) %>
+<% for program in programs %>
+   <%= link_to program.title, :controller => 'programs', :action => 'edit', :id => program.id %>: <%= program.source? %><br/>
+<% end %>
+</p>
