@@ -1,9 +1,10 @@
 <h1>Editing program</h1>
 
+
 <%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
 <table>
+  <%= render :partial => 'program_descriptions', :object => @program.program_descriptions %>
   <%= render :partial => 'program' %>
-  <%= render :partial => 'program_descriptions/program_descriptions_form', :object => @program.program_descriptions %>
 
   <tr>
   <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
@@ -27,8 +28,6 @@
   <%= render :partial => 'add_event' %>
 <%= end_form_tag %>
 </div>
-
-<%= render :partial => "program_descriptions/program_description", :collection => @program.program_descriptions %>
 
 <%= render :partial => 'vods' %>
 

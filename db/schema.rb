@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 23) do
 
   create_table "languages", :force => true do |t|
     t.column "name", :string
-    t.column "compulsory", :boolean
+    t.column "compulsory", :boolean, :default => true
   end
 
   create_table "locations", :force => true do |t|

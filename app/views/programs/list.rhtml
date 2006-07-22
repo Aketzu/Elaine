@@ -19,7 +19,7 @@
 
 <% for program in @programs %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td><%=h program.title %></td>
+    <td><%= link_to program.title, :action => 'edit', :id => program %></td>
     <td><%=h program.formatted_length %></td>
 <!--     <td><%=h program.notes %></td> -->
     <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
@@ -38,7 +38,7 @@
     <td><%=h program.max_show %></td>
     <td><%= program.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
     <td>[
-      <%= link_to 'Show', :action => 'show', :id => program %>
+      
       <%= link_to 'Edit', :action => 'edit', :id => program %>
       <%= link_to 'Destroy', { :action => 'destroy', :id => program }, 
               :confirm => 'Are you sure?', 
