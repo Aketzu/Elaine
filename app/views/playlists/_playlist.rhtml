@@ -3,20 +3,21 @@
 <!--[form:playlist]-->
 <%= hidden_field 'playlist', 'channel_id', :value => playlist %>
 
-<Table>
+<div class="playlist">
+  <div class="playlist_header">
+    <div class="playlist_cell" style="width: 10em;">Program</div>
+    <div class="playlist_cell" style="width: 12em;">Start time</div>
+    <div class="playlist_cell" style="width: 6em;">Movable</div>
+  </div>
 
-<tr>
-  <th><label for="program_id">Program</label></th>
-  <th><label for="playlist_start_time">Start time</label></th>
-  <th><label for="playlist_movable">Movable</label></th>
-</tr>
-<tr>
-  <td><%= select("playlist", "program_id", Program.find_all.collect {|t| [ t.title, t.id ] }) %></td>
-  <td><%= datetime_select 'playlist', 'start_time'  %></td>
-  <td><select id="playlist_movable" name="playlist[movable]"><option value="false">False</option><option value="true">True</option></select></td>
-</tr>
+  <div class="playlist_even">
+    <div class="playlist_cell"><%= select("playlist", "program_id", Program.find_all.collect {|t| [ t.title, t.id ] }) %></div>
+    <div class="playlist_cell"><%= datetime_select 'playlist', 'start_time'  %></div>
+    <div class="playlist_cell"><select id="playlist_movable" name="playlist[movable]"><option value="false">False</option><option value="true">True</option></select></div>
+    <div class="playlist_cell"><%= submit_tag "Add to Playlist" %></div>
+  </div>
 
-</table>
+</div>
 
 <!--[eoform:playlist]-->
 

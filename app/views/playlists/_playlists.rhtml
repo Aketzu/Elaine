@@ -1,0 +1,50 @@
+<div class="playlist" id="playlists">
+  <div class="playlist_header">
+    <div class="playlist_cell" style="width: 10em;">Program</div>
+    <div class="playlist_cell" style="width: 12em;">Start time</div>
+    <div class="playlist_cell" style="width: 6em;">Length</div>
+    <div class="playlist_cell" style="width: 12em;">End time</div>
+    <div class="playlist_cell" style="width: 6em;">Movable</div>
+    <div class="playlist_cell" style="width: 8em;">Actions</div>
+  </div>
+  
+<%
+unless playlists.first.nil? 
+  end_time = playlists.first.start_time
+else
+  end_time = Time.at(0) 
+end
+%>
+<% playlists.each_with_index {|playlist, index| %>
+  <% @current_cycle = cycle('playlist_even', 'playlist_odd') %>
+  <% @error = "" %>
+  <% if playlist.start_time > (end_time + 60) then @error = "error" end %>
+  <% if playlist.start_time < end_time then @error = "error" end %>
+    
+  <div class="<%= @current_cycle %>">
+    <div class="playlist_cell" id="<%= @error %>"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'show', :id => playlist.program_id %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%a %d.%m.%Y %H:%M:%S") %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.Program.formatted_length %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%a %d.%m.%Y %H:%M:%S") %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.movable %></div>
+    <div class="playlist_cell" id="<%= @error %>">[
+      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
+      <%= link_to_remote 'Destroy', :url => { :action => :destroy, :id => playlist }, :confirm => 'Are you sure?' %>
+    ]</div>
+  <% if playlist.start_time > (end_time + 60) %>
+    <div class="playlist_error_gap">
+    <%= format_length(playlist.start_time - end_time) %> gap
+    </div>
+  <% end %>
+  
+  <% if playlist.start_time < end_time %>
+    <div class="playlist_error_overlap">
+    <%= link_to_remote 'Fix', :url => { :action => :fix_overlap, 
+                                        :id => playlist, 
+                                        :difference => (end_time - playlist.start_time) } %>
+    </div>
+  <% end %>
+  </div>
+  <% end_time = playlist.end_time %>
+<% } %>
+</div>

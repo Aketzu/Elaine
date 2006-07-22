@@ -2,8 +2,8 @@ class PlaylistsController < ApplicationController
   layout 'application', :except => [:timeline_xml, :timeline_config, :bandinfo_xml]
 
   def index
-    list
-    render :action => 'list'
+    playlist
+    render :action => 'playlist'
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -17,6 +17,15 @@ class PlaylistsController < ApplicationController
     end
     @channels = Channel.find(:all)
     @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
+  end
+
+  def playlist
+    @channel_id = params[:channel_id].to_i
+    if(@channel_id == 0)
+      @channel_id = Channel.find(:first).id
+    end
+    @channels = Channel.find(:all)
+    @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
 
   def show
@@ -53,14 +62,17 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new
   end
 
-  def create
+  def fix_overlap
+    @playlist = Playlist.find(params[:id])
+    @playlist.start_time += params[:difference].to_i
+    @playlist.save
+    playlist
+  end
+
+  def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
-    if @playlist.save
-      flash[:notice] = 'Playlist was successfully created.'
-      redirect_to :action => 'list', :channel_id => @playlist.channel_id
-    else
-      render :action => 'new'
-    end
+    @playlist.save
+    playlist
   end
 
   def edit
@@ -71,7 +83,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     if @playlist.update_attributes(params[:playlist])
       flash[:notice] = 'Playlist was successfully updated.'
-      redirect_to :action => 'list', :channel_id => @playlist.channel_id
+      redirect_to(:action => 'playlist', :channel_id => @playlist.channel_id)
     else
       render :action => 'edit'
     end
@@ -79,6 +91,6 @@ class PlaylistsController < ApplicationController
 
   def destroy
     Playlist.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    playlist
   end
 end

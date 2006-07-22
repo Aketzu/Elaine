@@ -1,0 +1,18 @@
+<div></div>
+<h1><%= Channel.find(@channel_id).name %> playlist</h1>
+
+<%= start_form_tag :action => 'playlist' %>
+  <select name="channel_id" onChange="javascript: this.form.submit()">
+    <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
+  </select>
+<%= submit_tag "Update" %>
+<%= end_form_tag %>
+
+<%= render :partial => 'playlists', :object => @playlists %>
+
+<br>
+
+
+<%= form_remote_tag :url => { :action => :add_to_playlist } %>
+  <%= render :partial => 'playlist', :object => @channel_id %>
+<%= end_form_tag %>

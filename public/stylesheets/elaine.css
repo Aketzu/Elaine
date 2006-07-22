@@ -73,6 +73,52 @@ div.listing_content {
   float: left;
 }
 
+/**
+ * Playlist controls
+ */
+div.playlist {
+  display: table;
+  width: auto;
+}
+
+div.playlist_header {
+  background: #ddddfe;
+  display: table-row;
+  font-weight: bold;
+  text-align: center;
+}
+div.playlist_odd {
+  background: #ddddfe;
+  display: table-row;
+}
+div.playlist_even {
+  background: #eaeaff;
+  display: table-row;
+}
+
+div.playlist_cell {
+  display: table-cell;
+  padding: 2px;
+}
+div#error {
+  background: #ff2222;
+  color: #ffffff;
+}
+div.playlist_error_gap {
+  background: #ff2222;
+  display: table-cell;
+  width: 20em;
+  color: #ffffff;
+}
+div.playlist_error_overlap {
+  background: #ff2222;
+  display: table-cell;
+  width: 20em;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
 div.events_in_program_list {
   margin-left: 30px;
   width: 50%;
