@@ -5,7 +5,7 @@
     <div class="playlist_cell" style="width: 6em;">Length</div>
     <div class="playlist_cell" style="width: 12em;">End time</div>
     <div class="playlist_cell" style="width: 6em;">Movable</div>
-    <div class="playlist_cell" style="width: 8em;">Actions</div>
+    <div class="playlist_cell" style="width: 9em;">Actions</div>
   </div>
   
 <%
@@ -23,9 +23,9 @@ end
     
   <div class="<%= @current_cycle %>">
     <div class="playlist_cell" id="<%= @error %>"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'show', :id => playlist.program_id %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%a %d.%m.%Y %H:%M:%S") %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%a %d.%m.%Y %H:%M") %></div>
     <div class="playlist_cell" id="<%= @error %>"><%= playlist.Program.formatted_length %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%a %d.%m.%Y %H:%M:%S") %></div>
+    <div class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%a %d.%m.%Y %H:%M") %></div>
     <div class="playlist_cell" id="<%= @error %>"><%= playlist.movable %></div>
     <div class="playlist_cell" id="<%= @error %>">[
       <%= link_to 'Edit', :action => 'edit', :id => playlist %>
