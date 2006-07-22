@@ -1,8 +1,11 @@
 <h1>test index</h1>
 
-<p>
-<% programs = Program.find(:all) %>
-<% for program in programs %>
-   <%= link_to program.title, :controller => 'programs', :action => 'edit', :id => program.id %>: <%= program.source? %><br/>
+<% location = FileLocation.find(:first) %>
+
+Joo: <%= location.exists?('test') %><br/>
+
+<% if(location.exists?('test') == 'true') %>
+löytyb
+<% else %>
+eip
 <% end %>
-</p>
