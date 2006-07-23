@@ -1,0 +1,3 @@
+page[:playlist_timeline].replace_html '<div id="playlist_timeline" style="height: 600px; border: 1px solid #aaa"></div>'
+page.call 'closeBubbles'
+page.call 'onLoad'

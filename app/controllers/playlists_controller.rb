@@ -43,6 +43,7 @@ class PlaylistsController < ApplicationController
 
   def timeline_xml
     @channel_id = params[:channel_id].to_i
+    @show_events = params[:show_events]
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
@@ -50,7 +51,8 @@ class PlaylistsController < ApplicationController
   end
 
   def timeline_config
-    @now = Time.now
+    @now1 = Time.now
+    @now2 = Time.now + 60
     @channel_id = params[:channel_id].to_i
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id

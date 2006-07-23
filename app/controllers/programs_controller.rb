@@ -14,7 +14,7 @@ class ProgramsController < ApplicationController
                                          :per_page => 10
   end
 
-  def show
+  def edit
     session[:original_uri] = request.request_uri
     @program               = Program.find(params[:id])
     @program_events        = @program.program_event_links #Event.find(event).title
@@ -76,7 +76,7 @@ class ProgramsController < ApplicationController
   def add_event
     @program = Program.find(params[:id])
     @program.ProgramEventLinks.create(params[:program_event])
-    redirect_to session[:original_uri] || {:action => 'show', :id => @program.id}
+    redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
   end
 
   def move_event_up
@@ -84,7 +84,7 @@ class ProgramsController < ApplicationController
     @program_event = @program.program_event_links.find(params[:program_event_id])
     @program_event.move_higher
     @program.reload
-    redirect_to session[:original_uri] || {:action => 'show', :id => @program.id}
+    redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
   end
 
   def move_event_down
@@ -92,7 +92,16 @@ class ProgramsController < ApplicationController
     @program_event = @program.program_event_links.find(params[:program_event_id])
     @program_event.move_lower
     @program.reload
-    redirect_to session[:original_uri] || {:action => 'show', :id => @program.id}
+    redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
+  end
+  
+  def set_status
+    @program  = Program.find(params[:id])
+    @status   = ProgramStatus.find(:first, :conditions => ['name = ?', params[:status]])
+    unless(@status.nil?)
+      @program.status_id = @status.id
+      @program.save
+    end
   end
 
   def destroy

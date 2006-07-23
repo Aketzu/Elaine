@@ -25,6 +25,10 @@ def length
   self.Events.sum('length') || 0 
 end
 
+def status
+  ProgramStatus.find(self.status_id).name
+end
+
 def title  # might require some tunkking yet
   @descriptor = self.program_descriptions.find(:first)
   if (@descriptor) then

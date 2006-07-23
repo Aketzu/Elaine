@@ -41,7 +41,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(params[:event]) && 
        (@tape_event_link.nil? || @tape_event_link.update_attributes(params[:tape_event_link]))
       flash[:notice] = 'Event was successfully updated.'
-      redirect_to :action => 'show', :id => @event
+      redirect_to :action => 'edit', :id => @event
     else
       render :action => 'edit'
     end

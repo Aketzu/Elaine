@@ -15,7 +15,7 @@ class ProgramEventLinksController < ApplicationController
                                                         :order_by => 'position'
   end
 
-  def show
+  def edit
     @program_event_link = ProgramEventLink.find(params[:id])
   end
 
@@ -28,7 +28,7 @@ class ProgramEventLinksController < ApplicationController
     if @program_event_link.save
       flash[:notice] = 'ProgramEventLink was successfully created.'
       redirect_to :controller => 'programs',
-                  :action => 'show',
+                  :action => 'edit',
                   :id => @program_event_link.program_id
     else
       render :action => 'new'
@@ -43,7 +43,7 @@ class ProgramEventLinksController < ApplicationController
     @program_event_link = ProgramEventLink.find(params[:id])
     if @program_event_link.update_attributes(params[:program_event_link])
       flash[:notice] = 'ProgramEventLink was successfully updated.'
-      redirect_to :action => 'show', :id => @program_event_link
+      redirect_to :action => 'edit', :id => @program_event_link
     else
       render :action => 'edit'
     end
@@ -55,7 +55,7 @@ class ProgramEventLinksController < ApplicationController
     @program_event_link.destroy
     flash[:notice] = 'ProgramEventLink was successfully destroyed.'
     redirect_to :controller => 'programs',
-                :action => 'show',
+                :action => 'edit',
                 :id => @redirect_id
   end
 end
