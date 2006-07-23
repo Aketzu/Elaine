@@ -11,7 +11,7 @@
 var tl;
 var eventSource_with_subevents;
 var eventSource_without_subevents;
-var current_date = new Date();
+var timeZone = (new Date()).getTimezoneOffset()/-60;
 var date1 = "Sun, 22 Jul 2006 19:30:00 GMT";
 var date2 = "Sun, 22 Jul 2006 19:31:00 GMT";
 /*
@@ -63,20 +63,23 @@ function onLoad() {
       eventSource:    eventSource_with_subevents,
       width:          "70%",
       intervalUnit:   Timeline.DateTime.HOUR,
-      intervalPixels: 600
+      intervalPixels: 600,
+      timeZone:       timeZone
     }),
     Timeline.createHotZoneBandInfo({
       zones:          zones2,
       eventSource:    eventSource_without_subevents,
       width:          "26%",
       intervalUnit:   Timeline.DateTime.HOUR,
-      intervalPixels: 100
+      intervalPixels: 100,
+      timeZone:       timeZone
     }),
     Timeline.createBandInfo({
       eventSource:    new Timeline.DefaultEventSource(),
       width:          "4%",
       intervalUnit:   Timeline.DateTime.DAY,
-      intervalPixels: 500
+      intervalPixels: 500,
+      timeZone:       timeZone
     })
   ];
   bandInfos[1].syncWith = 0;
@@ -99,7 +102,7 @@ function onLoad() {
 
 function updateCurrentTimeIndicator() {
   date1 = new Date();
-  date2 = new Date((new Date()).valueOf() + 60000);
+  date2 = new Date(new Date((new Date()).valueOf() + 60000));
   
   if(centerToCurrentEnabled) {
     for (var i = 0; bandInfos.length > i; i++) {
