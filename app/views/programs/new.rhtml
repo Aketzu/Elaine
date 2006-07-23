@@ -2,8 +2,8 @@
 
 <%= start_form_tag({:action => 'create'}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
 <table>
-  <%= render :partial => 'program' %>
   <%= render :partial => 'program_descriptions', :object => @program_descriptions %>
+  <%= render :partial => 'program' %>
 
   <tr>
   <th class="edit"><!-- <INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"> --></th>
