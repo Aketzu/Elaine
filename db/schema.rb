@@ -5,7 +5,7 @@
 ActiveRecord::Schema.define(:version => 23) do
 
   create_table "broadcast_logs", :force => true do |t|
-    t.column "time", :datetime
+    t.column "start_time", :datetime
     t.column "program_id", :integer
     t.column "channel_id", :integer, :default => 1
   end
@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(:version => 23) do
 
   create_table "languages", :force => true do |t|
     t.column "name", :string
-    t.column "compulsory", :boolean, :default => true
+    t.column "code", :string
+    t.column "compulsory", :boolean
   end
 
   create_table "locations", :force => true do |t|

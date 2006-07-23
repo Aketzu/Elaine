@@ -3,7 +3,6 @@ class CreateBroadcastLogs < ActiveRecord::Migration
     create_table :broadcast_logs do |t|
       # t.column :name, :string
       t.column :start_time,       :timestamp
-      t.column :end_time,       :timestamp
       t.column :program_id, :integer
       t.column :channel_id, :integer, :default => Channel.find(:first, :conditions => [ "name = ?",'AssemblyTV 2006' ]).id
     end
