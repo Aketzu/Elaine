@@ -43,8 +43,8 @@ end
     <td><%= playlist.end_time.strftime("%a %d.%m.%Y %H:%M") %></td>
     <td><%= playlist.movable %></td>
     <td>[
-      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
-      <%= link_to 'Destroy', { :action => 'destroy', :id => playlist }, :confirm => 'Are you sure?', :post => true %>
+      <%= link_to 'Move', :action => 'edit', :id => playlist %>
+      <%= link_to 'Remove', { :action => 'destroy', :id => playlist }, :confirm => 'Are you sure?', :post => true %>
     ]</td>
   </tr>
   <% end_time = playlist.end_time %>
