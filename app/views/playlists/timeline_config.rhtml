@@ -1,47 +1,101 @@
+/*<!--
+ These are timeline setting. They control how it looks and feels.
+ It is also very customizable and you can see some examples at:
+
+   http://simile.mit.edu/timeline/examples/
+
+ The controls for the timeline data are on the timeline_xml.rxml.
+ They control what it contains.
+-->*/
+
 var tl;
-var eventSource = new Timeline.DefaultEventSource();
+var eventSource_with_subevents    = new Timeline.DefaultEventSource();
+var eventSource_without_subevents = new Timeline.DefaultEventSource();
 
 function onLoad() {
+
+  var zones1 = [
+  <% @playlists.each_with_index {|playlist, index| %>
+      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+          magnify:    1,
+          unit:       Timeline.DateTime.MINUTE,
+          multiple:   5,
+      }<% if @playlists.length - index > 1 %>,<% end %>
+  <% } %>
+  ];
+
+  var zones2 = [
+  <% @playlists.each_with_index {|playlist, index| %>
+      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+          magnify:    1,
+          unit:       Timeline.DateTime.HOUR,
+          multiple:   1
+      }<% if @playlists.length - index > 1 %>,<% end %>
+  <% } %>
+  ];
+
+  var theme = Timeline.ClassicTheme.create();
+  theme.event.label.width = 250; // px
+  theme.event.bubble.width = 250;
+  theme.event.bubble.height = 200;
+
+  var date = "Jul 22 2006 19:30:00 GMT";
   var bandInfos = [
     Timeline.createHotZoneBandInfo({
-        zones: [
-        <% @playlists.each_with_index {|playlist, index| %>
-            {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-                end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-                magnify:    5,
-                unit:       Timeline.DateTime.MINUTE,
-                multiple:   10,
-            }<% if @playlists.length - index > 1 %>,<% end %>
-        <% } %>
-        ],
-        eventSource:    eventSource,
-        width:          "70%",
-        date:           "Jul 17 2006 18:00:00 GMT",
-/*        date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
-        intervalUnit:   Timeline.DateTime.HOUR,
-        intervalPixels: 100
+      zones:          zones1,
+      theme:          theme,
+      eventSource:    eventSource_with_subevents,
+      width:          "70%",
+      date:           date,
+      /*date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
+      intervalUnit:   Timeline.DateTime.HOUR,
+      intervalPixels: 600
     }),
-    Timeline.createBandInfo({
-        eventSource:    eventSource,
-        width:          "30%",
-        date:           "Jul 17 2006 18:00:00 GMT",
-/*        date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
-        intervalUnit:   Timeline.DateTime.DAY,
-        intervalPixels: 50
+    Timeline.createHotZoneBandInfo({
+      zones:          zones2,
+      eventSource:    eventSource_without_subevents,
+      width:          "30%",
+      date:           date,
+      /*date:           "<%= @now.strftime("%B %d %Y %H:%M:%S GMT") %>",*/
+      intervalUnit:   Timeline.DateTime.HOUR,
+      intervalPixels: 100
     })
   ];
   bandInfos[1].syncWith = 0;
   bandInfos[1].highlight = true;
+/*  bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());*/
+
+  var date1 = "Jul 22 2006 19:30:00 GMT";
+  var date2 = "Jul 22 2006 19:31:00 GMT";
+  for (var i = 0; bandInfos.length > i; i++) {
+    bandInfos[i].decorators = [
+      new Timeline.SpanHighlightDecorator({
+        startDate:  date1,
+        endDate:    date2,
+        startLabel: "",
+        endLabel:   "",
+        color:      "#FFC080",
+        opacity:    50,
+        theme:      theme
+      })
+    ];
+  }
 
   tl = Timeline.create(document.getElementById("playlist-timeline"), bandInfos);
-  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml?show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
   setTimeout("centerTimeline()", 60000);
-  setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1], theme);
+  /*Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });*/
+  /*setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1], theme);*/
 }
 
 function centerTimeline() {
-  eventSource = new Timeline.DefaultEventSource();
-  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
+  eventSource_with_subevents    = new Timeline.DefaultEventSource();
+  eventSource_without_subevents = new Timeline.DefaultEventSource();
+  Timeline.loadXML("/playlists/timeline_xml?show_events", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
   tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
   tl.getBand(1).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
   setTimeout("centerTimeline()", 60000);

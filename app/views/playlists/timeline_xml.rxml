@@ -1,24 +1,37 @@
+# RXML file for the Timeline view's data generation.
+# This is very customizable file. You can set the layout
+# for each sub-item and all the events here.
+# 
+# The timeline setting are on the timeline_config.rhtml.
+# They control how it looks and feels.
+
 xml.data() do
   for playlist in @playlists
     current_time = playlist.start_time
-    for event in playlist.Program.Events
-      xml.event(
-      event.title + ", ",
-#       playlist.Program.title +
-#       " [" +
-#       '<a href="http://www.google.fi/">Planning</a>' + "|" +
-#       '<a href="http://www.google.fi/">Production</a>' + "|" +
-#       '<a href="http://www.google.fi/">Complete</a>' + "|" +
-#       "]",
-      :start      => current_time.strftime("%B %d %Y %H:%M:%S GMT"),
-      :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S GMT"),
-#       :isDuration => 'true',
-#       :link       => "/playlists/edit/" + playlist.id.to_s,
-      :title      =>
-        event.title
-      )
-      current_time += event.length
+    
+    # List each sub-event for each Playlist entry
+    if @show_events
+      for event in playlist.Program.Events
+        xml.event(
+        event.title + ", ",
+  #       playlist.Program.title +
+  #       " [" +
+  #       '<a href="http://www.google.fi/">Planning</a>' + "|" +
+  #       '<a href="http://www.google.fi/">Production</a>' + "|" +
+  #       '<a href="http://www.google.fi/">Complete</a>' + "|" +
+  #       "]",
+        :start      => current_time.strftime("%B %d %Y %H:%M:%S GMT"),
+        :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S GMT"),
+  #       :isDuration => 'true',
+  #       :link       => "/playlists/edit/" + playlist.id.to_s,
+        :title      =>
+          event.title
+        )
+        current_time += event.length
+      end
     end
+    
+    # List each Playlist entry
     xml.event(
       playlist.formatted_length + ", " + 
       playlist.Program.title +
