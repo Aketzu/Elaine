@@ -1,15 +1,14 @@
 unless @channel.nil?
-  xml.playlist(:channel => @channel.name) do
+  xml.schedule(:id => @channel.name) do
     for item in @items
       program = item.Program
       xml.program(:id => program.id) do
-        xml.starttime(item.start_time.strftime("%Y-%m-%dT%H:%M:%S"))
+        xml.starttime(xmldatetime(item.start_time))
+        xml.endttime(xmldatetime(item.end_time))
         xml.length(program.formatted_length)
         for desc in program.program_descriptions
-          xml.desc(:language => desc.language.name) do
-             xml.title(desc.title)
-             xml.description(desc.public_description)
-          end
+             xml.title(desc.title, :'xml:lang' => 'kieli')
+             xml.description(desc.public_description, :'xml:lang' => 'kieli')
         end
       end
     end
