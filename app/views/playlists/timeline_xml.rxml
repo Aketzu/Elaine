@@ -34,18 +34,22 @@ xml.data() do
     # List each Playlist entry
     xml.event(
       playlist.formatted_length + ", " + 
-      playlist.Program.title +
+      playlist.Program.title + " (" +
+      playlist.Program.status + ")" +
       " [" +
-      '<a href="http://www.google.fi/">Planning</a>' + "|" +
-      '<a href="http://www.google.fi/">Production</a>' + "|" +
-      '<a href="http://www.google.fi/">Complete</a>' + "|" +
-      "]",
+      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
+      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
+      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
+#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=planning">Planning</a>' + "|" +
+#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=production">Production</a>' + "|" +
+#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=complete">Complete</a>' + "|" +
+      ']</div>',
       :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT"),
       :isDuration => 'true',
       :link       => "/playlists/edit/" + playlist.id.to_s,
       :title      =>
-        playlist.start_time.strftime("%H:%M:%S") + " " +
+        playlist.start_time.strftime("%H:%M") + " " +
         playlist.Program.title
     )
   end
