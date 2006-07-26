@@ -24,6 +24,8 @@ class PlaylistsController < ApplicationController
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
+    @playlist = Playlist.new
+    
     @channels = Channel.find(:all)
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
@@ -69,16 +71,22 @@ class PlaylistsController < ApplicationController
     @playlist.start_time += params[:difference].to_i
     @playlist.save
     playlist
+    redirect_to(:action => 'index') unless request.xhr?
   end
 
   def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
     @playlist.save
     playlist
+    redirect_to(:action => 'index') unless request.xhr?
   end
 
   def edit
     @playlist = Playlist.find(params[:id])
+    @channel_id = params[:channel_id].to_i
+    if(@channel_id == 0)
+      @channel_id = Channel.find(:first).id
+    end
   end
 
   def update
