@@ -3,8 +3,13 @@ module TimeHelper
   def format_length(length)
     unless length.nil?
       total_minutes, seconds = length.divmod(60)
-      hours, minutes = total_minutes.divmod(60)
-      sprintf("%02d:%02d:%02d", hours, minutes, seconds)
+      total_hours, minutes   = total_minutes.divmod(60)
+      days, hours            = total_hours.divmod(24)
+      if(days > 0)
+        sprintf("%d day %02d:%02d:%02d", days, hours, minutes, seconds)
+      else
+        sprintf("%02d:%02d:%02d", hours, minutes, seconds)
+      end
     else
       sprintf("")
     end

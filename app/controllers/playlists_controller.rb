@@ -92,6 +92,11 @@ class PlaylistsController < ApplicationController
     playlist
     redirect_to(:action => 'index') unless request.xhr?
   end
+  
+  def pick_time
+    @playlist = Playlist.find(params[:id])
+    @playlist.start_time = params[:end_time]
+  end
 
   def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
