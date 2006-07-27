@@ -20,8 +20,8 @@ xml.data() do
   #       '<a href="http://www.google.fi/">Production</a>' + "|" +
   #       '<a href="http://www.google.fi/">Complete</a>' + "|" +
   #       "]",
-        :start      => current_time.strftime("%B %d %Y %H:%M:%S GMT"),
-        :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S GMT"),
+        :start      => current_time.strftime("%B %d %Y %H:%M:%S"),
+        :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S"),
   #       :isDuration => 'true',
   #       :link       => "/playlists/edit/" + playlist.id.to_s,
         :title      =>
@@ -33,24 +33,22 @@ xml.data() do
     
     # List each Playlist entry
     xml.event(
-      playlist.formatted_length + ", " + 
-      playlist.Program.title + " (" +
-      playlist.Program.status + ")" +
-      " [" +
+      '<div style="float: left;">' + playlist.formatted_length + ', ' + 
+      playlist.Program.title + '</div><div style="float: right;">(' +
+      playlist.Program.status + ')</div>' +
+      '<br>' +
+      '<a href="/programs/edit/' + playlist.Program.id.to_s + '">Edit</a>' +
+      '<br>[' +
       '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
       '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
       '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
-#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=planning">Planning</a>' + "|" +
-#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=production">Production</a>' + "|" +
-#      '<a href="/programs/set_status/' + playlist.Program.id.to_s + '?status=complete">Complete</a>' + "|" +
       ']</div>',
-      :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT"),
-      :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT"),
+      :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S"),
+      :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S"),
       :isDuration => 'true',
       :link       => "/playlists/edit/" + playlist.id.to_s,
-      :title      =>
-        playlist.start_time.strftime("%H:%M") + " " +
-        playlist.Program.title
+      :color      => playlist.color,
+      :title      => playlist.start_time.strftime("%H:%M") + " " + playlist.Program.title
     )
   end
 end

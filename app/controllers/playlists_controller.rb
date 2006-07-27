@@ -25,6 +25,7 @@ class PlaylistsController < ApplicationController
       @channel_id = Channel.find(:first).id
     end
     @playlist = Playlist.new
+    @playlist.movable = true
 
     @channels = Channel.find(:all)
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
@@ -40,62 +41,38 @@ class PlaylistsController < ApplicationController
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
-    @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
+    @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
 
   def timeline_xml
-    @channel_id = params[:channel_id].to_i
+    timeline
     @show_events = params[:show_events]
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end
-    @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
   end
 
   def timeline_config
+    timeline
     @now1 = Time.now
     @now2 = Time.now + 60
-    @channel_id = params[:channel_id].to_i
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end
-    @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
   end
 
   def new
     @playlist = Playlist.new
   end
 
-  def fix_overlap
+  def fix_by_moving
     @playlist = Playlist.find(params[:id])
     @playlist.start_time += params[:difference].to_i
+    @playlist.start_time += (60 - @playlist.start_time.to_i % 60)
     @playlist.save
     playlist
     redirect_to(:action => 'index') unless request.xhr?
   end
 
-  def fix_gap
-    @playlist = Playlist.find(params[:id])
-    unless params[:difference].nil?
-      @playlist.start_time -= params[:difference].to_i
-    else
-      @previous = Playlist.find(:first,
-                    :condition => ["start_time < ?", @playlist.start_time],
-                    :order_by => "start_time asc")
-      @new_entry = Playlist.new
-      @new_entry.start_time = @previous.start_time
-      @new_entry.channel_id = @previous.channel_id
-      @new_entry.program_id = Program.find(:first)
-      
-    end
-    @playlist.save
-    playlist
-    redirect_to(:action => 'index') unless request.xhr?
-  end
-  
   def pick_time
     @playlist = Playlist.find(params[:id])
     @playlist.start_time = params[:end_time]
+    @playlist.start_time += 60
+    @playlist.movable = true
   end
 
   def add_to_playlist

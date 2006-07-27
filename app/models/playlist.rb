@@ -18,4 +18,12 @@ def channel
   Channel.find(self.channel_id)
 end
 
+def color
+  if (self.Program.status == "Production")
+    "green"
+  else
+    "red"
+  end
+end
+
 end

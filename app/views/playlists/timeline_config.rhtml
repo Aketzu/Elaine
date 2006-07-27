@@ -12,8 +12,8 @@ var tl;
 var eventSource_with_subevents;
 var eventSource_without_subevents;
 var timeZone = (new Date()).getTimezoneOffset()/-60;
-var date1 = "Sun, 22 Jul 2006 19:30:00 GMT";
-var date2 = "Sun, 22 Jul 2006 19:31:00 GMT";
+var date1 = "Sun, 26 Jul 2006 12:50:00";
+var date2 = "Sun, 26 Jul 2006 12:51:00";
 /*
 var date1 = "<%= @now1.strftime("%B %d %Y %H:%M:%S GMT") %>";
 var date2 = "<%= @now2.strftime("%B %d %Y %H:%M:%S GMT") %>";
@@ -31,8 +31,8 @@ function onLoad() {
 
   var zones1 = [
   <% @playlists.each_with_index {|playlist, index| %>
-      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S") %>",
           magnify:    1,
           unit:       Timeline.DateTime.MINUTE,
           multiple:   5
@@ -42,8 +42,8 @@ function onLoad() {
 
   var zones2 = [
   <% @playlists.each_with_index {|playlist, index| %>
-      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
-          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S GMT") %>",
+      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S") %>",
           magnify:    1,
           unit:       Timeline.DateTime.HOUR,
           multiple:   1
@@ -51,8 +51,8 @@ function onLoad() {
   <% } %>
   ];
 
-  theme.event.label.width = 250; // px
-  theme.event.bubble.width = 250;
+  theme.event.label.width   = 250; // px
+  theme.event.bubble.width  = 350;
   theme.event.bubble.height = 200;
 
   var date = "Jul 22 2006 19:30:00 GMT";

@@ -25,9 +25,9 @@ end
   <tr>
     <td class="playlist_error_gap" colspan="6">
     <% if playlist.movable %>
-    <%= link_to_remote 'Fix gap by moving this', :url => { :action => :fix_gap, 
+    <%= link_to_remote 'Fix gap by moving this', :url => { :action => :fix_by_moving, 
                                         :id => playlist, 
-                                        :difference => (playlist.start_time - end_time) } %>
+                                        :difference => (end_time - playlist.start_time) } %>
     <% else %>
     There is a <b><%= format_length(playlist.start_time - end_time) %></b> gap here. You can fix this gap with a new entry.
     <%= link_to_remote 'Pick time', :url => { :action => :pick_time, 
@@ -43,23 +43,27 @@ end
   <tr>
     <td class="playlist_error_overlap" colspan="6">
     <% if playlist.movable %>
-    <%= link_to_remote 'Fix overlapping by moving "' + playlist.Program.title + '"', :url => { :action => :fix_overlap, 
-                                        :id => playlist, 
-                                        :difference => (end_time - playlist.start_time) } %>
+    <%= link_to_remote 'Fix overlapping by moving "' + playlist.Program.title + '"',
+                        :url => { :action => :fix_by_moving, 
+                                  :id => playlist, 
+                                  :difference => (end_time - playlist.start_time) } %>
     <% else %>
-    Overlapping by <%= format_length(end_time - playlist.start_time) %>
+    "<%= playlist.Program.title %>" is overlapping
+    "<%= playlists.at(index-1).Program.title if(index > 1)%>"
+    by <%= format_length(end_time - playlist.start_time) %>
+    and is NOT movable.
     <% end %>
     </td>
   </tr>
   <% end %>
 
   <tr class="<%= @current_cycle %>">
-    <td class="playlist_cell" id="<%= @error %>"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></td>
-    <td class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
-    <td class="playlist_cell" id="<%= @error %>"><%= playlist.Program.formatted_length %></td>
-    <td class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
-    <td class="playlist_cell" id="<%= @error %>"><%= playlist.movable %></td>
-    <td class="playlist_cell" id="<%= @error %>">[
+    <td class="playlist_cell"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></td>
+    <td class="playlist_cell"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
+    <td class="playlist_cell"><%= playlist.Program.formatted_length %></td>
+    <td class="playlist_cell"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
+    <td class="playlist_cell" align="center"><% if playlist.movable %>&times;<% end %></td>
+    <td class="playlist_cell">[
       <%= link_to 'Edit', :action => 'edit', :id => playlist %>
       <%= link_to_remote 'Destroy', :url => { :action => :destroy, :id => playlist }, :confirm => 'Are you sure?' %>
     ]</td>
