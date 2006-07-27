@@ -1,9 +1,10 @@
 class Program < ActiveRecord::Base
   include TimeHelper
+  include ActionView::Helpers::TextHelper
 
 belongs_to :User
 belongs_to :ProgramStatus
-has_many   :Playlist
+has_many   :playlists, :dependent => :destroy
 
 has_many   :program_descriptions, :dependent => :destroy
 
@@ -95,5 +96,12 @@ end
 def formatted_preview_video_offset=(formatted)
   self.preview_video_offset = parse_formatted_length(formatted)
 end
+
+protected
+  def strip_fields
+    [:notes].each do |field|
+      self[field]=strip_tags(self[field])
+    end
+  end
 
 end

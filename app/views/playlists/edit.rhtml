@@ -1,7 +1,7 @@
 <h1>Editing playlist entry for <%= @playlist.channel.name %></h1>
 
 <%= start_form_tag :action => 'update', :id => @playlist %>
-  <%= render :partial => 'playlist' %>
+  <%= render :partial => 'playlist', :object => @playlist %>
 <%= end_form_tag %>
 
 <%= link_to 'Back', :action => 'playlist' %>

@@ -5,7 +5,7 @@
   <select name="channel_id" onChange="javascript: this.form.submit()">
     <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
   </select>
-<%= submit_tag "Update" %>
+<%= submit_tag "Update", 'name' => 'update' %>
 <%= end_form_tag %>
 
 <%= render :partial => 'playlists', :object => @playlists %>
@@ -13,6 +13,9 @@
 <br>
 
 
-<%= form_remote_tag :url => { :action => :add_to_playlist } %>
-  <%= render :partial => 'playlist', :object => @channel_id %>
+<%= form_remote_tag :url => { :action => :add_to_playlist },
+      :before => 'javascript:this.commit.disabled=true' %>
+  <div id="playlist">
+  <%= render :partial => 'playlist', :object => @playlist %>
+  </div>
 <%= end_form_tag %>

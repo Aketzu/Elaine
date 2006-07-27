@@ -107,15 +107,17 @@ div#error {
 div.playlist_error_gap {
   background: #ff2222;
   display: table-cell;
-  width: 20em;
   color: #ffffff;
+  padding: 0 1em 0 1em;
+  text-align: center;
 }
 div.playlist_error_overlap {
   background: #ff2222;
   display: table-cell;
-  width: 20em;
   color: #ffffff;
   font-weight: bold;
+  padding: 0 1em 0 1em;
+  text-align: center;
 }
 
 
@@ -144,7 +146,7 @@ a {
 }
 
 a:visited {
-  color: #666;
+  color: #000;
   text-decoration: underline;
 }
 

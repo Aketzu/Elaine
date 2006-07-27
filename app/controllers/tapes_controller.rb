@@ -43,9 +43,9 @@ class TapesController < ApplicationController
     @tape = Tape.find(params[:id])
      if @tape.update_attributes(params[:tape])
       flash[:notice] = 'Tape was successfully updated'
-      redirect_to :action => 'show', :id => @tape
+      redirect_to :action => 'list'
     else
-      render :action => 'edit'
+      render :action => 'edit', :id => @tape
     end
   end
 
@@ -60,7 +60,7 @@ class TapesController < ApplicationController
     if @tape_event_link.save
       flash[:notice] = 'The event was successfully added.'
     end     
-    redirect_to :action => 'show',
+    redirect_to :action => 'edit',
                   :id => @tape_event_link.tape_id
   end
 
@@ -72,7 +72,7 @@ class TapesController < ApplicationController
     @tape_event_link = TapeEventLink.find(params[:id])
     if @tape_event_link.update_attributes(params[:tape_event_link])
       flash[:notice] = 'The event was successfully moved'
-      redirect_to :action => 'show', :id => @tape_event_link.tape_id
+      redirect_to :action => 'edit', :id => @tape_event_link.tape_id
     else
       render :action => 'edit_event_link'
     end
@@ -93,7 +93,7 @@ class TapesController < ApplicationController
     if @tape_program_link.save
       flash[:notice] = 'The program was successfully added.'
     end     
-    redirect_to :action => 'show',
+    redirect_to :action => 'edit',
                   :id => @tape_program_link.tape_id
   end
 
@@ -105,7 +105,7 @@ class TapesController < ApplicationController
     @tape_program_link = TapeProgramLink.find(params[:id])
     if @tape_program_link.update_attributes(params[:tape_program_link])
       flash[:notice] = 'The program was successfully moved'
-      redirect_to :action => 'show', :id => @tape_program_link.tape_id
+      redirect_to :action => 'edit', :id => @tape_program_link.tape_id
     else
       render :action => 'edit_program_link'
     end

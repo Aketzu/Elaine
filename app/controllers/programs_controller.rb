@@ -14,7 +14,7 @@ class ProgramsController < ApplicationController
                                          :per_page => 10
   end
 
-  def edit
+  def show
     session[:original_uri] = request.request_uri
     @program               = Program.find(params[:id])
     @program_events        = @program.program_event_links #Event.find(event).title

@@ -25,7 +25,7 @@ class PlaylistsController < ApplicationController
       @channel_id = Channel.find(:first).id
     end
     @playlist = Playlist.new
-    
+
     @channels = Channel.find(:all)
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
@@ -74,9 +74,28 @@ class PlaylistsController < ApplicationController
     redirect_to(:action => 'index') unless request.xhr?
   end
 
+  def fix_gap
+    @playlist = Playlist.find(params[:id])
+    unless params[:difference].nil?
+      @playlist.start_time -= params[:difference].to_i
+    else
+      @previous = Playlist.find(:first,
+                    :condition => ["start_time < ?", @playlist.start_time],
+                    :order_by => "start_time asc")
+      @new_entry = Playlist.new
+      @new_entry.start_time = @previous.start_time
+      @new_entry.channel_id = @previous.channel_id
+      @new_entry.program_id = Program.find(:first)
+      
+    end
+    @playlist.save
+    playlist
+    redirect_to(:action => 'index') unless request.xhr?
+  end
+
   def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
-    @playlist.save
+    @saved = @playlist.save
     playlist
     redirect_to(:action => 'index') unless request.xhr?
   end

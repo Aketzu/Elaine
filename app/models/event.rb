@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   include TimeHelper
+  include ActionView::Helpers::TextHelper
 
 belongs_to :Location
 belongs_to :EventType
@@ -10,6 +11,7 @@ has_many :Tapes,    :through => :tape_event_links
 has_many :program_event_links, :dependent => :destroy
 has_many :Programs, :through => :program_event_links
 
+before_validation :strip_fields
 validates_associated :Location
 validates_associated :EventType
 validates_presence_of(:formatted_length, :message => "can not be empty")
@@ -22,5 +24,12 @@ end
 def formatted_length=(formatted)
   self.length = parse_formatted_length(formatted)
 end
+
+protected
+  def strip_fields
+    [:title, :script, :notes].each do |field|
+      self[field]=strip_tags(self[field])
+    end
+  end
 
 end

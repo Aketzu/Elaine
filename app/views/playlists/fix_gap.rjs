@@ -1,2 +1,1 @@
 page[:playlists].replace_html :partial => 'playlists', :object => @playlists
-page[:playlist].replace_html  :partial => 'playlist',  :object => @playlist
