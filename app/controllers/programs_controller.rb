@@ -103,9 +103,11 @@ class ProgramsController < ApplicationController
       @program.save
     end
   end
-
+  
   def destroy
     Program.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
+  auto_complete_for :event, :title
 end

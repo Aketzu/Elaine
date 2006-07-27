@@ -1,1 +1,5 @@
 page[:playlists].replace_html :partial => 'playlists', :object => @playlists
+page[:playlists].visual_effect :highlight,
+                   :startcolor => "#ff4444",
+                   :endcolor   => "#ffffff",
+                   :duration   => 0.7

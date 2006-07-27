@@ -25,13 +25,21 @@ class ProgramEventLinksController < ApplicationController
 
   def create
     @program_event_link = ProgramEventLink.new(params[:program_event_link])
-    if @program_event_link.save
-      flash[:notice] = 'ProgramEventLink was successfully created.'
-      redirect_to :controller => 'programs',
-                  :action => 'edit',
-                  :id => @program_event_link.program_id
+    begin
+      @program_event_link.event_id = Event.find(:first, :conditions => ['title = ?', params[:event]["title"]]).id
+    rescue
+        redirect_to(:controller => 'programs',
+                    :action => 'edit',
+                    :id => @program_event_link.program_id)
     else
-      render :action => 'new'
+      if @program_event_link.save
+        flash[:notice] = 'ProgramEventLink was successfully created.'
+        redirect_to :controller => 'programs',
+                    :action => 'edit',
+                    :id => @program_event_link.program_id
+      else
+        render :action => 'new'
+      end
     end
   end
 

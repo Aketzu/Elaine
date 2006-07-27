@@ -1,12 +1,12 @@
-<div class="playlist" id="playlists">
-  <div class="playlist_header">
-    <div class="playlist_cell" style="width: 10em;">Program</div>
-    <div class="playlist_cell" style="width: 10em;">Start time</div>
-    <div class="playlist_cell" style="width: 6em;">Length</div>
-    <div class="playlist_cell" style="width: 10em;">End time</div>
-    <div class="playlist_cell" style="width: 6em;">Movable</div>
-    <div class="playlist_cell" style="width: 9em;">Actions</div>
-  </div>
+<table class="playlist" id="playlists">
+  <tr class="playlist_header">
+    <th class="playlist_cell" style="width: 10em;">Program</th>
+    <th class="playlist_cell" style="width: 10em;">Start time</th>
+    <th class="playlist_cell" style="width: 6em;">Length</th>
+    <th class="playlist_cell" style="width: 10em;">End time</th>
+    <th class="playlist_cell" style="width: 6em;">Movable</th>
+    <th class="playlist_cell" style="width: 9em;">Actions</th>
+  </tr>
   
 <%
 unless playlists.first.nil? 
@@ -21,19 +21,9 @@ end
   <% if playlist.start_time > (end_time + 60) then @error = "error" end %>
   <% if playlist.start_time < end_time then @error = "error" end %>
     
-  <div class="<%= @current_cycle %>">
-    <div class="playlist_cell" id="<%= @error %>"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M") %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.Program.formatted_length %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M") %></div>
-    <div class="playlist_cell" id="<%= @error %>"><%= playlist.movable %></div>
-    <div class="playlist_cell" id="<%= @error %>">[
-      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
-      <%= link_to_remote 'Destroy', :url => { :action => :destroy, :id => playlist }, :confirm => 'Are you sure?' %>
-    ]</div>
-  
   <% if playlist.start_time > (end_time + 60) %>
-    <div class="playlist_error_gap">
+  <tr>
+    <td class="playlist_error_gap" colspan="6">
     <% if playlist.movable %>
     <%= link_to_remote 'Fix gap by moving this', :url => { :action => :fix_gap, 
                                         :id => playlist, 
@@ -44,11 +34,13 @@ end
                                                :id => playlist} %>
     <%= select("playlist", "program_id", Program.find_all.collect {|t| [ t.title, t.id ] }) %>
     <% end %>
-    </div>
+    </td>
+  </tr>
   <% end %>
   
   <% if playlist.start_time < end_time %>
-    <div class="playlist_error_overlap">
+  <tr>
+    <td class="playlist_error_overlap" colspan="6">
     <% if playlist.movable %>
     <%= link_to_remote 'Fix overlapping by moving this', :url => { :action => :fix_overlap, 
                                         :id => playlist, 
@@ -56,9 +48,22 @@ end
     <% else %>
     Overlapping by <%= format_length(end_time - playlist.start_time) %>
     <% end %>
-    </div>
+    </td>
+  </tr>
   <% end %>
-  </div>
+
+  <tr class="<%= @current_cycle %>">
+    <td class="playlist_cell" id="<%= @error %>"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></td>
+    <td class="playlist_cell" id="<%= @error %>"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M") %></td>
+    <td class="playlist_cell" id="<%= @error %>"><%= playlist.Program.formatted_length %></td>
+    <td class="playlist_cell" id="<%= @error %>"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M") %></td>
+    <td class="playlist_cell" id="<%= @error %>"><%= playlist.movable %></td>
+    <td class="playlist_cell" id="<%= @error %>">[
+      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
+      <%= link_to_remote 'Destroy', :url => { :action => :destroy, :id => playlist }, :confirm => 'Are you sure?' %>
+    ]</td>
+  </tr>
+
   <% end_time = playlist.end_time %>
 <% } %>
-</div>
+</table>
