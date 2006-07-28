@@ -1,4 +1,6 @@
 class TapeEventLinksController < ApplicationController
+  sidebar :general
+
   def index
     list
     render :action => 'list'

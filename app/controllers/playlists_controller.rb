@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   layout 'application', :except => [:timeline_xml, :timeline_config, :bandinfo_xml]
+  sidebar :general
 
   def index
     playlist

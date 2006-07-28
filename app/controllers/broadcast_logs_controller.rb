@@ -1,4 +1,5 @@
 class BroadcastLogsController < ApplicationController
+  sidebar :general
 
-scaffold :BroadcastLog
+  scaffold :BroadcastLog
 end

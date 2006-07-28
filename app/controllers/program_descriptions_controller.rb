@@ -1,4 +1,6 @@
 class ProgramDescriptionsController < ApplicationController
+  sidebar :general
+
   def index
     list
     render :action => 'list'

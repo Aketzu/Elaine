@@ -9,19 +9,7 @@
 </head>
 <%= if @timeline then '<body onload="onLoad();" onresize="onResize();">' else '<body>' end %>
 
-<table class="header_links">
-  <tr>
-    <th width="100px"><h1>Elaine2</h1></th>
-    <td width="*"></td>
-    <th width="100px"><%= link_to 'Playlists', :controller => 'playlists', :action => 'index' %></th>
-    <th width="100px"><%= link_to 'Timeline', :controller => 'playlists', :action => 'timeline' %></th>
-    <th width="100px"><%= link_to 'Programs', :controller => 'programs', :action => 'index' %></th>
-    <th width="100px"><%= link_to 'Tapes',    :controller => 'tapes',    :action => 'index' %></th>
-    <th width="100px"><%= link_to 'Events',   :controller => 'events',   :action => 'index' %></th>
-    <th width="100px"><%= link_to 'Admin',   :controller => 'admin',   :action => 'index' %></th>
-    <td width="*"></td>
-  </tr>
-</table>
+<%= render_sidebars %>
 
 <div class="flash"><%= flash[:notice] %></div>
 
