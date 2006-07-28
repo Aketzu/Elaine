@@ -16,7 +16,7 @@ class PlaylistsController < ApplicationController
       @channel_id = Channel.find(:first).id
     end
     @channels = Channel.find(:all)
-    @playlist_pages, @playlists = paginate :playlists, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
+    @playlist_pages, @playlists = paginate :playlists, :per_page => 15, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
   end
 
   def playlist
@@ -24,8 +24,11 @@ class PlaylistsController < ApplicationController
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
+    @now = Time.now
     @playlist = Playlist.new
     @playlist.movable = true
+    @playlist.start_time = Playlist.find(:first, :order => 'start_time desc').end_time
+    @playlist.start_time += (60 - @playlist.start_time.to_i % 60)
 
     @channels = Channel.find(:all)
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')

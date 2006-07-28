@@ -91,6 +91,9 @@ tr.playlist_odd {
 tr.playlist_even {
   background: url(/images/lightblue.png) repeat;
 }
+#past {
+  background: #eaeaea;
+}
 
 td.playlist_cell {
   padding: 4px;
