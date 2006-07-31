@@ -22,9 +22,9 @@ class CreateTestdata < ActiveRecord::Migration
     :url                  => 'file://siilo/paikka')
 
 #     User.create(:username => '')
-    User.create(:username => 'kjue')
-    User.create(:username => 'lcpitkan')
-    User.create(:username => 'nitial')
+#    User.create(:username => 'kjue')
+#    User.create(:username => 'lcpitkan')
+#    User.create(:username => 'nitial')
 
 #     Event.create(
 #     :title                => '',

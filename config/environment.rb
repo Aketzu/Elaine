@@ -38,6 +38,26 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
 end
 
+# Start the Login Engine
+module LoginEngine
+  config :salt, "elaine-2006-rocks"
+  config :use_email_notification, false
+  config :confirm_account, false
+end
+
+Engines.start :login
+
+# Start the User Engine
+
+module UserEngine
+  config :admin_login, "admin"
+  config :admin_email, "mikael.lavi@assemblytv.net"
+  config :admin_password, "password"
+end
+
+Engines.start :user
+UserEngine.check_system_roles
+
 # Add new inflection rules using the following format 
 # (all these examples are active by default):
 # Inflector.inflections do |inflect|
