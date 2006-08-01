@@ -2,9 +2,11 @@
 
 <% location = FileLocation.find(:first) %>
 
-Joo: <%= location.exists?('test') %><br/>
+<% result = location.exists?('test') %>
 
-<% if(location.exists?('test') == 'true') %>
+Joo: <%= result %><br/>
+
+<% if(result) %>
 löyty
 <% else %>
 eip

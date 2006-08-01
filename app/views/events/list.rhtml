@@ -3,10 +3,8 @@
 <table>
   <tr class="header">
     <th>Title</th>
-<!--     <th>Script</th> -->
     <th>Location</th>
     <th>Event Type</th>
-<!--     <th>Notes</th> -->
     <th>Length</th>
     <th>Quarintine until</th>
     <th>Created<br>Modified</th>
@@ -16,10 +14,8 @@
 <% for event in @events %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
     <td><%= link_to event.title, :action => 'edit', :id => event %></td>
-<!--     <td><%=h event.script %></td> -->
     <td><%= link_to Location.find(event.location_id).name, :controller => 'locations', :action => 'show', :id => event.location_id %></td>
     <td><%= link_to EventType.find(event.event_type_id).name, :controller => 'event_types', :action => 'show', :id => event.event_type_id %></td>
-<!--     <td><%=h event.notes %></td> -->
     <td><%=h event.formatted_length %></td>
     <td><%=h event.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
     <td><%=h event.created_at.strftime("%a %d.%m.%Y %H:%M") %><br><%=h event.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>

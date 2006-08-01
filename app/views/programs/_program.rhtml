@@ -22,6 +22,11 @@
 </tr>
 
 <tr>
+<th class="edit">Vod group</th>
+<td class="edit"><%= select('program', 'vod_group_id', VodGroup.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+</tr>
+
+<tr>
 <th class="edit">Preview image offset (hh:mm:ss)</th>
 <td class="edit"><%= text_field 'program', 'formatted_preview_image_offset', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
 </tr>
@@ -49,6 +54,13 @@
 <tr>
 <th class="edit"><label for"event_filename">Filename (descriptive part)</th>
 <td class="edit"><%= text_field 'program', 'filename', 'class' => "text" %></td>
+    
+</tr>
+
+<tr>
+<th class="edit">Full filename</th>
+<td class="edit"><%= program.full_filename %>
+<% if program.file_exists? %>(found)<% else %>(not found)<% end %></td>
 </tr>
 
 <% unless @program.created_at.nil? %>

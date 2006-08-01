@@ -7,8 +7,9 @@ unless @channel.nil?
         xml.endttime(xmldatetime(item.end_time))
         xml.length(program.formatted_length)
         for desc in program.program_descriptions
-             xml.title(desc.title, :'xml:lang' => 'kieli')
-             xml.description(desc.public_description, :'xml:lang' => 'kieli')
+             langcode = desc.language.code
+             xml.title(desc.title, :'xml:lang' => langcode)
+             xml.description(desc.public_description, :'xml:lang' => langcode)
         end
       end
     end

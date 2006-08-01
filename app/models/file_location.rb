@@ -1,6 +1,7 @@
 class FileLocation < ActiveRecord::Base
 
 has_many :Events
+has_many :Programs
 
 def exists?(filename)
    url = URI.parse(self.checker_url)
@@ -8,7 +9,14 @@ def exists?(filename)
    res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
    }
-   res.body.to_s
+   result = res.body.to_s
+   if(result == "true")
+     true
+   else
+     nil
+   end
+   rescue
+     nil
 end
 
 end

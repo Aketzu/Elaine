@@ -5,6 +5,7 @@ class Program < ActiveRecord::Base
 belongs_to :User
 belongs_to :ProgramStatus
 belongs_to :VodGroup
+belongs_to :FileLocation
 
 has_many   :playlists, :dependent => :destroy
 
@@ -18,6 +19,7 @@ has_many   :Events, :through => :program_event_links
 validates_associated :User
 validates_associated :ProgramStatus
 validates_associated :VodGroup
+validates_associated :FileLocation
 validates_presence_of(:formatted_length, :message => "can not be empty")
 validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "contains illegal characters.")
 
@@ -98,6 +100,14 @@ end
 
 def formatted_preview_video_offset=(formatted)
   self.preview_video_offset = parse_formatted_length(formatted)
+end
+
+def full_filename
+  "p_" + self.id.to_s + "_" + self.filename + ".avi"
+end
+
+def file_exists?
+  self.FileLocation.exists?(self.full_filename)
 end
 
 protected

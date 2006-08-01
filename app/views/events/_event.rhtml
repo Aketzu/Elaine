@@ -48,6 +48,12 @@
 <td class="edit"><%= text_field 'event', 'filename', 'class' => "text" %></td>
 </tr>
 
+<tr>
+<th class="edit">Full filename</th>
+<td class="edit"><%= event.full_filename %>
+<% if event.file_exists? %>(found)<% else %>(not found)<% end %></td>
+</tr>
+
 <% unless @event.created_at.nil? %>
 <tr>
 <th class="edit">Created</th>
