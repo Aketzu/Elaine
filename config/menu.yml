@@ -1,0 +1,38 @@
+---
+- !ruby/object:MenuItem 
+  controller: playlists
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List
+    controller: programs
+    action: list
+  - !ruby/object:MenuItem 
+    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
+    controller: programs
+    action: new
+- !ruby/object:MenuItem 
+  controller: programs
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List
+    controller: programs
+    action: list
+  - !ruby/object:MenuItem 
+    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
+    controller: programs
+    action: new
+- !ruby/object:MenuItem 
+  controller: programs
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List
+    controller: programs
+    action: list
+  - !ruby/object:MenuItem 
+    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
+    controller: programs
+    action: new
+    
