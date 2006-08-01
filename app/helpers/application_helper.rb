@@ -3,5 +3,6 @@ module ApplicationHelper
   include LoginEngine
   include UserEngine
   include TimeHelper
+  include MenuHelper
 
 end

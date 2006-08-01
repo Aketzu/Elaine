@@ -38,7 +38,7 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
 end
 
-# Start the Login Engine
+# Start the LoginEngine
 module LoginEngine
   config :salt, "elaine-2006-rocks"
   config :use_email_notification, false
@@ -47,7 +47,7 @@ end
 
 Engines.start :login
 
-# Start the User Engine
+# Start the UserEngine
 
 module UserEngine
   config :admin_login, "admin"
@@ -57,6 +57,15 @@ end
 
 Engines.start :user
 UserEngine.check_system_roles
+
+# Start the MenuEngine
+module MenuEngine
+  config :access_control, false
+  config :on_show, "new Effect.Appear( element, { duration: 0.3, from:0.0, to: 0.8 } );"
+  config :on_hide, "new Effect.BlindUp( element, { duration: 0.3 });"
+end
+
+Engines.start :menu
 
 # Add new inflection rules using the following format 
 # (all these examples are active by default):

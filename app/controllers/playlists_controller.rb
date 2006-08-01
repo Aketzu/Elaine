@@ -3,8 +3,8 @@ class PlaylistsController < ApplicationController
   sidebar :general
 
   def index
-    playlist
-    render :action => 'playlist'
+    list
+    render :action => 'list'
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -12,15 +12,6 @@ class PlaylistsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @channel_id = params[:channel_id].to_i
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end
-    @channels = Channel.find(:all)
-    @playlist_pages, @playlists = paginate :playlists, :per_page => 15, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
-  end
-
-  def playlist
     @channel_id = params[:channel_id].to_i
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
@@ -68,7 +59,7 @@ class PlaylistsController < ApplicationController
     @playlist.start_time += params[:difference].to_i
     @playlist.start_time += (60 - @playlist.start_time.to_i % 60)
     @playlist.save
-    playlist
+    list
     redirect_to(:action => 'index') unless request.xhr?
   end
 
@@ -82,7 +73,7 @@ class PlaylistsController < ApplicationController
   def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
     @saved = @playlist.save
-    playlist
+    list
     redirect_to(:action => 'index') unless request.xhr?
   end
 
@@ -98,7 +89,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     if @playlist.update_attributes(params[:playlist])
       flash[:notice] = 'Playlist was successfully updated.'
-      redirect_to(:action => 'playlist', :channel_id => @playlist.channel_id)
+      redirect_to(:action => 'list', :channel_id => @playlist.channel_id)
     else
       render :action => 'edit'
     end
@@ -106,6 +97,6 @@ class PlaylistsController < ApplicationController
 
   def destroy
     Playlist.find(params[:id]).destroy
-    playlist
+    list
   end
 end
