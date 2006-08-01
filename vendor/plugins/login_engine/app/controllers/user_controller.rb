@@ -27,6 +27,10 @@ class UserController < ApplicationController
       redirect_to_stored_or_default :action => 'home'
     elsif User.intra_login?(params[:user][:login], params[:user][:password])
       begin
+        params[:user].delete('form')
+        params[:user].delete('verified') # you CANNOT pass this as part of the request
+        @user = User.new(params[:user])
+  
         User.transaction(@user) do
           @user.new_password = true
           @user.verified = 1
