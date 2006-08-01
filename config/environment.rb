@@ -38,11 +38,19 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
 end
 
+# Configure the ActionMailer
+ActionMailer::Base.server_settings = {
+  :address => "mail.assembly.org",
+  :port => 25,
+  :domain => "moukari.assembly.org",
+}
+
 # Start the LoginEngine
 module LoginEngine
   config :salt, "elaine-2006-rocks"
   config :use_email_notification, true
   config :confirm_account, true
+  config :email_from, "mikael.lavi@assemblytv.net"
 end
 
 Engines.start :login
