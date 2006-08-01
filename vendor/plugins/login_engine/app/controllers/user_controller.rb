@@ -38,14 +38,12 @@ class UserController < ApplicationController
             key = @user.generate_security_token
             session[:user].logged_in_at = Time.now
             session[:user].save
-            flash[:warning] = 'Logged in with intra account. Please fill in your email address.'
-            redirect_to :action => 'edit', :user_id => @user.id, :key => key
+            redirect_to :action => 'home'
           else
-            flash[:warning] = 'Logged in with intra account. Something still goes wrong.'
+            flash[:warning] = 'Intra account OK. Please fill in your email address.'
           end
         end
       rescue Exception => e
-        flash.now[:notice] = "something?"
         flash.now[:warning] = 'Error creating account: confirmation email not sent'
         logger.error "Unable to send confirmation E-Mail:"
         logger.error e

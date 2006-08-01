@@ -41,8 +41,8 @@ end
 # Start the LoginEngine
 module LoginEngine
   config :salt, "elaine-2006-rocks"
-  config :use_email_notification, false
-  config :confirm_account, false
+  config :use_email_notification, true
+  config :confirm_account, true
 end
 
 Engines.start :login

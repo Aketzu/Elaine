@@ -6,9 +6,11 @@
   <div class="form-padding">
     <%= start_form_tag :action => 'login'  %>
       <table>
-        <%= form_input :text_field, "Login ID", "login", :size => 30 %><br/>
-        <%= form_input :password_field, "Password", "password", :size => 30 %><br/>
-      </table>
+        <%= form_input :text_field, "Login ID", "login", :size => 30 %>
+        <%= form_input :password_field, "Password", "password", :size => 30 %>
+        <td colspan="2" style="color: #666">New users with intra passes enter your email as well:</td>
+        <%= form_input :text_field, "Email", "email", :size => 30 %>
+      </table><br/>
 
       <div class="button-bar">
         <%= submit_tag 'Login' %>
