@@ -79,5 +79,5 @@
     action: list
   - !ruby/object:MenuItem 
     text: Roles
-    controller: roles
+    controller: role
     action: list
