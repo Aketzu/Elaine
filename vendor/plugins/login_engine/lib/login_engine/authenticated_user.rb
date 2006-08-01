@@ -55,14 +55,20 @@ module LoginEngine
       end
     
       def intra_login?(username, password)
-        http = Net::HTTP.new('intra.assembly.org', 443)
-        http.use_ssl = true
-        path = '/cgi/livecrew/iglue/login.pl?u=' + username + '&p=' + password
-        
-        # GET request
-        resp, data = http.get(path, nil)
-        
-        return (data.to_i == 1)
+        begin
+          http = Net::HTTP.new('intra.assembly.org', 443)
+          http.use_ssl = true
+          path = '/cgi/livecrew/iglue/login.pl?u=' + username + '&p=' + password
+          
+          # GET request
+          resp, data = http.get(path, nil)
+          
+          return (data.to_i == 1)
+        rescue Exception => e
+          flash.now[:warning] = 'Error connecting to Assembly intra. Please try again later.'
+          logger.error "Intra network unreachable:"
+          logger.error e
+        end
       end
       
     end
