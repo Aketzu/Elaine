@@ -64,4 +64,20 @@
     text: Log out
     controller: user
     action: logout
-    
+- !ruby/object:MenuItem 
+  controller: user
+  text: Admin
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: Users
+    controller: user
+    action: list
+  - !ruby/object:MenuItem 
+    text: Permissions
+    controller: permission
+    action: list
+  - !ruby/object:MenuItem 
+    text: Roles
+    controller: roles
+    action: list
