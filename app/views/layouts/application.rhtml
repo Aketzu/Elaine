@@ -19,9 +19,11 @@
 
 <%= render_sidebars %>
 
-<div class="flash"><%= flash[:notice] %></div>
-<div class="flash"><%= flash[:warning] %></div>
-<div class="flash"><%= flash[:message] %></div>
+<div class="flash">
+<%= flash[:notice] %>
+<%= flash[:warning] %>
+<%= flash[:message] %>
+</div>
 
 <div class="content">
 <%= @content_for_layout %>
