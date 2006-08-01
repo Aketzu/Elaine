@@ -10,6 +10,7 @@ has_many :tape_program_links, :dependent => :destroy
 has_many :tape_event_links, :dependent => :destroy
 has_many :Programs, :through => :tape_program_links
 has_many :Events,   :through => :tape_event_links
+has_many :ReferenceLogEntries
 
 before_validation :strip_fields
 validates_presence_of :code

@@ -4,6 +4,8 @@ class Program < ActiveRecord::Base
 
 belongs_to :User
 belongs_to :ProgramStatus
+belongs_to :VodGroup
+
 has_many   :playlists, :dependent => :destroy
 
 has_many   :program_descriptions, :dependent => :destroy
@@ -15,6 +17,7 @@ has_many   :Events, :through => :program_event_links
 
 validates_associated :User
 validates_associated :ProgramStatus
+validates_associated :VodGroup
 validates_presence_of(:formatted_length, :message => "can not be empty")
 validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "contains illegal characters.")
 
