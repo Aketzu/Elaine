@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 23) do
+ActiveRecord::Schema.define(:version => 50) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -111,6 +111,14 @@ ActiveRecord::Schema.define(:version => 23) do
     t.column "status_id", :integer, :default => 1
     t.column "filename", :string
     t.column "file_location_id", :integer
+    t.column "vod_group_id", :integer
+  end
+
+  create_table "reference_log_entries", :force => true do |t|
+    t.column "tape_id", :integer
+    t.column "start_time", :datetime
+    t.column "end_time", :datetime
+    t.column "channel_id", :integer
   end
 
   create_table "roles", :force => true do |t|
@@ -192,6 +200,17 @@ ActiveRecord::Schema.define(:version => 23) do
     t.column "abitrate", :integer
     t.column "width", :integer
     t.column "height", :integer
+    t.column "framerate", :integer
+  end
+
+  create_table "vod_group_format_links", :force => true do |t|
+    t.column "vod_group_id", :integer
+    t.column "vod_format_id", :integer
+  end
+
+  create_table "vod_groups", :force => true do |t|
+    t.column "name", :string
+    t.column "description", :text
   end
 
   create_table "vods", :force => true do |t|
@@ -199,13 +218,8 @@ ActiveRecord::Schema.define(:version => 23) do
     t.column "file_location_id", :integer
     t.column "length", :integer
     t.column "filesize", :integer
-    t.column "vcodec", :string
-    t.column "avodec", :string
-    t.column "container", :string
-    t.column "vbitrate", :integer
-    t.column "abitrate", :integer
-    t.column "width", :integer
-    t.column "height", :integer
+    t.column "vod_format_id", :integer
+    t.column "completed", :boolean
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
     t.column "program_id", :integer

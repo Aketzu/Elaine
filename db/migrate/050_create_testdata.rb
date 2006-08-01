@@ -19,7 +19,50 @@ class CreateTestdata < ActiveRecord::Migration
      FileLocation.create(
     :name                 => 'Location 1',
     :description          => 'Descripting file location',
-    :url                  => 'file://siilo/paikka')
+    :url                  => 'file://siilo/paikka',
+    :checker_url          => 'http://mesta')
+    
+
+#    VodFormat.create(    
+#       :name => '',
+#       :description => '',
+#       :vcodec => '',
+#       :acodec => '',    
+#       :container => '',
+#       :vbitrate =>  '',
+#       :abitrate =>  '',
+#       :width  =>  '',
+#       :height   =>  '')
+
+    VodFormat.create(    
+       :name => 'lowest',
+       :description => 'very low bitrate',
+       :vcodec => 'x264',
+       :acodec => 'mp3lame',    
+       :container => 'avi',
+       :vbitrate =>  '208',
+       :abitrate =>  '48',
+       :width  =>  '720',
+       :height   =>  '576',
+       :framerate => '15')
+
+
+#      VodGroup.create(
+#     :name                 => '',
+#     :description          => '')
+
+      VodGroup.create(
+     :name                 => 'Test group',
+     :description          => 'Vod group for testing')
+
+#     VodGroupFormatLink.create(
+#     :vod_group_id           => '',
+#     :vod_format_id             => '')
+
+     VodGroupFormatLink.create(
+     :vod_group_id           => '1',
+     :vod_format_id             => '1')
+
 
 #     Event.create(
 #     :title                => '',
@@ -117,6 +160,7 @@ class CreateTestdata < ActiveRecord::Migration
     :preview_image_offset => '00:00:30',
     :preview_video_offset => '00:00:00',
     :owner_id             => 1,
+    :vod_group_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
     :filename             => 'eka_tiedosto')
@@ -130,6 +174,7 @@ class CreateTestdata < ActiveRecord::Migration
     :preview_image_offset => '00:00:30',
     :preview_video_offset => '00:00:00',
     :owner_id             => 1,
+    :vod_group_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
     :filename             => 'toka_tiedosto')
@@ -143,6 +188,7 @@ class CreateTestdata < ActiveRecord::Migration
     :preview_image_offset => '00:00:30',
     :preview_video_offset => '00:00:00',
     :owner_id             => 1,
+    :vod_group_id             => 1,
     :status_id            => 1,
     :file_location_id     => 1,
     :filename             => 'kolmas_tiedosto')
@@ -346,13 +392,7 @@ class CreateTestdata < ActiveRecord::Migration
     :file_location_id     => 1,
     :length               => 600,
     :filesize             => 512000,
-    :vcodec               => 'vcodec',
-    :avodec               => 'acodec',
-    :container            => 'container',
-    :vbitrate             => 64,
-    :abitrate             => 82,
-    :width                => 400,
-    :height               => 300,
+    :vod_format_id        => 1,
     :updated_at           => 'July 17 2006 20:00:00 GMT',
     :program_id           => 1)
   end

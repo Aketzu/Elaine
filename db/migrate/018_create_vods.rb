@@ -6,14 +6,9 @@ class CreateVods < ActiveRecord::Migration
       t.column :file_location_id, :integer
       t.column :length,           :integer
       t.column :filesize,         :integer
-      t.column :vcodec,           :string
-      t.column :avodec,           :string
-      t.column :container,        :string
-      t.column :vbitrate,         :integer
-      t.column :abitrate,         :integer
-      t.column :width,            :integer
-      t.column :height,           :integer
-      t.column :created_at,	  :timestamp
+      t.column :vod_format_id,    :integer
+      t.column :completed,        :boolean
+      t.column :created_at,	      :timestamp
       t.column :updated_at,       :timestamp
       t.column :program_id,       :integer
     end
@@ -22,11 +17,14 @@ class CreateVods < ActiveRecord::Migration
     (program_id) REFERENCES programs (id);"
     execute "ALTER TABLE vods ADD CONSTRAINT file_location FOREIGN KEY
     (file_location_id) REFERENCES file_locations (id);"
+    execute "ALTER TABLE vods ADD CONSTRAINT vod_format FOREIGN KEY
+    (vod_format_id) REFERENCES vod_formats (id);"
   end
 
   def self.down
     execute "ALTER TABLE vods DROP CONSTRAINT program;"
     execute "ALTER TABLE vods DROP CONSTRAINT file_location;"
+    execute "ALTER TABLE vods DROP CONSTRAINT vod_format;"
     drop_table :vods
   end
 end

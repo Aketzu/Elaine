@@ -11,6 +11,7 @@ class CreateVodFormats < ActiveRecord::Migration
       t.column :abitrate, :integer
       t.column :width, :integer
       t.column :height, :integer
+      t.column :framerate, :integer
     end
   end
 
