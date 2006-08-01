@@ -33,7 +33,7 @@
 
 <tr>
 <th class="edit">Owner</th>
-<td class="edit"><%= select('program', 'owner_id', User.find_all.collect {|t| [ t.username, t.id ] }) %></td>
+<td class="edit"><%= select('program', 'owner_id', User.find_all.collect {|t| [ t.login, t.id ] }) %></td>
 </tr>
 
 <tr>

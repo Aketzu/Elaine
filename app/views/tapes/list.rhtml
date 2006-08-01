@@ -19,7 +19,7 @@
     <td><%= link_to tape.title, :action => 'edit', :id => tape %></td>
     <td><%=h tape.formatted_length %></td>
     <td><%= link_to TapeCategory.find(tape.category_id).name, :controller => 'tape_categorys', :action => 'show', :id => tape.category_id %></td>
-    <td><%= link_to User.find(tape.owner_id).username,        :controller => 'users',          :action => 'show', :id => tape.owner_id %></td>
+    <td><%= link_to User.find(tape.owner_id).login,        :controller => 'users',          :action => 'show', :id => tape.owner_id %></td>
     <td><%= link_to TapeMedia.find(tape.media_id).name,       :controller => 'tape_medias',    :action => 'show', :id => tape.media_id %></td>
     <td><%= tape.Programs.count %></td>
     <td><%= tape.Events.count %></td>

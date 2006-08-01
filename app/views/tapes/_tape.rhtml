@@ -13,7 +13,7 @@
 
 <tr>
 <th class="edit">Owner</th>
-<td class="edit"><%= select("tape", "owner_id", User.find_all.collect {|u| [ u.username, u.id ] }) %></td>
+<td class="edit"><%= select("tape", "owner_id", User.find_all.collect {|u| [ u.login, u.id ] }) %></td>
 </tr>
 
 <tr>

@@ -2,7 +2,7 @@
 <p><b>Title:</b> <%=h @tape.title %></p>
 <p><b>Length:</b> <%=h @tape.formatted_length %></p>
 <p><b>Category: </b><%=h TapeCategory.find(@tape.category_id).name %></p>
-<p><b>Owner: </b><%=h User.find(@tape.owner_id).username %></p>
+<p><b>Owner: </b><%=h User.find(@tape.owner_id).login %></p>
 <p><b>Media Type: </b><%=h TapeMedia.find(@tape.media_id).name %></p>
 
 <%= render :partial => 'programs', :object => @programs %>

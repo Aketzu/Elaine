@@ -25,7 +25,7 @@
     <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
 <!--     <td><%=h program.formatted_preview_image_offset %></td> -->
 <!--     <td><%=h program.formatted_preview_video_offset %></td> -->
-    <td><%= link_to User.find(program.owner_id).username,
+    <td><%= link_to User.find(program.owner_id).login,
               :controller => 'users',
               :action => 'show', 
               :id => program.owner_id %></td>

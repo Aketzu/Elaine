@@ -21,11 +21,6 @@ class CreateTestdata < ActiveRecord::Migration
     :description          => 'Descripting file location',
     :url                  => 'file://siilo/paikka')
 
-#     User.create(:username => '')
-#    User.create(:username => 'kjue')
-#    User.create(:username => 'lcpitkan')
-#    User.create(:username => 'nitial')
-
 #     Event.create(
 #     :title                => '',
 #     :script               => '',
