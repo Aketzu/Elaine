@@ -35,10 +35,11 @@ class UserController < ApplicationController
           @user.new_password = true
           @user.verified = 1
           if @user.save
-            key = @user.generate_security_token
-            session[:user].logged_in_at = Time.now
-            session[:user].save
-            redirect_to :action => 'home'
+#            key = @user.generate_security_token
+#            session[:user].logged_in_at = Time.now
+#            session[:user].save
+            flash[:warning] = 'Intra account OK. Please login.'
+            redirect_to :action => 'login'
           else
             flash[:warning] = 'Intra account OK. Please fill in your email address.'
           end
