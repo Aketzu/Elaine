@@ -60,9 +60,9 @@ UserEngine.check_system_roles
 
 # Start the MenuEngine
 module MenuEngine
-  config :access_control, false
-  config :on_show, "new Effect.Appear( element, { duration: 0.3, from:0.0, to: 0.8 } );"
-  config :on_hide, "new Effect.BlindUp( element, { duration: 0.3 });"
+  config :access_control, true
+  config :on_show, "new Effect.Appear( element, { duration: 0.2, from:0.0, to: 1.0 } );"
+  config :on_hide, "new Effect.Fade( element, { duration: 0.2 });"
 end
 
 Engines.start :menu

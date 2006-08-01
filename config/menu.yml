@@ -1,38 +1,51 @@
 ---
 - !ruby/object:MenuItem 
   controller: playlists
+  text: Playlist
   action: list
   items: []
   - !ruby/object:MenuItem 
-    text: List
-    controller: programs
+    text: Playlist<br/><span class="description">View/Edit Playlist</span>
+    controller: playlists
     action: list
   - !ruby/object:MenuItem 
-    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
-    controller: programs
-    action: new
+    text: Timeline<br/><span class="description">Observe Playlist as a Timeline</span>
+    controller: playlists
+    action: timeline
 - !ruby/object:MenuItem 
   controller: programs
   action: list
   items: []
   - !ruby/object:MenuItem 
-    text: List
+    text: List Programs
     controller: programs
     action: list
   - !ruby/object:MenuItem 
-    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
+    text: New Program<br/><span class="description">Add a new program</span>
     controller: programs
     action: new
 - !ruby/object:MenuItem 
-  controller: programs
+  controller: events
   action: list
   items: []
   - !ruby/object:MenuItem 
-    text: List
-    controller: programs
+    text: List Events
+    controller: events
     action: list
   - !ruby/object:MenuItem 
-    text: New Program<br/><span style=%"font-size:80%">Add a new program</span>
+    text: New Event<br/><span class="description">Add a new event</span>
+    controller: events
+    action: new
+- !ruby/object:MenuItem 
+  controller: tapes
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List Tapes
+    controller: tapes
+    action: list
+  - !ruby/object:MenuItem 
+    text: New Tape<br/><span class="description">Add a new tape</span>
     controller: programs
     action: new
     
