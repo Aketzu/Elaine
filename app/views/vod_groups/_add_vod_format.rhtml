@@ -1,0 +1,12 @@
+<%= error_messages_for 'program_event_link' %>
+
+<p><b>Add event:</b>
+<!--[form:event]-->
+<%= hidden_field 'program_event_link', 'program_id', :value => @program.id %>
+
+<%= text_field_with_auto_complete :event, :title , :skip_style => true %>
+
+<%= submit_tag "Add" %>
+</p>
+
+<!--[eoform:event]-->

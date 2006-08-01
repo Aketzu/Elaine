@@ -1,0 +1,12 @@
+<%= error_messages_for 'broadcast_log' %>
+
+<!--[form:broadcast_log]-->
+<%= hidden_field 'broadcast_log', 'channel_id', :value => @channel_id %>
+
+<p><label for="broadcast_log_program_id">Program</label<br/>
+<%= select("broadcast_log", "program_id", Program.find_all.collect {|t| [ t.title, t.id ] }) %></p>
+
+<p><label for="broadcast_log_start_time">Start time</label><br/>
+<%= datetime_select 'broadcast_log', 'start_time'  %></p>
+<!--[eoform:broadcast_log]-->
+

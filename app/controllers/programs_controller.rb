@@ -105,6 +105,24 @@ class ProgramsController < ApplicationController
     end
   end
   
+  def add_event
+    @program_event_link = ProgramEventLink.new(params[:program_event_link])
+    begin
+      @program_event_link.event_id = Event.find(:first, :conditions => ['title = ?', params[:event]["title"]]).id
+    rescue
+        redirect_to(:action => 'edit',
+                    :id => @program_event_link.program_id)
+    else
+      if @program_event_link.save
+        flash[:notice] = 'The event was successfully added.'
+        redirect_to :action => 'edit',
+                    :id => @program_event_link.program_id
+      else
+        render :action => 'new'
+      end
+    end
+  end  
+  
   def destroy
     Program.find(params[:id]).destroy
     redirect_to :action => 'list'

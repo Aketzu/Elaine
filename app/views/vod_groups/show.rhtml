@@ -1,0 +1,17 @@
+<% for column in VodGroup.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @vod_group.send(column.name) %>
+</p>
+<% end %>
+
+<p><b>Vod formats:</b></p>
+
+<% render :partial => 'vod_formats', :object => @vod_group.VodFormats %>
+
+<%= start_form_tag :action => 'add_vod_format' %>
+  <%= render :partial => 'add_vod_format' %>
+<%= end_form_tag %>
+
+
+<%= link_to 'Edit', :action => 'edit', :id => @vod_group %> |
+<%= link_to 'Back', :action => 'list' %>
