@@ -48,4 +48,20 @@
     text: New Tape<br/><span class="description">Add a new tape</span>
     controller: programs
     action: new
+- !ruby/object:MenuItem 
+  controller: user
+  action: home
+  items: []
+  - !ruby/object:MenuItem 
+    text: User Home
+    controller: user
+    action: home
+  - !ruby/object:MenuItem 
+    text: Edit<br/><span class="description">Edit your details in Elaine</span>
+    controller: user
+    action: edit
+  - !ruby/object:MenuItem 
+    text: Log out
+    controller: user
+    action: logout
     
