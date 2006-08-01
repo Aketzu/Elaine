@@ -42,7 +42,6 @@ end
 ActionMailer::Base.server_settings = {
   :address => "mail.assembly.org",
   :port => 25,
-  :domain => "moukari.assembly.org",
 }
 
 # Start the LoginEngine
