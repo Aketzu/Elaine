@@ -27,6 +27,7 @@
 # The RoleController allows Role objects to be manipulated via the
 # web interface
 class RoleController < ApplicationController
+  sidebar :general
 
   # We shouldn't accept GET requests that modify data.
   verify :method => :post, :only => %w(destroy)

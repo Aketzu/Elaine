@@ -26,6 +26,7 @@
 # The PermissionController provides methods for manipulating Permission
 # objects from the web interface.
 class PermissionController < ApplicationController
+  sidebar :general
 
   # We shouldn't accept GET requests that modify data.
   verify :method => :post, :only => %w(destroy)

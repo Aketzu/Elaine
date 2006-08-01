@@ -27,6 +27,7 @@
 # The UserEngine UserController overrides the UserController from the
 # LoginEngine to give user management methods (list, edit_user, etc)
 class UserController < ApplicationController
+  sidebar :general
   
   # Ensure that these methods CANNOT be called via a GET request
   verify :method => :post, :only => %w(edit_roles change_password_for_user delete_user)
