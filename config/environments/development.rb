@@ -23,8 +23,5 @@ config.action_mailer.raise_delivery_errors = false
 ActionMailer::Base.server_settings = {
   :address => "mail.assembly.org",
   :port => 25,
-  :domain => "mail.assembly.org",
-  :user_name => "mikael.lavi@assemblytv.net",
-  :password => "",
-  :authentication => :login
+  :domain => "moukari.assembly.org",
 }
