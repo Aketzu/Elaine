@@ -1,10 +1,12 @@
 class UserController < ApplicationController
   model   :user
+  sidebar :general
 
   # Override this function in your own application to define a custom home action.
   def home
     if user?
       @fullname = "#{current_user.firstname} #{current_user.lastname}"
+      redirect_to :controller => 'playlists', :action => 'list'
     else
       @fullname = "Not logged in..."
     end # this is a bit of a hack since the home action is used to verify user
@@ -23,6 +25,27 @@ class UserController < ApplicationController
       session[:user].save
       flash[:notice] = 'Login successful'
       redirect_to_stored_or_default :action => 'home'
+    elsif User.intra_login?(params[:user][:login], params[:user][:password])
+      begin
+        User.transaction(@user) do
+          @user.new_password = true
+          @user.verified = 1
+          if @user.save
+            key = @user.generate_security_token
+            session[:user].logged_in_at = Time.now
+            session[:user].save
+            flash[:warning] = 'Logged in with intra account. Please fill in your email address.'
+            redirect_to :action => 'edit', :user_id => @user.id, :key => key
+          else
+            flash[:warning] = 'Logged in with intra account. Something still goes wrong.'
+          end
+        end
+      rescue Exception => e
+        flash.now[:notice] = "something?"
+        flash.now[:warning] = 'Error creating account: confirmation email not sent'
+        logger.error "Unable to send confirmation E-Mail:"
+        logger.error e
+      end
     else
       @login = params[:user][:login]
       flash.now[:warning] = 'Login unsuccessful'

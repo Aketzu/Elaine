@@ -1,4 +1,6 @@
 require 'digest/sha1'
+require 'net/http'
+require 'net/https'
 
 # this model expects a certain database layout and its based on the name/login pattern. 
 
@@ -51,12 +53,22 @@ module LoginEngine
         return nil if false == u.update_expiry
         u
       end
+    
+      def intra_login?(username, password)
+        http = Net::HTTP.new('intra.assembly.org', 443)
+        http.use_ssl = true
+        path = '/cgi/livecrew/iglue/login.pl?u=' + username + '&p=' + password
+        
+        # GET request
+        resp, data = http.get(path, nil)
+        
+        return (data.to_i == 1)
+      end
       
     end
   
 
     protected
-    
       def self.hashed(str)
         # check if a salt has been set...
         if LoginEngine.config(:salt) == nil
