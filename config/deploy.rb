@@ -140,7 +140,7 @@ task :deploy_elaine do
 end
 
 desc "Customized restart task."
-task :restart, :roles => :app do
+task :custom_restart, :roles => :app do
   run "cd #{directory}/public && " +
       "chmod ugo+x dispatch.fcgi"
 
