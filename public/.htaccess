@@ -24,7 +24,7 @@ RewriteEngine On
 #
 # Example:
 #  Alias /elaine /data/httpd/asmtv/deploy/elaine2006/current/public
-RewriteBase /elaine
+RewriteBase /elaine/
 
 RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
