@@ -20,6 +20,9 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new
     @playlist.movable = true
     @playlist.start_time = Playlist.find(:first, :order => 'start_time desc').end_time
+    if @playlist.start_time < @now
+      @playlist.start_time = @now
+    end
     @playlist.start_time += (60 - @playlist.start_time.to_i % 60)
 
     @channels = Channel.find(:all)
