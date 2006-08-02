@@ -13,7 +13,7 @@
 <br>
 
 
-<%= form_remote_tag :url => { :action => :add_to_playlist },
+<%= form_remote_tag :url => { :action => :add_to_playlist, :channel_id => @channel_id },
       :before => 'javascript:this.commit.disabled=true' %>
   <div id="playlist">
   <%= render :partial => 'playlist', :object => @playlist %>

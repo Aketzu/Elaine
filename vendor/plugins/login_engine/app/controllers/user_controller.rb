@@ -2,7 +2,7 @@ class UserController < ApplicationController
   model   :user
   sidebar :general
   
-  before_filter :require_ssl
+  before_filter :require_ssl if (RAILS_ENV == "production")
 
   # Override this function in your own application to define a custom home action.
   def home

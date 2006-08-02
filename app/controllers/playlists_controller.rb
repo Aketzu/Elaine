@@ -34,11 +34,8 @@ class PlaylistsController < ApplicationController
   end
 
   def timeline
+    list
     @timeline = true
-    @channel_id = params[:channel_id].to_i
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
 

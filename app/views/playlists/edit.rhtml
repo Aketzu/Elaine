@@ -4,4 +4,4 @@
   <%= render :partial => 'playlist', :object => @playlist %>
 <%= end_form_tag %>
 
-<%= link_to 'Back', :action => 'playlist' %>
+<%= link_to 'Back', :action => 'list', :channel_id => @channel_id %>
