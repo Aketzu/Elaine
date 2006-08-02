@@ -26,7 +26,7 @@ RewriteEngine On
 #  Alias /elaine /data/httpd/asmtv/deploy/elaine2006/current/public
 RewriteBase /elaine
 
-RewriteRule ^$ index.html [QSA]
+RewriteRule ^$ /elaine/user/login [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
