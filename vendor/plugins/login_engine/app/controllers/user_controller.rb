@@ -2,7 +2,7 @@ class UserController < ApplicationController
   model   :user
   sidebar :general
   
-  before_filter :check_ssl_request
+  #before_filter :check_ssl_request
 
   # Override this function in your own application to define a custom home action.
   def home
