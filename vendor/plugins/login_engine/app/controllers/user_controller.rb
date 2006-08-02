@@ -18,9 +18,11 @@ class UserController < ApplicationController
   # by the login_required method, they should be sent back to the page they were
   # trying to access. If not, they will be sent to "/user/home".
   def login
+    logger.error "Begin login..."
     return if generate_blank
     @user = User.new(params[:user])
     if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
+      logger.error "Login OK!"
       session[:user].logged_in_at = Time.now
       session[:user].save
       flash[:notice] = 'Login successful'
@@ -59,8 +61,8 @@ class UserController < ApplicationController
   # "/user/login" to enter their details.
   def signup
     return if generate_blank
-    params[:user].delete('form')
-    params[:user].delete('verified') # you CANNOT pass this as part of the request
+#    params[:user].delete('form')
+#    params[:user].delete('verified') # you CANNOT pass this as part of the request
     @user = User.new(params[:user])
     begin
       User.transaction(@user) do

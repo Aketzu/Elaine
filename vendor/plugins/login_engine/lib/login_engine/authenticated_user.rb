@@ -29,6 +29,7 @@ module LoginEngine
         protected 
       
         attr_accessor :password, :password_confirmation
+        attr_protected :form, :verified
       
         after_save :falsify_new_password
         after_validation :crypt_password
