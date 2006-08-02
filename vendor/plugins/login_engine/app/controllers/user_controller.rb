@@ -2,7 +2,7 @@ class UserController < ApplicationController
   model   :user
   sidebar :general
   
-  #before_filter :check_ssl_request
+  before_filter :require_ssl
 
   # Override this function in your own application to define a custom home action.
   def home
@@ -16,9 +16,10 @@ class UserController < ApplicationController
         # 'validate_key' action instead.
   end
   
-  def check_ssl_request
+  def require_ssl
     unless request.ssl?
-      redirect_to :protocol => "https", :controller => "user", :action => "login"
+      redirect_to :protocol => "https://"
+    end
   end
 
   # The action used to log a user in. If the user was redirected to the login page
