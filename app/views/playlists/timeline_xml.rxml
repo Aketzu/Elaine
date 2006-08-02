@@ -31,7 +31,7 @@ xml.data() do
       playlist.Program.title + '</div><div style="float: right;">(' +
       playlist.Program.status + ')</div>' +
       '<br>' +
-      '<a href="/elaine/programs/edit/' + playlist.Program.id.to_s + '">Edit</a>' +
+      '<a href="/elaine/playlists/edit/' + playlist.id.to_s + '">Edit this playlist-entry</a>' +
       '<br>[' +
       '<a href="#" onclick="new Ajax.Request(\'/elaine/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
       '<a href="#" onclick="new Ajax.Request(\'/elaine/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
@@ -40,7 +40,7 @@ xml.data() do
       :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S"),
       :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S"),
       :isDuration => 'true',
-      :link       => "/playlists/edit/" + playlist.id.to_s,
+      :link       => "/elaine/programs/edit/" + playlist.Program.id.to_s,
       :color      => playlist.color,
       :title      => playlist.start_time.strftime("%H:%M") + " " + playlist.Program.title
     )
