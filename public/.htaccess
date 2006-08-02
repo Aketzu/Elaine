@@ -23,7 +23,7 @@ RewriteEngine On
 # then you MUST also set the RewriteBase in this htaccess file.
 #
 # Example:
-Alias /elaine /data/httpd/asmtv/deploy/elaine2006/current/public
+#  Alias /elaine /data/httpd/asmtv/deploy/elaine2006/current/public
 RewriteBase /elaine
 
 RewriteRule ^$ index.html [QSA]
