@@ -13,10 +13,10 @@
 set :application, "elaine2006"
 set :deploy_to, "/data/httpd/asmtv/deploy/elaine2006"
 set :repository, "https://svn.nodeta.fi/elaine2006/trunk"
-# set :user, "mlavi"
+set :user, "mlavi"
 # set :svn, "svn+ssh://moukari.assembly.org/data/livesvn/elaine2006"
-# ssh_options[:keys] = %w(/home/mlavi/.ssh/id_dsa)
-# ssh_options[:port] = 25
+ssh_options[:keys] = %w(/home/mlavi/.ssh/id_dsa)
+ssh_options[:port] = 25
 set :use_sudo, false
 
 # role :web, "intra.assembly.org/livecrew/elaine"
