@@ -4,6 +4,6 @@ belongs_to :VodGroup
 belongs_to :VodFormat
 
 validates_associated :VodGroup
-validates_associated :FodFormat
+validates_associated :VodFormat
 
 end
