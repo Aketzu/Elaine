@@ -103,11 +103,15 @@ def formatted_preview_video_offset=(formatted)
 end
 
 def full_filename
-  "p_" + self.id.to_s + "_" + self.filename + ".avi"
+  "p_" + self.id.to_s + "_" + (self.filename || "") + ".avi"
 end
 
 def file_exists?
-  self.FileLocation.exists?(self.full_filename)
+  if(self.FileLocation)
+    self.FileLocation.exists?(self.full_filename)
+  else
+    nil
+  end
 end
 
 protected
