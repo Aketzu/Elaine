@@ -14,16 +14,10 @@ xml.data() do
       for event in playlist.Program.Events
         xml.event(
         event.title + ", ",
-  #       playlist.Program.title +
-  #       " [" +
-  #       '<a href="http://www.google.fi/">Planning</a>' + "|" +
-  #       '<a href="http://www.google.fi/">Production</a>' + "|" +
-  #       '<a href="http://www.google.fi/">Complete</a>' + "|" +
-  #       "]",
         :start      => current_time.strftime("%B %d %Y %H:%M:%S"),
         :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S"),
   #       :isDuration => 'true',
-  #       :link       => "/playlists/edit/" + playlist.id.to_s,
+  #       :link       => "/elaine/playlists/edit/" + playlist.id.to_s,
         :title      =>
           event.title
         )
@@ -37,11 +31,11 @@ xml.data() do
       playlist.Program.title + '</div><div style="float: right;">(' +
       playlist.Program.status + ')</div>' +
       '<br>' +
-      '<a href="/programs/edit/' + playlist.Program.id.to_s + '">Edit</a>' +
+      '<a href="/elaine/programs/edit/' + playlist.Program.id.to_s + '">Edit</a>' +
       '<br>[' +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
+      '<a href="#" onclick="new Ajax.Request(\'/elaine/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
+      '<a href="#" onclick="new Ajax.Request(\'/elaine/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
+      '<a href="#" onclick="new Ajax.Request(\'/elaine/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
       ']</div>',
       :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S"),
       :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S"),
