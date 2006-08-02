@@ -1,6 +1,8 @@
 class UserController < ApplicationController
   model   :user
   sidebar :general
+  
+  before_filter :check_ssl_request
 
   # Override this function in your own application to define a custom home action.
   def home
@@ -12,6 +14,11 @@ class UserController < ApplicationController
     end # this is a bit of a hack since the home action is used to verify user
         # keys, where noone is logged in. We should probably create a unique
         # 'validate_key' action instead.
+  end
+  
+  def check_ssl_request
+    unless request.ssl?
+      redirect_to :protocol => "https", :controller => "user", :action => "login"
   end
 
   # The action used to log a user in. If the user was redirected to the login page

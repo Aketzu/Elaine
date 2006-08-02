@@ -26,7 +26,7 @@ module MenuHelper
     # the following line is important - YAML::load does not recognise the class otherwise
     # and returns a YAML::Object...
     MenuItem.new unless items 
-    items ||= YAML::load(ERB.new(File.read("#{file}.yml")).result)
+    items ||= YAML::load(ERB.new(File.read("#{RAILS_ROOT}/config/menu.yml")).result)
     
     # process access permissions for current user if user_engine is loaded
     # menu items that the user does not have access rights to are removed from the menu
