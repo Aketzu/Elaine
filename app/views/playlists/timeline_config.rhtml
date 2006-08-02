@@ -103,8 +103,10 @@ function onLoad() {
 
 function updateCurrentTimeIndicator() {
   date1 = new Date();
+  date1.setHours((date1.getHours() + 3) % 24);
   date2 = new Date(new Date((new Date()).valueOf() + 60000));
-  
+  date2.setHours((date2.getHours() + 3) % 24);
+
   if(centerToCurrentEnabled) {
     for (var i = 0; bandInfos.length > i; i++) {
       bandInfos[i].decorators = [
@@ -118,10 +120,12 @@ function updateCurrentTimeIndicator() {
           theme:      theme
         })
       ];
-      date2 = (new Date((new Date()).valueOf() + 200000 * (i+1))).toUTCString();
+      date2 = new Date(new Date((new Date()).valueOf() + 200000 * (i+1)));
+      date2.setHours((date2.getHours() + 3) % 24);
+      date2 = date2.toUTCString();
     }
     tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
-    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
+    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1.toString()));
   }
   setTimeout("updateCurrentTimeIndicator()", updateCurrentTimeInterval);
 }
@@ -141,15 +145,18 @@ function toggleCenter() {
       bandInfos[i].decorators = [];
     }
     tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
+    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1.toString()));
   }
   
   return centerToCurrentEnabled;
 }
 
 function centerTimeline() {
+  var date = new Date();
+  date.setHours((date1.getHours() + timeZone) % 24);
   if(centerToCurrentEnabled) {
-    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
-    tl.getBand(1).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime((new Date()).toString()));
+    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date.toString()));
+    tl.getBand(1).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date.toString()));
   }
   setTimeout("centerTimeline()", centerToCurrentInterval);
 }
