@@ -141,6 +141,8 @@ end
 
 desc "Customized restart task."
 task :restart, :roles => :app do
+  run "cd #{directory}/public && " +
+      "chmod ugo+x dispatch.fcgi"
 
 end
 
