@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   
   # Skip frameworks you're not going to use
   # config.frameworks -= [ :action_web_service, :action_mailer ]
+  config.frameworks -= [ :action_mailer ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
@@ -30,10 +31,10 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector
+  config.active_record.observers = :cacher, :garbage_collector
 
   # Make Active Record use UTC-base instead of local time
-  # config.active_record.default_timezone = :utc
+  config.active_record.default_timezone = :utc
   
   # See Rails::Configuration for more options
 end
@@ -82,6 +83,9 @@ Engines.start :menu
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+
+ENV['RAILS_ENV'] ||= 'production'
+
 
 # Include your application configuration below
 TEST_SETTING = "joo"
