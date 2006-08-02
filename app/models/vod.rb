@@ -10,8 +10,9 @@ def base_filename
   self.id.to_s + "_" + self.filename
 end
 
+
 def full_filename
-  self.base_filename + "_" + self.VodFormat.name + ".avi"
+  "e_" + self.id.to_s + "_" + self.filename + ".avi"
 end
 
 def file_exists?
