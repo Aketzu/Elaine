@@ -1,5 +1,5 @@
 # General Apache options
-AddHandler fastcgi-script .fcgi
+AddHandler fcgid-script .fcgi
 AddHandler cgi-script .cgi
 Options +FollowSymLinks +ExecCGI
 
@@ -24,9 +24,9 @@ RewriteEngine On
 #
 # Example:
 #  Alias /elaine /data/httpd/asmtv/deploy/elaine2006/current/public
-RewriteBase /elaine
+#RewriteBase /elaine
 
-RewriteRule ^$ /elaine/user/login [QSA]
+RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
