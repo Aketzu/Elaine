@@ -1,10 +1,10 @@
-<%= error_messages_for 'program_event_link' %>
+<%= error_messages_for 'vod_group_format_link' %>
 
-<p><b>Add event:</b>
+<p><b>Add VOD format:</b>
 <!--[form:event]-->
-<%= hidden_field 'program_event_link', 'program_id', :value => @program.id %>
+<%= hidden_field 'vod_group_format_link', 'vod_group_id', :value => @vod_group.id %>
 
-<%= text_field_with_auto_complete :event, :title , :skip_style => true %>
+<%= text_field_with_auto_complete :vod_format, :name , :skip_style => true %>
 
 <%= submit_tag "Add" %>
 </p>

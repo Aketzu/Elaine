@@ -52,4 +52,25 @@ class VodGroupsController < ApplicationController
     VodGroup.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
+  def add_vod_format
+    @vod_group_format_link = VodGroupFormatLink.new(params[:vod_group_format_link])
+    begin
+      @vod_group_format_link.vod_format_id = VodFormat.find(:first, :conditions => ['name = ?', params[:vod_format]["name"]]).id
+    rescue
+        redirect_to(:action => 'show',
+                    :id => @vod_group_format_link.vod_group_id)
+    else
+      if @vod_group_format_link.save
+        flash[:notice] = 'The VOD format was successfully added.'
+        redirect_to :action => 'show',
+                    :id => @vod_group_format_link.vod_group_id
+      else
+        redirect_to :action => 'show',
+                    :id => @vod_group_format_link.vod_group_id
+      end
+    end
+  end  
+  
+  auto_complete_for :vod_format, :name  
 end

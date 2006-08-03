@@ -1,8 +1,51 @@
 class VodsController < ApplicationController
-  sidebar :general
+  def index
+    list
+    render :action => 'list'
+  end
 
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
+  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
+  verify :method => :post, :only => [ :destroy, :create, :update ],
+         :redirect_to => { :action => :list }
 
-scaffold :Vod
+  def list
+    @vod_pages, @vods = paginate :vods, :per_page => 10
+  end
 
+  def show
+    @vod = Vod.find(params[:id])
+  end
+
+  def new
+    @vod = Vod.new
+  end
+
+  def create
+    @vod = Vod.new(params[:vod])
+    if @vod.save
+      flash[:notice] = 'Vod was successfully created.'
+      redirect_to :action => 'list'
+    else
+      render :action => 'new'
+    end
+  end
+
+  def edit
+    @vod = Vod.find(params[:id])
+  end
+
+  def update
+    @vod = Vod.find(params[:id])
+    if @vod.update_attributes(params[:vod])
+      flash[:notice] = 'Vod was successfully updated.'
+      redirect_to :action => 'show', :id => @vod
+    else
+      render :action => 'edit'
+    end
+  end
+
+  def destroy
+    Vod.find(params[:id]).destroy
+    redirect_to :action => 'list'
+  end
 end

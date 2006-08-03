@@ -1,0 +1,28 @@
+<%= error_messages_for 'vod' %>
+
+<!--[form:vod]-->
+<p><label for="vod_filename">Filename</label><br/>
+<%= text_field 'vod', 'filename'  %></p>
+
+<p><label for="vod_vod_format_id">Format id</label><br/>
+<%= text_field 'vod', 'vod_format_id'  %></p>
+
+<p><label for="vod_program_id">Program id</label><br/>
+<%= text_field 'vod', 'program_id'  %></p>
+
+<p><label for="vod_length">Length</label><br/>
+<%= text_field 'vod', 'length'  %></p>
+
+<p><label for="vod_filesize">Filesize</label><br/>
+<%= text_field 'vod', 'filesize'  %></p>
+
+<p><label for="vod_completed">Completed</label><br/>
+<select id="vod_completed" name="vod[completed]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="vod_created_at">Created at</label><br/>
+<%= datetime_select 'vod', 'created_at'  %></p>
+
+<p><label for="vod_updated_at">Updated at</label><br/>
+<%= datetime_select 'vod', 'updated_at'  %></p>
+<!--[eoform:vod]-->
+

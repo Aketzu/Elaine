@@ -1,5 +1,18 @@
-<% for vod_format in vod_formats %>
-
-Joo<br/>
-
-<% end %>
+<p><b>VOD Formats</b></p>
+<table>
+  <% offset = 0 %>
+  <tr class="header">
+     <td>Name</td>
+     <td>Description</td>
+  </tr>
+  <% for vod_format in vod_formats %>
+    <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+      <td>
+        <%= vod_format.name %>
+      </td>
+      <td>
+        <%= vod_format.description %>
+      </td>
+    </tr>
+  <% end %>
+</table>

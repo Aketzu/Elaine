@@ -77,11 +77,11 @@ class ProgramsController < ApplicationController
     end
   end
 
-  def add_event
-    @program = Program.find(params[:id])
-    @program.ProgramEventLinks.create(params[:program_event])
-    redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
-  end
+  #def add_event
+  #  @program = Program.find(params[:id])
+  #  @program.ProgramEventLinks.create(params[:program_event])
+  #  redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
+  #end
 
   def move_event_up
     @program  = Program.find(params[:id])
