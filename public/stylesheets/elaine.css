@@ -131,7 +131,13 @@ tr.playlist_odd {
 tr.playlist_even {
   background: url(/images/lightblue.png) repeat;
 }
-#past {
+#now_playing {
+  background: #aaffaa;
+}
+#coming_soon {
+  background: #ffffaa;
+}
+#past_events {
   background: #eaeaea;
 }
 
