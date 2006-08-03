@@ -1,3 +1,8 @@
+html, body {
+  height: 100%; /* Required */
+  width: 100%; /* Required */
+}
+
 body { 
   background: #fff;
   color: #333;
@@ -75,6 +80,32 @@ div.content {
 
 div.listing_content {
   float: left;
+}
+
+#footer {
+  clear:      both;
+  text-align: right;
+  margin:     0;
+  padding:    .5em;
+  position:   absolute;
+  bottom:     0 !important;
+  bottom:     -1px; /* For Certain IE widths */
+  border-top: 2px solid #ddeafe;
+  background: #eff8ff;
+  color:      #888;
+  left:       0px;
+  right:      0px;
+}
+
+#container-page {
+  margin: 0 auto;
+  background: #fff;
+  text-align: left;
+  position: relative;
+  min-height: 100%; /* For Modern Browsers */
+  height: auto !important; /* For Modern Browsers */
+  height: 100%; /* For IE */
+  width: 100%; /* Required */
 }
 
 /**

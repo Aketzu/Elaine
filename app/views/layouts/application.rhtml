@@ -17,16 +17,23 @@
 </head>
 <%= if @timeline then '<body onload="onLoad();" onresize="onResize();">' else '<body>' end %>
 
-<%= render_sidebars %>
-
-<div class="flash">
-<%= flash[:notice] %>
-<%= flash[:warning] %>
-<%= flash[:message] %>
-</div>
-
-<div class="content">
-<%= @content_for_layout %>
+<div id="container-page">
+  <%= render_sidebars %>
+  
+  <div class="flash">
+  <%= flash[:notice] %>
+  <%= flash[:warning] %>
+  <%= flash[:message] %>
+  </div>
+  
+  <div class="content">
+  <%= @content_for_layout %>
+  </div>
+  
+  <div id="footer">
+  Elaine2, Assembly 2006<br/>
+  If you have comments or a critical bug to report, feel free to join the IRC-channel <b style="color:#444;">#elaine</b> @ IRCNet.
+  </div>
 </div>
 
 </body>
