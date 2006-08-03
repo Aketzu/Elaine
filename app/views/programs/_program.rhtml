@@ -19,7 +19,7 @@
 
 <tr>
 <th class="edit">Do vod</th>
-<td class="edit"><select id="program_do_vod" name="program[do_vod]"><option value="false">False</option><option value="true">True</option></select></td>
+<td class="edit"><select id="program_do_vod" name="program[do_vod]"><option value="true" <%= 'selected="selected"' if program.do_vod %> >True</option><option value="false" <%= 'selected="selected"' unless program.do_vod %> >False</option></select></td>
 </tr>
 
 <tr>
