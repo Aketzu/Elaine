@@ -2,6 +2,8 @@ class LoginController < ApplicationController
 require 'net/http'
 require 'net/https'
 
+  before_filter :require_no_ssl if (RAILS_ENV == "production")
+
 def index
   http = Net::HTTP.new('intra.assembly.org', 443)
   http.use_ssl = true

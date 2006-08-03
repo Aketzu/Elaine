@@ -12,6 +12,5 @@ class ApplicationController < ActionController::Base
   model :user
 
   before_filter :authorize_action
-  before_filter :require_ssl if (RAILS_ENV == "production")
 
 end

@@ -4,6 +4,8 @@ class BroadcastLogsController < ApplicationController
     render :action => 'list'
   end
 
+  before_filter :require_no_ssl if (RAILS_ENV == "production")
+
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
