@@ -63,7 +63,7 @@
     action: list
   - !ruby/object:MenuItem 
     text: New Tape<br/><span class="description">Add a new tape</span>
-    controller: programs
+    controller: tapes
     action: new
 - !ruby/object:MenuItem 
   controller: user
