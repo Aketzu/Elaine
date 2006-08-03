@@ -13,13 +13,13 @@ xml.data() do
     if @show_events
       for event in playlist.Program.Events
         xml.event(
-        event.title + ", ",
+        encode_entities(event.title) + ", ",
         :start      => current_time.strftime("%B %d %Y %H:%M:%S"),
         :end        => (current_time + event.length).strftime("%B %d %Y %H:%M:%S"),
   #       :isDuration => 'true',
   #       :link       => "/elaine/playlists/edit/" + playlist.id.to_s,
         :title      =>
-          event.title
+          encode_entities(event.title)
         )
         current_time += event.length
       end
@@ -36,7 +36,7 @@ xml.data() do
     # List each Playlist entry
     xml.event(
       '<div style="float: left;">' + playlist.formatted_length + ', ' + 
-      playlist.Program.title + '</div><div style="float: right;">(' +
+      encode_entities(playlist.Program.title) + '</div><div style="float: right;">(' +
       playlist.Program.status + ')</div>' +
       '<br>' +
       '<a href="/playlists/edit/' + playlist.id.to_s + '">Edit this playlist-entry</a>' +
