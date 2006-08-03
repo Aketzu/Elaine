@@ -16,7 +16,7 @@ class VodController < ApplicationController
       format.VodGroups.each do |group|
         program = group.Programs.find(:first, :conditions => ["(SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id])
         unless program.nil?
-#          if program.file_exists? 
+          if program.file_exists? 
              # We have a winner
              @program = program
              @vod_format = format
@@ -31,7 +31,7 @@ class VodController < ApplicationController
               redirect_to :action => 'error', :message => 'could not save vod'
               return
              end
-#          end
+          end
         end
       end
     end 
