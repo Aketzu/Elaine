@@ -16,7 +16,7 @@ table {
 }
 
 table.header_links {
-  background: #fff url(/elaine/images/topbluefade.gif) repeat-x;
+  background: #fff url(/images/topbluefade.gif) repeat-x;
   width:      100%;
   height:     50px;
   text-align: center;
@@ -122,10 +122,10 @@ tr.playlist_header {
   text-align: center;
 }
 tr.playlist_odd {
-  background: url(/elaine/images/darkblue.png) repeat;
+  background: url(/images/darkblue.png) repeat;
 }
 tr.playlist_even {
-  background: url(/elaine/images/lightblue.png) repeat;
+  background: url(/images/lightblue.png) repeat;
 }
 #past {
   background: #eaeaea;
@@ -166,11 +166,11 @@ div.playlist_header {
   text-align: center;
 }
 div.playlist_odd {
-  background: url(/elaine/images/darkbluefade.png) repeat-x;
+  background: url(/images/darkbluefade.png) repeat-x;
   display: table-row;
 }
 div.playlist_even {
-  background: url(/elaine/images/bluefade.png) repeat-x;
+  background: url(/images/bluefade.png) repeat-x;
   display: table-row;
 }
 
