@@ -1,0 +1,12 @@
+<% for column in FileLocation.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @file_location.send(column.name) %>
+</p>
+<% end %>
+
+<%= render :partial => 'programs', :object => @programs %>
+
+<%= render :partial => 'events', :object => @events %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @file_location %> |
+<%= link_to 'Back', :action => 'list' %>

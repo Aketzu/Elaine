@@ -1,0 +1,21 @@
+<tr>
+  <th class="edit">Events</th>
+  <td class="edit">
+    <table>
+      <tr class="header">
+        <th>Title</th>
+        <th></th>
+      </tr>
+      <% for event in events %>
+      <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+        <td>
+        <%= link_to event.title, 
+                  :controller => 'events', 
+                  :action => 'show', 
+                  :id => event.id %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </td>
+</tr>

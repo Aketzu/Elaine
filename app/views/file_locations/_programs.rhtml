@@ -1,0 +1,21 @@
+<tr>
+  <th class="edit">Programs</th>
+  <td class="edit">
+    <table>
+      <tr class="header">
+        <th>Title</th>
+        <th></th>
+      </tr>
+      <% for program in programs %>
+      <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+        <td>
+        <%= link_to program.title, 
+                  :controller => 'programs', 
+                  :action => 'show', 
+                  :id => program.id %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </td>
+</tr>

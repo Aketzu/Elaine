@@ -1,0 +1,2 @@
+module FileLocationsHelper
+end
