@@ -16,10 +16,8 @@ set :deploy_to, "/var/rails/deploy/elaine2006"
 set :repository, "https://svn.nodeta.fi/elaine2006/trunk"
 #set :user, "mlavi"
 # set :svn, "svn+ssh://moukari.assembly.org/data/livesvn/elaine2006"
-ssh_options[:keys] = %w(/home/mlavi/.ssh/id_dsa ~/.ssh/id_dsa)
-ssh_options[:port] = 25
-#ssh_options[:key] = "~/.ssh/id_dsa"
-#ssh_options[:port] = 25
+ssh_options[:keys] = %w(~/.ssh/id_dsa /home/mlavi/.ssh/id_dsa)
+ssh_options[:port] = 22
 set :use_sudo, false
 
 # role :web, "intra.assembly.org/livecrew/elaine"
