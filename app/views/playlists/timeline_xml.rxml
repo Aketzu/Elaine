@@ -50,7 +50,7 @@ xml.data() do
       :isDuration => 'true',
       :link       => "/programs/edit/" + playlist.Program.id.to_s,
       :color      => playlist.color,
-      :title      => playlist.start_time.strftime("%H:%M") + " " + playlist.Program.encoded_title
+      :title      => playlist.start_time.strftime("%H:%M") + " " + encode_entities(playlist.Program.title)
     )
   end
 end

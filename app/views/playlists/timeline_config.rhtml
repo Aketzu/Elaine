@@ -92,14 +92,14 @@ function onLoad() {
   bandInfos[2].highlight = true;
 /*  bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());*/
 
-  Timeline.loadXML("/elaine/playlists/timeline_xml?show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
-  Timeline.loadXML("/elaine/playlists/timeline_xml", function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml?show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
   tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
   tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1));
   updateCurrentTimeIndicator();
   /*
   setTimeout("centerTimeline()", centerToCurrentInterval);
-  Timeline.loadXML("/elaine/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
   setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1], theme);
   */
 }
