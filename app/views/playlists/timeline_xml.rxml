@@ -23,34 +23,28 @@ xml.data() do
         )
         current_time += event.length
       end
+
+    else
+
+      # List each Playlist entry
+      xml.event(
+        '<div style="float: left;">' + playlist.formatted_length + ', ' + 
+        encode_entities(playlist.Program.title) + '</div><div style="float: right;">(' +
+        playlist.Program.status + ')</div>' +
+        '<br>' +
+        '<a href="/playlists/edit/' + playlist.id.to_s + '">Edit this playlist-entry</a>' +
+        '<br>[' +
+        '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
+        '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
+        '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
+        ']</div>',
+        :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S"),
+        :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S"),
+        :isDuration => 'true',
+        :link       => "/programs/edit/" + playlist.Program.id.to_s,
+        :color      => playlist.color,
+        :title      => playlist.start_time.strftime("%H:%M") + " " + encode_entities(playlist.Program.title)
+      )
     end
-
-#s = StringScanner.new(playlist.Program.title)
-#titteli = ""
-#prevpos = 0
-#while pos = s.exist?(/\&/)
-#  titteli = playlist.Program.title[prevpos,pos] + "\\\&"
-#  prevpos = pos+2
-#end
-
-    # List each Playlist entry
-    xml.event(
-      '<div style="float: left;">' + playlist.formatted_length + ', ' + 
-      encode_entities(playlist.Program.title) + '</div><div style="float: right;">(' +
-      playlist.Program.status + ')</div>' +
-      '<br>' +
-      '<a href="/playlists/edit/' + playlist.id.to_s + '">Edit this playlist-entry</a>' +
-      '<br>[' +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
-      '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
-      ']</div>',
-      :start      => playlist.start_time.strftime("%B %d %Y %H:%M:%S"),
-      :end        => playlist.end_time.strftime("%B %d %Y %H:%M:%S"),
-      :isDuration => 'true',
-      :link       => "/programs/edit/" + playlist.Program.id.to_s,
-      :color      => playlist.color,
-      :title      => playlist.start_time.strftime("%H:%M") + " " + encode_entities(playlist.Program.title)
-    )
   end
 end

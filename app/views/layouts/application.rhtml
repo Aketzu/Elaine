@@ -13,7 +13,9 @@
   <%= engine_javascript "user" %>
   <%= engine_javascript "menu_engine" %>
   <%= if @timeline then '<script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
-  <%= if @timeline then '<script src="timeline_config" type="text/javascript"></script>' end %>
+  <% if @timeline %>
+  <script src="timeline_config?channel_id=<%=@channel_id.to_s%>" type="text/javascript"></script>
+  <% end %>
 </head>
 <% if @timeline %>
 <body onload="onLoad(<%=@channel_id.to_s%>);" onresize="onResize();">

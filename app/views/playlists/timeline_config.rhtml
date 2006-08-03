@@ -59,7 +59,7 @@ function onLoad(channel_id) {
   <% } %>
   ];
 
-  theme.event.label.width   = 250; // px
+  //theme.event.label.width   = 250; // px
   theme.event.bubble.width  = 350;
   theme.event.bubble.height = 200;
 
@@ -67,8 +67,16 @@ function onLoad(channel_id) {
     Timeline.createHotZoneBandInfo({
       zones:          zones1,
       theme:          theme,
+      eventSource:    eventSource_without_subevents,
+      width:          "35%",
+      intervalUnit:   Timeline.DateTime.HOUR,
+      intervalPixels: 600
+    }),
+    Timeline.createHotZoneBandInfo({
+      zones:          zones1,
+      theme:          theme,
       eventSource:    eventSource_with_subevents,
-      width:          "70%",
+      width:          "35%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
