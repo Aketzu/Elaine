@@ -106,9 +106,9 @@ function onLoad() {
 
 function updateCurrentTimeIndicator() {
   date1 = new Date();
-  date1.setHours((date1.getHours() + 3) % 24);
+  date1.setHours((date1.getHours() + timeZone) % 24);
   date2 = new Date(new Date((new Date()).valueOf() + 60000));
-  date2.setHours((date2.getHours() + 3) % 24);
+  date2.setHours((date2.getHours() + timeZone) % 24);
 
   if(centerToCurrentEnabled) {
     for (var i = 0; bandInfos.length > i; i++) {
