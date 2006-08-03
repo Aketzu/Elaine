@@ -20,7 +20,7 @@ module TimeHelper
     minutes = formatted[3,2]
     seconds = formatted[6,2]
     if( (not formatted.nil?) && (formatted.length == 8) )
-      ((((hours.to_f * 60) + minutes.to_f) * 60) + seconds.to_i).to_i
+      ((((hours.to_f * 60.0) + minutes.to_f) * 60.0) + seconds.to_i).to_i
     else
       nil
     end

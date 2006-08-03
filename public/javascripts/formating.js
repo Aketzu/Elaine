@@ -15,16 +15,16 @@ function FormatLength(param)
   switch(times.length)
   {
     case 3:
-      dt.setHours(parseInt(times[0]))
-      dt.setMinutes(parseInt(times[1]))
-      dt.setSeconds(parseInt(times[2]))
+      dt.setHours(parseFloat(times[0]))
+      dt.setMinutes(parseFloat(times[1]))
+      dt.setSeconds(parseFloat(times[2]))
       break;
     case 2:
-      dt.setMinutes(parseInt(times[0]))
-      dt.setSeconds(parseInt(times[1]))
+      dt.setMinutes(parseFloat(times[0]))
+      dt.setSeconds(parseFloat(times[1]))
       break;
     default:
-      dt.setSeconds(parseInt(times[0]))
+      dt.setSeconds(parseFloat(times[0]))
       break;
   }
 
@@ -47,8 +47,8 @@ function FormatTime(param)
 
   if(times.length == 2)
   {
-      dt.setHours(parseInt(times[0]))
-      dt.setMinutes(parseInt(times[1]))
+      dt.setHours(parseFloat(times[0]))
+      dt.setMinutes(parseFloat(times[1]))
   }
   else
     return;

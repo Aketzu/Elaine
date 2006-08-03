@@ -74,12 +74,13 @@ select {
   min-width: 3em;
 }
 
-div.content {
-  margin:  30px;
-}
-
 div.listing_content {
   float: left;
+}
+
+#content {
+  margin:  30px;
+  padding-bottom: 5em;
 }
 
 #footer {

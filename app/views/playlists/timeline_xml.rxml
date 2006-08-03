@@ -24,7 +24,15 @@ xml.data() do
         current_time += event.length
       end
     end
-    
+
+s = StringScanner.new(playlist.Program.title)
+titteli = ""
+prevpos = 0
+while pos = s.exist?(/\&/)
+  titteli = playlist.Program.title[prevpos,pos] + "\\\&"
+  prevpos = pos+2
+end
+
     # List each Playlist entry
     xml.event(
       '<div style="float: left;">' + playlist.formatted_length + ', ' + 

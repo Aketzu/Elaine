@@ -4,7 +4,8 @@
 <!--[form:event]-->
 <tr>
 <th class="edit">Title</th>
-<td class="edit"><%= text_field 'event', 'title', 'class' => "text" %></td>
+<td class="edit"><%= text_field 'event', 'title', 'class' => "text", 
+                       "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
 </tr>
 
 <tr>
