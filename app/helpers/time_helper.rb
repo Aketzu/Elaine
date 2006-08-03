@@ -16,9 +16,9 @@ module TimeHelper
   end
 
   def parse_formatted_length(formatted)
-    hours = formatted[0,1].to_i
-    minutes = formatted[3,4]
-    seconds = formatted[6,7]
+    hours = formatted[0,2]
+    minutes = formatted[3,2]
+    seconds = formatted[6,2]
     if( (not formatted.nil?) && (formatted.length == 8) )
       ((((hours.to_f * 60) + minutes.to_f) * 60) + seconds.to_i).to_i
     else
