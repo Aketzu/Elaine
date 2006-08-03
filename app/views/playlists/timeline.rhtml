@@ -1,7 +1,3 @@
-<p>The timeline display gives you detailed information about broadcasting playlist. You can drag the timeline and click on the items to get more information.</p>
-
-<p>Timeline will focus on current moment after 60 seconds so that this page can also be left open. It will also reload the data at that time.</p>
-
 <table><tr>
 <td>
   <%= start_form_tag :action => 'timeline' %>
@@ -13,11 +9,11 @@
 </td>
 
 <td>
-  <input type="submit" value="Toggle centering (off)" onClick='javascript:if(toggleCenter()) this.value="Toggle centering (on)"; else this.value="Toggle centering (off)";'>
+  <input type="submit" value="Toggle centering (off)" onClick='javascript:if(toggleCenter()) this.value="Toggle centering (on)"; else this.value="Toggle centering (off)";' alt="Centers current time every 10s">
 </td>
 </tr></table>
 
-<div id="playlist_timeline" style="height: 600px; border: 1px solid #aaa"></div>
+<div id="playlist_timeline" style="height: 400px; border: 1px solid #aaa"></div>
 
 <div class="controls" id="controls">
 </div>

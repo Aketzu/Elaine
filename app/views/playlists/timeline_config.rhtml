@@ -26,14 +26,14 @@ var orvo = new Date().toString();
 var date = Timeline.DateTime.parseGregorianDateTime(orvo.substring(0, orvo.lastIndexOf("(")));
 var timeZone = ((new Date(date)).getHours() - (new Date()).getHours());
 
-var updateCurrentTimeInterval = 5000;
-var centerToCurrentInterval   = 5000;
+var updateCurrentTimeInterval = 10000;
+var centerToCurrentInterval   = 10000;
 var centerToCurrentEnabled    = false;
 
 var bandInfos;
 var theme = Timeline.ClassicTheme.create();
 
-function onLoad() {
+function onLoad(channel_id) {
   eventSource_with_subevents    = new Timeline.DefaultEventSource();
   eventSource_without_subevents = new Timeline.DefaultEventSource();
 
@@ -92,8 +92,8 @@ function onLoad() {
   bandInfos[2].highlight = true;
 /*  bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());*/
 
-  Timeline.loadXML("/playlists/timeline_xml?show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
-  Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id+"&show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
+  Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id, function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
   tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
   tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1));
   updateCurrentTimeIndicator();
