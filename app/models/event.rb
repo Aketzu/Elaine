@@ -27,7 +27,7 @@ def formatted_length=(formatted)
 end
 
 def full_filename
-  "p_" + self.id.to_s + "_" + (self.filename || "") + ".avi"
+  "e_" + self.id.to_s + "_" + (self.filename || "") + ".avi"
 end
 
 def file_exists?
