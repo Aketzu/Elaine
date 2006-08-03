@@ -20,7 +20,6 @@ class PlaylistsController < ApplicationController
     end
     @now = Time.now
     @playlist = Playlist.new
-    @playlist.movable = true
     @playlist.start_time = Playlist.find(:first, :order => 'start_time desc').end_time
     if @playlist.start_time < @now
       @playlist.start_time = @now
