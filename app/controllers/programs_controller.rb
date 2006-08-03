@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
 
   def new
     @program          = Program.new
-    @program.do_vod = true
+    @program.do_vod   = true
     @program_descriptions = []
     for language in Language.get_compulsory
       @program_descriptions << ProgramDescription.new(:language_id => language.id)

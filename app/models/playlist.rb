@@ -7,7 +7,7 @@ validates_associated :Program
 validates_associated :Channel
 
 def end_time
-  start_time + self.Program.length
+  self.start_time + self.Program.length
 end
 
 def formatted_length

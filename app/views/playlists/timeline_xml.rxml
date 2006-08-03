@@ -25,13 +25,13 @@ xml.data() do
       end
     end
 
-s = StringScanner.new(playlist.Program.title)
-titteli = ""
-prevpos = 0
-while pos = s.exist?(/\&/)
-  titteli = playlist.Program.title[prevpos,pos] + "\\\&"
-  prevpos = pos+2
-end
+#s = StringScanner.new(playlist.Program.title)
+#titteli = ""
+#prevpos = 0
+#while pos = s.exist?(/\&/)
+#  titteli = playlist.Program.title[prevpos,pos] + "\\\&"
+#  prevpos = pos+2
+#end
 
     # List each Playlist entry
     xml.event(
@@ -50,7 +50,7 @@ end
       :isDuration => 'true',
       :link       => "/programs/edit/" + playlist.Program.id.to_s,
       :color      => playlist.color,
-      :title      => playlist.start_time.strftime("%H:%M") + " " + playlist.Program.title
+      :title      => playlist.start_time.strftime("%H:%M") + " " + playlist.Program.encoded_title
     )
   end
 end

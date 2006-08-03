@@ -12,7 +12,7 @@
 
   <%= engine_javascript "user" %>
   <%= engine_javascript "menu_engine" %>
-  <%= if @timeline then '<script src="/elaine/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
+  <%= if @timeline then '<script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
   <%= if @timeline then '<script src="timeline_config" type="text/javascript"></script>' end %>
 </head>
 <%= if @timeline then '<body onload="onLoad();" onresize="onResize();">' else '<body>' end %>
