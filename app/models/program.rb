@@ -28,7 +28,7 @@ def quarantine
 end
 
 def length
-  self.Events.sum('length') || 0 
+  self.Events.sum('length') || 0
 end
 
 def status
@@ -38,7 +38,7 @@ end
 def title  # might require some tunkking yet
   @descriptor = self.program_descriptions.find(:first)
   if (@descriptor) then
-    @descriptor.title || "-"
+    encode_entities(@descriptor.title) || "-"
   end
 end
 
