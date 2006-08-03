@@ -1,5 +1,22 @@
 ---
 - !ruby/object:MenuItem 
+  controller: elaine
+  text: Elaine
+  action: index
+  items: []
+  - !ruby/object:MenuItem 
+    text: Elaine
+    controller: elaine
+    action: index
+  - !ruby/object:MenuItem 
+    text: Elaine Known Issues<br/><span class="description">..if you have a problem</span>
+    controller: elaine
+    action: issues
+  - !ruby/object:MenuItem 
+    text: Elaine TODO<br/><span class="description">Things to be done</span>
+    controller: elaine
+    action: todo
+- !ruby/object:MenuItem 
   controller: playlists
   text: Playlist
   action: list

@@ -10,6 +10,10 @@ body {
   padding: 0px;
 }
 
+li {
+  padding-bottom: 1em;
+}
+
 table {
   margin:  0px;
   border-spacing: 0px;

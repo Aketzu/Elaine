@@ -8,7 +8,7 @@ class UserController < ApplicationController
   def home
     if user?
       @fullname = "#{current_user.firstname} #{current_user.lastname}"
-      redirect_to :controller => 'playlists', :action => 'list'
+      redirect_to :controller => 'elaine', :action => 'index'
     else
       @fullname = "Not logged in..."
     end # this is a bit of a hack since the home action is used to verify user
