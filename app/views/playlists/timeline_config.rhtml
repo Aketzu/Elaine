@@ -68,7 +68,7 @@ function onLoad(channel_id) {
       zones:          zones1,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
-      width:          "35%",
+      width:          "30%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
@@ -76,14 +76,14 @@ function onLoad(channel_id) {
       zones:          zones1,
       theme:          theme,
       eventSource:    eventSource_with_subevents,
-      width:          "35%",
+      width:          "30%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
     Timeline.createHotZoneBandInfo({
       zones:          zones2,
       eventSource:    eventSource_without_subevents,
-      width:          "26%",
+      width:          "36%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 100
     }),
@@ -113,13 +113,15 @@ function onLoad(channel_id) {
 }
 
 function updateCurrentTimeIndicator() {
-  date1 = new Date();
-  date1.setHours((date1.getHours() + timeZone) % 24);
-  date2 = new Date(new Date((new Date()).valueOf() + 60000));
-  date2.setHours((date2.getHours() + timeZone) % 24);
+  var widths = [60000, 60000, 360000, 1800000]
 
   if(centerToCurrentEnabled) {
     for (var i = 0; bandInfos.length > i; i++) {
+      date1 = new Date();
+      date1.setHours((date1.getHours() + timeZone) % 24);
+      date2 = new Date(new Date((new Date()).valueOf() + widths[i]));
+      date2.setHours((date2.getHours() + timeZone) % 24);
+      
       bandInfos[i].decorators = [
         new Timeline.SpanHighlightDecorator({
           startDate:  date1,
@@ -131,9 +133,6 @@ function updateCurrentTimeIndicator() {
           theme:      theme
         })
       ];
-      date2 = new Date(new Date((new Date()).valueOf() + 200000 * (i+1)));
-      date2.setHours((date2.getHours() + 3) % 24);
-      date2 = date2.toUTCString();
     }
     tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
     tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1.toString()));
