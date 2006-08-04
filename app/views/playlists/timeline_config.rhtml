@@ -48,17 +48,6 @@ function onLoad(channel_id) {
   <% } %>
   ];
 
-  var zones2 = [
-  <% @playlists.each_with_index {|playlist, index| %>
-      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S") %>",
-          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S") %>",
-          magnify:    1,
-          unit:       Timeline.DateTime.HOUR,
-          multiple:   1
-      }<% if @playlists.length - index > 1 %>,<% end %>
-  <% } %>
-  ];
-
   //theme.event.label.width   = 250; // px
   theme.event.bubble.width  = 350;
   theme.event.bubble.height = 200;
@@ -80,21 +69,14 @@ function onLoad(channel_id) {
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
-    Timeline.createHotZoneBandInfo({
-      zones:          zones2,
+    Timeline.createBandInfo({
       eventSource:    eventSource_without_subevents,
-      width:          "16%",
+      width:          "20%",
       showEventText:  false, 
       trackHeight:    0.5,
       trackGap:       0.2,
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 100
-    }),
-    Timeline.createBandInfo({
-      eventSource:    new Timeline.DefaultEventSource(),
-      width:          "4%",
-      intervalUnit:   Timeline.DateTime.DAY,
-      intervalPixels: 500
     })
   ];
   bandInfos[1].syncWith = 0;
