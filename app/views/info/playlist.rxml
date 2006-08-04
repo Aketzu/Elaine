@@ -1,10 +1,11 @@
+xml.instruct! :xml, :encoding => "ISO-8859-1"
 unless @channel.nil?
   xml.schedule(:id => @channel.name) do
     for item in @items
       program = item.Program
       xml.program(:id => program.id) do
         xml.starttime(xmldatetime(item.start_time))
-        xml.endttime(xmldatetime(item.end_time))
+        xml.endtime(xmldatetime(item.end_time))
         xml.length(program.formatted_length)
         for desc in program.program_descriptions
              langcode = desc.language.code

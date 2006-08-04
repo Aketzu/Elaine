@@ -1,1 +1,2 @@
+xml.instruct! :xml, :encoding => "ISO-8859-1"
 xml.vods("Will be here.")

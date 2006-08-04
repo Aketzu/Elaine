@@ -2,6 +2,11 @@
 
 <!--[form:program]-->
 <tr>
+<th class="edit">Length</th>
+<td class="edit"><%= @program.formatted_length %></td>
+</tr>
+
+<tr>
 <th class="edit">Notes</th>
 <td class="edit"><%= text_area 'program', 'notes', 
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
