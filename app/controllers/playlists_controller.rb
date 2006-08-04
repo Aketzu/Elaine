@@ -37,6 +37,8 @@ class PlaylistsController < ApplicationController
   def timeline
     list
     @timeline = true
+    @broadcast_log = BroadcastLog.new()
+    @broadcast_log.channel_id = @channel_id
     @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
   end
 
@@ -45,13 +47,12 @@ class PlaylistsController < ApplicationController
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
-    timeline
+    @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
     @show_events = params[:show_events]
   end
 
   def timeline_config
-    list
-    timeline
+    timeline_xml
     @now1 = Time.now
     @now2 = Time.now + 60
   end

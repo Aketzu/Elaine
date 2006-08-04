@@ -28,12 +28,18 @@ class BroadcastLogsController < ApplicationController
   end
 
   def create
-    @broadcast_log = BroadcastLog.new(params[:broadcast_log])
-    if @broadcast_log.save
-      flash[:notice] = 'BroadcastLog was successfully created.'
-      redirect_to :action => 'list'
-    else
-      render :action => 'new'
+    @broadcast_log = BroadcastLog.find(:first, 
+      :conditions => ["program_id = ? AND channel_id = ? AND start_time = ?", 
+                      params[:program_id], 
+                      params[:channel_id], 
+                      params[:start_time]])
+    @saved = nil
+    if @broadcast_log.nil?
+      @broadcast_log = BroadcastLog.new
+      @broadcast_log.program_id = params[:program_id]
+      @broadcast_log.channel_id = params[:channel_id]
+      @broadcast_log.start_time = params[:start_time]
+      @saved = @broadcast_log.save
     end
   end
 
@@ -52,7 +58,12 @@ class BroadcastLogsController < ApplicationController
   end
 
   def destroy
-    BroadcastLog.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    if @broadcast_log = BroadcastLog.find(:first, 
+        :conditions => ["program_id = ? AND channel_id = ? AND start_time = ?", 
+                        params[:program_id], 
+                        params[:channel_id], 
+                        params[:start_time]])
+      @success = true if @broadcast_log.destroy
+    end
   end
 end

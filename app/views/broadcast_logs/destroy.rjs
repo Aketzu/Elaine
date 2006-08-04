@@ -1,0 +1,3 @@
+if @success
+  page.call 'alert', 'Broadcast successfully cancelled!'
+end

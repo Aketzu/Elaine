@@ -33,8 +33,11 @@ xml.data() do
         playlist.Program.status + ')</div>' +
         '<br>' +
         '<a href="/playlists/edit/' + playlist.id.to_s + '">Edit this playlist-entry</a>' +
-        '<br>[' +
-        '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Planning\', {asynchronous:true, evalScripts:true}); return false;">Planning</a>' + "|" +
+        '<br>' +
+        '<input type="submit" value="Begin Broadcast" id="broadcast_' + playlist.id.to_s + '_start"                       onClick="this.disabled=true;document.getElementById(\'broadcast_' + playlist.id.to_s + '_cancel\').disabled=false;new Ajax.Request(\'/broadcast_logs/create?program_id='  + playlist.Program.id.to_s + '&channel_id=' + @channel_id.to_s + '&start_time=' + playlist.start_time.to_s + '\', {asynchronous:true, evalScripts:true}); return false;">&nbsp;' +
+        '<input type="submit" value="Cancel"          id="broadcast_' + playlist.id.to_s + '_cancel" disabled="disabled"  onClick="this.disabled=true;document.getElementById(\'broadcast_' + playlist.id.to_s +  '_start\').disabled=false;new Ajax.Request(\'/broadcast_logs/destroy?program_id=' + playlist.Program.id.to_s + '&channel_id=' + @channel_id.to_s + '&start_time=' + playlist.start_time.to_s + '\', {asynchronous:true, evalScripts:true}); return false;">' +
+        '<br>[' + 
+        '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
         '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Production\', {asynchronous:true, evalScripts:true}); return false;">Production</a>' + "|" +
         '<a href="#" onclick="new Ajax.Request(\'/programs/set_status/' + playlist.Program.id.to_s + '?status=Complete\', {asynchronous:true, evalScripts:true}); return false;">Complete</a>' + "|" +
         ']</div>',

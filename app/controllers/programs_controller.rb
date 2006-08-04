@@ -3,6 +3,8 @@ class ProgramsController < ApplicationController
 
   before_filter :require_no_ssl if (RAILS_ENV == "production")
 
+  auto_complete_for :event, :title
+
   def index
     list
     render :action => 'list'
@@ -131,5 +133,4 @@ class ProgramsController < ApplicationController
     redirect_to :action => 'list'
   end
   
-  auto_complete_for :event, :title
 end

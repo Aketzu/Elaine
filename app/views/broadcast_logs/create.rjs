@@ -1,0 +1,3 @@
+if @saved.nil?
+  page.call 'alert', 'This entry is already broadcasting. Enabling cancel.'
+end
