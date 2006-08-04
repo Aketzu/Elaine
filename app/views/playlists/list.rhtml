@@ -6,6 +6,13 @@
     <%= options_from_collection_for_select(Channel.find(:all), "id", "name", @channel_id) %>
   </select>
 <%= submit_tag "Update", 'name' => 'update' %>
+
+<% if params[:show_past].nil? %>
+<%= link_to "Show past items", :show_past => 1 %>
+<% else %>
+<%= link_to "Hide past items" %>
+<% end %>
+
 <%= end_form_tag %>
 
 <%= render :partial => 'playlists', :object => @playlists %>

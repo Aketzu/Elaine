@@ -18,7 +18,11 @@ class PlaylistsController < ApplicationController
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
+
     @now = Time.now
+    @past = Time.at(Time.now.to_i - 3600*1)
+    @current = Playlist.find(:first, :conditions => ["channel_id = ? AND start_time < ?", @channel_id, @now], :order => 'start_time DESC')
+
     @playlist = Playlist.new
     @playlist.start_time = Playlist.find(:first, :order => 'start_time desc').end_time
     if @playlist.start_time < @now
@@ -27,7 +31,11 @@ class PlaylistsController < ApplicationController
     @playlist.start_time += (60 - @playlist.start_time.to_i % 60)
 
     @channels = Channel.find(:all)
-    @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
+    if params[:show_past].nil?
+      @playlists = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > ?", @channel_id, @past], :order => 'start_time')
+    else
+      @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
+    end
   end
 
   def show
@@ -43,11 +51,12 @@ class PlaylistsController < ApplicationController
   end
 
   def timeline_xml
+    @past = Time.at(Time.now.to_i - 3600*5)
     @channel_id = params[:channel_id].to_i
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end
-    @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time')
+    @playlists = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > ?", @channel_id, @past], :order => 'start_time')
     @show_events = params[:show_events]
   end
 

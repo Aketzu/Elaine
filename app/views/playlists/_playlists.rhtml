@@ -62,7 +62,7 @@ end
     <% end %>
   <% end %>
 
-  <tr class="<%= @current_cycle %>" <% if(playlist.end_time < @now) %>id="past"<% end %> >
+  <tr class="<%= @current_cycle %>" <%if playlist.id == @current.id %>id="now_playing"<% elsif(playlist.end_time < @now) %>id="past_events"<% end %> >
     <td class="playlist_cell"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></td>
     <td class="playlist_cell"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell"><%= playlist.Program.formatted_length %></td>
@@ -77,3 +77,4 @@ end
   <% end_time = playlist.end_time %>
 <% } %>
 </table>
+<%= @now %>
