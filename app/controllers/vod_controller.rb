@@ -14,7 +14,7 @@ class VodController < ApplicationController
     #Efficiency note: We assume that is usually |VodFormats| << |Programs| 
     VodFormat.find(:all).each do |format|
       format.VodGroups.each do |group|
-        program = group.Programs.find(:first, :conditions => ["(SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id])
+        program = group.Programs.find(:first, :conditions => ["do_vod = true AND (SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id])
         unless program.nil?
           if program.file_exists? 
              # We have a winner

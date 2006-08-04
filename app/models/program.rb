@@ -41,7 +41,7 @@ end
 def title  # might require some tunkking yet
   @descriptor = self.program_descriptions.find(:first)
   if (@descriptor) then
-    encode_entities(@descriptor.title) || "-"
+    @descriptor.title || "-"
   end
 end
 
