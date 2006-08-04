@@ -37,24 +37,30 @@ function onLoad(channel_id) {
   eventSource_with_subevents    = new Timeline.DefaultEventSource();
   eventSource_without_subevents = new Timeline.DefaultEventSource();
 
-  var zones1 = [
-  <% @playlists.each_with_index {|playlist, index| %>
-      {   start:      "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S") %>",
-          end:        "<%= playlist.end_time.strftime("%B %d %Y %H:%M:%S") %>",
-          magnify:    1,
-          unit:       Timeline.DateTime.MINUTE,
-          multiple:   5
-      }<% if @playlists.length - index > 1 %>,<% end %>
-  <% } %>
-  ];
-
   //theme.event.label.width   = 250; // px
   theme.event.bubble.width  = 350;
   theme.event.bubble.height = 200;
 
+  var zones_minute = [
+      {   start:      "<%= Playlist.find(:first, :order => 'start_time  ASC').start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= Playlist.find(:first, :order => 'start_time DESC').end_time.strftime("%B %d %Y %H:%M:%S") %>",
+          magnify:    1,
+          unit:       Timeline.DateTime.MINUTE,
+          multiple:   5
+      }
+  ];
+  var zones_hour = [
+      {   start:      "<%= Playlist.find(:first, :order => 'start_time  ASC').start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= Playlist.find(:first, :order => 'start_time DESC').end_time.strftime("%B %d %Y %H:%M:%S") %>",
+          magnify:    1,
+          unit:       Timeline.DateTime.HOUR,
+          multiple:   1
+      }
+  ];
+
   bandInfos = [
     Timeline.createHotZoneBandInfo({
-      zones:          zones1,
+      zones:          zones_minute,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
       width:          "40%",
@@ -62,28 +68,29 @@ function onLoad(channel_id) {
       intervalPixels: 600
     }),
     Timeline.createHotZoneBandInfo({
-      zones:          zones1,
+      zones:          zones_minute,
       theme:          theme,
       eventSource:    eventSource_with_subevents,
       width:          "40%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
-    Timeline.createBandInfo({
+    Timeline.createHotZoneBandInfo({
+      zones:          zones_hour,
+      theme:          theme,
       eventSource:    eventSource_without_subevents,
       width:          "20%",
       showEventText:  false, 
       trackHeight:    0.5,
       trackGap:       0.2,
-      intervalUnit:   Timeline.DateTime.HOUR,
-      intervalPixels: 100
+      intervalUnit:   Timeline.DateTime.DAY,
+      intervalPixels: 2400
     })
   ];
   bandInfos[1].syncWith = 0;
   bandInfos[2].syncWith = 0;
   bandInfos[1].highlight = true;
   bandInfos[2].highlight = true;
-/*  bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());*/
 
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id+"&show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id, function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
@@ -103,9 +110,9 @@ function updateCurrentTimeIndicator() {
   if(centerToCurrentEnabled) {
     for (var i = 0; bandInfos.length > i; i++) {
       date1 = new Date();
-      date1.setHours((date1.getHours() + timeZone) % 24);
+      date1.setHours((date1.getHours() + timeZone*0) % 24);
       date2 = new Date(new Date((new Date()).valueOf() + widths[i]));
-      date2.setHours((date2.getHours() + timeZone) % 24);
+      date2.setHours((date2.getHours() + timeZone*0) % 24);
       
       bandInfos[i].decorators = [
         new Timeline.SpanHighlightDecorator({
