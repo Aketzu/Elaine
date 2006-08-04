@@ -94,13 +94,15 @@ function onLoad(channel_id) {
 
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id+"&show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id, function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
-  tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
+
+  tl = Timeline.create(document.getElementById("tl"), bandInfos);
+  setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1,2], theme);
+
   tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1));
   updateCurrentTimeIndicator();
   /*
   setTimeout("centerTimeline()", centerToCurrentInterval);
   Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
-  setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1], theme);
   */
 }
 
@@ -126,7 +128,7 @@ function updateCurrentTimeIndicator() {
         })
       ];
     }
-    tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
+    tl = Timeline.create(document.getElementById("tl"), bandInfos);
     tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1.toString()));
   }
   setTimeout("updateCurrentTimeIndicator()", updateCurrentTimeInterval);
@@ -146,7 +148,7 @@ function toggleCenter() {
     for (var i = 0; bandInfos.length > i; i++) {
       bandInfos[i].decorators = [];
     }
-    tl = Timeline.create(document.getElementById("playlist_timeline"), bandInfos);
+    tl = Timeline.create(document.getElementById("tl"), bandInfos);
     tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1.toString()));
   }
   
