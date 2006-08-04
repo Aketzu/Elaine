@@ -13,6 +13,7 @@
   <%= engine_javascript "user" %>
   <%= engine_javascript "menu_engine" %>
   <%= if @timeline then '<script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
+  <%= if @timeline then '<script src="/javascripts/timeline_extension.js" type="text/javascript"></script>' end %>
   <% if @timeline %>
   <script src="timeline_config?channel_id=<%=@channel_id.to_s%>" type="text/javascript"></script>
   <% end %>
