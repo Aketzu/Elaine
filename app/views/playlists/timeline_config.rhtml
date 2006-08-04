@@ -68,7 +68,7 @@ function onLoad(channel_id) {
       zones:          zones1,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
-      width:          "30%",
+      width:          "40%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
@@ -76,14 +76,17 @@ function onLoad(channel_id) {
       zones:          zones1,
       theme:          theme,
       eventSource:    eventSource_with_subevents,
-      width:          "30%",
+      width:          "40%",
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
     Timeline.createHotZoneBandInfo({
       zones:          zones2,
       eventSource:    eventSource_without_subevents,
-      width:          "36%",
+      width:          "16%",
+      showEventText:  false, 
+      trackHeight:    0.5,
+      trackGap:       0.2,
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 100
     }),
