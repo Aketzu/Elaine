@@ -28,7 +28,7 @@
     <span style="padding-left: 3em;">
     <% unless @program_pages.nil? %>
     <%= if @program_pages.current.previous then link_to 'Previous page', { :page => @program_pages.current.previous } else 'Previous page' end %>
-    <%= pagination_links @program_pages %>
+    <%= pagination_links @program_pages, :params => {'find_by_user' => @user.id} %>
     <%= if @program_pages.current.next     then link_to 'Next page', { :page => @program_pages.current.next }         else 'Next page' end %> 
     <% end %>
     </span>
