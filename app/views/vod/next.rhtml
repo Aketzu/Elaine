@@ -1,15 +1,11 @@
 <% unless @program.nil? %>
-  VOD|
-  <%= @vod.id %>|
-  <%= @vod_format.name %>|
-  <%  
+  VOD|<%= @vod.id %>|<%= @vod_format.name %>|<%  
     image_offset = @program.preview_image_offset || 30
     if image_offset > @program.length 
       image_offset = @program.length
     end
   %> 
-  <%= image_offset %>|
-  <% 
+  <%= image_offset %>|<% 
     video_offset = @program.preview_video_offset || 0
     if video_offset > @program.length - 30
       video_offset = @program.length - 30
@@ -17,8 +13,5 @@
     if video_offset < 0
       video_offset = 0
     end
-  %>
-  <%= video_offset %>|
-  <%= @vod.base_filename %>|
-  <%= @program.full_filename %>
+  %><%= video_offset %>|<%= @vod.base_filename %>|<%= @program.full_filename %>
 <% end %>
