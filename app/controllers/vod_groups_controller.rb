@@ -42,7 +42,7 @@ class VodGroupsController < ApplicationController
     @vod_group = VodGroup.find(params[:id])
     if @vod_group.update_attributes(params[:vod_group])
       flash[:notice] = 'VodGroup was successfully updated.'
-      redirect_to :action => 'show', :id => @vod_group
+      redirect_to :action => 'list', :id => @vod_group
     else
       render :action => 'edit'
     end
@@ -71,6 +71,15 @@ class VodGroupsController < ApplicationController
       end
     end
   end  
+  
+  def remove_vod_format
+    @vod_group_format_link = VodGroupFormatLink.find(params[:id])
+    @redirect_id     = @vod_group_format_link.vod_group_id
+    @vod_group_format_link.destroy
+    flash[:notice] = 'The format was successfully removed'
+    redirect_to :action => 'show',
+                :id => @redirect_id  
+  end
   
   auto_complete_for :vod_format, :name  
 end

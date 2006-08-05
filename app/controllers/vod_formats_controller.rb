@@ -42,7 +42,7 @@ class VodFormatsController < ApplicationController
     @vod_format = VodFormat.find(params[:id])
     if @vod_format.update_attributes(params[:vod_format])
       flash[:notice] = 'VodFormat was successfully updated.'
-      redirect_to :action => 'show', :id => @vod_format
+      redirect_to :action => 'list', :id => @vod_format
     else
       render :action => 'edit'
     end

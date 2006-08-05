@@ -12,8 +12,10 @@ end
 
 def vods
   # We assume most vods are past quarantine and thus don't make complicated joins
-  @programs = Program.find(:all, :conditions => ["quarantine",])
+  #events = Event.find(:all, :conditions => ["quarantine < ?", Time.now])
+  @vods = Vod.find(:all) #TODO: Quarantine
   @langcode = params[:id]
+  @language = Language.find(:first, :conditions => ["code = ?", @langcode])
 end
 
 end

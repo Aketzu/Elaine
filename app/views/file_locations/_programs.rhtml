@@ -1,11 +1,9 @@
-<tr>
-  <th class="edit">Programs</th>
-  <td class="edit">
-    <table>
-      <tr class="header">
-        <th>Title</th>
-        <th></th>
-      </tr>
+<p><b>Programs</b></p>
+<table>
+  <% offset = 0 %>
+  <tr class="header">
+     <td>Name</td>
+  </tr>
       <% for program in programs %>
       <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
         <td>

@@ -14,10 +14,18 @@ def exists?(filename)
    if(result == "true")
      true
    else
-     nil
+     niltest
    end
    rescue
      nil
+end
+
+def works?
+  if(self.exists?("test") and !self.exists?(" "))
+    true
+  else
+    nil
+  end
 end
 
 end

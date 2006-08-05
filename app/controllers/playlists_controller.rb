@@ -88,9 +88,14 @@ class PlaylistsController < ApplicationController
 
   def add_to_playlist
     @playlist = Playlist.new(params[:playlist])
-    @saved = @playlist.save
-    list
-    redirect_to(:action => 'index') unless request.xhr?
+#    if(@playlist.start_time < @playlist.Program.quarantine) # TODO: Refactor commonality with same check for update?
+#      flash[:error] = 'You cannot add a program for showing before its quarantine time!'
+#      redirect_to(:action => 'index')
+#    else
+      @saved = @playlist.save
+      list
+      redirect_to(:action => 'index') unless request.xhr?
+#    end
   end
 
   def edit
@@ -103,11 +108,17 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
-    if @playlist.update_attributes(params[:playlist])
-      flash[:notice] = 'Playlist was successfully updated.'
-      redirect_to(:action => 'list', :channel_id => @playlist.channel_id)
-    else
+    candidate_playlist = Playlist.new(params[:playlist])
+    if(candidate_playlist.start_time < @playlist.Program.quarantine)
+      flash[:error] = "You cannot change a program's showing time to before its quarantine time! (which is " + @playlist.Program.quarantine.strftime("%d.%m.%Y %H:%M:%S") + ")"
       render :action => 'edit'
+    else
+      if @playlist.update_attributes(params[:playlist])
+        flash[:notice] = 'Playlist was successfully updated.'
+        redirect_to(:action => 'list', :channel_id => @playlist.channel_id)
+      else
+        render :action => 'edit'
+      end
     end
   end
 

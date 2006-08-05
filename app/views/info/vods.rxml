@@ -1,35 +1,47 @@
 xml.instruct! :xml, :encoding => "ISO-8859-1"
-xml.rss(:version => "2.0") do
+unless @language.nil?
 
-  xml.channel do
-    xml.title("Assembly 2006 VOD")
-    xml.description("VOD files of Assembly 2006 TV, compos and seminars")
-    xml.link("http://alive.assembly.org") # TODO: Point this to what?
-    xml.pubDate(xmldatetime(Time.now))
-    xml.ttl("5")
-    
-    for vod in @vods
-      xml.item do
-#        for desc in program.program_descriptions
+  xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss/") do
 
-        xml.title(desc.title, :'xml:lang' => @langcode)
-        xml.description(desc.public_description, :'xml:lang' => @langcode)      
-        xml.link("http://www.assemblytv.net/") # TODO: Additional info is where?
-        xml.pudDate(vod.updated_at)
-        xml.guid(url_for(:controller => 'vods', :id => vod.id))
- 
-        xml.media::group do
-          xml.media::thumbnail(:url => vod.FileLocation.url + vod.full_filename, :width => "82", :height => "66") # TODO: store width and height
-          xml.media::content(:url => vod.FileLocation.url + vod.full_filename, :fileSize => "0", :type => "video/x-msvideo", :expression => "sample") # TODO: store size
-          xml.media::content(:url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :type => "video/x-msvideo", :expression => "full")
+    xml.channel do
+      xml.title("Assembly 2006 VOD")
+      xml.description("VOD files of Assembly 2006 TV programs, compos and seminars")
+      xml.link # TODO: Point this to what?
+      xml.pubDate(xmldatetime(Time.now))
+      xml.ttl("5")
+     
+      for vod in @vods
+        xml.item do
+          desc = vod.Program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
+          xml.title(desc.title, :'xml:lang' => @langcode)
+          xml.description(desc.public_description, :'xml:lang' => @langcode)      
+          xml.link # TODO: Additional info is where?
+          xml.pudDate(xmldatetime(vod.updated_at))
+           # TODO: Hardcoded host and proto
+          xml.guid("http://elaine.assembly.org" + url_for(:controller => 'vods', :action => 'show', :id => vod.id))
+          xml.media(:group) do
+            xml.media(:thumbnail, :url => vod.FileLocation.url + vod.base_filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
+            xml.media(:content, :url => vod.FileLocation.url + vod.base_filename + '_preview.mpg', :width => "200", :height => "150", :type => "video/mpg", :expression => "sample") # TODO: store dimensions and filesize
+            xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :type => "video/x-msvideo", :expression => "full")
+          end
+          xml.category("Assembly")
+          xml.category("video")
+          # TODO: Set of nasty assumption hacks
+          if vod.Program.VodGroup.name == "Seminar"
+            xml.category("seminar")
+          end
+          if vod.Program.VodGroup.name == "Normal"
+            xml.category("AssemblyTV")
+          end
+          if vod.Program.VodGroup.name == "High motion"
+            xml.category("Compo")
+          end
         end
-        xml.category("Assembly")
-        xml.category("video")
-        xml.category("TV/sem/compo") #how to set this?
-      
       end
     end
   end
+else
+  xml.error('Language with code "' + (@langcode || '') + '" not found.')
 end
 
 #More information:

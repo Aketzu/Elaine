@@ -1,11 +1,9 @@
-<tr>
-  <th class="edit">Events</th>
-  <td class="edit">
-    <table>
-      <tr class="header">
-        <th>Title</th>
-        <th></th>
-      </tr>
+<p><b>Events</b></p>
+<table>
+  <% offset = 0 %>
+  <tr class="header">
+     <td>Name</td>
+  </tr>
       <% for event in events %>
       <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
         <td>

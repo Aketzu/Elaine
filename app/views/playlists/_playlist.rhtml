@@ -17,7 +17,7 @@
     <div class="playlist_cell"><select id="playlist_movable" name="playlist[movable]"><option value="true" <%= 'selected="selected"' if playlist.movable %> >True</option><option value="false" <%= 'selected="selected"' unless playlist.movable %> >False</option></select></div>
     <div class="playlist_cell">
     <% if controller.action_name == "edit" %>
-    <%= submit_tag "Edit" %>
+    <%= submit_tag "Update" %>
     <% else %>
     <%= submit_tag "Add to Playlist" %>
     <% end %>

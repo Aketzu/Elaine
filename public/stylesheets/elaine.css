@@ -285,6 +285,13 @@ div.flash {
   padding-left: 30px;
 }
 
+div.flash_error {
+  color: red;
+  height: 15px;
+  margin-bottom: -15px;
+  padding-left: 30px;
+}
+
 div.uploadStatus {
   margin: 5px;
 }

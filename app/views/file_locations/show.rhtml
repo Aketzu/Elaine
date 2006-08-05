@@ -4,9 +4,17 @@
 </p>
 <% end %>
 
+<% if @file_location.works? %>
+<p>Works!</p>
+<% else %>
+<p>Broken!</p>
+<% end %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @file_location %> |
+<%= link_to 'Back', :action => 'list' %>
+
 <%= render :partial => 'programs', :object => @programs %>
 
 <%= render :partial => 'events', :object => @events %>
 
-<%= link_to 'Edit', :action => 'edit', :id => @file_location %> |
-<%= link_to 'Back', :action => 'list' %>
+

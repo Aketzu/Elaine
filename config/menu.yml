@@ -29,6 +29,10 @@
     text: Timeline<br/><span class="description">Observe Playlist as a Timeline</span>
     controller: playlists
     action: timeline
+  - !ruby/object:MenuItem 
+    text: Broadcast log<br/><span class="description">View broadcast log</span>
+    controller: broadcast_logs
+    action: list
 - !ruby/object:MenuItem 
   controller: programs
   action: list
@@ -65,6 +69,22 @@
     text: New Tape<br/><span class="description">Add a new tape</span>
     controller: tapes
     action: new
+- !ruby/object:MenuItem 
+  controller: vods
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List Vods
+    controller: vods
+    action: list
+  - !ruby/object:MenuItem 
+    text: List Vod Groups
+    controller: vod_groups
+    action: list
+  - !ruby/object:MenuItem 
+    text: List Vod Formats
+    controller: vod_formats
+    action: list
 - !ruby/object:MenuItem 
   controller: user
   action: home

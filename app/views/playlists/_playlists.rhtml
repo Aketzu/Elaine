@@ -69,8 +69,8 @@ end
     <td class="playlist_cell"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell" align="center"><% if playlist.movable %>&times;<% end %></td>
     <td class="playlist_cell">[
-      <%= link_to 'Edit', :action => 'edit', :id => playlist %>
-      <%= link_to_remote 'Destroy', :url => { :action => :destroy, :id => playlist, :channel_id => @channel_id }, :confirm => 'Are you sure?' %>
+      <%= link_to 'Move', :action => 'edit', :id => playlist %>
+      <%= link_to_remote 'Remove', :url => { :action => :destroy, :id => playlist, :channel_id => @channel_id }, :confirm => 'Are you sure?' %>
     ]</td>
   </tr>
 

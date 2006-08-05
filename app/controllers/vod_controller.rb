@@ -3,14 +3,7 @@ class VodController < ApplicationController
 
   before_filter :require_no_ssl if (RAILS_ENV == "production")
   
-  def next
-    # TODO: We assume a location with the name vod exists. This is a nasty hack.
-    vod_location = FileLocation.find(:first, :conditions => "name = 'vod'");
-    if vod_location.nil?
-      redirect_to :action => 'error', :message => 'vod location missing'
-      return
-    end
-  
+  def next  
     #Efficiency note: We assume that is usually |VodFormats| << |Programs| 
     VodFormat.find(:all).each do |format|
       format.VodGroups.each do |group|
@@ -18,10 +11,16 @@ class VodController < ApplicationController
                                       :conditions => ["do_vod = true AND (SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id],
                                       :order => "programs.vod_group_id DESC") # TODO: A hack to give compos priority, should have acts as list
         if !program.nil?
-          if program.file_exists? or RAILS_ENV == "development" # TODO: dev environment may have file locations?
+          if program.file_exists? or RAILS_ENV == "development" # TODO: dev environment should have working file locations?
              # We have a winner
              @program = program
              @vod_format = format
+    # TODO: We assume a location with the name of the vod group exists. This should be mapped in the DB.
+    vod_location = FileLocation.find(:first, :conditions => ["name = ?", program.VodGroup.name]);
+    if vod_location.nil?
+      redirect_to :action => 'error', :message => 'File location "' + program.VodGroup.name + '" missing'
+      return
+    end
              @vod = Vod.new(:filename => program.filename + '_' + format.vcodec + '_' + format.vbitrate.to_s + 'kbps',
                             :file_location_id => vod_location.id,
                             :vod_format_id => format.id,
@@ -38,8 +37,8 @@ class VodController < ApplicationController
       end
     end 
     # Found nothing
-    #@program = nil
-    #@vod_format = nil
+    @program = nil
+    @vod_format = nil
   end
   
   def completed

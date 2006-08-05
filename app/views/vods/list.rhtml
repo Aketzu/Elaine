@@ -2,21 +2,30 @@
 
 <table>
   <tr>
+    <th>Program</th>
     <th>Full filename</th>
-  <% for column in Vod.content_columns %>
-    <th><%= column.human_name %></th>
-  <% end %>
+    <th>Length</th>
+    <th>Filesize</th>
+    <th>Completed</th>
+    <th>Vod format</th>
+    <th>File location</th>
+    <th>Updated at</th>
+    <th>Actions</th>
   </tr>
   
 <% for vod in @vods %>
   <tr>
+    <td><%= link_to vod.Program.title, :action => 'edit', :controller => 'programs', :id => vod.Program.id %>
     <td><%= vod.full_filename %></td>
-  <% for column in Vod.content_columns %>
-    <td><%=h vod.send(column.name) %></td>
-  <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => vod %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => vod %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => vod }, :confirm => 'Are you sure?', :post => true %></td>
+    <td><%= vod.length %></td>
+    <td><%= vod.filesize %></td>
+    <td><%= vod.completed %></td>
+    <td><%= vod.VodFormat.name %></td>
+    <td><%= vod.FileLocation.name %></td>
+    <td><%= vod.updated_at %></td>
+    <td>[<%= link_to 'Show', :action => 'show', :id => vod %>, 
+        <%= link_to 'Edit', :action => 'edit', :id => vod %>, 
+        <%= link_to 'Destroy', { :action => 'destroy', :id => vod }, :confirm => 'Are you sure?', :post => true %>]</td>
   </tr>
 <% end %>
 </table>
