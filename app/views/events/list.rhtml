@@ -6,21 +6,20 @@
   </tr>
 
   <tr>
-   
     <td>
       Filter events by...<br>
       <%= submit_tag 'Filter' %>
     </td>
     <td>
-      <label for="event_title">title<%= ' = ' + @title unless @title == "" %></label><br>
+      <label for="event_title">title</label><br>
       <%= text_field_with_auto_complete :event, :title, :value => @title, :skip_style => true %>
     </td>
     <td>
-      <label for="event_location">location<%= ' = ' + @location unless @location == "" %></label><br>
+      <label for="event_location">location</label><br>
       <%= text_field_with_auto_complete :location, :name, :value => @location, :skip_style => true %>
     </td>
     <td>
-      <label for="event_type">type<%= ' = ' + @type unless @type == "" %></label><br>
+      <label for="event_type">type</label><br>
       <%= text_field_with_auto_complete :event_type, :name, :value => @type, :skip_style => true %>
     </td>
   </tr>
@@ -32,7 +31,7 @@
       <span style="padding-left: 3em;">
       <% unless @event_pages.nil? %>
       <%= if @event_pages.current.previous then link_to 'Previous page', { :page => @event_pages.current.previous } else 'Previous page' end %>
-      <%= pagination_links @event_pages, :params => {'find_by_user' => @user.id} %>
+      <%= pagination_links @event_pages, :params => {'find_by_user' => @user.id} if @event_pages.length > 1 %>
       <%= if @event_pages.current.next     then link_to 'Next page', { :page => @event_pages.current.next }         else 'Next page' end %> 
       <% end %>
       </span>
@@ -55,7 +54,7 @@
 
 <% for event in @events %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td><%= link_to event.title, :action => 'edit', :id => event %></td>
+    <td><%= link_to event.title, :action => 'edit', :id => event.id.to_s %></td>
     <td><%= link_to Location.find(event.location_id).name, :controller => 'locations', :action => 'show', :id => event.location_id %></td>
     <td><%= link_to EventType.find(event.event_type_id).name, :controller => 'event_types', :action => 'show', :id => event.event_type_id %></td>
     <td><%=h event.formatted_length %></td>

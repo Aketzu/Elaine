@@ -18,23 +18,24 @@ class EventsController < ApplicationController
 
   def list
     session[:original_uri] = request.request_uri
-
-    @title    = ""
-    @location = ""
-    @type     = ""
+#    @event_pages, @events = paginate :events, 
+#                                     :per_page => 20
 
     @title    = params[:event][:title] unless params[:event].nil?
     @location = params[:location][:name] unless params[:location].nil?
     @type     = params[:event_type][:name] unless params[:event_type].nil?
 
-    if @title.nil? and @location.nil? and @type.nil?
+    if @title.nil?
       @event_pages, @events = paginate :events, 
                                        :per_page => 20
     else
-      @events = Event.find_by_sql(['SELECT * FROM events e, locations l, event_types t ' +
-                                   'WHERE l.id = e.location_id AND t.id = e.event_type_id ' +
-                                     'AND e.title LIKE ? AND l.name LIKE ? AND t.name LIKE ?',
-                                   '%' + @title + '%', '%' + @location + '%', '%' + @type + '%'])
+      @event_pages, @events = paginate :events, 
+                                       :conditions => ['title LIKE ?', @title],
+                                       :per_page => 20
+#      @events = Event.find_by_sql(['SELECT * FROM events e, locations l, event_types t ' +
+#                                   'WHERE l.id = e.location_id AND t.id = e.event_type_id ' +
+#                                     'AND e.title LIKE ? AND l.name LIKE ? AND t.name LIKE ?',
+#                                   '%' + @title + '%', '%' + @location + '%', '%' + @type + '%'])
     end
   end
 
