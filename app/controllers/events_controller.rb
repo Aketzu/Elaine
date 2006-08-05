@@ -23,6 +23,8 @@ class EventsController < ApplicationController
 
   def new
     @event   = Event.new
+    @event.type = EventTypes.find(:first, :conditions => ['name = ?', 'insert'])
+    #TODO: Change the database default to 'insert'.
   end
 
   def create
