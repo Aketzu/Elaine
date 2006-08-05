@@ -16,13 +16,14 @@ class ProgramsController < ApplicationController
          :redirect_to => { :action => :list }
   def list
     session[:original_uri] = request.request_uri
+    @user = session[:user]
     unless params[:find_by_user].nil?
-      @user = session[:user]
+      @user = User.find(params[:find_by_user])
     end
     @filter = params[:program_description][:title] unless params[:program_description].nil?
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
-                                           :per_page => 20
+                                           :per_page => 3
     else
       @program_descriptions = ProgramDescription.find(:all, 
                                                       :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
@@ -41,7 +42,7 @@ class ProgramsController < ApplicationController
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
                                            :conditions => ['owner_id = ?', @user.id],
-                                           :per_page => 20
+                                           :per_page => 1
     else
       @program_descriptions = ProgramDescription.find(:all, 
                                                       :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
