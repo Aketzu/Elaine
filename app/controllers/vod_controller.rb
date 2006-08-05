@@ -32,12 +32,15 @@ class VodController < ApplicationController
                            :vod_format_id => @vod_format.id,
                            :completed => 'false',
                            :program_id => program.id);
+#            Vod.transaction do
+#            unless Vod.find(:first, :conditions => ["",]).nil
             if @vod.save
               return
             else
               redirect_to :action => 'error', :message => 'could not save vod'
               return
             end
+            #  end 
           end
         end
      # end
