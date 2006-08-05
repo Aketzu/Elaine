@@ -27,24 +27,21 @@ class VodController < ApplicationController
               redirect_to :action => 'error', :message => 'File location "' + program.VodGroup.name + '" missing'
               return
             end
-            @vod = Vod.new(:filename => program.filename + '_' + @vod_format.vcodec + '_' + @vod_format.vbitrate.to_s + 'kbps',
-                           :file_location_id => vod_location.id,
-                           :vod_format_id => @vod_format.id,
-                           :completed => 'false',
-                           :program_id => program.id);
-#            Vod.transaction do
-#            unless Vod.find(:first, :conditions => ["",]).nil
-            if @vod.save
-              return
-            else
-              redirect_to :action => 'error', :message => 'could not save vod'
-              return
+            Vod.transaction do
+              @vod = Vod.new(:filename => program.filename + '_' + @vod_format.vcodec + '_' + @vod_format.vbitrate.to_s + 'kbps',
+                             :file_location_id => vod_location.id,
+                             :vod_format_id => @vod_format.id,
+                             :completed => 'false',
+                             :program_id => program.id);
+              if @vod.save
+                return
+              else
+                redirect_to :action => 'error', :message => 'could not save vod'
+                return
+              end
             end
-            #  end 
           end
         end
-     # end
-    #end 
     # Found nothing
     @program = nil
     @vod_format = nil
