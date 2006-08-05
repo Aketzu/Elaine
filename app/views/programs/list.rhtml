@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td colspan="1"><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
+    <td><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
     <td>
     <%= start_form_tag 'name' => 'find_user' %>
     <% if params[:action] == 'list_by_user' %>
@@ -19,6 +19,8 @@
     <%= text_field_with_auto_complete :program_description, :title, :skip_style => true %><%= submit_tag 'Search' %>
     <%= end_form_tag %>
     </td>
+    
+    <td><%= @program_descriptions.length.to_s + " results" unless @program_descriptions.nil?%></td>
   </tr>
 
   <tr>
@@ -28,7 +30,13 @@
     <span style="padding-left: 3em;">
     <% unless @program_pages.nil? %>
     <%= if @program_pages.current.previous then link_to 'Previous page', { :page => @program_pages.current.previous } else 'Previous page' end %>
-    <%= pagination_links @program_pages, :params => {'find_by_user' => @user.id} %>
+
+    <% if params[:action] == 'list' %>
+      <%= pagination_links @program_pages %>
+    <% else %>
+      <%= pagination_links @program_pages, :params => {'find_by_user' => @user.id} %>
+    <% end %>
+
     <%= if @program_pages.current.next     then link_to 'Next page', { :page => @program_pages.current.next }         else 'Next page' end %> 
     <% end %>
     </span>
