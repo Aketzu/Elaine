@@ -42,6 +42,10 @@
     controller: programs
     action: list
   - !ruby/object:MenuItem 
+    text: User's Programs
+    controller: programs
+    action: list_by_user
+  - !ruby/object:MenuItem 
     text: New Program<br/><span class="description">Add a new program</span>
     controller: programs
     action: new

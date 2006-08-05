@@ -4,6 +4,7 @@ class ProgramsController < ApplicationController
   before_filter :require_no_ssl if (RAILS_ENV == "production")
 
   auto_complete_for :event, :title
+  auto_complete_for :program_description, :title
 
   def index
     list
@@ -15,8 +16,47 @@ class ProgramsController < ApplicationController
          :redirect_to => { :action => :list }
   def list
     session[:original_uri] = request.request_uri
-    @program_pages, @programs = paginate :programs, 
-                                         :per_page => 50
+    unless params[:find_by_user].nil?
+      @user = session[:user]
+    end
+    @filter = params[:program_description][:title] unless params[:program_description].nil?
+    if @filter.nil?
+      @program_pages, @programs = paginate :programs, 
+                                           :per_page => 50
+    else
+      @program_descriptions = ProgramDescription.find(:all, 
+                                                      :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
+                                                                      '%' + @filter + '%', '%' + @filter + '%', '%' + @filter + '%'])
+      @programs = @program_descriptions.collect {|t| t.Program }
+    end
+  end
+
+  def list_by_user
+    session[:original_uri] = request.request_uri
+    @user = session[:user]
+    unless params[:find_by_user].nil?
+      @user = User.find(params[:find_by_user])
+    end
+    @filter = params[:program_description][:title] unless params[:program_description].nil?
+    if @filter.nil?
+      @program_pages, @programs = paginate :programs, 
+                                           :conditions => ['owner_id = ?', @user.id],
+                                           :per_page => 50
+    else
+#      @program_pages, @programs = paginate :programs, 
+#                                           :joins => :program_descriptions,
+#                                           :conditions => ['owner_id = ? AND title LIKE ?', 
+#                                                           session[:user].id,
+#                                                           '%' + @filter + '%'],
+#                                           :per_page => 50
+
+      @program_descriptions = ProgramDescription.find(:all, 
+                                                      :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
+                                                                      '%' + @filter + '%', '%' + @filter + '%', '%' + @filter + '%'])
+      @programs = @program_descriptions.collect {|t| t.Program }
+    end
+
+    render :action => 'list'
   end
 
   def show

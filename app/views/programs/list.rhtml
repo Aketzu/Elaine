@@ -1,4 +1,37 @@
-<h1>Listing programs</h1>
+<table>
+  <tr>
+    <td colspan="1"><h2>Listing programs by user</h2></td>
+    <td>
+    <%= start_form_tag 'name' => 'find_user' %>
+    <% if params[:action] == 'list_by_user' %>
+    <select name="find_by_user" onChange="javascript: this.form.submit()">
+      <%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
+    </select>
+    <% end %>
+    <%= end_form_tag %>
+    </td>
+  </tr>
+
+  <tr>
+   
+    <td>
+    <%= start_form_tag %>
+    <%= text_field_with_auto_complete :program_description, :title, :skip_style => true %><%= submit_tag 'Search' %>
+    <%= end_form_tag %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+    <%= link_to 'New program', :action => 'new' %>
+    <% unless @program_pages.nil? %>
+    <%= if @program_pages.current.previous then link_to 'Previous page', { :page => @program_pages.current.previous } else 'Previous page' end %>
+    <%= if @program_pages.current.next     then link_to 'Next page', { :page => @program_pages.current.next }         else 'Next page' end %> 
+    <% end %>
+    </td>
+  </tr>
+</table>
+
 
 <table>
   <tr class="header">
@@ -61,11 +94,3 @@
     </td>
   </tr>
 </table>-->
-
-
-<%= link_to 'Previous page', { :page => @program_pages.current.previous } if @program_pages.current.previous %>
-<%= link_to 'Next page', { :page => @program_pages.current.next } if @program_pages.current.next %> 
-
-<br />
-
-<%= link_to 'New program', :action => 'new' %>
