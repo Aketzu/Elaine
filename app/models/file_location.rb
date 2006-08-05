@@ -2,6 +2,7 @@ class FileLocation < ActiveRecord::Base
 
 has_many :Events
 has_many :Programs
+has_many :Vods
 
 def exists?(filename)
    url = URI.parse(self.checker_url)

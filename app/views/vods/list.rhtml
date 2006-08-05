@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Full filename</th>
   <% for column in Vod.content_columns %>
     <th><%= column.human_name %></th>
   <% end %>
@@ -9,6 +10,7 @@
   
 <% for vod in @vods %>
   <tr>
+    <td><%= vod.full_filename %></td>
   <% for column in Vod.content_columns %>
     <td><%=h vod.send(column.name) %></td>
   <% end %>

@@ -12,7 +12,8 @@ end
 
 def vods
   # We assume most vods are past quarantine and thus don't make complicated joins
-  @vods = Vod.find(:all)
+  @programs = Program.find(:all, :conditions => ["quarantine",])
+  @langcode = params[:id]
 end
 
 end

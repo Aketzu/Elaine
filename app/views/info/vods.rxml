@@ -1,2 +1,37 @@
 xml.instruct! :xml, :encoding => "ISO-8859-1"
-xml.vods("Will be here.")
+xml.rss(:version => "2.0") do
+
+  xml.channel do
+    xml.title("Assembly 2006 VOD")
+    xml.description("VOD files of Assembly 2006 TV, compos and seminars")
+    xml.link("http://alive.assembly.org") # TODO: Point this to what?
+    xml.pubDate(xmldatetime(Time.now))
+    xml.ttl("5")
+    
+    for vod in @vods
+      xml.item do
+#        for desc in program.program_descriptions
+
+        xml.title(desc.title, :'xml:lang' => @langcode)
+        xml.description(desc.public_description, :'xml:lang' => @langcode)      
+        xml.link("http://www.assemblytv.net/") # TODO: Additional info is where?
+        xml.pudDate(vod.updated_at)
+        xml.guid(url_for(:controller => 'vods', :id => vod.id))
+ 
+        xml.media::group do
+          xml.media::thumbnail(:url => vod.FileLocation.url + vod.full_filename, :width => "82", :height => "66") # TODO: store width and height
+          xml.media::content(:url => vod.FileLocation.url + vod.full_filename, :fileSize => "0", :type => "video/x-msvideo", :expression => "sample") # TODO: store size
+          xml.media::content(:url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :type => "video/x-msvideo", :expression => "full")
+        end
+        xml.category("Assembly")
+        xml.category("video")
+        xml.category("TV/sem/compo") #how to set this?
+      
+      end
+    end
+  end
+end
+
+#More information:
+#* RSS 2.0: http://blogs.law.harvard.edu/tech/rss
+#* MediaRSS: http://search.yahoo.com/mrss

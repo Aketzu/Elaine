@@ -14,13 +14,15 @@ class VodController < ApplicationController
     #Efficiency note: We assume that is usually |VodFormats| << |Programs| 
     VodFormat.find(:all).each do |format|
       format.VodGroups.each do |group|
-        program = group.Programs.find(:first, :conditions => ["do_vod = true AND (SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id])
-        unless program.nil?
-          if program.file_exists? 
+        program = group.Programs.find(:first, 
+                                      :conditions => ["do_vod = true AND (SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vod_format_id = ?) = 0", format.id],
+                                      :order => "programs.vod_group_id DESC") # TODO: A hack to give compos priority, should have acts as list
+        if !program.nil?
+          if program.file_exists? or RAILS_ENV == "development" # TODO: dev environment may have file locations?
              # We have a winner
              @program = program
              @vod_format = format
-             @vod = Vod.new(:filename => program.filename + '_' + format.vbitrate.to_s + '_kbps',
+             @vod = Vod.new(:filename => program.filename + '_' + format.vcodec + '_' + format.vbitrate.to_s + 'kbps',
                             :file_location_id => vod_location.id,
                             :vod_format_id => format.id,
                             :completed => 'false',
@@ -36,8 +38,8 @@ class VodController < ApplicationController
       end
     end 
     # Found nothing
-    @program = nil
-    @vod_format = nil
+    #@program = nil
+    #@vod_format = nil
   end
   
   def completed

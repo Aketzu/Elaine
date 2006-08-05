@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def list
     @event_pages, @events = paginate :events, 
-                                     :per_page => 10
+                                     :per_page => 50
   end
 
   def show

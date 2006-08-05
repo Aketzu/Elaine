@@ -16,7 +16,7 @@ class ProgramsController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
     @program_pages, @programs = paginate :programs, 
-                                         :per_page => 10
+                                         :per_page => 50
   end
 
   def show
