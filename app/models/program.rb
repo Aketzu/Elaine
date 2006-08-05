@@ -81,6 +81,16 @@ def source?
   end 
 end
 
+# TODO: This has the additional requirement of an empty filename to allow old files to work
+def single_insert?
+  unless(self.filename.nil? or self.filename == "")
+    nil
+  else
+    typeid = EventType.find(:first, :conditions => ["name = ?", "insert"]).id
+    (self.Events.count == 1 and self.Events[0].event_type_id == typeid)
+  end
+end
+
 def formatted_length
   format_length(length)
 end
@@ -106,14 +116,22 @@ def formatted_preview_video_offset=(formatted)
 end
 
 def full_filename
-  "p_" + self.id.to_s + "_" + (self.filename || "") + ".avi"
+  if(self.single_insert?)
+    self.Events[0].full_filename
+  else
+    'p_' + self.id.to_s + '_' + self.filename.to_s + '.avi'
+  end
 end
 
 def file_exists?
-  if(self.FileLocation)
-    self.FileLocation.exists?(self.full_filename)
+  if(self.single_insert?)
+      self.Events[0].file_exists?
   else
-    nil
+    if(self.FileLocation)
+      self.FileLocation.exists?(self.full_filename)
+    else
+      nil
+    end
   end
 end
 
