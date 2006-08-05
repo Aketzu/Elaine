@@ -1,5 +1,5 @@
 <div></div>
-<h1><%= Channel.find(@channel_id).name %>playlist</h1>
+<h1><%= Channel.find(@channel_id).name %> playlist</h1>
 
 <%= start_form_tag :action => 'list' %>
   <select name="channel_id" onChange="javascript: this.form.submit()">
