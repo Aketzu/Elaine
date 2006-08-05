@@ -34,6 +34,25 @@ class VodController < ApplicationController
                              :completed => 'false',
                              :program_id => program.id);
               if @vod.save
+  result = "VOD|"
+  result += @vod.id.to_s + "|"
+  result += @vod_format.name + "|"
+  image_offset = @program.preview_image_offset || 30
+  if image_offset > @program.length 
+    image_offset = @program.length
+  end
+  result += image_offset.to_s + "|"
+  video_offset = @program.preview_video_offset || 0
+  if video_offset > @program.length - 30
+    video_offset = @program.length - 30
+  end 
+  if video_offset < 0
+    video_offset = 0
+  end  
+  result += video_offset.to_s + "|"
+  result += @vod.base_filename + "|"
+  result += @program.full_filename + "|"
+  @result = result              
                 return
               else
                 redirect_to :action => 'error', :message => 'could not save vod'
