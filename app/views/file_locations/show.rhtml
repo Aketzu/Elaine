@@ -11,7 +11,7 @@
 <% end %>
 
 <%= link_to 'Edit', :action => 'edit', :id => @file_location %> |
-<%= link_to 'Back', :action => 'list' %>
+<a href="#" onClick="javascript:history.back(-1)">Back</a>
 
 <%= render :partial => 'programs', :object => @programs %>
 

@@ -1,4 +1,46 @@
-<h1>Listing events</h1>
+<%= start_form_tag %>
+
+<table>
+  <tr>
+    <td colspan="4"><h2>Listing events<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
+  </tr>
+
+  <tr>
+   
+    <td>
+      Filter events by...<br>
+      <%= submit_tag 'Filter' %>
+    </td>
+    <td>
+      <label for="event_title">title<%= ' = ' + @title unless @title == "" %></label><br>
+      <%= text_field_with_auto_complete :event, :title, :value => @title, :skip_style => true %>
+    </td>
+    <td>
+      <label for="event_location">location<%= ' = ' + @location unless @location == "" %></label><br>
+      <%= text_field_with_auto_complete :location, :name, :value => @location, :skip_style => true %>
+    </td>
+    <td>
+      <label for="event_type">type<%= ' = ' + @type unless @type == "" %></label><br>
+      <%= text_field_with_auto_complete :event_type, :name, :value => @type, :skip_style => true %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="4">
+      <%= link_to 'New event', :action => 'new' %>
+  
+      <span style="padding-left: 3em;">
+      <% unless @event_pages.nil? %>
+      <%= if @event_pages.current.previous then link_to 'Previous page', { :page => @event_pages.current.previous } else 'Previous page' end %>
+      <%= pagination_links @event_pages, :params => {'find_by_user' => @user.id} %>
+      <%= if @event_pages.current.next     then link_to 'Next page', { :page => @event_pages.current.next }         else 'Next page' end %> 
+      <% end %>
+      </span>
+    </td>
+  </tr>
+</table>
+<%= end_form_tag %>
+
 
 <table>
   <tr class="header">
@@ -26,10 +68,3 @@
   </tr>
 <% end %>
 </table>
-
-<%= link_to 'Previous page', { :page => @event_pages.current.previous } if @event_pages.current.previous %>
-<%= link_to 'Next page', { :page => @event_pages.current.next } if @event_pages.current.next %> 
-
-<br />
-
-<%= link_to 'New event', :action => 'new' %>

@@ -61,6 +61,7 @@ function onLoad(channel_id) {
   bandInfos = [
     Timeline.createHotZoneBandInfo({
       zones:          zones_minute,
+      timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
       width:          "40%",
@@ -69,6 +70,7 @@ function onLoad(channel_id) {
     }),
     Timeline.createHotZoneBandInfo({
       zones:          zones_minute,
+      timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_with_subevents,
       width:          "40%",
@@ -77,6 +79,7 @@ function onLoad(channel_id) {
     }),
     Timeline.createHotZoneBandInfo({
       zones:          zones_hour,
+      timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
       width:          "20%",

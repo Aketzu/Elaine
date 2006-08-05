@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   sidebar :general
 
+  auto_complete_for :event, :title
+  auto_complete_for :location, :name
+  auto_complete_for :event_type, :name
+
   before_filter :require_no_ssl if (RAILS_ENV == "production")
 
   def index
@@ -13,8 +17,25 @@ class EventsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @event_pages, @events = paginate :events, 
-                                     :per_page => 50
+    session[:original_uri] = request.request_uri
+
+    @title    = ""
+    @location = ""
+    @type     = ""
+
+    @title    = params[:event][:title] unless params[:event].nil?
+    @location = params[:location][:name] unless params[:location].nil?
+    @type     = params[:event_type][:name] unless params[:event_type].nil?
+
+    if @title.nil? and @location.nil? and @type.nil?
+      @event_pages, @events = paginate :events, 
+                                       :per_page => 20
+    else
+      @events = Event.find_by_sql(['SELECT * FROM events e, locations l, event_types t ' +
+                                   'WHERE l.id = e.location_id AND t.id = e.event_type_id ' +
+                                     'AND e.title LIKE ? AND l.name LIKE ? AND t.name LIKE ?',
+                                   '%' + @title + '%', '%' + @location + '%', '%' + @type + '%'])
+    end
   end
 
   def show

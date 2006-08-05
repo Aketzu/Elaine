@@ -15,7 +15,7 @@
   <tr>
   <th class="edit"><INPUT type="reset" name="reset" disabled="true" 
     onClick="javascript:document.edit_form.reset.disabled=true"></th>
-  <td class="edit"><%= submit_tag 'Edit' %></td>
+  <td class="edit"><%= submit_tag 'Update' %></td>
   </tr>
 <%= end_form_tag %>
 
@@ -47,4 +47,4 @@
 </br>
 </br>
 
-<%= link_to 'Back', :action => 'list' %>
+<a href="#" onClick="javascript:history.back(-1)">Back</a>
