@@ -22,7 +22,7 @@ class ProgramsController < ApplicationController
     @filter = params[:program_description][:title] unless params[:program_description].nil?
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
-                                           :per_page => 50
+                                           :per_page => 20
     else
       @program_descriptions = ProgramDescription.find(:all, 
                                                       :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
@@ -41,15 +41,8 @@ class ProgramsController < ApplicationController
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
                                            :conditions => ['owner_id = ?', @user.id],
-                                           :per_page => 50
+                                           :per_page => 20
     else
-#      @program_pages, @programs = paginate :programs, 
-#                                           :joins => :program_descriptions,
-#                                           :conditions => ['owner_id = ? AND title LIKE ?', 
-#                                                           session[:user].id,
-#                                                           '%' + @filter + '%'],
-#                                           :per_page => 50
-
       @program_descriptions = ProgramDescription.find(:all, 
                                                       :conditions => ["(title LIKE ? OR private_description LIKE ? OR public_description LIKE ?)", 
                                                                       '%' + @filter + '%', '%' + @filter + '%', '%' + @filter + '%'])
