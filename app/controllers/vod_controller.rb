@@ -11,7 +11,7 @@ class VodController < ApplicationController
 #                                      :conditions => ["do_vod = true AND (SELECT COUNT(*) FROM vods WHERE vods.program_id = programs.id AND vods.vod_format_id = ?) = 0", format.id],
 #                                      :order => "programs.vod_group_id DESC") # TODO: A hack to give compos priority, should have acts as list
 # example: Post.find_by_sql "SELECT p.*, c.author FROM posts p, comments c WHERE p.id = c.post_id"
-        program_ids = Program.find_by_sql "SELECT programs.id as program_id, vod_format_id FROM programs JOIN vod_groups ON programs.vod_group_id = vod_groups.id JOIN vod_group_format_links ON vod_groups.id = vod_group_format_links.vod_group_id WHERE vod_format_id NOT IN (SELECT vod_format_id FROM programs JOIN vods ON programs.id = vods.program_id) AND programs.do_vod = true ORDER BY programs.vod_group_id DESC;"
+        program_ids = Program.find_by_sql "SELECT programs.id as program_id, MIN(vod_format_id) FROM programs JOIN vod_groups ON programs.vod_group_id = vod_groups.id JOIN vod_group_format_links ON vod_groups.id = vod_group_format_links.vod_group_id WHERE vod_format_id NOT IN (SELECT vod_format_id FROM programs JOIN vods ON programs.id = vods.program_id) AND programs.do_vod = true ORDER BY programs.vod_group_id DESC GROUP BY program_id;"
         
         for results in program_ids 
           program = Program.find(results[:program_id])
