@@ -33,7 +33,7 @@ class VodController < ApplicationController
                              :vod_format_id => @vod_format.id,
                              :completed => 'false',
                              :program_id => program.id);
-              if @vod.save
+              if @saved = @vod.save
                 return
               else
                 redirect_to :action => 'error', :message => 'could not save vod'

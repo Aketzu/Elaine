@@ -8,7 +8,7 @@ validates_associated :Program
 validates_associated :VodFormat
 validates_associated :FileLocation
 
-validates_uniqueness_of :program_id, :scope => [:vod_format_id, :file_location_id]
+validates_uniqueness_of :vod_format_id, :scope => [:program_id, :file_location_id]
 
 def base_filename
   self.Program.id.to_s + "_" + self.filename
