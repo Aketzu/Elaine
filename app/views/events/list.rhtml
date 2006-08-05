@@ -31,7 +31,7 @@
       <span style="padding-left: 3em;">
       <% unless @event_pages.nil? %>
       <%= if @event_pages.current.previous then link_to 'Previous page', { :page => @event_pages.current.previous } else 'Previous page' end %>
-      <%= pagination_links @event_pages, :params => {'find_by_user' => @user.id} if @event_pages.length > 1 %>
+      <%= pagination_links @event_pages %>
       <%= if @event_pages.current.next     then link_to 'Next page', { :page => @event_pages.current.next }         else 'Next page' end %> 
       <% end %>
       </span>
