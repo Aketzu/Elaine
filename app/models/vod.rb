@@ -8,7 +8,14 @@ validates_associated :Program
 validates_associated :VodFormat
 validates_associated :FileLocation
 
-validates_uniqueness_of :vod_format_id, :scope => [:program_id, :file_location_id]
+validate_on_create :validates_uniqueness_of_vod_format
+
+def validates_uniqueness_of_vod_format
+  unless Vod.find(:first, :conditions => ['vod_format_id = ? AND program_id = ? AND file_location_id = ?',
+                                          self.vod_format_id, self.program_id, self.file_location_id]).nil?
+    errors.add_to_base("Vod format not unique")
+  end
+end
 
 def base_filename
   self.Program.id.to_s + "_" + self.filename
