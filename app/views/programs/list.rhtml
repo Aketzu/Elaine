@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td colspan="1"><h2>Listing programs by user</h2></td>
+    <td colspan="1"><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
     <td>
     <%= start_form_tag 'name' => 'find_user' %>
     <% if params[:action] == 'list_by_user' %>
