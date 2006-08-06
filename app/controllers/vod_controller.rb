@@ -14,9 +14,10 @@ class VodController < ApplicationController
             # TODO: We assume a location with the name of the vod group exists. This should be mapped in the DB.
             vod_location = FileLocation.find(:first, :conditions => ["name = ?", program.VodGroup.name]);
             if vod_location.nil?
-              redirect_to :action => 'error', :message => 'File location "' + program.VodGroup.name + '" missing'
+              @result = 'File location "' + program.VodGroup.name + '" missing'
               return
             end
+            Vod.transaction do
               @vod = Vod.new(:filename => program.filename + '_' + @vod_format.vcodec + '_' + @vod_format.vbitrate.to_s + 'kbps',
                              :file_location_id => vod_location.id,
                              :vod_format_id => @vod_format.id,
@@ -44,9 +45,9 @@ class VodController < ApplicationController
                 @result = result              
                 return
               else
-                redirect_to :action => 'error', :message => 'could not save vod'
+                @result = "Could not save vod!"
                 return
-
+              end
             end
           end
         end
