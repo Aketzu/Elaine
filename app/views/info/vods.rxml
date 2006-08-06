@@ -21,8 +21,8 @@ unless @language.nil?
            # TODO: Hardcoded host and proto
           xml.guid("http://elaine.assembly.org" + url_for(:controller => 'vods', :action => 'show', :id => vod.id))
           xml.media(:group) do
-            xml.media(:thumbnail, :url => vod.FileLocation.url + vod.base_filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
-            xml.media(:content, :url => vod.FileLocation.url + vod.base_filename + '_preview.mpg', :width => "200", :height => "150", :type => "video/mpg", :expression => "sample") # TODO: store dimensions and filesize
+#            xml.media(:thumbnail, :url => vod.FileLocation.url + vod.base_filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
+#            xml.media(:content, :url => vod.FileLocation.url + vod.base_filename + '_preview.mpg', :width => "200", :height => "150", :type => "video/mpg", :expression => "sample") # TODO: store dimensions and filesize
             xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :type => "video/x-msvideo", :expression => "full")
           end
           xml.category("Assembly")
