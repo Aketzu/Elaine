@@ -11,7 +11,7 @@ class VodsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @vod_pages, @vods = paginate :vods, :per_page => 10
+    @vod_pages, @vods = paginate :vods, :per_page => 100
   end
 
   def show
