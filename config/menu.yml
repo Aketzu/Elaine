@@ -21,6 +21,10 @@
     controller: elaine
     action: todo
   - !ruby/object:MenuItem 
+    text: New Ticket<br/><span class="description">Add a new bug report to Trac.</span>
+    controller: elaine
+    action: new_ticket
+  - !ruby/object:MenuItem 
     text: Log out
     controller: user
     action: logout    
