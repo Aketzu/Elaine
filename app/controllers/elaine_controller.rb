@@ -22,7 +22,7 @@ class ElaineController < ApplicationController
   end
 
   def new_ticket
-    rediret_to "https://bugs.nodeta.fi/trac/elaine/newticket"
+    redirect_to "https://bugs.nodeta.fi/trac/elaine/newticket"
   end
 
 end
