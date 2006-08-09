@@ -21,4 +21,8 @@ class ElaineController < ApplicationController
   def todo
   end
 
+  def new_ticket
+    rediret_to "https://bugs.nodeta.fi/trac/elaine/newticket"
+  end
+
 end
