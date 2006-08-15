@@ -6,18 +6,26 @@ has_many :Vods
 
 def exists?(filename)
    url = URI.parse(self.checker_url)
+   logger.info url
+
    req = Net::HTTP::Get.new(url.path  + '?filename=' + filename)
+   logger.info req
+
    res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
    }
    result = res.body.to_s
-   if(result == "true")
-     true
-   else
-     niltest
-   end
-   rescue
-     nil
+   logger.info result
+
+  begin
+    if(result == "true")
+      true
+    else
+      false
+    end
+  rescue
+    false
+  end
 end
 
 def works?
