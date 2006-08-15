@@ -60,7 +60,7 @@ Engines.start :login
 module UserEngine
   config :admin_login, "admin"
   config :admin_email, "mikael.lavi@assemblytv.net"
-  config :admin_password, "password"
+  config :admin_password, "nk4bH7d"
 end
 
 Engines.start :user
