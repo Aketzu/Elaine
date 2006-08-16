@@ -34,7 +34,7 @@ def file_exists?
   if(self.FileLocation)
     self.FileLocation.exists?(self.full_filename)
   else
-    nil
+    false
   end
 end
 
