@@ -5,26 +5,29 @@ has_many :Programs
 has_many :Vods
 
 def exists?(filename)
-   url = URI.parse(self.checker_url)
-   logger.info url
-
-   req = Net::HTTP::Get.new(url.path  + '?filename=' + filename)
-   logger.info req
-
-   res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-   }
-   result = res.body.to_s
-   logger.info result
-
   begin
+    url = URI.parse(self.checker_url)
+    logger.info url
+
+    req = Net::HTTP::Get.new(url.path  + '?filename=' + filename)
+    logger.info req
+
+    res = Net::HTTP.start(url.host, url.port) {|http|
+       http.request(req)
+    }
+    result = res.body.to_s
+    logger.info result
+
     if(result == "true")
       true
     else
       false
     end
-  rescue
-    false
+  rescue Interrupt
+    logger.info "Rescued HTTP request."
+    return false
+  else
+    logger.info "Congratulations! No errors!"
   end
 end
 
