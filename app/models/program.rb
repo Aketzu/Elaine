@@ -81,15 +81,21 @@ def source?
   end 
 end
 
-# TODO: This has the additional requirement of an empty filename to allow old files to work
+# TODO: This is a legacy wrapper, any single event is now ok for filename inheritance
 def single_insert?
+  single_event?
+end
+
+# TODO: This has the additional requirement of an empty filename to allow old files to work
+# TODO: This requirement should be removed after a data cleanup
+def single_event?
   unless(self.filename.nil? or self.filename == "")
     nil
   else
-    typeid = EventType.find(:first, :conditions => ["name = ?", "insert"]).id
-    (self.Events.count == 1 and self.Events[0].event_type_id == typeid)
+    (self.Events.count == 1)
   end
 end
+
 
 def formatted_length
   format_length(length)
@@ -116,7 +122,7 @@ def formatted_preview_video_offset=(formatted)
 end
 
 def filename
-  if(self.single_insert?)
+  if(self.single_event?)
     self.Events[0].filename
   else
     read_attribute(:filename)
@@ -124,7 +130,7 @@ def filename
 end
 
 def full_filename
-  if(self.single_insert?)
+  if(self.single_event?)
     self.Events[0].full_filename
   else
     'p_' + self.id.to_s + '_' + self.filename.to_s + '.avi'
@@ -132,7 +138,7 @@ def full_filename
 end
 
 def file_exists?
-  if(self.single_insert?)
+  if(self.single_event?)
       self.Events[0].file_exists?
   else
     if(self.FileLocation)

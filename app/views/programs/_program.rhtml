@@ -59,8 +59,8 @@
 
 <tr>
 <th class="edit"><label for"event_filename">Filename (descriptive part)</th>
-<% if program.single_insert? %>
-  <td class="edit">(inherited from insert event)</td>
+<% if program.single_event? %>
+  <td class="edit">(inherited from only event)</td>
   <%= hidden_field 'program', 'filename' %>
 <% else %>
   <td class="edit"><%= text_field 'program', 'filename', 'class' => "text" %></td>
