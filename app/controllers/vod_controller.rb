@@ -18,7 +18,7 @@ class VodController < ApplicationController
               return
             end
             Vod.transaction do
-              @vod = Vod.new(:filename => program.base_filename + '_' + @vod_format.vcodec + '_' + @vod_format.vbitrate.to_s + 'kbps',
+              @vod = Vod.new(:filename => program.id.to_s + '_' + program.filename + '_' + @vod_format.vcodec + '_' + @vod_format.vbitrate.to_s + 'kbps',
                              :file_location_id => vod_location.id,
                              :vod_format_id => @vod_format.id,
                              :completed => 'false',

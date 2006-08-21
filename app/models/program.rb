@@ -115,16 +115,20 @@ def formatted_preview_video_offset=(formatted)
   self.preview_video_offset = parse_formatted_length(formatted)
 end
 
-def base_filename
+def filename
   if(self.single_insert?)
-    self.Events[0].full_filename
+    self.Events[0].filename
   else
-    'p_' + self.id.to_s + '_' + self.filename.to_s
+    read_attribute(:filename)
   end
 end
 
 def full_filename
-   base_filename + '.avi'
+  if(self.single_insert?)
+    self.Events[0].full_filename
+  else
+    'p_' + self.id.to_s + '_' + self.filename.to_s + '.avi'
+  end
 end
 
 def file_exists?
