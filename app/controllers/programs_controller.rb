@@ -23,12 +23,14 @@ class ProgramsController < ApplicationController
     @filter = params[:program_description][:title] unless params[:program_description].nil?
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
-                                           :per_page => 20
+                                           :per_page => 20,
+                                           :order => 'created_at'
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
       @program_descriptions = ProgramDescription.find(:all, 
                                                       :conditions => ["title ILIKE ?", 
-                                                                      '%' + @filter + '%'])
+                                                                      '%' + @filter + '%'],
+                                                      :order => 'created_at')
       @programs = @program_descriptions.collect {|t| t.Program }
     end
   end
