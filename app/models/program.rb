@@ -89,13 +89,13 @@ end
 # TODO: This has the additional requirement of an empty filename to allow old files to work
 # TODO: This requirement should be removed after a data cleanup
 def single_event?
-  unless(self.filename.nil? or self.filename == "")
+  real_filename = read_attribute(:filename)
+  unless(real_filename.nil? or real_filename == "")
     nil
   else
     (self.Events.count == 1)
   end
 end
-
 
 def formatted_length
   format_length(length)
