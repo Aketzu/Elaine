@@ -25,8 +25,9 @@ class ProgramsController < ApplicationController
       @program_pages, @programs = paginate :programs, 
                                            :per_page => 20
     else
+      # TODO: ILIKE is Postgres specific, but is there another way?
       @program_descriptions = ProgramDescription.find(:all, 
-                                                      :conditions => ["(language_id = 1 AND title LIKE ?)", 
+                                                      :conditions => ["title ILIKE ?", 
                                                                       '%' + @filter + '%'])
       @programs = @program_descriptions.collect {|t| t.Program }
     end
