@@ -2,17 +2,19 @@
 
 <table>
   <tr>
-    <td colspan="4"><h2>Listing events<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
+    <td><h2>Listing events<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
   </tr>
 
   <tr>
-    <%= start_form_tag :action => 'list' %>
-    <%= text_field_with_auto_complete :program_description, :title, :skip_style => true %><%= submit_tag 'Search' %>
-    <%= end_form_tag %>
+    <td>
+      <%= start_form_tag :action => 'list' %>
+      <%= text_field_with_auto_complete :event, :title, :skip_style => true %><%= submit_tag 'Search' %>
+      <%= end_form_tag %>
+    </td>
   </tr>
 
   <tr>
-    <td colspan="4">
+    <td>
       <%= link_to 'New event', :action => 'new' %>
   
       <span style="padding-left: 3em;">
