@@ -23,7 +23,7 @@ end
 
 
 def full_filename
-  base_filename + ".avi"
+  base_filename + self.VodFormat.container
 end
 
 # TODO: Maybe change so that filename does not contain bitrate etc?
