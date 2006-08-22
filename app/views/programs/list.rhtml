@@ -1,8 +1,9 @@
+<%= start_form_tag :action => 'list' %>
 <table>
   <tr>
     <td><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
     <td>
-    <%= start_form_tag 'name' => 'find_user' %>
+    <%= start_form_tag :action => 'list', 'name' => 'find_user' %>
     <% if params[:action] == 'list_by_user' %>
     <select name="find_by_user" onChange="javascript: this.form.submit()">
       <%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
@@ -14,9 +15,7 @@
 
   <tr>
     <td>
-    <%= start_form_tag :action => 'list' %>
     <%= text_field_with_auto_complete :program_description, :title, :skip_style => true, :value => @filter %><%= submit_tag 'Search' %>
-    <%= end_form_tag %>
     </td>
   </tr>
 
@@ -62,6 +61,7 @@
     </td>
   </tr>
 </table>
+<%= end_form_tag %>
 
 
 <table>

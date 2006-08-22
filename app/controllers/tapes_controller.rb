@@ -16,17 +16,23 @@ class TapesController < ApplicationController
     session[:original_uri] = request.request_uri
     @user = session[:user]
     @search_string = "title ILIKE ?"
-    unless params[:find_by_user].nil?
-      @user = User.find(params[:find_by_user])
-      @search_string += " AND owner_id = " + @user.id
-    end
 
+    # TODO This is the ugliest kludge ever, please rewrite somehow.
     unless params.nil?
       unless params[:search].nil?
         @filter = params[:search]
       end
       unless params[:tape].nil?
         @filter = params[:tape][:title]
+      end
+    end
+
+    unless params[:find_by_user].nil?
+      @user = User.find(params[:find_by_user])
+      if @filter.nil?
+        @search_string = "owner_id = " + @user.id.to_s
+      else
+        @search_string = @search_string + " AND owner_id = " + @user.id.to_s
       end
     end
 
