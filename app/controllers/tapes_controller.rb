@@ -13,8 +13,47 @@ class TapesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @tape_pages, @tapes = paginate :tapes, 
-                                   :per_page => 10
+    session[:original_uri] = request.request_uri
+    @user = session[:user]
+    @user_search = ""
+    unless params[:find_by_user].nil?
+      @user = User.find(params[:find_by_user])
+      @user_search = " AND owner_id = " + @user.id
+    end
+
+    unless params.nil?
+      unless params[:search].nil?
+        @filter = params[:search]
+      end
+      unless params[:tape].nil?
+        @filter = params[:tape][:title]
+      end
+    end
+
+    if @filter.nil?
+      @tape_pages, @tapes = paginate(:tape, 
+                                     :per_page => 20,
+                                     :conditions => @user_search)
+    else
+      @tape_pages, @tapes = paginate(:tape, 
+                                     :per_page => 20,
+                                     :conditions => ["title ILIKE ?" + @user_search, 
+                                                       '%' + @filter + '%'])
+    end
+  end
+
+  def list_by_user
+    session[:original_uri] = request.request_uri
+    @user = session[:user]
+    unless params[:find_by_user].nil?
+      @user = User.find(params[:find_by_user])
+    end
+
+    @tape_pages, @tapes = paginate :tape, 
+                                   :conditions => ['owner_id = ?', @user.id],
+                                   :per_page => 20
+
+    render :action => 'list'
   end
 
   def show

@@ -17,8 +17,10 @@ class ProgramsController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
     @user = session[:user]
+    @user_search = ""
     unless params[:find_by_user].nil?
       @user = User.find(params[:find_by_user])
+      @user_search = " AND owner_id = " + @user.id
     end
 
     # TODO This is the ugliest kludge ever, please rewrite somehow.
@@ -32,14 +34,15 @@ class ProgramsController < ApplicationController
     end
 
     if @filter.nil?
-      @program_pages, @programs = paginate :programs, 
+      @program_pages, @programs = paginate(:programs, 
                                            :per_page => 20,
-                                           :order => 'created_at'
+                                           :order => 'created_at',
+                                           :conditions => @user_search)
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
       @program_pages, @program_descriptions = paginate(:program_descriptions, 
                                                        :per_page => 20,
-                                                       :conditions => ["title ILIKE ?", 
+                                                       :conditions => ["title ILIKE ?" + @user_search, 
                                                                        '%' + @filter + '%'])
 
       @programs = @program_descriptions.collect {|t| t.Program }
