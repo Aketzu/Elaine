@@ -17,7 +17,6 @@ class ProgramsController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
     @user = session[:user]
-    @search_string = "title ILIKE ?"
 
     # TODO This is the ugliest kludge ever, please rewrite somehow.
     unless params.nil?
@@ -26,15 +25,6 @@ class ProgramsController < ApplicationController
       end
       unless params[:program_description].nil?
         @filter = params[:program_description][:title]
-      end
-    end
-
-    unless params[:find_by_user].nil?
-      @user = User.find(params[:find_by_user])
-      if @filter.nil?
-        @search_string = "owner_id = " + @user.id.to_s
-      else
-        @search_string = @search_string + " AND owner_id = " + @user.id.to_s
       end
     end
 
@@ -48,13 +38,7 @@ class ProgramsController < ApplicationController
                                                        :per_page => 20,
                                                        :conditions => ["title ILIKE ?", 
                                                                        '%' + @filter + '%'])
-
-      if @user.nil?
-        @programs = @program_descriptions.collect {|t| t.Program }
-      else
-        @programs = @program_descriptions.collect {|t| t.Program.owner_id == @user.id ? t.Program : nil }
-        @programs = @programs.compact
-      end
+      @programs = @program_descriptions.collect {|t| t.Program }
     end
   end
 
