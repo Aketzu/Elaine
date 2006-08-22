@@ -49,7 +49,12 @@ class ProgramsController < ApplicationController
                                                        :conditions => ["title ILIKE ?", 
                                                                        '%' + @filter + '%'])
 
-      @programs = @program_descriptions.collect {|t| t.Program.owner_id == @user.id ? t.Program : nil }
+      if @user.nil?
+        @programs = @program_descriptions.collect {|t| t.Program }
+      else
+        @programs = @program_descriptions.collect {|t| t.Program.owner_id == @user.id ? t.Program : nil }
+        @programs = @programs.compact
+      end
     end
   end
 

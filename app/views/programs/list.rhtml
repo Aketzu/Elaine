@@ -3,13 +3,10 @@
   <tr>
     <td><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
     <td>
-    <%= start_form_tag :action => 'list', 'name' => 'find_user' %>
-    <% if params[:action] == 'list_by_user' %>
     <select name="find_by_user" onChange="javascript: this.form.submit()">
+      <option value="-1"></option>
       <%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
     </select>
-    <% end %>
-    <%= end_form_tag %>
     </td>
   </tr>
 
