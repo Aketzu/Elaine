@@ -26,6 +26,11 @@ def full_filename
   base_filename + ".avi"
 end
 
+# TODO: Maybe change so that filename does not contain bitrate etc?
+def preview_base_filename
+  self.Program.id.to_s + "_" + self.Program.filename   
+end
+
 def file_exists?
   self.FileLocation.exists?(self.full_filename)
 end

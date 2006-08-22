@@ -40,6 +40,7 @@ class VodController < ApplicationController
                   video_offset = 0
                 end  
                 result += video_offset.to_s + "|"
+                result += @vod.preview_base_filename + "|"
                 result += @vod.base_filename + "|"
                 result += @program.full_filename + "|"
                 @result = result              
