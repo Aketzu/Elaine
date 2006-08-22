@@ -20,17 +20,30 @@ class ProgramsController < ApplicationController
     unless params[:find_by_user].nil?
       @user = User.find(params[:find_by_user])
     end
-    @filter = params[:program_description][:title] unless params[:program_description].nil?
+
+    # TODO This is the ugliest kludge ever, please rewrite somehow.
+    unless params.nil?
+      unless params[:search].nil?
+        @filter = params[:search]
+      end
+      unless params[:program_description].nil?
+        @filter = params[:program_description][:title]
+      end
+    end
+
     if @filter.nil?
       @program_pages, @programs = paginate :programs, 
                                            :per_page => 20,
                                            :order => 'created_at'
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
-      @program_descriptions = ProgramDescription.find(:all, 
-                                                      :conditions => ["title ILIKE ?", 
-                                                                      '%' + @filter + '%'],
-                                                      :order => 'created_at')
+      @program_pages, @program_descriptions = paginate(:program_descriptions, 
+                                                       :per_page => 20,
+                                                       :conditions => ["title ILIKE ?", 
+                                                                       '%' + @filter + '%'])
+#      @program_descriptions = ProgramDescription.find(:all, 
+#                                                      :conditions => ["title ILIKE ?", 
+#                                                                      '%' + @filter + '%'])
       @programs = @program_descriptions.collect {|t| t.Program }
     end
   end
