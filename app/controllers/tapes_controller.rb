@@ -15,10 +15,10 @@ class TapesController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
     @user = session[:user]
-    @user_search = ""
+    @search_string = "title ILIKE ?"
     unless params[:find_by_user].nil?
       @user = User.find(params[:find_by_user])
-      @user_search = " AND owner_id = " + @user.id
+      @search_string += " AND owner_id = " + @user.id
     end
 
     unless params.nil?
@@ -37,7 +37,7 @@ class TapesController < ApplicationController
     else
       @tape_pages, @tapes = paginate(:tape, 
                                      :per_page => 20,
-                                     :conditions => ["title ILIKE ?" + @user_search, 
+                                     :conditions => [@search_string, 
                                                        '%' + @filter + '%'])
     end
   end
