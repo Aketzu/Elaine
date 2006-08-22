@@ -2,8 +2,6 @@ class EventsController < ApplicationController
   sidebar :general
 
   auto_complete_for :event, :title
-  auto_complete_for :location, :name
-  auto_complete_for :event_type, :name
 
   before_filter :require_no_ssl if (RAILS_ENV == "production")
 
@@ -19,7 +17,14 @@ class EventsController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
 
-    @filter    = params[:event][:title] unless params[:event].nil?
+    unless params.nil?
+      unless params[:search].nil?
+        @filter = params[:search]
+      end
+      unless params[:event].nil?
+        @filter = params[:event][:title]
+      end
+    end
 
     if @filter.nil?
       @event_pages, @events = paginate :events, 

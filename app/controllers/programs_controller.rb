@@ -41,9 +41,7 @@ class ProgramsController < ApplicationController
                                                        :per_page => 20,
                                                        :conditions => ["title ILIKE ?", 
                                                                        '%' + @filter + '%'])
-#      @program_descriptions = ProgramDescription.find(:all, 
-#                                                      :conditions => ["title ILIKE ?", 
-#                                                                      '%' + @filter + '%'])
+
       @programs = @program_descriptions.collect {|t| t.Program }
     end
   end
