@@ -8,7 +8,7 @@
   <tr>
     <td>
       <%= start_form_tag :action => 'list' %>
-      <%= text_field_with_auto_complete :event, :title, :skip_style => true %><%= submit_tag 'Search' %>
+      <%= text_field_with_auto_complete :event, :title, :skip_style => true, :value => @filter %><%= submit_tag 'Search' %>
       <%= end_form_tag %>
     </td>
   </tr>
@@ -64,4 +64,27 @@
     ]</td>
   </tr>
 <% end %>
+
+  <tr>
+    <td>
+      <%= link_to 'New event', :action => 'new' %>
+  
+      <span style="padding-left: 3em;">
+      <% unless @event_pages.nil? %>
+      <%= if @event_pages.current.previous then 
+            link_to 'Previous page', { 
+              :page => @event_pages.current.previous,
+              :params => {'search' => @filter}}
+          else 'Previous page' end %>
+      <%= pagination_links @event_pages,
+            :params => {'search' => @filter} %>
+      <%= if @event_pages.current.next then 
+            link_to 'Next page', {
+              :page => @event_pages.current.next,
+              :params => {'search' => @filter}}
+          else 'Next page' end %> 
+      <% end %>
+      </span>
+    </td>
+  </tr>
 </table>
