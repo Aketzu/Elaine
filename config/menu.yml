@@ -82,6 +82,10 @@
     controller: tapes
     action: list
   - !ruby/object:MenuItem 
+    text: User's Tapes
+    controller: tapes
+    action: list_by_user
+  - !ruby/object:MenuItem 
     text: New Tape<br/><span class="description">Add a new tape</span>
     controller: tapes
     action: new
