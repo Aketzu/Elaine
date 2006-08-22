@@ -41,16 +41,15 @@ class ProgramsController < ApplicationController
     if @filter.nil?
       @program_pages, @programs = paginate(:programs, 
                                            :per_page => 20,
-                                           :order => 'created_at',
-                                           :conditions => @user_search)
+                                           :order => 'created_at')
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
       @program_pages, @program_descriptions = paginate(:program_descriptions, 
                                                        :per_page => 20,
-                                                       :conditions => [@search_string, 
+                                                       :conditions => ["title ILIKE ?", 
                                                                        '%' + @filter + '%'])
 
-      @programs = @program_descriptions.collect {|t| t.Program }
+      @programs = @program_descriptions.collect {|t| t.Program.owner_id == @user.id ? t.Program : nil }
     end
   end
 
