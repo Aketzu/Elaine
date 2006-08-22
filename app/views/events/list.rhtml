@@ -6,22 +6,9 @@
   </tr>
 
   <tr>
-    <td>
-      Filter events by...<br>
-      <%= submit_tag 'Filter' %>
-    </td>
-    <td>
-      <label for="event_title">title</label><br>
-      <%= text_field_with_auto_complete :event, :title, :value => @title, :skip_style => true %>
-    </td>
-    <td>
-      <label for="event_location">location</label><br>
-      <%= text_field_with_auto_complete :location, :name, :value => @location, :skip_style => true %>
-    </td>
-    <td>
-      <label for="event_type">type</label><br>
-      <%= text_field_with_auto_complete :event_type, :name, :value => @type, :skip_style => true %>
-    </td>
+    <%= start_form_tag :action => 'list' %>
+    <%= text_field_with_auto_complete :program_description, :title, :skip_style => true %><%= submit_tag 'Search' %>
+    <%= end_form_tag %>
   </tr>
 
   <tr>
@@ -30,9 +17,18 @@
   
       <span style="padding-left: 3em;">
       <% unless @event_pages.nil? %>
-      <%= if @event_pages.current.previous then link_to 'Previous page', { :page => @event_pages.current.previous } else 'Previous page' end %>
-      <%= pagination_links @event_pages %>
-      <%= if @event_pages.current.next     then link_to 'Next page', { :page => @event_pages.current.next }         else 'Next page' end %> 
+      <%= if @event_pages.current.previous then 
+            link_to 'Previous page', { 
+              :page => @event_pages.current.previous,
+              :params => {'search' => @filter}}
+          else 'Previous page' end %>
+      <%= pagination_links @event_pages,
+            :params => {'search' => @filter} %>
+      <%= if @event_pages.current.next then 
+            link_to 'Next page', {
+              :page => @event_pages.current.next,
+              :params => {'search' => @filter}}
+          else 'Next page' end %> 
       <% end %>
       </span>
     </td>
