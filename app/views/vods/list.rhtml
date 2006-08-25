@@ -1,4 +1,7 @@
 <h1>Listing vods</h1>
+<p>
+Page: <%= pagination_links(@vod_pages) %>
+</p>
 
 <table>
   <tr>
@@ -29,10 +32,8 @@
   </tr>
 <% end %>
 </table>
-
-<%= link_to 'Previous page', { :page => @vod_pages.current.previous } if @vod_pages.current.previous %>
-<%= link_to 'Next page', { :page => @vod_pages.current.next } if @vod_pages.current.next %> 
-
-<br />
+<p>
+Page: <%= pagination_links(@vod_pages) %>
+</p>
 
 <%= link_to 'New vod', :action => 'new' %>
