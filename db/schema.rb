@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 51) do
+ActiveRecord::Schema.define(:version => 52) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -13,11 +13,6 @@ ActiveRecord::Schema.define(:version => 51) do
   create_table "channels", :force => true do |t|
     t.column "name",        :string
     t.column "description", :text
-  end
-
-  create_table "engine_schema_info", :id => false, :force => true do |t|
-    t.column "engine_name", :string
-    t.column "version",     :integer
   end
 
   create_table "event_types", :force => true do |t|
@@ -63,17 +58,6 @@ ActiveRecord::Schema.define(:version => 51) do
     t.column "organization", :string
     t.column "phone",        :string
     t.column "email",        :string
-  end
-
-  create_table "permissions", :force => true do |t|
-    t.column "controller",  :string, :default => "", :null => false
-    t.column "action",      :string, :default => "", :null => false
-    t.column "description", :string
-  end
-
-  create_table "permissions_roles", :id => false, :force => true do |t|
-    t.column "permission_id", :integer, :default => 0, :null => false
-    t.column "role_id",       :integer, :default => 0, :null => false
   end
 
   create_table "playlists", :force => true do |t|
@@ -126,20 +110,13 @@ ActiveRecord::Schema.define(:version => 51) do
     t.column "channel_id", :integer
   end
 
-  create_table "roles", :force => true do |t|
-    t.column "name",        :string,  :default => "",    :null => false
-    t.column "description", :string
-    t.column "omnipotent",  :boolean, :default => false, :null => false
-    t.column "system_role", :boolean, :default => false, :null => false
-  end
-
   create_table "sessions", :force => true do |t|
     t.column "session_id", :string
     t.column "data",       :text
     t.column "updated_at", :datetime
   end
 
-  add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
 
   create_table "tape_categories", :force => true do |t|
     t.column "name",        :string
@@ -185,11 +162,6 @@ ActiveRecord::Schema.define(:version => 51) do
     t.column "updated_at",                :datetime
     t.column "remember_token",            :string
     t.column "remember_token_expires_at", :datetime
-  end
-
-  create_table "users_roles", :id => false, :force => true do |t|
-    t.column "user_id", :integer, :default => 0, :null => false
-    t.column "role_id", :integer, :default => 0, :null => false
   end
 
   create_table "vod_formats", :force => true do |t|
