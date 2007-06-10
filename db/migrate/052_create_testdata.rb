@@ -4,10 +4,13 @@
 # real life simulation.
 class CreateTestdata < ActiveRecord::Migration
   def self.up
+
+#  if 'RAILS_ENV' == 'development'
+
     User.create(
 	:login => 'test',
-	:salt => '848b2365321f908b921d9b3a45fc43ae83a45f3b',
-        :salted_password => '88f414dd365a30f9e0491167b6cd4b1ad4d3f878',
+	:password => 'mauno',
+	:password_confirmation => 'mauno',
         :email => 'test@test.com')
 
     Channel.create(
@@ -401,6 +404,8 @@ class CreateTestdata < ActiveRecord::Migration
     :vod_format_id        => 1,
     :updated_at           => 'July 17 2006 20:00:00 GMT',
     :program_id           => 1)
+#  end
+
   end
 
   def self.down
