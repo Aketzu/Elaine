@@ -4,6 +4,12 @@
 # real life simulation.
 class CreateTestdata < ActiveRecord::Migration
   def self.up
+    User.create(
+	:login => 'test',
+	:salt => '848b2365321f908b921d9b3a45fc43ae83a45f3b',
+        :salted_password => '88f414dd365a30f9e0491167b6cd4b1ad4d3f878',
+        :email => 'test@test.com')
+
     Channel.create(
     :name => 'Testikanava',
     :description => %{ Poista tämä kun siirrytään tuotantoon. })
