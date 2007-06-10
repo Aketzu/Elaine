@@ -2,7 +2,7 @@
 
 # Uncomment below to force Rails into production mode when 
 # you don't control web/app server and can't set it the proper way
-ENV['RAILS_ENV'] ||= 'production'
+#ENV['RAILS_ENV'] ||= 'production'
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -40,40 +40,40 @@ Rails::Initializer.run do |config|
 end
 
 # Configure the ActionMailer
-ActionMailer::Base.server_settings = {
+ActionMailer::Base.smtp_settings = {
   :address => "mail.assembly.org",
   :port => 25,
 }
 
 # Start the LoginEngine
-module LoginEngine
-  config :salt, "elaine-2006-rocks"
-  config :use_email_notification, true
-  config :confirm_account, true
-  config :email_from, "mikael.lavi@assemblytv.net"
-end
+#module LoginEngine
+#  config :salt, "elaine-2006-rocks"
+#  config :use_email_notification, true
+#  config :confirm_account, true
+#  config :email_from, "mikael.lavi@assemblytv.net"
+#end
 
-Engines.start :login
+#Engines.start :login
 
 # Start the UserEngine
 
-module UserEngine
-  config :admin_login, "admin"
-  config :admin_email, "mikael.lavi@assemblytv.net"
-  config :admin_password, "nk4bH7d"
-end
+#module UserEngine
+#  config :admin_login, "admin"
+#  config :admin_email, "mikael.lavi@assemblytv.net"
+#  config :admin_password, "nk4bH7d"
+#end
 
-Engines.start :user
-UserEngine.check_system_roles
+#Engines.start :user
+#UserEngine.check_system_roles
 
 # Start the MenuEngine
-module MenuEngine
-  config :access_control, true
-  config :on_show, "new Effect.Appear( element, { duration: 0.2, from:0.0, to: 1.0 } );"
-  config :on_hide, "new Effect.Fade( element, { duration: 0.2 });"
-end
+#module MenuEngine
+#  config :access_control, true
+#  config :on_show, "new Effect.Appear( element, { duration: 0.2, from:0.0, to: 1.0 } );"
+#  config :on_hide, "new Effect.Fade( element, { duration: 0.2 });"
+#end
 
-Engines.start :menu
+#Engines.start :menu
 
 # Add new inflection rules using the following format 
 # (all these examples are active by default):
