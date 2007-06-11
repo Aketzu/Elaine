@@ -8,10 +8,10 @@ class CreateTestdata < ActiveRecord::Migration
 #  if 'RAILS_ENV' == 'development'
 
     User.create(
-	:login => 'test',
-	:password => 'mauno',
-	:password_confirmation => 'mauno',
-        :email => 'test@test.com')
+			:login => 'test',
+			:password => 'mauno',
+			:password_confirmation => 'mauno',
+			:email => 'test@test.com')
 
     Channel.create(
     :name => 'Testikanava',

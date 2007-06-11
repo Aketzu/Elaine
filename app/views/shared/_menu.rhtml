@@ -1,0 +1,86 @@
+<table class="header_links">
+  <tr>
+    <th width="100px"><h1>Elaine2</h1></th>
+    <td width="*"></td>
+    <td class="header_menu">
+			<div class="clearFix" style="width:45em;padding:0;background:#FFFFFF;border:1px solid;border-color:#5c5c5c;">
+				<ul id="Menu1" class="MM">					
+					<li>
+						<%= link_to 'Elaine', :controller => 'elaine', :action => 'index' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to 'Playlists', :controller => 'playlists', :action => 'list' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to 'Programs', :controller => 'programs', :action => 'list' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to 'Events', :controller => 'events', :action => 'list' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to 'Tapes', :controller => 'tapes', :action => 'list' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to 'Vods', :controller => 'vods', :action => 'list' %>
+						<ul>
+							<li></li>
+						</ul>
+					</li>
+
+			<% if false %>
+			<div style='width:auto' id='mn_1' class='menuitem level0' onclick="document.location.href='/elaine';" >Elaine<div id='sub_1' class='submenu'><div style='width:auto' id='mn_2' class='menuitem level1' onclick="document.location.href='/elaine';" >Home page</div>
+			<div style='width:auto' id='mn_3' class='menuitem level1' onclick="document.location.href='/user/edit';" >Personal info<br/><span class="description">Edit your details in Elaine</span></div>
+
+			<div style='width:auto' id='mn_4' class='menuitem level1' onclick="document.location.href='/elaine/issues';" >Elaine Known Issues<br/><span class="description">..if you have a problem</span></div>
+			<div style='width:auto' id='mn_5' class='menuitem level1' onclick="document.location.href='/elaine/todo';" >Elaine TODO<br/><span class="description">Things to be done</span></div>
+			<div style='width:auto' id='mn_6' class='menuitem level1' onclick="document.location.href='/elaine/new_ticket';" >New Ticket<br/><span class="description">Add a new bug report to Trac.</span></div>
+			<div style='width:auto' id='mn_7' class='menuitem level1' onclick="document.location.href='/user/logout';" >Log out</div>
+			</div></div>
+			<div style='width:auto' id='mn_8' class='menuitem level0' onclick="document.location.href='/playlists/list';" >Playlist<div id='sub_8' class='submenu'><div style='width:auto' id='mn_9' class='menuitem level1' onclick="document.location.href='/playlists/list';" >Playlist<br/><span class="description">View/Edit Playlist</span></div>
+			<div style='width:auto' id='mn_10' class='menuitem level1' onclick="document.location.href='/playlists/timeline';" >Timeline<br/><span class="description">Observe Playlist as a Timeline</span></div>
+
+			<div style='width:auto' id='mn_11' class='menuitem level1' onclick="document.location.href='/broadcast_logs/list';" >Broadcast log<br/><span class="description">View broadcast log</span></div>
+			</div></div>
+			<div style='width:auto' id='mn_12' class='menuitem level0' onclick="document.location.href='/programs/list';" >Programs<div id='sub_12' class='submenu'><div style='width:auto' id='mn_13' class='menuitem level1' onclick="document.location.href='/programs/list';" >List Programs</div>
+			<div style='width:auto' id='mn_14' class='menuitem level1' onclick="document.location.href='/programs/list_by_user';" >User's Programs</div>
+			<div style='width:auto' id='mn_15' class='menuitem level1' onclick="document.location.href='/programs/new';" >New Program<br/><span class="description">Add a new program</span></div>
+			</div></div>
+			<div style='width:auto' id='mn_16' class='menuitem level0' onclick="document.location.href='/events/list';" >Events<div id='sub_16' class='submenu'><div style='width:auto' id='mn_17' class='menuitem level1' onclick="document.location.href='/events/list';" >List Events</div>
+			<div style='width:auto' id='mn_18' class='menuitem level1' onclick="document.location.href='/events/new';" >New Event<br/><span class="description">Add a new event</span></div>
+
+			</div></div>
+			<div style='width:auto' id='mn_19' class='menuitem level0' onclick="document.location.href='/tapes/list';" >Tapes<div id='sub_19' class='submenu'><div style='width:auto' id='mn_20' class='menuitem level1' onclick="document.location.href='/tapes/list';" >List Tapes</div>
+			<div style='width:auto' id='mn_21' class='menuitem level1' onclick="document.location.href='/tapes/list_by_user';" >User's Tapes</div>
+			<div style='width:auto' id='mn_22' class='menuitem level1' onclick="document.location.href='/tapes/new';" >New Tape<br/><span class="description">Add a new tape</span></div>
+			</div></div>
+			<div style='width:auto' id='mn_23' class='menuitem level0' onclick="document.location.href='/vods/list';" >Vods<div id='sub_23' class='submenu'><div style='width:auto' id='mn_24' class='menuitem level1' onclick="document.location.href='/vods/list';" >List Vods</div>
+			<div style='width:auto' id='mn_25' class='menuitem level1' onclick="document.location.href='/vod_groups/list';" >List Vod Groups</div>
+			<div style='width:auto' id='mn_26' class='menuitem level1' onclick="document.location.href='/vod_formats/list';" >List Vod Formats</div>
+
+			</div></div>
+			<div style='width:auto' id='mn_27' class='menuitem level0' onclick="document.location.href='/user/list';" >Admin<div id='sub_27' class='submenu'><div style='width:auto' id='mn_28' class='menuitem level1' onclick="document.location.href='/user/list';" >Users</div>
+			<div style='width:auto' id='mn_29' class='menuitem level1' onclick="document.location.href='/permission/list';" >Permissions</div>
+			<div style='width:auto' id='mn_30' class='menuitem level1' onclick="document.location.href='/role/list';" >Roles</div>
+
+			<% end %>
+				</ul>
+			</div>
+		</td>
+    <td width="*"></td>
+  </tr>
+</table>
