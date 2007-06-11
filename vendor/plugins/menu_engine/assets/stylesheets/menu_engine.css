@@ -1,0 +1,60 @@
+div.menuitem a
+{
+    text-decoration:none;
+}
+
+div.submenu a
+{
+    text-decoration:none;
+    font-weight:normal;
+}
+
+div.menuitem {
+    float:left;
+	font-weight:600;
+	margin-right:20px;
+	color:#676562;
+	white-space:nowrap;
+}
+
+div.menuitem.highlighted {
+    
+}
+
+div.submenu {
+  border:1px solid #888;
+  margin:0;
+  padding:0;
+  background: #fff;
+  font-weight:normal;  
+}
+
+div.submenu div.menuitem {
+    float:none;
+    margin-right:0;
+    background-color:white;
+    padding:3px;
+    padding-right:25px;
+    font-size:11px;
+    white-space:nowrap;
+}
+
+div.submenu div.menuitem.highlighted {
+  background-color: #ffd080; 
+  font-weight:600;
+  color:black;
+}
+
+div.submenu div.highlighted a {
+  color:black;
+  font-weight:600;
+}
+
+// to customise individual levels of submenus, use somethign like the following:
+/*
+div.submenu div.menuitem.level2
+{
+    background-color:green;
+    font-size:20px;
+}
+*/

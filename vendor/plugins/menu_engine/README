@@ -1,0 +1,210 @@
+= MenuEngine
+
+MenuEngine is a small Rails engine that can generate templated drop-down DHTML menus commonly used for web site navigation.
+
+MenuEngine supports creation of menus from a YAML file, from code and from pre-configured HTML. The javascript library can also be used outside of Rails.
+
+If your application uses UserEngine for authorization, MenuEngine will optionally use the permissions for the current user to conditionally display only the menu items that link to controller/action pairs that the current user is authorized to use.
+
+This software package is developed using the Engines plugin. To find out more about how to use engines in general, go to http://rails-engines.rubyforge.org for general documentation about the Engines mechanism.
+
+== Installation
+
+Two options are available for installation, the first one is much simpler.
+
+1. a)  Install as a rails plugin:
+      $ script/plugin source svn://rubyforge.org//var/svn/menuengine
+      $ script/plugin install menu_engine
+   b)  Use svn:externals
+      $ svn propedit svn:externals vendor/plugins
+
+      You can choose to use the latest stable release:
+          menu_engine http://svn.rails-engines.org/plugins/menuengine
+
+      Or a tagged release (recommended for releases of your code):
+          menu_engine http://svn.rails-engines.org/menuengine/tags/<TAGGED_RELEASE>
+
+2. Modify your Engines.start call in config/environment.rb
+
+    Engines.start :menu # or :menu_engine
+
+3. Edit your application_helper.rb file:
+
+    module ApplicationHelper
+      include MenuHelper
+    end
+    
+== Configuration
+To turn off access control, add the following to environment.rb, before the call to Engines.start:
+
+	module MenuEngine
+	  config :access_control, false
+	end
+	
+=== Configuration Options
++access_control+:: whether to use the integrated UserEngine access control features to conditionally display menu options. Defaults to false.
++menu_on_show+:: A Javascript snippet to execute in order to show a sub menu. An implicit variable "element" is available in the function and references the sub menu div. Try: config :on_show, "new Effect.Appear( element, { duration: 0.3, from:0.0, to: 0.8 } );"
++menu_on_hide+:: A Javascript snippet to execute in order to hide a sub menu. An implicit variable "element" is available in the function and references the sub menu div.
+			Try:
+				config :on_hide, "new Effect.Fade( element, { duration: 0.3 });"
+			or
+				config :on_hide, "new Effect.BlindUp( element, { duration: 0.3 });"
+
+
+== Usage
+There are four ways in which the MenuEngine can be used in your application. They are (in ascending order of complexity):
+
+ - from a YAML file describing the menu
+ - from a programmatically created menu tree
+ - from HTML code using the helper methods
+ - without Rails altogether
+
+=== Creating the menu from a YAML File
+Create a "config/menu.yml" file and configure the menu like this (include the "---" line and mind the spaces - YAML is picky in that respect):
+
+---
+- !ruby/object:MenuItem 
+  controller: users
+  action: list
+  items: []
+  - !ruby/object:MenuItem 
+    text: List
+    controller: users
+    action: list
+  - !ruby/object:MenuItem 
+    text: New User<br/><span style="font-size:80%">Add a new user</span>
+    controller: users
+    action: new
+- !ruby/object:MenuItem 
+  controller: images
+  items: []
+  - !ruby/object:MenuItem 
+    text: View Images
+    controller: images
+    action: list
+    
+This produces an array of menu two menu items with sub items:
+
+Users
+	List
+	New User
+Images
+	View Images
+	
+The format for an individual item is this:
+
+- !ruby/object:MenuItem 		# tells YAML to create an instance of MenuItem
+  text: Link Text 				# the text that is displayed for the menu item. If this is left out, the humanized and Capitalized version of the controller name is used for the link. The text can be any html text that you like, including images, styles, etc.
+  controller: controller_name 	# the name of the controller the menu link should point to
+  action: action_name 			# the name of the controller action the menu link should point to. Can be left out, in which case the action will be "index"
+  allow_all_access: true		# disabled access control for this item
+  items: []						# the array of sub menu items for the current item. Items can be nested to any depth. You can leave this out if the item has no sub items.
+  - ... child menu items ...
+
+In yout view, include the prototpye javascript, and the engine javascript and stylesheet:
+	<%= javascript_include_tag :default %>
+	<%= engine_stylesheet "menu_engine" %>
+	<%= engine_javascript "menu_engine" %>
+
+Then, use the following line to render the menu:
+	<%= menu %>
+	
+If you want to use a different file, put that in config and render the menu with:
+	<%= menu :file=>"config/filename_without_yml_extension" %>
+	
+To render a vertical menu layout instead of the default horizontal one, use:
+	<%= menu :layou=>:vertical %>
+
+
+=== Creating the menu from code
+You can create and nest menu items from ruby code. 
+For example in a helper method in ApplicationHelper:
+
+def my_menu
+	item_0 = MenuItem.new( :text=>"Menu Item 0", :controller=>"some_controller" )
+	item_1 = MenuItem.new( :text=>"Menu Item 1", :controller=>"some_controller", :action=>"list" )
+	item_2 = MenuItem.new( :text=>"Menu Item 2", :controller=>"some_controller", :action=>"new"  )
+	item_0.items << item_1 << item_2
+	item_3 = MenuItem.new( :text=>"Menu Item 3", :controller=>"some_other_controller" )
+	return [item_0, item_3]
+end
+
+The "menu" helper method supports passing in an arrary of menu items:
+	<%= menu :menu=>my_menu %>
+	
+=== Creating the menu from a HTML template
+If you want greater control over how the menu is rendered, use this method.
+Create a nested structure of <div> elements describing the menu. For submenus, create a submenu div surrounding the submenu items. Each div must have a unique id:
+
+<div id="item_0">
+	<%=link_to "Menu Item 0", :controller=>'some_controller' %>
+	<div id="sub_menu_0_0">
+		<div id="item_1"><%=link_to "Menu Item 1", :controller=>'some_controller', :action='list' %></div
+		<div id="item_2"><%=link_to "Menu Item 2", :controller=>'some_controller', :action='new' %></div
+	</div>
+</div>
+<div id="item_0">
+	<%=link_to "Menu Item 3", :controller=>'some_other_controller' %>
+</div>
+
+After the menu html code, include a javascript block:
+
+<script>
+	<%= menu_item 'item_0' %>
+		<%= sub_menu 'sub_menu_0_0', 'item_0' %>
+		<%= menu_item 'item_1', 'item_0' %>
+		<%= menu_item 'item_2', 'item_0' %>
+	<%= menu_item 'item_3' %>
+</script>
+
+This attaches the menu behaviours to the divs. Note that the second parameter to menu_item and sub_menu is the id of the parent menu item.
+
+The sub_menu helper method also accepts an optional parameter :position=>'right', which will display the sub menu next to the parent item instead of underneath.
+
+=== Look Ma, No Rails!
+Instead of using the helper methods in the above example, you can of course write the javascript block yourself:
+
+<script>
+	var menu_item_0 = new MenuItem('item_0');
+		var sub_menu_0 = menu_item_0.add_sub_menu('sub_menu_0_0', ''); // '' is the position parameter. Could also be 'right'
+		var menu_item_1 = sub_menu_0.add_item( new MenuItem('item_1') )
+		var menu_item_2 = sub_menu_0.add_item( new MenuItem('item_2') )
+	var menu_item_3 = new MenuItem('item_3');
+</script>
+
+Slightly more verbose than the ruby version, but not too bad.
+
+=== Look-and-Feel Customisation
+To change the design of the displayed menu, edit the menu-engine.css file, which you should find in public/engine-files/menu_engine/stylesheets.
+
+To change the look of different sub menu levels, use "div.submenu div.menuitem.levelX" as the CSS selector, where X is the level of the sub menu.
+
+== Access Control
+Authorization via UserEngine is built into the MenuEngine.
+Menu items that link to controller/action pairs that the current user is not authorized to use will be hidden.
+This only works when creating the menu in code or from YAML.
+
+== License
+Copyright (c) 2006 Max Muermann <menuengine at muermann dot org>
+
+The MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
