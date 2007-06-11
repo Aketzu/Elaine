@@ -9,17 +9,11 @@
   <%= stylesheet_link_tag 'elaine' %>
   <%= stylesheet_link_tag 'smartmenu' %>
 
-<% if false %>
-  <%= engine_stylesheet 'login_engine' %>
-  <%= engine_stylesheet "user" %>
-  <%= engine_stylesheet "menu_engine" %>
 
-  <%= engine_javascript "user" %>
-  <%= engine_javascript "menu_engine" %>
-<% end %>
+<% if false %>
   <%= stylesheet_link_tag "menu_engine.css", :plugin => "menu_engine" %>
   <%= javascript_include_tag "menu_engine.js", :plugin => "menu_engine" %>
-
+<% end %>
 
   <%= if @timeline then '<script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>' end %>
   <%= if @timeline then '<script src="/javascripts/timeline_extension.js" type="text/javascript"></script>' end %>
