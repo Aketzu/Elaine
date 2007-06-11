@@ -19,8 +19,6 @@ c_overlapControlsInIE=true;
 c_rightToLeft=false; // if the menu text should have "rtl" direction (e.g. Hebrew, Arabic)
 
 
-
-
 /******************************************************
 	(2) MENU STYLES (CSS CLASSES)
 *******************************************************/
