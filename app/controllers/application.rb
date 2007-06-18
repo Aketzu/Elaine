@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
 #sets up acts as authenticated
   include AuthenticatedSystem
 
-  helper SimpleSidebarHelper
-  include SimpleSidebar
+  #helper SimpleSidebarHelper
+  #include SimpleSidebar
 
-before_filter :login_required
+	before_filter :login_required
+  before_filter :login_from_cookie
 
   def require_ssl
     unless request.ssl?

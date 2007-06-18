@@ -39,4 +39,29 @@ class AccountController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default(:controller => '/account', :action => 'index')
   end
+	
+  def change_password
+		user = User.find(:first, :conditions => ['salt = ?', params[:auth_token]])
+		if user.nil?
+			@authenticated = false
+			flash[:notice] = "Wrong authentication"
+			return
+		else
+			@authenticated = params[:auth_token]
+			
+			return unless request.post?
+			
+			if (params[:password] == params[:password_confirmation])
+				current_user.password_confirmation = params[:password_confirmation]
+				current_user.password = params[:password]
+				current_user.salt = ""
+				flash[:notice] = current_user.save ?
+							"Password changed" :
+							"Password not changed"
+			else
+				flash[:notice] = "Password mismatch"
+				@old_password = params[:old_password]
+			end
+		end
+  end
 end

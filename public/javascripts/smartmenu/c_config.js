@@ -63,8 +63,8 @@ c_styles['MM']=[ // MainMenu (the shorter the class name the better)
 '#EEEEEE',	// ItemsSeparatorColor ('color','transparent')
 0,		// ItemsSeparatorSpacing
 true,			// UseSubMenuImage (true,false)
-'[h_arrow_black.gif]',	// SubMenuImageSource ('[image_source]')
-'[h_arrow_white.gif]',	// OverSubMenuImageSource
+'[/images/h_arrow_black.gif]',	// SubMenuImageSource ('[image_source]')
+'[/images/h_arrow_white.gif]',	// OverSubMenuImageSource
 7,			// SubMenuImageWidth
 4,			// SubMenuImageHeight
 '9',			// SubMenuImageVAlign ('pixels from item top','middle')
@@ -73,13 +73,13 @@ true,			// UseSubMenuImage (true,false)
 '#FFFFFF',		// VISITED Background
 '#000000',		// VISITED Color
 'none',			// VISITED TextDecoration
-'[h_arrow_black.gif]',	// VISITED SubMenuImageSource
+'[/images/h_arrow_black.gif]',	// VISITED SubMenuImageSource
 'solid',		// CURRENT BorderStyle
 '#DEF9AE',		// CURRENT BorderColor
 '#DEF9AE',		// CURRENT Background
 '#000000',		// CURRENT Color
 'none',			// CURRENT TextDecoration
-'[h_arrow_black.gif]',	// CURRENT SubMenuImageSource
+'[/images/h_arrow_black.gif]',	// CURRENT SubMenuImageSource
 '',		// Custom additional CSS for the items (valid CSS)
 '',		// OVER Custom additional CSS for the items (valid CSS)
 '',		// CURRENT Custom additional CSS for the items (valid CSS)
@@ -120,8 +120,8 @@ c_styles['SM']=[ // SubMenus
 '#EEEEEE',	// ItemsSeparatorColor ('color','transparent')
 0,		// ItemsSeparatorSpacing
 true,			// UseSubMenuImage (true,false)
-'[v_arrow_black.gif]',	// SubMenuImageSource ('[image_source]')
-'[v_arrow_white.gif]',	// OverSubMenuImageSource
+'[/images/v_arrow_black.gif]',	// SubMenuImageSource ('[image_source]')
+'[/images/v_arrow_white.gif]',	// OverSubMenuImageSource
 7,			// SubMenuImageWidth
 7,			// SubMenuImageHeight
 '6',			// SubMenuImageVAlign ('pixels from item top','middle')
@@ -130,13 +130,13 @@ true,			// UseSubMenuImage (true,false)
 '#FFFFFF',		// VISITED Background
 '#000000',		// VISITED Color
 'none',			// VISITED TextDecoration
-'[v_arrow_black.gif]',	// VISITED SubMenuImageSource
+'[/images/v_arrow_black.gif]',	// VISITED SubMenuImageSource
 'solid',		// CURRENT BorderStyle
 '#DEF9AE',		// CURRENT BorderColor
 '#DEF9AE',		// CURRENT Background
 '#000000',		// CURRENT Color
 'none',			// CURRENT TextDecoration
-'[v_arrow_black.gif]',	// CURRENT SubMenuImageSource
+'[/images/v_arrow_black.gif]',	// CURRENT SubMenuImageSource
 '',		// Custom additional CSS for the items (valid CSS)
 '',		// OVER Custom additional CSS for the items (valid CSS)
 '',		// CURRENT Custom additional CSS for the items (valid CSS)

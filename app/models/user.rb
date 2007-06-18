@@ -50,11 +50,11 @@ class User < ActiveRecord::Base
     save(false)
   end
 
-  protected
+	protected
     # before filter 
     def encrypt_password
       return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record? || salt.empty?
       self.crypted_password = encrypt(password)
     end
     
