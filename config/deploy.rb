@@ -16,7 +16,7 @@ set :deploy_to, "/var/rails/deploy/elaine2006"
 set :repository, "https://svn.nodeta.fi/elaine2006/trunk"
 #set :user, "mlavi"
 # set :svn, "svn+ssh://moukari.assembly.org/data/livesvn/elaine2006"
-ssh_options[:keys] = %w(~/.ssh/id_dsa /home/mlavi/.ssh/id_dsa)
+ssh_options[:keys] = %w(~/.ssh/id_dsa /home/mlavi/.ssh/id_dsa /home/akolehma/.ssh/id_dsa)
 ssh_options[:port] = 22
 set :use_sudo, false
 
@@ -141,10 +141,13 @@ task :deploy_elaine do
 end
 
 desc "Customized restart task."
-task :custom_restart, :roles => :app do
-  run "cd #{directory}/public && " +
-      "chmod ugo+x dispatch.fcgi"
-	sudo "/etc/init.d/apache2 restart"
+task :before_restart do
+	#Clear session cache
+	run "cd #{release_path} && " + 
+		"rake db:sessions:clear RAILS_ENV=development &&" + 
+		"rake db:sessions:clear RAILS_ENV=production"
+	#Restart apache
+	sudo "/usr/sbin/apache2ctl graceful"
 end
 
 desc "Customized migrate task. Supposed to bring the DB up from zero."
