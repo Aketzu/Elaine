@@ -144,7 +144,7 @@ desc "Customized restart task."
 task :custom_restart, :roles => :app do
   run "cd #{directory}/public && " +
       "chmod ugo+x dispatch.fcgi"
-
+	sudo "/etc/init.d/apache2 restart"
 end
 
 desc "Customized migrate task. Supposed to bring the DB up from zero."
