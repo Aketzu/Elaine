@@ -164,3 +164,7 @@ task :migrate_elaine, :roles => :db, :only => { :primary => true } do
   run "cd #{directory} && " +
       "#{rake} RAILS_ENV=#{rails_env} db:migrate"
 end
+
+task :after_update_code do
+	run "cp config/database_yml config/database.yml"
+end
