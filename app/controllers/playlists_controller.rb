@@ -2,8 +2,6 @@ class PlaylistsController < ApplicationController
   layout 'application', :except => [:timeline_xml, :timeline_config, :bandinfo_xml]
   sidebar :general
 
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
-
   def index
     list
     render :action => 'list'

@@ -1,8 +1,6 @@
 class ProgramsController < ApplicationController
   sidebar :general
 
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
-
   auto_complete_for :event, :title
   auto_complete_for :program_description, :title
 

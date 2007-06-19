@@ -1,8 +1,6 @@
 class ElaineController < ApplicationController
   sidebar :general
 
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
-
   def index
 #    @user = params[:user]
 #    if User.
@@ -23,6 +21,10 @@ class ElaineController < ApplicationController
 
   def new_ticket
     redirect_to "https://bugs.nodeta.fi/trac/elaine/newticket"
+  end
+
+  def view_tickets
+    redirect_to "https://bugs.nodeta.fi/trac/elaine/report/1?sort=created&asc=1"
   end
 
 end

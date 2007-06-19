@@ -1,5 +1,6 @@
 class ModifyUsersAaa < ActiveRecord::Migration
   def self.up
+    remove_column :users, :role
     remove_column :users, :logged_in_at
     remove_column :users, :deleted
     remove_column :users, :delete_after
@@ -11,25 +12,14 @@ class ModifyUsersAaa < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :users, :logged_in_at
-    add_column :users, :deleted
-    add_column :users, :delete_after
-    add_column :users, :security_token
-    add_column :users, :token_expiry
-    remove_column :users, :remember_token, :string
-    remove_column :users, :remember_token_expires_at, :datetime
+    add_column :users, :role, :string
+    add_column :users, :logged_in_at, :datetime
+    add_column :users, :deleted, :integer, :default => 0
+    add_column :users, :delete_after, :datetime
+    add_column :users, :security_token, :string, :limit => 40
+    add_column :users, :token_expiry, :datetime
+    remove_column :users, :remember_token
+    remove_column :users, :remember_token_expires_at
     rename_column :users, :crypted_password, :salted_password
   end
 end
-
-#original
-#    create_table "users", :force => true do |t|
-#      t.column :login,                     :string
-#      t.column :email,                     :string
-#      t.column :crypted_password,          :string, :limit => 40
-#      t.column :salt,                      :string, :limit => 40
-#      t.column :created_at,                :datetime
-#      t.column :updated_at,                :datetime
-#      t.column :remember_token,            :string
-#      t.column :remember_token_expires_at, :datetime
-#    end

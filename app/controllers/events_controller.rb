@@ -3,8 +3,6 @@ class EventsController < ApplicationController
 
   auto_complete_for :event, :title
 
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
-
   def index
     list
     render :action => 'list'

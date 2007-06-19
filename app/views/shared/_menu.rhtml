@@ -12,6 +12,7 @@
 							<li><%= link_to 'Elaine Known Issues', :controller => 'elaine', :action => 'issues' %></li>
 							<li><%= link_to 'Elaine TODO', :controller => 'elaine', :action => 'todo' %></li>
 							<li><%= link_to 'New Ticket', :controller => 'elaine', :action => 'new_ticket' %></li>
+							<li><%= link_to 'View Tickets', :controller => 'elaine', :action => 'view_tickets' %></li>
 						</ul>
 					</li>
 					<li>
@@ -49,7 +50,10 @@
 						</ul>
 					</li>
 					<li>
-						<%= link_to 'Admin', :controller => 'user', :action => 'list' %>
+						<%= link_to 'Admin', :controller => 'elaine', :action => 'index' %>
+						<ul>
+							<li><%= link_to 'Send \'Change password\' links', :controller => 'admin', :action => 'send_change_password_link' %></li>
+						</ul>
 					</li>
 
 			<% if false %>

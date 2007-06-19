@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(:version => 51) do
     t.column "lastname",                  :string,   :limit => 40
     t.column "salt",                      :string,   :limit => 40, :default => "", :null => false
     t.column "verified",                  :integer,                :default => 0
-    t.column "role",                      :string,   :limit => 40
     t.column "created_at",                :datetime
     t.column "updated_at",                :datetime
     t.column "remember_token",            :string
