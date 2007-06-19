@@ -52,10 +52,10 @@ class AccountController < ApplicationController
 			return unless request.post?
 			
 			if (params[:password] == params[:password_confirmation])
-				current_user.password_confirmation = params[:password_confirmation]
-				current_user.password = params[:password]
-				current_user.salt = ""
-				flash[:notice] = current_user.save ?
+				user.password_confirmation = params[:password_confirmation]
+				user.password = params[:password]
+				user.salt = ""
+				flash[:notice] = user.save ?
 							"Password changed" :
 							"Password not changed"
 			else
