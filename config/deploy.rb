@@ -166,5 +166,5 @@ task :migrate_elaine, :roles => :db, :only => { :primary => true } do
 end
 
 task :after_update_code do
-	run "cp config/database_yml config/database.yml"
+	run "cp #{release_path}/config/database_yml #{release_path}/config/database.yml"
 end
