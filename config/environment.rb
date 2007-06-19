@@ -42,6 +42,8 @@ end
 # Configure the ActionMailer
 ActionMailer::Base.smtp_settings = {
   :address => "127.0.0.1",
+	:domain => "assembly.org",
+	:authentication => "plain",
   :port => 25,
 }
 
