@@ -8,8 +8,6 @@ class BroadcastLogsController < ApplicationController
 
   #TODO: Add created_at to database to keep record of when the user actually clicked this event as sent.
   
-  before_filter :require_no_ssl if (RAILS_ENV == "production")
-
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
