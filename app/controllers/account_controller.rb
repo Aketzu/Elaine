@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  skip_before_filter :login_required, :except => ['signup', 'change_password']
+  skip_before_filter :login_required, :only => ['signup', 'change_password']
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
 
