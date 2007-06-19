@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
 	before_filter :login_required
   before_filter :login_from_cookie
 
-  before_filter :require_ssl if (RAILS_ENV == "production") &&
-		!["vod", "vod_formats"].include?(params[:controller])
+  before_filter :require_ssl if (RAILS_ENV == "production")
+		# && !["vod", "vod_formats"].include?(params[:controller])
 
   def require_ssl
     unless request.ssl?
