@@ -64,18 +64,19 @@ role :db,  "elaine.assembly.org", :primary => true
 # narrow the set of servers to a subset of a role by specifying options, which
 # must match the options given for the servers to select (like :primary => true)
 
-desc <<DESC
-An imaginary backup task. (Execute the 'show_tasks' task to display all
-available tasks.)
-DESC
+desc "Makes backup of the database"
 task :backup, :roles => :db, :only => { :primary => true } do
   # the on_rollback handler is only executed if this task is executed within
   # a transaction (see below), AND it or a subsequent task fails.
   on_rollback { delete "/tmp/dump.sql" }
 
-  run "mysqldump -u theuser -p thedatabase > /tmp/dump.sql" do |ch, stream, out|
-    ch.send_data "thepassword\n" if out =~ /^Enter password:/
-  end
+	#Usage: rake remote:exec ACTION=backup
+	sudo "su postgres -c 'pg_dump -Ft elaine2 | gzip > \"/var/rails/deploy/elaine2006/dbbackup/elaine2_`date +%Y%m%d%H%M%S`.tgz\"'"
+	#TODO: Save backup to svn?
+	
+  #run "mysqldump -u theuser -p thedatabase > /tmp/dump.sql" do |ch, stream, out|
+  #  ch.send_data "thepassword\n" if out =~ /^Enter password:/
+  #end
 end
 
 # Tasks may take advantage of several different helper methods to interact
