@@ -24,12 +24,16 @@ class ProgramsController < ApplicationController
       unless params[:program_description].nil?
         @filter = params[:program_description][:title]
       end
+      unless params[:date_filter].nil?
+        @content_filter_date = self.current_user.content_filter_date
+      end
     end
 
     if @filter.nil?
       @program_pages, @programs = paginate(:programs, 
                                            :per_page => 20,
                                            :order => 'created_at')
+#                                           :conditions => ["created_at > ?", @content_filter_date])
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
       @program_pages, @program_descriptions = paginate(:program_descriptions, 

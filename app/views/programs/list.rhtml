@@ -17,6 +17,9 @@
     <%= start_form_tag :action => 'list' %>
     <%= text_field_with_auto_complete :program_description, :title, :skip_style => true, :value => @filter %><%= submit_tag 'Search' %>
     <%= end_form_tag %>
+    <% if @date_filter %>
+    Search limited to programs newer than <%= @content_filter_date %>.
+    <% end %>
     </td>
   </tr>
 

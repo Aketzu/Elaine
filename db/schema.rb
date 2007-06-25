@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 51) do
+ActiveRecord::Schema.define(:version => 52) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -81,6 +81,11 @@ ActiveRecord::Schema.define(:version => 51) do
     t.column "movable",    :boolean
     t.column "program_id", :integer
     t.column "channel_id", :integer,  :default => 1
+  end
+
+  create_table "plugin_schema_info", :id => false, :force => true do |t|
+    t.column "plugin_name", :string
+    t.column "version",     :integer
   end
 
   create_table "program_descriptions", :force => true do |t|
@@ -173,17 +178,20 @@ ActiveRecord::Schema.define(:version => 51) do
   end
 
   create_table "users", :force => true do |t|
-    t.column "login",                     :string,   :limit => 80, :default => "", :null => false
-    t.column "crypted_password",          :string,   :limit => 40, :default => "", :null => false
-    t.column "email",                     :string,   :limit => 60, :default => "", :null => false
+    t.column "login",                     :string,   :limit => 80, :default => "",           :null => false
+    t.column "crypted_password",          :string,   :limit => 40, :default => "",           :null => false
+    t.column "email",                     :string,   :limit => 60, :default => "",           :null => false
     t.column "firstname",                 :string,   :limit => 40
     t.column "lastname",                  :string,   :limit => 40
-    t.column "salt",                      :string,   :limit => 40, :default => "", :null => false
+    t.column "salt",                      :string,   :limit => 40, :default => "",           :null => false
     t.column "verified",                  :integer,                :default => 0
     t.column "created_at",                :datetime
     t.column "updated_at",                :datetime
     t.column "remember_token",            :string
     t.column "remember_token_expires_at", :datetime
+    t.column "content_filter_date",       :date,                   :default => '2007-05-31'
+    t.column "language",                  :string
+    t.column "channel_id",                :string,                 :default => "3"
   end
 
   create_table "users_roles", :id => false, :force => true do |t|
