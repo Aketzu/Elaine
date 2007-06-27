@@ -2,8 +2,8 @@ class Program < ActiveRecord::Base
   include TimeHelper
   include ActionView::Helpers::TextHelper
 
-belongs_to :User
-belongs_to :ProgramStatus
+belongs_to :User, :foreign_key => 'owner_id'
+belongs_to :ProgramStatus, :foreign_key => 'status_id'
 belongs_to :VodGroup
 belongs_to :FileLocation
 
@@ -25,6 +25,10 @@ validates_associated :VodGroup
 validates_associated :FileLocation
 validates_presence_of(:formatted_length, :message => "can not be empty")
 validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "contains illegal characters.")
+
+def owner
+	self.User
+end
 
 def quarantine
   self.Events.maximum('quarantine') || self.created_at

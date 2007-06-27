@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
 
+	has_many :program, :foreign_key => 'owner_id'
+
   # Returns the full name of this user.
   def fullname
     "#{self.firstname} #{self.lastname}"

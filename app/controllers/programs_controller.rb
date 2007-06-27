@@ -16,28 +16,22 @@ class ProgramsController < ApplicationController
     session[:original_uri] = request.request_uri
     @user = session[:user]
 
-    # TODO This is the ugliest kludge ever, please rewrite somehow.
-    unless params.nil?
-      unless params[:search].nil?
-        @filter = params[:search]
-      end
-      unless params[:program_description].nil?
-        @filter = params[:program_description][:title]
-      end
-      unless params[:date_filter].nil?
-        @content_filter_date = self.current_user.content_filter_date
-      end
-    end
+		@filter ||= params[:search]
+		@filter ||= params[:program_description][:title] unless params[:program_description].nil?
+
+		@content_filter_date = self.current_user.content_filter_date unless params[:date_filter].nil?
 
     if @filter.nil?
       @program_pages, @programs = paginate(:programs, 
                                            :per_page => 20,
-                                           :order => 'created_at')
+                                           :order => 'programs.created_at',
+																					 :include => [:User, :ProgramStatus, :Events])
 #                                           :conditions => ["created_at > ?", @content_filter_date])
     else
       # TODO: ILIKE is Postgres specific, but is there another way?
       @program_pages, @program_descriptions = paginate(:program_descriptions, 
                                                        :per_page => 20,
+																											 :include => [:Program],
                                                        :conditions => ["title ILIKE ?", 
                                                                        '%' + @filter + '%'])
       @programs = @program_descriptions.collect {|t| t.Program }
@@ -53,6 +47,7 @@ class ProgramsController < ApplicationController
 
     @program_pages, @programs = paginate :programs, 
                                          :conditions => ['owner_id = ?', @user.id],
+																				 :include => [:User, :ProgramStatus, :Events],
                                          :per_page => 20
 
     render :action => 'list'

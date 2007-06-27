@@ -84,7 +84,8 @@
     <th>Actions</th>
   </tr>
 
-<% for program in @programs %>
+<% for program in @programs 
+	@curprog = program %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
     <td><%= link_to program.title, :action => 'edit', :id => program %></td>
     <td><%=h program.formatted_length %></td>
@@ -92,11 +93,11 @@
     <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
 <!--     <td><%=h program.formatted_preview_image_offset %></td> -->
 <!--     <td><%=h program.formatted_preview_video_offset %></td> -->
-    <td><%= link_to User.find(program.owner_id).login,
+    <td><%= link_to program.owner.login,
               :controller => 'users',
               :action => 'show', 
               :id => program.owner_id %></td>
-    <td><%= link_to ProgramStatus.find(program.status_id).name,
+    <td><%= link_to program.ProgramStatus.name,
               :controller => 'program_statuses',
               :action => 'show',
               :id => program.owner_id %></td>
@@ -109,12 +110,12 @@
       <%= link_to 'Edit', :action => 'edit', :id => program %>
       <%= link_to 'Destroy', { :action => 'destroy', :id => program }, 
               :confirm => 'Are you sure?', 
-              :post => true %>
+              :method => :post %>
     ]</td>
   </tr>
 
   <tr class="<%= @current_cycle %>">
-    <td colspan="12"><%= render(:partial => 'event', :object => program.program_event_links) %></td>
+    <td colspan="12"><%= render(:partial => 'event', :object => program.Events) %></td>
   </tr>
 
 <% end %>
