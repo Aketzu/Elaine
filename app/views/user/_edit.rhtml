@@ -2,19 +2,19 @@
   <table>
 		<tr>
 		<th class="edit">First Name</th>
-		<td class="edit"><%= text_area 'user', 'firstname' %></td>
+		<td class="edit"><%= text_field 'user', 'firstname' %></td>
 		</tr>
 		<tr>
 		<th class="edit">Last Name</th>
-		<td class="edit"><%= text_area 'user', 'lastname' %></td>
+		<td class="edit"><%= text_field 'user', 'lastname' %></td>
 		</tr>
 		<tr>
 		<th class="edit">Login ID</th>
-		<td class="edit"><%= text_area 'user', 'login' %></td>
+		<td class="edit"><%= text_field 'user', 'login' %></td>
 		</tr>
 		<tr>
 		<th class="edit">Email</th>
-		<td class="edit"><%= text_area 'user', 'email' %></td>
+		<td class="edit"><%= text_field 'user', 'email' %></td>
 		</tr>
     <% if submit %>
       <%= form_input :submit_button, (user.new_record? ? 'Signup' : 'Change Settings'), :class => 'two_columns' %>
