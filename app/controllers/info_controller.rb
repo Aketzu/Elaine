@@ -1,5 +1,5 @@
 class InfoController < ApplicationController
-  skip_before_filter :authorize_action
+  skip_before_filter :login_required
 
 def playlist
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])

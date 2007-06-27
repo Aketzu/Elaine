@@ -8,7 +8,7 @@
 					<li>
 						<%= link_to 'Elaine', :controller => 'elaine', :action => 'index' %>
 						<ul>
-							<li><%= link_to 'Personal Details', :controller => 'user', :action => 'edit' %></li>
+							<li><%= link_to 'Personal Details', :controller => 'user', :action => 'edit_user', :id => current_user.id %></li>
 							<li><%= link_to 'Elaine Known Issues', :controller => 'elaine', :action => 'issues' %></li>
 							<li><%= link_to 'Elaine TODO', :controller => 'elaine', :action => 'todo' %></li>
 							<li><%= link_to 'New Ticket', :controller => 'elaine', :action => 'new_ticket' %></li>
@@ -18,7 +18,7 @@
 					<li>
 						<%= link_to 'Playlists', :controller => 'playlists', :action => 'list' %>
 						<ul>
-							<li><%= link_to 'Timeline', :controller => 'playlists', :action => 'list_by_user' %></li>
+							<li><%= link_to 'Timeline', :controller => 'playlists', :action => 'timeline' %></li>
 							<li><%= link_to 'Broadcast Logs', :controller => 'broadcast_logs', :action => 'list' %></li>
 						</ul>
 					</li>
@@ -49,13 +49,23 @@
 							<li><%= link_to 'List Vod Formats', :controller => 'vod_formats', :action => 'list' %></li>
 						</ul>
 					</li>
+
+					<% if authorized?(:controller => "admin") %>
 					<li>
 						<%= link_to 'Admin', :controller => 'elaine', :action => 'index' %>
 						<ul>
 							<li><%= link_to 'Send \'Change password\' links', :controller => 'admin', :action => 'send_change_password_link' %></li>
+							<li><%= link_to 'Roles', :controller => 'role', :action => 'list' %></li>
+							<li><%= link_to 'Permissions', :controller => 'permission', :action => 'list' %></li>
+							<li><%= link_to 'Users', :controller => 'user', :action => 'list' %></li>
 						</ul>
 					</li>
+					<% end %>
 
+					<li>
+						<%= link_to 'Logout', :controller => 'account', :action => 'logout' %>
+					</li>
+					
 			<% if false %>
 			<div class='menuitem level0' onclick="docum='/elaine';" >Elaine<div id='sub_1' class='submenu'><div style='width:auto' id='mn_2' class='menuitem level1' onclick="document.location.href='/elaine';" >Home page</div>
 			<div class='menuitem level1' onclick="docum='/user/edit';" >Personal info<br/><span class="description">Edit your details in Elaine</span></div>

@@ -47,36 +47,6 @@ ActionMailer::Base.smtp_settings = {
   :port => 25,
 }
 
-# Start the LoginEngine
-#module LoginEngine
-#  config :salt, "elaine-2006-rocks"
-#  config :use_email_notification, true
-#  config :confirm_account, true
-#  config :email_from, "mikael.lavi@assemblytv.net"
-#end
-
-#Engines.start :login
-
-# Start the UserEngine
-
-#module UserEngine
-#  config :admin_login, "admin"
-#  config :admin_email, "mikael.lavi@assemblytv.net"
-#  config :admin_password, "nk4bH7d"
-#end
-
-#Engines.start :user
-#UserEngine.check_system_roles
-
-# Start the MenuEngine
-#module MenuEngine
-#  config :access_control, true
-#  config :on_show, "new Effect.Appear( element, { duration: 0.2, from:0.0, to: 1.0 } );"
-#  config :on_hide, "new Effect.Fade( element, { duration: 0.2 });"
-#end
-
-#Engines.start :menu
-
 # Add new inflection rules using the following format 
 # (all these examples are active by default):
 # Inflector.inflections do |inflect|
@@ -85,6 +55,8 @@ ActionMailer::Base.smtp_settings = {
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+
+Permission.synchronize_with_controllers
 
 # Include your application configuration below
 TEST_SETTING = "joo"

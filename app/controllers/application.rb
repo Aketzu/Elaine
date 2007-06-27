@@ -2,12 +2,12 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-
 #sets up acts as authenticated
+
+  include UserEngine
   include AuthenticatedSystem
 
   #helper SimpleSidebarHelper
-  #include SimpleSidebar
 
 	before_filter :login_required
   before_filter :login_from_cookie

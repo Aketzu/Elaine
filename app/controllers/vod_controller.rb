@@ -1,5 +1,5 @@
 class VodController < ApplicationController
-  skip_before_filter :authorize_action
+  skip_before_filter :login_required
 
   def next  
         program_ids = Program.find_by_sql "SELECT p1.id as program_id, MIN(vod_format_id) as vod_format_id FROM programs p1 LEFT JOIN vod_groups ON p1.vod_group_id = vod_groups.id JOIN vod_group_format_links ON vod_groups.id = vod_group_format_links.vod_group_id WHERE vod_format_id NOT IN (SELECT vod_format_id FROM programs p2 JOIN vods ON p1.id = vods.program_id AND p2.id = p1.id) AND p1.do_vod = true GROUP BY program_id, p1.vod_group_id ORDER BY p1.vod_group_id DESC;"
