@@ -1,4 +1,4 @@
-class InitialSchema < ActiveRecord::Migration
+class CreateUserRolesInitialSchema < ActiveRecord::Migration
   def self.up
     create_table :permission_table, :force => true do |t|
       t.column "controller", :string, :default => "", :null => false
