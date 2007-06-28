@@ -14,9 +14,9 @@ class ModifyUsersPrefs < ActiveRecord::Migration
 
 		
 
-    add_column :users, :channel_id, :string, :default => chan.id
+    add_column :users, :channel_id, :integer, :default => chan.id
     # For existing users we use the following code to set default values
-    users = User.find_all
+    users = User.find(:all)
     for u in users
       u.content_filter_date = "2007-05-31"
       u.channel_id = Channel.find(:first, :conditions => [ "name = ?",'AssemblyTV 2007' ]).id

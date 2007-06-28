@@ -16,6 +16,15 @@
 		<th class="edit">Email</th>
 		<td class="edit"><%= text_field 'user', 'email' %></td>
 		</tr>
+                <tr>
+		<th class="edit">Date filter</th>
+                <td class="edit"><%= date_select 'user', 'content_filter_date' %></td>
+		</tr>
+                <tr>
+		<th class="edit">Default channel</th>
+                <td class="edit"><%= select('user', 'channel_id', Channel.find_all.collect {|c| [ c.name, c.id ] }) %></td>
+		</tr>
+		
     <% if submit %>
       <%= form_input :submit_button, (user.new_record? ? 'Signup' : 'Change Settings'), :class => 'two_columns' %>
     <% end %>
