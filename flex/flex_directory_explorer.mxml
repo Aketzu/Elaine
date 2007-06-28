@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" initialize="exploreDir()">
+<!--
+Copyright 2006 Derek Wischusen
+
+This work is licensed under the BSD License.  You may freely 
+duplicate, distribute, display and alter this application for both 
+commercial and non-commercial uses.
+
+For more information email: dwischus@flexonrails.net
+-->
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.remoting.RemoteObject;
+			import mx.rpc.events.ResultEvent;
+			
+			private const folder:String = "example";
+			
+			private var railsFileUtils:RemoteObject = new RemoteObject();
+
+			[Bindable]
+			[Embed(source="Assets.swf", symbol="TreeNodeIcon")]
+			public var fileIcon:Class;
+			 
+			[Bindable]
+			[Embed(source="Assets.swf", symbol="TreeFolderOpen")]
+			public var folderIcon:Class;
+			
+			[Bindable]
+			private var myDirectory:XMLList;
+
+			private function selectIcon(item:Object):Class
+			{
+				return item.@directory == "true" ? folderIcon : fileIcon;
+			}
+
+			private function exploreDir():void
+			{
+				railsFileUtils.destination = "FileUtilities";
+				railsFileUtils.explore_directory.addEventListener("result", onResult);
+				railsFileUtils.addEventListener("fault", onFault);
+				
+				railsFileUtils.explore_directory(folder);
+			}
+				
+			private function onResult(event:ResultEvent):void
+			{
+
+				myDirectory = XMLList(event.result);
+				
+				railsFileUtils.explore_directory.removeEventListener("result", onResult);
+				railsFileUtils.removeEventListener("fault", onFault);
+			}
+			
+			private function onFault(event:Event):void
+			{
+				trace ("Fault: " + event);
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Panel width="422" height="97%" verticalCenter="-1" horizontalCenter="0" title="Flex Explorer">
+		<mx:Tree id="dirTree" height="100%" labelField="@label" dataProvider="{myDirectory}" iconFunction="selectIcon" width="100%" 
+			 doubleClickEnabled="true"  doubleClick="dirTree.expandItem(dirTree.selectedItem, !dirTree.isItemOpen(dirTree.selectedItem), true)"  />
+	</mx:Panel>
+	
+</mx:Application>
