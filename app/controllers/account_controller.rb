@@ -18,6 +18,8 @@ class AccountController < ApplicationController
       end
       redirect_back_or_default('/')
       flash[:notice] = "Logged in successfully"
+		else
+			flash[:error] = "Invalid username or password. Note that username IS case sensitive."
     end
   end
 

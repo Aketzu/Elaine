@@ -12,46 +12,63 @@ class ProgramsController < ApplicationController
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
-  def list
-    session[:original_uri] = request.request_uri
-    @user = session[:user]
+
+	def buildsearch
+		@search = "true "
+		@searchparams = Hash.new
+
+		if params[:find_by_user] && params[:find_by_user] != "0"
+			@user = User.find(params[:find_by_user])
+			@search += " AND programs.owner_id = :owner_id "
+			@searchparams[:owner_id] = @user.id
+		end
 
 		@filter ||= params[:search]
 		@filter ||= params[:program_description][:title] unless params[:program_description].nil?
+		@filter ||= ""
 
-		@content_filter_date = self.current_user.content_filter_date unless params[:date_filter].nil?
-
-    if @filter.nil?
-      @program_pages, @programs = paginate(:programs, 
-                                           :per_page => 20,
-                                           :order => 'programs.created_at',
-																					 :include => [:User, :ProgramStatus, :Events])
-#                                           :conditions => ["created_at > ?", @content_filter_date])
-    else
+		unless @filter.empty?
       # TODO: ILIKE is Postgres specific, but is there another way?
-      @program_pages, @program_descriptions = paginate(:program_descriptions, 
-                                                       :per_page => 20,
-																											 :include => [:Program],
-                                                       :conditions => ["title ILIKE ?", 
-                                                                       '%' + @filter + '%'])
-      @programs = @program_descriptions.collect {|t| t.Program }
-    end
-  end
 
-  def list_by_user
+			#Creates funny effects with multilanguage titles (i.e. same
+			# programs appear with different titles depending on search
+			# keywords == shows title in the language where keyword was found)
+			#Fixing would require either dropping :include =>
+			# :program_descriptions or additional SQL query in Program.title
+			@search += " AND program_descriptions.title ILIKE :title "
+			@searchparams[:title] = "%#{@filter}%"
+		end
+
+		unless params[:ignore_date_filter]
+			@search += " AND programs.created_at > :created_at "
+			@searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
+		end
+
+	end
+
+  def list
     session[:original_uri] = request.request_uri
-    @user = session[:user]
-    unless params[:find_by_user].nil?
-      @user = User.find(params[:find_by_user])
-    end
+		@user = session[:user]
 
-    @program_pages, @programs = paginate :programs, 
-                                         :conditions => ['owner_id = ?', @user.id],
-																				 :include => [:User, :ProgramStatus, :Events],
-                                         :per_page => 20
+		buildsearch
 
-    render :action => 'list'
+		@program_pages, @programs = paginate(:programs, 
+																				 :per_page => 20,
+																				 :order => 'programs.created_at, program_descriptions.language_id',
+																				 :include => [:User, :ProgramStatus, :Events, :program_descriptions],
+																				 :conditions => [@search, @searchparams])
+
+		if request.xml_http_request?
+			render :partial => "list", :layout => false
+		end
   end
+	
+	def auto_complete_for_program_description_title
+		buildsearch
+
+		@items = ProgramDescription.find(:all, :order => 'title', :include => :Program, :conditions => [@search, @searchparams])
+		render :inline => "<%= auto_complete_result @items, 'title' %>"
+	end
 
   def show
     session[:original_uri] = request.request_uri

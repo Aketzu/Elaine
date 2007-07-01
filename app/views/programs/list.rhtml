@@ -1,173 +1,36 @@
-<table>
-  <tr>
-    <td><h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
-    <td>
-    <%= start_form_tag 'name' => 'find_user' %>
-    <% if params[:action] == 'list_by_user' %>
-    <select name="find_by_user" onChange="javascript: this.form.submit()">
-      <%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
-    </select>
-    <% end %>
-    <%= end_form_tag %>
-    </td>
-  </tr>
+<h2>Listing programs<%= ' by user' if params[:action] == 'list_by_user' %></h2>
 
-  <tr>
-    <td>
-    <%= start_form_tag :action => 'list' %>
-    <%= text_field_with_auto_complete :program_description, :title, :skip_style => true, :value => @filter %><%= submit_tag 'Search' %>
-    <%= end_form_tag %>
-    <% if @date_filter %>
-    Search limited to programs newer than <%= @content_filter_date %>.
-    <% end %>
-    </td>
-  </tr>
+<%= form_tag [:action => :list], :id => :search %>
+	<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
+	<br />
+	User: 
+	<select name="find_by_user">
+	<option value="0">All</option>
+	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
+	</select>
+	<br />
+	
 
-  <tr>
-    <td colspan="2">
-    <%= link_to 'New program', :action => 'new' %>
-
-    <span style="padding-left: 3em;">
-    <% unless @program_pages.nil? %>
-      <% if params[:action] == 'list' %>
-        <%= if @program_pages.current.previous 
-            then link_to 'Previous page', { 
-                   :page => @program_pages.current.previous, 
-                   :params => {'search' => @filter}} 
-            else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {'search' => @filter} %>
-        <%= if @program_pages.current.next 
-            then link_to 'Next page', { 
-                   :page => @program_pages.current.next,
-                   :params => {'search' => @filter}}
-            else 'Next page' end %> 
-      <% else %>
-        <%= if @program_pages.current.previous 
-            then link_to 'Previous page', {
-                   :page => @program_pages.current.previous, 
-                   :params => {
-                      'find_by_user' => @user.id,
-                      'search' => @filter}} 
-            else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {
-                                                'find_by_user' => @user.id,
-                                                'search' => @filter} %>
-        <%= if @program_pages.current.next
-            then link_to 'Next page', { 
-                   :page => @program_pages.current.next, 
-                   :params => {
-                      'find_by_user' => @user.id,
-                      'search' => @filter}} 
-            else 'Next page' end %> 
-      <% end %>
-    <% end %>
-    </span>
-    </td>
-  </tr>
-</table>
+	Search: <%= text_field_with_auto_complete :program_description, :title, :skip_style => true, :value => @filter %>
+	<%= image_tag("spinner.gif",
+			:align => 'middle',
+			:border=> 0,
+			:id => "spinner",
+			:style=>"display: none;") %>
+	<br />
 
 
-<table>
-  <tr class="header">
-    <th>Title</th>
-    <th>Length</th>
-<!--     <th>Notes</th> -->
-    <th>Created<br>Modified</th>
-<!--     <th>Preview image offset (hh:mm:ss)</th> -->
-<!--     <th>Preview video offset (hh:mm:ss)</th> -->
-    <th>Owner</th>
-    <th>Status</th>
-    <th>Do VOD?</th>
-    <th>Min. show</th>
-    <th>Max. show</th>
-    <th>Quarantine</th>
-    <th>Actions</th>
-  </tr>
+<%= end_form_tag %>
 
-<% for program in @programs 
-	@curprog = program %>
-  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td><%= link_to program.title, :action => 'edit', :id => program %></td>
-    <td><%=h program.formatted_length %></td>
-<!--     <td><%=h program.notes %></td> -->
-    <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
-<!--     <td><%=h program.formatted_preview_image_offset %></td> -->
-<!--     <td><%=h program.formatted_preview_video_offset %></td> -->
-    <td><%= link_to program.owner.login,
-              :controller => 'users',
-              :action => 'show', 
-              :id => program.owner_id %></td>
-    <td><%= link_to program.ProgramStatus.name,
-              :controller => 'program_statuses',
-              :action => 'show',
-              :id => program.owner_id %></td>
-    <td><%=h program.do_vod %></td>
-    <td><%=h program.min_show %></td>
-    <td><%=h program.max_show %></td>
-    <td><%= program.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
-    <td>[
-      
-      <%= link_to 'Edit', :action => 'edit', :id => program %>
-      <%= link_to 'Destroy', { :action => 'destroy', :id => program }, 
-              :confirm => 'Are you sure?', 
-              :method => :post %>
-    ]</td>
-  </tr>
 
-  <tr class="<%= @current_cycle %>">
-    <td colspan="12"><%= render(:partial => 'event', :object => program.Events) %></td>
-  </tr>
+<div id="programs">
+<%= render :partial => "list" %>
+</div>
 
-<% end %>
+<%= observe_form 'search',
+	:update => 'programs',
+	:before => "Element.show('spinner')",
+	:success => "Element.hide('spinner')",
+	:url => {:action => 'list'},
+	:frequency => 2 %>
 
-  <tr>
-    <td colspan="5">
-    <%= link_to 'New program', :action => 'new' %>
-
-    <span style="padding-left: 3em;">
-    <% unless @program_pages.nil? %>
-      <% if params[:action] == 'list' %>
-        <%= if @program_pages.current.previous 
-            then link_to 'Previous page', { 
-                   :page => @program_pages.current.previous, 
-                   :params => {'search' => @filter}} 
-            else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {'search' => @filter} %>
-        <%= if @program_pages.current.next 
-            then link_to 'Next page', { 
-                   :page => @program_pages.current.next,
-                   :params => {'search' => @filter}}
-            else 'Next page' end %> 
-      <% else %>
-        <%= if @program_pages.current.previous 
-            then link_to 'Previous page', {
-                   :page => @program_pages.current.previous, 
-                   :params => {
-                      'find_by_user' => @user.id,
-                      'search' => @filter}} 
-            else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {
-                                                'find_by_user' => @user.id,
-                                                'search' => @filter} %>
-        <%= if @program_pages.current.next
-            then link_to 'Next page', { 
-                   :page => @program_pages.current.next, 
-                   :params => {
-                      'find_by_user' => @user.id,
-                      'search' => @filter}} 
-            else 'Next page' end %> 
-      <% end %>
-    <% end %>
-    </span>
-    </td>
-  </tr>
-</table>
-
-<!--<table>
-  <tr>
-    <td>
-      <td>heip-</td>
-      <td>pa</td>
-    </td>
-  </tr>
-</table>-->
