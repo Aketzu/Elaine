@@ -4,37 +4,43 @@ unless @language.nil?
   xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss/") do
 
     xml.channel do
-      xml.title("Assembly 2006 VOD")
-      xml.description("VOD files of Assembly 2006 TV programs, compos and seminars")
+      xml.title("Assembly VOD")
+      xml.description("VOD files of Assembly TV programs, compos and seminars")
       xml.link # TODO: Point this to what?
       xml.pubDate(xmldatetime(Time.now))
       xml.ttl("5")
      
       for value in @values
-        vod = Vod.find(value[:vod_id])
+        program = Program.find(value[:program_id])
+#        vod = Vod.find(value[:vod_id])
         xml.item do
-          desc = vod.Program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
+          desc = program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
           xml.title(desc.title, :'xml:lang' => @langcode)
           xml.description(desc.public_description, :'xml:lang' => @langcode)      
           xml.link # TODO: Additional info is where?
-          xml.pudDate(xmldatetime(vod.updated_at))
+          xml.pubDate(xmldatetime(program.vods_or_info_updated_at))
            # TODO: Hardcoded host and proto
-          xml.guid("http://elaine.assembly.org" + url_for(:controller => 'vods', :action => 'show', :id => vod.id))
+          xml.guid("http://elaine.assembly.org" + url_for(:controller => 'programs', :action => 'show', :id => program.id))
           xml.media(:group) do
-#            xml.media(:thumbnail, :url => vod.FileLocation.url + vod.base_filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
-#            xml.media(:content, :url => vod.FileLocation.url + vod.base_filename + '_preview.mpg', :width => "200", :height => "150", :type => "video/mpg", :expression => "sample") # TODO: store dimensions and filesize
-            xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :type => "video/x-msvideo", :expression => "full")
+          # TODO: program.Vods[0] should be replaced by model level implementation
+          # TODO: work out necessary extra metadata and model level methods for filenames etc.
+            xml.media(:thumbnail, :url => program.Vods[0].FileLocation.url + program.id.to_s + '_' + program.filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
+            xml.media(:content, :url => program.Vods[0].FileLocation.url + program.id.to_s + '_' + program.filename + '_preview.flv', :width => "200", :height => "150", :type => "video/flv", :expression => "sample") # TODO: store dimensions and filesize
+             # TODO: Use an explicit join to include the relevant formats in the initial select for the collection
+             for vod in program.Vods
+               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VodFormat.vbitrate.to_s, :type => "video/x-msvideo", :expression => "full")
+             end
           end
           xml.category("Assembly")
           xml.category("video")
           # TODO: Set of nasty assumption hacks
-          if vod.Program.VodGroup.name == "Seminar"
+          if program.VodGroup.name == "Seminar"
             xml.category("seminar")
           end
-          if vod.Program.VodGroup.name == "Normal"
+          if program.VodGroup.name == "Normal"
             xml.category("AssemblyTV")
           end
-          if vod.Program.VodGroup.name == "High motion"
+          if program.VodGroup.name == "High motion"
             xml.category("Compo")
           end
         end

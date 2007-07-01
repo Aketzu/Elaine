@@ -154,6 +154,14 @@ def file_exists?
   end
 end
 
+def vods_or_info_updated_at
+  value = self.Vods.maximum(:updated_at)
+  if value.nil? || self.updated_at > value
+    value = self.updated_at
+  end
+  value
+end
+
 protected
   def strip_fields
     [:notes].each do |field|
