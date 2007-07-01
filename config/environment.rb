@@ -56,7 +56,8 @@ ActionMailer::Base.smtp_settings = {
 #   inflect.uncountable %w( fish sheep )
 # end
 
-Permission.synchronize_with_controllers
+#This prevents Webrick from seeing changes in controllers...
+#Permission.synchronize_with_controllers
 
 # Include your application configuration below
 TEST_SETTING = "joo"
