@@ -33,7 +33,7 @@
 
 class UserController < ApplicationController
   # Ensure that these methods CANNOT be called via a GET request
-  verify :method => :post, :only => %w(edit_roles change_password_for_user delete_user)
+  verify :method => :post, :only => %w(edit_roles change_password_for_user)
 
   # Displays a paginated list of Users
   def list
@@ -99,11 +99,10 @@ class UserController < ApplicationController
 
   # Delete an arbitrary user
   def delete_user
-    if (@user = find_user(params[:id]))
-      do_delete_user(@user)
-      flash[:notice] = "User '#{@user.login}' has been deleted."
+    if (User.destroy(params[:id]))
+      flash[:notice] = "User has been deleted."
+			redirect_to :action => 'list'
     end
-    redirect_to :action => 'list'
   end
 
 

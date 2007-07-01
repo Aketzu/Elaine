@@ -60,6 +60,12 @@ class User < ActiveRecord::Base
     self.remember_token            = nil
     save(false)
   end
+	
+	def generate_password
+		if salt.blank?
+			self.password = self.password_confirmation = Digest::SHA1.hexdigest("--generated--#{login}--#{email}--")
+		end
+	end
 
 	protected
     # before filter 

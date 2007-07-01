@@ -208,7 +208,7 @@ module UserEngine
         return true
       end
     else
-      RAILS_DEFAULT_LOGGER.debug "checking user:#{session[:user].id} authorisation for #{controller}/#{action}"
+      RAILS_DEFAULT_LOGGER.debug "checking user:#{session[:user].object_id} authorisation for #{controller}/#{action}"
       if current_user.authorized?(controller, action)
         yield block if block != nil
         return true
