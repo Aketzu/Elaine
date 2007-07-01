@@ -1,90 +1,28 @@
-<%= start_form_tag %>
+<h2>Listing events</h2>
+<%= form_tag [:action => :list], :id => :search %>
 
-<table>
-  <tr>
-    <td><h2>Listing events<%= ' by user' if params[:action] == 'list_by_user' %></h2></td>
-  </tr>
+	Find: <%= text_field_with_auto_complete :event, :title, :skip_style => true, :value => @filter %>
+	<%= image_tag("spinner.gif",
+			:align => 'middle',
+			:border=> 0,
+			:id => "spinner",
+			:style=>"display: none;") %>
+	<br />
+	<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
+	<br />
+	<%=submit_tag :Search %>
 
-  <tr>
-    <td>
-      <%= start_form_tag :action => 'list' %>
-      <%= text_field_with_auto_complete :event, :title, :skip_style => true, :value => @filter %><%= submit_tag 'Search' %>
-      <%= end_form_tag %>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <%= link_to 'New event', :action => 'new' %>
-  
-      <span style="padding-left: 3em;">
-      <% unless @event_pages.nil? %>
-      <%= if @event_pages.current.previous then 
-            link_to 'Previous page', { 
-              :page => @event_pages.current.previous,
-              :params => {'search' => @filter}}
-          else 'Previous page' end %>
-      <%= pagination_links @event_pages,
-            :params => {'search' => @filter} %>
-      <%= if @event_pages.current.next then 
-            link_to 'Next page', {
-              :page => @event_pages.current.next,
-              :params => {'search' => @filter}}
-          else 'Next page' end %> 
-      <% end %>
-      </span>
-    </td>
-  </tr>
-</table>
 <%= end_form_tag %>
 
+<div id="events">
+<%= render :partial => "list" %>
+</div>
 
-<table>
-  <tr class="header">
-    <th>Title</th>
-    <th>Location</th>
-    <th>Event Type</th>
-    <th>Length</th>
-    <th>Quarintine until</th>
-    <th>Created<br>Modified</th>
-    <th>Actions</th>
-  </tr>
+<%= observe_form 'search',
+	:update => 'events',
+	:before => "Element.show('spinner')",
+	:success => "Element.hide('spinner')",
+	:url => {:action => 'list'},
+	:frequency => 2 %>
 
-<% for event in @events %>
-  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-    <td><%= link_to event.title, :action => 'edit', :id => event.id.to_s %></td>
-    <td><%= link_to Location.find(event.location_id).name, :controller => 'locations', :action => 'show', :id => event.location_id %></td>
-    <td><%= link_to EventType.find(event.event_type_id).name, :controller => 'event_types', :action => 'show', :id => event.event_type_id %></td>
-    <td><%=h event.formatted_length %></td>
-    <td><%=h event.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
-    <td><%=h event.created_at.strftime("%a %d.%m.%Y %H:%M") %><br><%=h event.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
-    <td>[
-    <%= link_to 'Edit', :action => 'edit', :id => event %>
-    <%= link_to 'Destroy', { :action => 'destroy', :id => event }, :confirm => 'Are you sure?', :post => true %>
-    ]</td>
-  </tr>
-<% end %>
 
-  <tr>
-    <td colspan="5">
-      <%= link_to 'New event', :action => 'new' %>
-  
-      <span style="padding-left: 3em;">
-      <% unless @event_pages.nil? %>
-      <%= if @event_pages.current.previous then 
-            link_to 'Previous page', { 
-              :page => @event_pages.current.previous,
-              :params => {'search' => @filter}}
-          else 'Previous page' end %>
-      <%= pagination_links @event_pages,
-            :params => {'search' => @filter} %>
-      <%= if @event_pages.current.next then 
-            link_to 'Next page', {
-              :page => @event_pages.current.next,
-              :params => {'search' => @filter}}
-          else 'Next page' end %> 
-      <% end %>
-      </span>
-    </td>
-  </tr>
-</table>

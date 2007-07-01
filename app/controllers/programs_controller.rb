@@ -2,7 +2,6 @@ class ProgramsController < ApplicationController
   sidebar :general
 
   auto_complete_for :event, :title
-  auto_complete_for :program_description, :title
 
   def index
     list
@@ -48,7 +47,7 @@ class ProgramsController < ApplicationController
 
   def list
     session[:original_uri] = request.request_uri
-		@user = session[:user]
+		@user ||= 0
 
 		buildsearch
 

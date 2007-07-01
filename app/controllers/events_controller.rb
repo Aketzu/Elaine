@@ -1,8 +1,6 @@
 class EventsController < ApplicationController
   sidebar :general
 
-  auto_complete_for :event, :title
-
   def index
     list
     render :action => 'list'
@@ -12,28 +10,46 @@ class EventsController < ApplicationController
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
 
+  def buildsearch
+    @search = "true "
+    @searchparams = Hash.new
+
+    @filter ||= params[:search]
+    @filter ||= params[:event][:title] unless params[:event].nil?
+    @filter ||= ""
+
+    unless @filter.empty?
+      @search += " AND events.title ILIKE :title "
+      @searchparams[:title] = "%#{@filter}%"
+    end
+
+    unless params[:ignore_date_filter]
+      @search += " AND events.created_at > :created_at "
+      @searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
+    end
+
+  end
+
   def list
     session[:original_uri] = request.request_uri
 
-    unless params.nil?
-      unless params[:search].nil?
-        @filter = params[:search]
-      end
-      unless params[:event].nil?
-        @filter = params[:event][:title]
-      end
-    end
+		buildsearch
 
-    if @filter.nil?
-      @event_pages, @events = paginate :events, 
-                                       :per_page => 20
-    else
-      @event_pages, @events = paginate(:events, 
-                                       :per_page => 20,
-                                       :conditions => ["title ILIKE ?", 
-                                                       '%' + @filter + '%'])
-    end
+    @event_pages, @events = paginate(:events, 
+                                     :per_page => 20,
+                                     :conditions => [@search, @searchparams])
+		if request.xml_http_request?
+			render :partial => "list", :layout => false
+		end
   end
+
+	def auto_complete_for_program_description_title
+		buildsearch
+
+		@items = Event.find(:all, :order => 'title', :conditions => [@search, @searchparams])
+		render :inline => "<%= auto_complete_result @items, 'title' %>"
+	end
+
 
   def show
     @event = Event.find(params[:id])
