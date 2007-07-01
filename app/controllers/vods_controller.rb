@@ -11,7 +11,7 @@ class VodsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @vod_pages, @vods = paginate(:vods, :per_page => 100, :order => 'completed, program_id')
+    @vod_pages, @vods = paginate(:vods, :per_page => 100, :order => 'completed, program_id', :include => [:Program, :VodFormat, :FileLocation])
   end
 
   def show

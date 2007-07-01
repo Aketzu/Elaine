@@ -25,10 +25,10 @@ Page: <%= pagination_links(@vod_pages) %>
     <td><%= vod.completed %></td>
     <td><%= vod.VodFormat.name %></td>
     <td><%= vod.FileLocation.name %></td>
-    <td><%= vod.updated_at %></td>
+    <td><%= vod.updated_at.strftime "%a %d.%m.%y %H:%M:%S" %></td>
     <td>[<%= link_to 'Show', :action => 'show', :id => vod %>, 
         <%= link_to 'Edit', :action => 'edit', :id => vod %>, 
-        <%= link_to 'Destroy', { :action => 'destroy', :id => vod }, :confirm => 'Are you sure?', :post => true %>]</td>
+        <%= link_to 'Destroy', { :action => 'destroy', :id => vod }, :confirm => 'Are you sure?', :method => :post %>]</td>
   </tr>
 <% end %>
 </table>
