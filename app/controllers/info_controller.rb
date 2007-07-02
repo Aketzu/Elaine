@@ -1,5 +1,6 @@
 class InfoController < ApplicationController
   skip_before_filter :login_required
+  skip_before_filter :require_ssl
   layout nil
   
 def playlist
