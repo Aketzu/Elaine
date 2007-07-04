@@ -10,7 +10,7 @@ Page: <%= pagination_links(@vod_pages) %>
     <th>Length</th>
     <th>Filesize</th>
     <th>Completed</th>
-    <th>Vod format</th>
+    <th>Video format</th>
     <th>File location</th>
     <th>Updated at</th>
     <th>Actions</th>
@@ -23,7 +23,7 @@ Page: <%= pagination_links(@vod_pages) %>
     <td><%= vod.length %></td>
     <td><%= vod.filesize %></td>
     <td><%= vod.completed %></td>
-    <td><%= vod.VodFormat.name %></td>
+    <td><%= vod.VideoFormat.name %></td>
     <td><%= vod.FileLocation.name %></td>
     <td><%= vod.updated_at.strftime "%a %d.%m.%y %H:%M:%S" %></td>
     <td>[<%= link_to 'Show', :action => 'show', :id => vod %>, 

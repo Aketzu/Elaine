@@ -4,10 +4,10 @@
 </p>
 <% end %>
 
-<%= render :partial => 'vod_formats', :object => @vod_group.vod_group_format_links %>
+<%= render :partial => 'video_formats', :object => @vod_group.vod_group_format_links %>
 
-<%= start_form_tag :action => 'add_vod_format' %>
-  <%= render :partial => 'add_vod_format' %>
+<%= start_form_tag :action => 'add_video_format' %>
+  <%= render :partial => 'add_video_format' %>
 <%= end_form_tag %>
 
 
