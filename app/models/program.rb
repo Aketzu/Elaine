@@ -4,8 +4,9 @@ class Program < ActiveRecord::Base
 
 belongs_to :User, :foreign_key => 'owner_id'
 belongs_to :ProgramStatus, :foreign_key => 'status_id'
-belongs_to :VodGroup
+belongs_to :ProgramCategory
 belongs_to :FileLocation
+belongs_to :VideoFormat
 
 has_many   :playlists, :dependent => :destroy
 
@@ -17,12 +18,13 @@ has_many   :program_event_links, :order => :position, :dependent => :destroy
 has_many   :Events, :through => :program_event_links
 has_many   :Vods
 # Doesn't work like this (ignores link)
-#has_many   :VodFormats, :through => :VodGroup
+#has_many   :VodFormats, :through => :ProgramCategory
 
 validates_associated :User
 validates_associated :ProgramStatus
-validates_associated :VodGroup
+validates_associated :ProgramCategory
 validates_associated :FileLocation
+validates_associated :VideoFormat
 validates_presence_of(:formatted_length, :message => "can not be empty")
 validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "contains illegal characters.")
 

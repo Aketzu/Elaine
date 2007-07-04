@@ -1,8 +1,9 @@
-class VodFormat < ActiveRecord::Base
+class VideoFormat < ActiveRecord::Base
 
 has_many :Vods
 has_many :vod_group_format_links
 has_many :VodGroups, :through => :vod_group_format_links
+has_many :Programs
 # Doesn't work like this (ignores link)
 #has_many :Programs, :through => :VodGroups
 
