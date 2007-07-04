@@ -10,6 +10,17 @@ body {
   padding: 0px;
 }
 
+h1 {
+  font-size: 20pt;
+  margin-top: 10px;
+}
+h2 {
+  font-size: 14pt;
+}
+h3 {
+  font-size: 13pt;
+}
+
 li {
   padding-bottom: 1em;
 }
