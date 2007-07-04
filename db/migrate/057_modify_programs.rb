@@ -11,14 +11,14 @@ class ModifyPrograms < ActiveRecord::Migration
 
     add_column :programs, :program_category_id, :integer
     execute "ALTER TABLE programs ADD CONSTRAINT program_category FOREIGN KEY
-    (program_cateogry_id) REFERENCES program_categories (id);"
+    (program_category_id) REFERENCES program_categories (id);"
 
   
   end
 
   def self.down
     execute "ALTER TABLE programs DROP CONSTRAINT program_category;"
-    remove_column :programs, :video_category
+    remove_column :programs, :program_category_id
 
     add_column :programs, :vod_group_id, :integer
     execute "ALTER TABLE programs ADD CONSTRAINT vod_group FOREIGN KEY

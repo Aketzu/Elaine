@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 52) do
+ActiveRecord::Schema.define(:version => 58) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -40,10 +40,12 @@ ActiveRecord::Schema.define(:version => 52) do
   end
 
   create_table "file_locations", :force => true do |t|
-    t.column "name",        :string
-    t.column "description", :text
-    t.column "url",         :string
-    t.column "checker_url", :string
+    t.column "name",               :string
+    t.column "description",        :text
+    t.column "url",                :string
+    t.column "checker_url",        :string
+    t.column "use_for_vods",       :string
+    t.column "use_for_production", :string
   end
 
   create_table "languages", :force => true do |t|
@@ -88,6 +90,12 @@ ActiveRecord::Schema.define(:version => 52) do
     t.column "version",     :integer
   end
 
+  create_table "program_categories", :force => true do |t|
+    t.column "name",         :string
+    t.column "description",  :string
+    t.column "vod_group_id", :integer
+  end
+
   create_table "program_descriptions", :force => true do |t|
     t.column "private_description", :text
     t.column "public_description",  :text
@@ -121,7 +129,10 @@ ActiveRecord::Schema.define(:version => 52) do
     t.column "status_id",            :integer,  :default => 1
     t.column "filename",             :string
     t.column "file_location_id",     :integer
-    t.column "vod_group_id",         :integer
+    t.column "tags",                 :string
+    t.column "video_format_id",      :integer
+    t.column "target_length",        :integer
+    t.column "program_category_id",  :integer
   end
 
   create_table "reference_log_entries", :force => true do |t|
@@ -199,22 +210,26 @@ ActiveRecord::Schema.define(:version => 52) do
     t.column "role_id", :integer, :default => 0, :null => false
   end
 
-  create_table "vod_formats", :force => true do |t|
-    t.column "name",        :string
-    t.column "description", :text
-    t.column "vcodec",      :string
-    t.column "acodec",      :string
-    t.column "container",   :string
-    t.column "vbitrate",    :integer
-    t.column "abitrate",    :integer
-    t.column "width",       :integer
-    t.column "height",      :integer
-    t.column "framerate",   :integer
+  create_table "video_formats", :force => true do |t|
+    t.column "name",               :string
+    t.column "description",        :text
+    t.column "vcodec",             :string
+    t.column "acodec",             :string
+    t.column "container",          :string
+    t.column "vbitrate",           :integer
+    t.column "abitrate",           :integer
+    t.column "width",              :integer
+    t.column "height",             :integer
+    t.column "framerate",          :integer
+    t.column "mime_type",          :string
+    t.column "file_extension",     :string
+    t.column "use_for_vods",       :string
+    t.column "use_for_production", :string
   end
 
   create_table "vod_group_format_links", :force => true do |t|
-    t.column "vod_group_id",  :integer
-    t.column "vod_format_id", :integer
+    t.column "vod_group_id",    :integer
+    t.column "video_format_id", :integer
   end
 
   create_table "vod_groups", :force => true do |t|
@@ -227,7 +242,7 @@ ActiveRecord::Schema.define(:version => 52) do
     t.column "file_location_id", :integer
     t.column "length",           :integer
     t.column "filesize",         :integer
-    t.column "vod_format_id",    :integer
+    t.column "video_format_id",  :integer
     t.column "completed",        :boolean
     t.column "created_at",       :datetime
     t.column "updated_at",       :datetime

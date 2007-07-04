@@ -5,7 +5,7 @@ class ModifyFileLocations < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :file_locations, :use_for_vods, :string
-    remove_column :file_locations, :use_for_production, :string
+    remove_column :file_locations, :use_for_vods
+    remove_column :file_locations, :use_for_production
   end
 end
