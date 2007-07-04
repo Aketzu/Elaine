@@ -1,4 +1,4 @@
-<p><b>VOD Formats</b></p>
+<p><b>Video Formats</b></p>
 <table>
   <% offset = 0 %>
   <tr class="header">
@@ -6,17 +6,17 @@
      <td>Description</td>
      <td></td>
   </tr>
-  <% for link in vod_formats %>
-  <% vod_format = link.VodFormat %>
+  <% for link in video_formats %>
+  <% video_format = link.VideoFormat %>
     <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
       <td>
-        <%= vod_format.name %>
+        <%= video_format.name %>
       </td>
       <td>
-        <%= vod_format.description %>
+        <%= video_format.description %>
       </td>
         <td>
-        [<%= link_to 'x', {:action => 'remove_vod_format', 
+        [<%= link_to 'x', {:action => 'remove_video_format', 
                            :id => link.id}, 
                :confirm => 'Are you sure?',
                :post => 'true' %>]
