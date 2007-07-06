@@ -33,8 +33,8 @@ class AccountController < ApplicationController
   end
 	
   def change_password
-		user = User.find(:first, :conditions => ['salt = ?', params[:auth_token]])
-		if user.nil?
+		@user = User.find(:first, :conditions => ['salt = ?', params[:auth_token]])
+		if @user.nil?
 			@authenticated = false
 			flash[:notice] = "Wrong authentication"
 			return
@@ -44,12 +44,13 @@ class AccountController < ApplicationController
 			return unless request.post?
 			
 			if (params[:password] == params[:password_confirmation])
-				user.password_confirmation = params[:password_confirmation]
-				user.password = params[:password]
-				user.salt = ""
-				flash[:notice] = user.save ?
+				@user.password_confirmation = params[:password_confirmation]
+				@user.password = params[:password]
+				@user.salt = ""
+				flash[:notice] = @user.save ?
 							"Password changed" :
 							"Password not changed"
+				redirect_to :action => 'login'
 			else
 				flash[:notice] = "Password mismatch"
 				@old_password = params[:old_password]

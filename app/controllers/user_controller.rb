@@ -38,7 +38,7 @@ class UserController < ApplicationController
   # Displays a paginated list of Users
   def list
     @content_columns = user_content_columns_to_display    
-    @user_pages, @all_users = paginate :user, :per_page => 15
+    @user_pages, @all_users = paginate :user, :per_page => 15, :order => 'login'
   end
 
   # Edit the details of any user. The Role which can perform this will almost certainly also
@@ -91,6 +91,11 @@ class UserController < ApplicationController
   # Change the password of an arbitrary user
   def change_password_for_user
     if (@user = find_user(params[:id]))
+			if (params[:user][:password] != params[:user][:password_confirmation])
+				flash[:error] = "Passwords don't match"
+				redirect_to :action => :edit_user, :id => params[:id]
+				return
+			end
       do_change_password_for(@user)
       flash[:notice] = "Password for user '#{@user.login}' has been updated."
     end
@@ -144,20 +149,15 @@ class UserController < ApplicationController
 
   protected
     def do_change_password_for(user)
-      begin
-        User.transaction(user) do
-          user.change_password(params[:user][:password], params[:user][:password_confirmation])
-          if user.save
-            flash[:notice] = "Password updated."
-            return true
-          else
-            flash[:warning] = 'There was a problem saving the password. Please retry.'
-            return false
-          end
-        end
-      rescue
-        flash[:warning] = 'Password could not be changed at this time. Please retry.'
-      end
+			user.password = params[:user][:password]
+			user.password_confirmation = params[:user][:password_confirmation]
+			if user.save
+				flash[:notice] = "Password updated."
+				return true
+			else
+				flash[:warning] = 'There was a problem saving the password. Please retry.'
+				return false
+			end
     end
 
     # A convenience method we can use to control the columns of the User object that
