@@ -112,6 +112,15 @@ def formatted_length=(formatted)
   self.length = parse_formatted_length(formatted)
 end
 
+def formatted_target_length
+  format_length(target_length)
+end
+
+def formatted_target_length=(formatted)
+  self.target_length = parse_formatted_length(formatted)
+end
+
+
 def formatted_preview_image_offset
   format_length(preview_image_offset)
 end

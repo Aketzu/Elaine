@@ -7,6 +7,12 @@
 </tr>
 
 <tr>
+<th class="edit">Target length</th>
+<td class="edit"><%= text_field 'program', 'formatted_target_length', 'class' => "time",
+		'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
+</tr>
+
+<tr>
 <th class="edit">Notes</th>
 <td class="edit"><%= text_area 'program', 'notes', 
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
@@ -24,7 +30,7 @@
 
 <tr>
 <th class="edit">Do vod</th>
-<td class="edit"><select id="program_do_vod" name="program[do_vod]"><option value="true" <%= 'selected="selected"' if program.do_vod %> >True</option><option value="false" <%= 'selected="selected"' unless program.do_vod %> >False</option></select></td>
+<td class="edit"><%= check_box 'program', 'do_vod' %></td>
 </tr>
 
 <tr>

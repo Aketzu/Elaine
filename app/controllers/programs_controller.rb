@@ -68,6 +68,7 @@ class ProgramsController < ApplicationController
 		@items = ProgramDescription.find(:all, :order => 'title', :include => :Program, :conditions => [@search, @searchparams])
 		render :inline => "<%= auto_complete_result @items, 'title' %>"
 	end
+	
 
   def show
     session[:original_uri] = request.request_uri
@@ -162,8 +163,10 @@ class ProgramsController < ApplicationController
   
   def add_event
     @program_event_link = ProgramEventLink.new(params[:program_event_link])
+		title = params[:event][:title].gsub(/ \[[0-9]*\]$/,'')
+
     begin
-      @program_event_link.event_id = Event.find(:first, :conditions => ['title = ?', params[:event]["title"]]).id
+      @program_event_link.event_id = Event.find(:first, :conditions => ['title = ?', title]).id
     rescue
         redirect_to(:action => 'edit',
                     :id => @program_event_link.program_id)
@@ -177,6 +180,12 @@ class ProgramsController < ApplicationController
       end
     end
   end  
+	def auto_complete_for_event_title
+		#FIXME: Needs better support for different years... maybe limit
+		#matches and/or pass id instead of name...	
+		@items = Event.find(:all, :order => 'title', :conditions => ["title ILIKE ?", '%' + params[:event][:title] + '%' ])
+		render :inline => "<%= q=@items.map { |i| content_tag('li', i.title + ' [' + i.created_at.year.to_s + ']') }; content_tag('ul', q) %>"
+	end
   
   def destroy
     Program.find(params[:id]).destroy

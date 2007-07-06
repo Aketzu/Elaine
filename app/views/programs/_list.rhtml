@@ -43,7 +43,7 @@ Search limited to programs newer than <%= @date_filter %>.<br />
 <table>
   <tr class="header">
     <th>Title</th>
-    <th>Length</th>
+    <th>Length<br />Target</th>
 <!--     <th>Notes</th> -->
     <th>Created<br>Modified</th>
 <!--     <th>Preview image offset (hh:mm:ss)</th> -->
@@ -61,7 +61,7 @@ Search limited to programs newer than <%= @date_filter %>.<br />
 	@curprog = program %>
   <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
     <td><%= link_to program.title, :action => 'edit', :id => program %></td>
-    <td><%=h program.formatted_length %></td>
+    <td><%=h program.formatted_length %><br />[<%=h program.formatted_target_length%>]</td>
 <!--     <td><%=h program.notes %></td> -->
     <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
 <!--     <td><%=h program.formatted_preview_image_offset %></td> -->
