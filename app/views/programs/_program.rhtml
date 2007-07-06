@@ -54,7 +54,7 @@
 
 <tr>
 <th class="edit">File location</th>
-<td class="edit"><%= select('program', 'file_location_id', FileLocation.find(:all, :conditions => {"use_for_production = true"}).collect { |t| [t.name, t.id] }) %></td>
+<td class="edit"><%= select('program', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }) %></td>
 </tr>
 
 <tr>

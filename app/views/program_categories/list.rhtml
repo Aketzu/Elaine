@@ -1,0 +1,29 @@
+<h1>Listing program categories</h1>
+
+<table>
+  <tr>
+  <% for column in ProgramCategory.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+		<th>Vod group</th>
+  </tr>
+  
+<% for program_category in @program_categories %>
+  <tr>
+  <% for column in ProgramCategory.content_columns %>
+    <td><%=h program_category.send(column.name) %></td>
+  <% end %>
+		<td><%=h program_category.VodGroup.name%></td>
+    <td><%= link_to 'Show', :action => 'show', :id => program_category %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => program_category %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => program_category }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @program_category_pages.current.previous } if @program_category_pages.current.previous %>
+<%= link_to 'Next page', { :page => @program_category_pages.current.next } if @program_category_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New program category', :action => 'new' %>

@@ -12,8 +12,8 @@ class ModifyVodFormats < ActiveRecord::Migration
 
     add_column :video_formats, :mime_type, :string
     add_column :video_formats, :file_extension, :string
-    add_column :video_formats, :use_for_vods, :string
-    add_column :video_formats, :use_for_production, :string
+    add_column :video_formats, :use_for_vods, :boolean
+    add_column :video_formats, :use_for_production, :boolean
   end
 
   def self.down

@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "description",        :text
     t.column "url",                :string
     t.column "checker_url",        :string
-    t.column "use_for_vods",       :string
-    t.column "use_for_production", :string
+    t.column "use_for_vods",       :boolean
+    t.column "use_for_production", :boolean
   end
 
   create_table "languages", :force => true do |t|
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "remember_token_expires_at", :datetime
     t.column "content_filter_date",       :date,                   :default => '2007-05-31'
     t.column "language",                  :string
-    t.column "channel_id",                :integer,                :default => 3
+    t.column "channel_id",                :string,                 :default => "3"
   end
 
   create_table "users_roles", :id => false, :force => true do |t|
@@ -219,8 +219,8 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "framerate",          :integer
     t.column "mime_type",          :string
     t.column "file_extension",     :string
-    t.column "use_for_vods",       :string
-    t.column "use_for_production", :string
+    t.column "use_for_vods",       :boolean
+    t.column "use_for_production", :boolean
   end
 
   create_table "vod_group_format_links", :force => true do |t|

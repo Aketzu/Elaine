@@ -34,6 +34,8 @@
 							<% if authorized?(:controller => 'programs', :action => 'new') %>
 							<li><%= link_to 'New Program', :controller => 'programs', :action => 'new' %></li>
 							<% end %>
+							<%#TODO: Authentication?%>
+							<li><%= link_to 'Program categories', :controller => 'program_categories' %></li>
 						</ul>
 					</li>
 					<% end %>
@@ -63,7 +65,7 @@
 						<%= link_to 'List Vods', :controller => 'vods', :action => 'list' %>
 						<ul>
 							<li><%= link_to 'List Vod Groups', :controller => 'vod_groups', :action => 'list' %></li>
-							<li><%= link_to 'List Vod Formats', :controller => 'vod_formats', :action => 'list' %></li>
+							<li><%= link_to 'List Video Formats', :controller => 'video_formats', :action => 'list' %></li>
 						</ul>
 					</li>
 					<% end %>

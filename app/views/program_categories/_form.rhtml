@@ -1,0 +1,13 @@
+<%= error_messages_for 'program_category' %>
+
+<!--[form:program_category]-->
+<p><label for="program_category_name">Name</label><br/>
+<%= text_field 'program_category', 'name'  %></p>
+
+<p><label for="program_category_description">Description</label><br/>
+<%= text_field 'program_category', 'description'  %></p>
+
+<p><label for="program_category_vod_group_id">Vod Group</label><br/>
+<%= select 'program_category', 'vod_group_id', VodGroup.find(:all).collect {|vg| [vg.name, vg.id]}  %></p>
+<!--[eoform:program_category]-->
+
