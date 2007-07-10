@@ -165,20 +165,20 @@ class ProgramsController < ApplicationController
     @program_event_link = ProgramEventLink.new(params[:program_event_link])
 		title = params[:event][:title].gsub(/ \[[0-9]*\]$/,'')
 
-    begin
-      @program_event_link.event_id = Event.find(:first, :conditions => ['title = ?', title]).id
-    rescue
-        redirect_to(:action => 'edit',
-                    :id => @program_event_link.program_id)
-    else
+		event = Event.find_by_title title
+
+		if event == nil 
+			flash[:error] = 'Event was not found'
+		else
+    	@program_event_link.event_id = event.id
       if @program_event_link.save
         flash[:notice] = 'The event was successfully added.'
-        redirect_to :action => 'edit',
-                    :id => @program_event_link.program_id
       else
-        render :action => 'new'
+        flash[:error] = 'Error adding event.'
       end
     end
+    @program  = Program.find(params[:program_event_link][:program_id])
+		render :partial => 'events', :layout => false, :object => @program.program_event_links
   end  
 	def auto_complete_for_event_title
 		#FIXME: Needs better support for different years... maybe limit

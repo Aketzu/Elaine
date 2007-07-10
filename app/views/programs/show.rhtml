@@ -22,11 +22,7 @@
 <p><strong>Events:</strong></p>
 
 <div style="padding-left: 20px;">
-<%= render(:partial => 'events', :object => @program.program_event_links) %>
-
-<%= start_form_tag :controller => 'program_event_links', :action => 'create' %>
   <%= render :partial => 'add_event' %>
-<%= end_form_tag %>
 </div>
 
 <%= render :partial => "program_descriptions/program_description", :collection => @program.program_descriptions %>
