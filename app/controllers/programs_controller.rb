@@ -38,7 +38,7 @@ class ProgramsController < ApplicationController
 			@searchparams[:title] = "%#{@filter}%"
 		end
 
-		unless params[:ignore_date_filter]
+		unless params[:ignore_date_filter] && params[:ignore_date_filter] != 'false'
 			@search += " AND programs.created_at > :created_at "
 			@searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
 		end
@@ -181,10 +181,23 @@ class ProgramsController < ApplicationController
 		render :partial => 'events', :layout => false, :object => @program.program_event_links
   end  
 	def auto_complete_for_event_title
-		#FIXME: Needs better support for different years... maybe limit
-		#matches and/or pass id instead of name...	
-		@items = Event.find(:all, :order => 'title', :conditions => ["title ILIKE ?", '%' + params[:event][:title] + '%' ])
-		render :inline => "<%= q=@items.map { |i| content_tag('li', i.title + ' [' + i.created_at.year.to_s + ']') }; content_tag('ul', q) %>"
+		@search = "true "
+		@searchparams = Hash.new
+
+		@filter ||= params[:event][:title] unless params[:event].nil?
+		@filter ||= ""
+
+		unless @filter.empty?
+			@search += " AND title ILIKE :title "
+			@searchparams[:title] = "%#{@filter}%"
+		end
+		unless params[:ignore_date_filter] && params[:ignore_date_filter] != 'false'
+			@search += " AND created_at > :created_at "
+			@searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
+		end
+		@items = Event.find(:all, :order => 'title', :conditions => [@search, @searchparams])
+		#render :inline => "<%= q=@items.map { |i| content_tag('li', i.title + ' [' + i.created_at.year.to_s + ']') }; content_tag('ul', q) %>"
+		render :inline => "<%= auto_complete_result @items, 'title' %>"
 	end
   
   def destroy

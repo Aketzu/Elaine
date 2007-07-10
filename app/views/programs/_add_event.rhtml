@@ -13,7 +13,10 @@
 <!--[form:event]-->
 <%= hidden_field 'program_event_link', 'program_id', :value => @program.id %>
 
-<%= text_field_with_auto_complete :event, :title, :skip_style => true %>
+<%= text_field_with_auto_complete :event, :title, {:skip_style => true}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked'} %>
+
+<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
+<br />
 
 <%= submit_tag "Add" %>
 <%= image_tag("spinner.gif",
