@@ -1,7 +1,7 @@
 <h2>Listing events</h2>
 <%= form_tag [:action => :list], :id => :search %>
 
-	Find: <%= text_field_with_auto_complete :event, :title, :skip_style => true, :value => @filter %>
+	Find: <%= text_field_with_auto_complete :event, :title, {:skip_style => true, :value => @filter}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked'}  %>
 	<%= image_tag("spinner.gif",
 			:align => 'middle',
 			:border=> 0,

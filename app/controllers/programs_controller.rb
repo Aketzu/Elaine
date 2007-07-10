@@ -163,21 +163,13 @@ class ProgramsController < ApplicationController
   
   def add_event
     @program_event_link = ProgramEventLink.new(params[:program_event_link])
-		title = params[:event][:title].gsub(/ \[[0-9]*\]$/,'')
-
-		event = Event.find_by_title title
-
-		if event == nil 
-			flash[:error] = 'Event was not found'
+		if @program_event_link.save
+			flash[:notice] = 'The event was successfully added.'
 		else
-    	@program_event_link.event_id = event.id
-      if @program_event_link.save
-        flash[:notice] = 'The event was successfully added.'
-      else
-        flash[:error] = 'Error adding event.'
-      end
-    end
-    @program  = Program.find(params[:program_event_link][:program_id])
+			flash[:error] = 'Error adding event.'
+		end
+
+    @program = Program.find(params[:program_event_link][:program_id])
 		render :partial => 'events', :layout => false, :object => @program.program_event_links
   end  
 	def auto_complete_for_event_title
@@ -196,8 +188,8 @@ class ProgramsController < ApplicationController
 			@searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
 		end
 		@items = Event.find(:all, :order => 'title', :conditions => [@search, @searchparams])
-		#render :inline => "<%= q=@items.map { |i| content_tag('li', i.title + ' [' + i.created_at.year.to_s + ']') }; content_tag('ul', q) %>"
-		render :inline => "<%= auto_complete_result @items, 'title' %>"
+
+		render :inline => "<%= indexed_auto_complete_result @items, 'program_event_link_event_id', 'title', 'id' %>"
 	end
   
   def destroy

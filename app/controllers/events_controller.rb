@@ -43,7 +43,8 @@ class EventsController < ApplicationController
 		end
   end
 
-	def auto_complete_for_program_description_title
+	#def auto_complete_for_program_description_title
+	def auto_complete_for_event_title
 		buildsearch
 
 		@items = Event.find(:all, :order => 'title', :conditions => [@search, @searchparams])
