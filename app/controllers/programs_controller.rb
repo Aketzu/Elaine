@@ -173,11 +173,11 @@ class ProgramsController < ApplicationController
 		if @program_event_link.save
 			flash[:notice] = 'The event was successfully added.'
 		else
-			flash[:error] = 'Error adding event.'
+			flash[:error] = 'Error adding event:' + @program_event_link.errors.full_messages.join('<br />')
 		end
 
     @program = Program.find(params[:program_event_link][:program_id])
-		render :partial => 'events', :layout => false, :object => @program.program_event_links
+		render :partial => 'events', :layout => false, :object => @program.Events
   end  
 	def auto_complete_for_event_title
 		@search = "true "
