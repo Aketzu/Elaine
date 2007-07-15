@@ -50,4 +50,4 @@
 </table>
 Total length: <%=format_length(offset)%><br />
 Target length: <%=@program.formatted_target_length%><br />
-Difference: <%=format_length((@program.target_length - offset).abs)%> <%=@program.target_length > offset ? "too little" : "too much!"%>
+Difference: <%=format_length((@program.target_length.to_i - offset).abs)%> <%=@program.target_length.to_i > offset ? "too little" : "too much!"%>
