@@ -8,4 +8,8 @@ module ApplicationHelper
 		items = entries.map { |entry| content_tag("li", entry[field], "id" => entityType+'::'+entry[index].to_s) }
 		content_tag("ul", items.uniq)
 	end
+
+	def tooltip(text)
+		image_tag('tooltip.png', :onmouseover => 'Tip("' + text + '")')
+	end
 end

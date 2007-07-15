@@ -291,16 +291,20 @@ a:hover {
 
 div.flash {
   color: green;
+	/*
   height: 15px;
   margin-bottom: -15px;
+	*/
   padding-left: 30px;
 }
 
 div.flash_error {
   color: red;
-  height: 15px;
+  /*
+	height: 15px;
   margin-bottom: -15px;
-  padding-left: 30px;
+  */
+	padding-left: 30px;
 }
 
 div.uploadStatus {

@@ -6,13 +6,15 @@
 </tr>
 <tr class="generic">
 <th class="edit">Length</th>
-<td class="edit"><%= @program.formatted_length %></td>
+<td class="edit"><%= @program.formatted_length %>
+<%=tooltip "This is the length of all events in the program"%></td>
 </tr>
 
 <tr class="generic">
 <th class="edit">Target length</th>
 <td class="edit"><%= text_field 'program', 'formatted_target_length', 'class' => "time",
-		'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
+		'onChange' => "javascript:this.value = FormatLength(this.value)" %>
+<%=tooltip "Format: hh:mm:ss"%></td>
 </tr>
 
 <tr class="generic">

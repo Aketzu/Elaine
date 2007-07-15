@@ -194,6 +194,10 @@ class ProgramsController < ApplicationController
 			@search += " AND created_at > :created_at "
 			@searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
 		end
+		if params[:event][:type].to_i > 0
+			@search += " AND event_type_id = :type_id "
+			@searchparams[:type_id] = params[:event][:type]
+		end
 		@items = Event.find(:all, :order => 'title', :conditions => [@search, @searchparams])
 
 		render :inline => "<%= indexed_auto_complete_result @items, 'program_event_link_event_id', 'title', 'id' %>"
