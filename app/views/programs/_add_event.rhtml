@@ -1,4 +1,7 @@
 
+<iframe id="newevent" style="position: absolute; left: 40%; width: 50%; height: 400px; border: 2px solid #f33; display:none;">
+</iframe>
+
 <div id="events">
 <%= render(:partial => 'events', :object => @program.program_event_links) %>
 </div>
@@ -6,7 +9,8 @@
 <%= form_remote_tag :url => { :action => 'add_event' }, 
 	:update => :events, 
 	:before => "Element.show('spinner')",
-  :success => "Element.hide('spinner')" %>
+  :success => "Element.hide('spinner')",
+	:html => {:id => "neweventform"} %>
 
 <%= error_messages_for 'program_event_link' %>
 <p><b>Add event:</b>
@@ -15,6 +19,15 @@
 
 <%= text_field_with_auto_complete :event, :title, {:skip_style => true}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked', :after_update_element => 'auto_complete_on_select'} %>
 <%= hidden_field 'program_event_link', 'event_id' %>
+
+<script type="text/javascript">
+function newevent() {
+	$('newevent').style.display='block';
+	$('newevent').src = "<%=url_for :controller => :events, :action => :new %>?";
+}
+</script>
+<a href="javascript:newevent()">New event</a>
+
 
 
 

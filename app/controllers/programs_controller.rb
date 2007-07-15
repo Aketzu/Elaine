@@ -162,6 +162,13 @@ class ProgramsController < ApplicationController
   end
   
   def add_event
+		if params[:program_event_link][:event_id].to_i <= 0
+			flash[:error] = 'Invalid event id specified';
+    	@program = Program.find(params[:program_event_link][:program_id])
+			render :partial => 'events', :layout => false, :object => @program.program_event_links
+			return
+		end
+
     @program_event_link = ProgramEventLink.new(params[:program_event_link])
 		if @program_event_link.save
 			flash[:notice] = 'The event was successfully added.'

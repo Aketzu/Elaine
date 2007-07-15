@@ -1,5 +1,16 @@
 <h1>Editing event</h1>
 
+<script type="text/javascript">
+if (window.parent) {
+	if (window.parent.$('event_title')) {
+		window.parent.$('event_title').value = "<%=@event.title%>";
+		window.parent.$('program_event_link_event_id').value = "<%=@event.id%>";
+		window.parent.$('newevent').style.display='none';
+		window.parent.$('neweventform').onsubmit();
+	}
+}
+</script>
+
 <%= start_form_tag({:action => 'update', :id => @event}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
 <table>
   <%= render :partial => 'event' %>
