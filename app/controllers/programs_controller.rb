@@ -53,7 +53,7 @@ class ProgramsController < ApplicationController
 
 		@program_pages, @programs = paginate(:programs, 
 																				 :per_page => 20,
-																				 :order => 'programs.created_at, program_descriptions.language_id',
+																				 :order => 'programs.created_at, program_descriptions.language_id, program_event_links.position',
 																				 :include => [:User, :ProgramStatus, :Events, :program_descriptions],
 																				 :conditions => [@search, @searchparams])
 
@@ -138,7 +138,7 @@ class ProgramsController < ApplicationController
 
   def move_event_up
     @program  = Program.find(params[:id])
-    @program_event = @program.program_event_links.find(params[:program_event_id])
+    @program_event = @program.program_event_links.find(:first, :conditions => ["program_id = ? and event_id = ?", params[:id], params[:program_event_id]])
     @program_event.move_higher
     @program.reload
     redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}
@@ -146,7 +146,7 @@ class ProgramsController < ApplicationController
 
   def move_event_down
     @program  = Program.find(params[:id])
-    @program_event = @program.program_event_links.find(params[:program_event_id])
+    @program_event = @program.program_event_links.find(:first, :conditions => ["program_id = ? and event_id = ?", params[:id], params[:program_event_id]])
     @program_event.move_lower
     @program.reload
     redirect_to session[:original_uri] || {:action => 'edit', :id => @program.id}

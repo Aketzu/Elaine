@@ -23,7 +23,8 @@
                       :program_event_id => program_event.id %>
   <%= link_to 'remove', {:controller => 'program_event_links',
                          :action => 'destroy',
-                         :id => program_event.id},
+                         :event_id => program_event.id,
+											 	 :program_id => @curprog.id},
                          :confirm => 'Are you sure?',
                          :method => :post %>
   ]

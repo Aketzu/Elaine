@@ -3,7 +3,7 @@
 </iframe>
 
 <div id="events">
-<%= render(:partial => 'events', :object => @program.program_event_links) %>
+<%= render(:partial => 'events', :object => @program.Events) %>
 </div>
 
 <%= form_remote_tag :url => { :action => 'add_event' }, 

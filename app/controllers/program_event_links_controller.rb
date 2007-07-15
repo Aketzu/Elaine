@@ -60,7 +60,7 @@ class ProgramEventLinksController < ApplicationController
   end
 
   def destroy
-    @program_event_link = ProgramEventLink.find(params[:id])
+    @program_event_link = ProgramEventLink.find(:first, :conditions => ["program_id = ? and event_id = ?", params[:program_id], params[:event_id]])
     @redirect_id     = @program_event_link.program_id
     @program_event_link.destroy
     flash[:notice] = 'ProgramEventLink was successfully destroyed.'

@@ -20,15 +20,15 @@
       <td>
       <%= format_length(offset) %>
       </td>
-    <% offset += program_event.Event.length %>
+    <% offset += program_event.length %>
     <td>
       <%= format_length(offset) %>
       </td>
       <td>
-      <%= link_to program_event.Event.title, 
+      <%= link_to program_event.title, 
             :controller => 'events', 
             :action => 'edit', 
-            :id => program_event.event_id %>
+            :id => program_event.id %>
       </td>
       <td>
       [
@@ -40,7 +40,8 @@
                       :program_event_id => program_event.id %>
       <%= link_to 'remove', {:controller => 'program_event_links',
                         :action => 'destroy',
-                        :id => program_event.id},
+                        :event_id => program_event.id,
+												:program_id => @program.id},
                       :confirm => 'Are you sure?',
                       :method => :post %>
       ]
