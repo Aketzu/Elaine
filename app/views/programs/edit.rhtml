@@ -1,13 +1,28 @@
 <h1>Editing program</h1>
 
+<script type="text/javascript">
+function toggleVisibility(type) {
+	rr = $('form_options').rows;
+	for (i=0; i<rr.length; i++) {
+		if (rr[i].className == type) {
+			if (rr[i].orgdisp="") {
+				rr[i].orgdisp=rr[i].style.display;
+			}
+			vis = rr[i].style.display == rr[i].orgdisp;
 
-<%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
-<table>
+			rr[i].style.display = vis ? "none" : rr[i].orgdisp;
+		}
+	}
+}
+</script>
+
+<%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "$('reset').disabled=false") %>
+<table id="form_options">
   <%= render :partial => 'program_descriptions', :object => @program.program_descriptions %>
   <%= render :partial => 'program' %>
 
   <tr>
-  <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
+  <th class="edit"><INPUT type="reset" id="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
   <td class="edit"><%= submit_tag 'Update' %></td>
   </tr>
 <%= end_form_tag %>

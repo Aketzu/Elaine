@@ -2,38 +2,41 @@
 
 <!--[form:program]-->
 <tr>
+<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic</th>
+</tr>
+<tr class="generic">
 <th class="edit">Length</th>
 <td class="edit"><%= @program.formatted_length %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Target length</th>
 <td class="edit"><%= text_field 'program', 'formatted_target_length', 'class' => "time",
 		'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Notes</th>
 <td class="edit"><%= text_area 'program', 'notes', 
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Min show</th>
 <td class="edit"><%= text_field 'program', 'min_show'  %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Max show</th>
 <td class="edit"><%= text_field 'program', 'max_show'  %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Do vod</th>
 <td class="edit"><%= check_box 'program', 'do_vod' %></td>
 </tr>
 
-<tr>
+<tr class="generic">
 <th class="edit">Program category</th>
 <td class="edit"><%= select('program', 'program_category_id', ProgramCategory.find_all.collect {|t| [ t.name, t.id ] }) %></td>
 </tr>
@@ -59,11 +62,15 @@
 </tr>
 
 <tr>
+<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">File information</th>
+</tr>
+
+<tr class="fileinfo">
 <th class="edit">File location</th>
 <td class="edit"><%= select('program', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }) %></td>
 </tr>
 
-<tr>
+<tr class="fileinfo">
 <th class="edit"><label for"event_filename">Filename (descriptive part)</th>
 <% if program.single_event? %>
   <td class="edit">(inherited from only event)</td>
@@ -73,7 +80,7 @@
 <% end %>
 </tr>
 
-<tr>
+<tr class="fileinfo">
 <th class="edit">Full filename</th>
 <td class="edit"><%= program.full_filename %>
 <% if program.file_exists? %>(found)<% else %>(not found)<% end %></td>

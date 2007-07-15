@@ -323,3 +323,10 @@ div.progressBar div.background {
   width: 0%;
 }
 
+
+th.header {
+	background: #eee;
+	text-align: left;
+	border-bottom: 1px solid black;
+	
+}
