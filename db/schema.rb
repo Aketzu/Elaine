@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "tags",                 :string
     t.column "video_format_id",      :integer
     t.column "target_length",        :integer
+    t.column "no_listing",           :boolean
     t.column "program_category_id",  :integer
   end
 

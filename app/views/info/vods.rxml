@@ -10,8 +10,9 @@ unless @language.nil?
       xml.pubDate(xmldatetime(Time.now))
       xml.ttl("5")
      
-      for value in @values
-        program = Program.find(value[:program_id])
+      #for value in @values
+			for program in @programs
+        #program = Program.find(value[:program_id])
 #        vod = Vod.find(value[:vod_id])
         xml.item do
           desc = program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
@@ -24,25 +25,31 @@ unless @language.nil?
           xml.media(:group) do
           # TODO: program.Vods[0] should be replaced by model level implementation
           # TODO: work out necessary extra metadata and model level methods for filenames etc.
-            xml.media(:thumbnail, :url => program.Vods[0].FileLocation.url + program.id.to_s + '_' + program.filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
-            xml.media(:content, :url => program.Vods[0].FileLocation.url + program.id.to_s + '_' + program.filename + '_preview.flv', :width => "200", :height => "150", :type => "video/flv", :expression => "sample") # TODO: store dimensions and filesize
+
+					#vods = program.Vods.find(:all, :include => [:FileLocation, :VideoFormat])
+
+					url = program.Vods[0].FileLocation.url
+            xml.media(:thumbnail, :url => url + program.id.to_s + '_' + program.filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
+            xml.media(:content, :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :width => "200", :height => "150", :type => "video/flv", :expression => "sample") # TODO: store dimensions and filesize
              # TODO: Use an explicit join to include the relevant formats in the initial select for the collection
              for vod in program.Vods
-               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VodFormat.vbitrate.to_s, :type => "video/x-msvideo", :expression => "full")
+               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => "video/x-msvideo", :expression => "full")
              end
           end
           xml.category("Assembly")
           xml.category("video")
           # TODO: Set of nasty assumption hacks
-          if program.VodGroup.name == "Seminar"
+					if false
+          if program.ProgramCategory.name == "Seminar"
             xml.category("seminar")
           end
-          if program.VodGroup.name == "Normal"
+          if program.ProgramCategory.name == "Normal"
             xml.category("AssemblyTV")
           end
-          if program.VodGroup.name == "High motion"
+          if program.ProgramCategory.name == "High motion"
             xml.category("Compo")
           end
+					end #if 0
         end
       end
     end

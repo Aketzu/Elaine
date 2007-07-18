@@ -16,7 +16,7 @@ has_many   :tape_program_links, :dependent => :destroy
 has_many   :Tapes,  :through => :tape_program_links
 has_many   :program_event_links, :order => :position, :dependent => :destroy
 has_many   :Events, :through => :program_event_links, :order => :position, :dependent => :destroy
-has_many   :Vods
+has_many   :Vods, :include => [:FileLocation, :VideoFormat]
 # Doesn't work like this (ignores link)
 #has_many   :VodFormats, :through => :ProgramCategory
 
@@ -100,7 +100,8 @@ def single_event?
   unless(real_filename.nil? or real_filename == "")
     nil
   else
-    (self.Events.count == 1)
+    #@single_event || @single_event = (self.Events.count == 1)
+    @single_event || @single_event = (self.Events[1].nil?)
   end
 end
 
