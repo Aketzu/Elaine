@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 59) do
+ActiveRecord::Schema.define(:version => 60) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 59) do
     t.column "movable",    :boolean
     t.column "program_id", :integer
     t.column "channel_id", :integer,  :default => 1
+    t.column "no_listing", :boolean
   end
 
   create_table "program_categories", :force => true do |t|
@@ -127,7 +128,6 @@ ActiveRecord::Schema.define(:version => 59) do
     t.column "tags",                 :string
     t.column "video_format_id",      :integer
     t.column "target_length",        :integer
-    t.column "no_listing",           :boolean
     t.column "program_category_id",  :integer
   end
 
@@ -193,13 +193,14 @@ ActiveRecord::Schema.define(:version => 59) do
     t.column "lastname",                  :string,   :limit => 40
     t.column "salt",                      :string,   :limit => 40, :default => "",           :null => false
     t.column "verified",                  :integer,                :default => 0
+    t.column "role",                      :string,   :limit => 40
     t.column "created_at",                :datetime
     t.column "updated_at",                :datetime
     t.column "remember_token",            :string
     t.column "remember_token_expires_at", :datetime
     t.column "content_filter_date",       :date,                   :default => '2007-05-31'
     t.column "language",                  :string
-    t.column "channel_id",                :integer,                :default => 3
+    t.column "channel_id",                :string,                 :default => "3"
   end
 
   create_table "users_roles", :id => false, :force => true do |t|

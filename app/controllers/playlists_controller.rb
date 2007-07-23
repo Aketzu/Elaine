@@ -95,6 +95,15 @@ class PlaylistsController < ApplicationController
 #    end
   end
 
+	def toggle_show
+    @playlist = Playlist.find(params[:id])
+		@playlist.no_listing = @playlist.no_listing ? false : true
+		@playlist.save!
+
+    redirect_to(:action => 'index')
+		
+	end
+
   def edit
     @playlist = Playlist.find(params[:id])
     @channel_id = params[:channel_id].to_i

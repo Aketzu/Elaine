@@ -1,11 +1,12 @@
 <table class="playlist" id="playlists">
   <tr class="playlist_header">
     <th class="playlist_cell" style="width: 10em;">Program</th>
+    <th class="playlist_cell" style="width: 1em;">Show in listing</th>
     <th class="playlist_cell" style="width: 10em;">Start time</th>
     <th class="playlist_cell" style="width: 6em;">Length</th>
     <th class="playlist_cell" style="width: 10em;">End time</th>
     <th class="playlist_cell" style="width: 6em;">Movable</th>
-    <th class="playlist_cell" style="width: 9em;">Actions</th>
+    <th class="playlist_cell" style="width: 9.5em;">Actions</th>
   </tr>
   
 <%
@@ -64,6 +65,7 @@ end
 
   <tr class="<%= @current_cycle %>" <%if playlist.id == @current.id %>id="now_playing"<% elsif(playlist.end_time < @now) %>id="past_events"<% end %> >
     <td class="playlist_cell"><%= link_to playlist.Program.title, :controller => 'programs', :action => 'edit', :id => playlist.program_id %></td>
+    <td class="playlist_cell"><%= link_to playlist.no_listing ? "No" : "Yes" , :action => :toggle_show, :id => playlist %></td>
     <td class="playlist_cell"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell"><%= playlist.Program.formatted_length %></td>
     <td class="playlist_cell"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
