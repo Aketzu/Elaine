@@ -12,9 +12,11 @@
   <%= javascript_include_tag 'smartmenu/c_smartmenus' %>
   <%= javascript_include_tag 'smartmenu/c_addon_fx_fade' %>
   
+  <%= javascript_include_tag 'lightbox/lightbox' %>
 
   <%= stylesheet_link_tag 'elaine' %>
   <%= stylesheet_link_tag 'smartmenu' %>
+  <%= stylesheet_link_tag 'lightbox' %>
 
 <% if false %>
   <%= engine_stylesheet 'login_engine' %>
@@ -58,7 +60,7 @@
   <%= @content_for_layout %>
   </div>
 
-  <div id="footer">
+  <div id="footer">	
   Elaine2.0, Assembly 2007<br/>
   If you have comments or a critical bug to report, feel free to join the IRC-channel <b style="color:#444;">#elaine</b> @ IRCNet.
   </div>
