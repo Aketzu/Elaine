@@ -14,7 +14,7 @@
 <th class="edit">Target length</th>
 <td class="edit"><%= text_field 'program', 'formatted_target_length', 'class' => "time",
 		'onChange' => "javascript:this.value = FormatLength(this.value)" %>
-<%=tooltip "Format: hh:mm:ss"%></td>
+<%=tooltip "Format: hh:mm:ss<br/>You can omit zeros from the beginning of the string."%></td>
 </tr>
 
 <tr class="generic">
@@ -45,7 +45,7 @@
 
 <tr class="generic">
 <th class="edit">Program category</th>
-<td class="edit"><%= select('program', 'program_category_id', ProgramCategory.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+<td class="edit"><%= select('program', 'program_category_id', ProgramCategory.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>
@@ -60,12 +60,12 @@
 
 <tr>
 <th class="edit">Owner</th>
-<td class="edit"><%= select('program', 'owner_id', User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }) %></td>
+<td class="edit"><%= select('program', 'owner_id', User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>
 <th class="edit">Status</th>
-<td class="edit"><%= select('program', 'status_id', ProgramStatus.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+<td class="edit"><%= select('program', 'status_id', ProgramStatus.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>
@@ -74,7 +74,7 @@
 
 <tr class="fileinfo">
 <th class="edit">File location</th>
-<td class="edit"><%= select('program', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }) %></td>
+<td class="edit"><%= select('program', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr class="fileinfo">

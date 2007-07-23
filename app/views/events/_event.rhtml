@@ -15,12 +15,12 @@
 
 <tr>
 <th class="edit">Location</th>
-<td class="edit"><%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+<td class="edit"><%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>
 <th class="edit">Event type</th>
-<td class="edit"><%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }) %></td>
+<td class="edit"><%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>
@@ -41,7 +41,7 @@
 
 <tr>
 <th class="edit">File location</th>
-<td class="edit"><%= select('event', 'file_location_id', FileLocation.find_all.collect { |t| [t.name, t.id] }) %></td>
+<td class="edit"><%= select('event', 'file_location_id', FileLocation.find_all.collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr>

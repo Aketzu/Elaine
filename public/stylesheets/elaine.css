@@ -35,6 +35,9 @@ table.header_links {
   width:      100%;
   text-align: center;
 }
+table.editing {
+	width:			100%;
+}
 
 tr {
   vertical-align: top;
@@ -62,7 +65,8 @@ th {
   font-size: 90%;
 }
 th.edit {
-  text-align: right;
+  text-align: 		right;
+	width:					22em;
 }
 
 td {
@@ -73,8 +77,9 @@ td.edit {
 }
 
 textarea {
-  height: 7em;
-  width: 20em;
+  height:			4em;
+	width:			80%;
+  min-width:	30em;
 }
 
 input.time {
@@ -86,6 +91,9 @@ input.text {
 
 select {
   min-width: 3em;
+}
+select.options {
+  width: 20.25em;
 }
 
 div.listing_content {
@@ -225,11 +233,10 @@ div.events_in_program_list {
   float: left;
 }
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-  float: none;
+body, p, ol, ul, td, input, textarea, select {
+	font-family:	Tahoma, "Western", fantasy;
+  font-size:		12pt;
+  float:				none;
 }
 
 pre {
