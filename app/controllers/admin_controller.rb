@@ -1,5 +1,4 @@
 class AdminController < ApplicationController
-  sidebar :general
 	#observer :admin_mailer
 
   def index

@@ -1,6 +1,4 @@
 class ProgramsController < ApplicationController
-  sidebar :general
-
   auto_complete_for :event, :title
 
   def index

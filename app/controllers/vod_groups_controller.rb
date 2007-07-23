@@ -1,5 +1,4 @@
 class VodGroupsController < ApplicationController
-  sidebar :general
 
   def index
     list

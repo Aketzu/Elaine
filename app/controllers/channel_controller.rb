@@ -1,5 +1,3 @@
 class ChannelController < ApplicationController
-  sidebar :general
-
-  scaffold :channel
+	scaffold :channel
 end

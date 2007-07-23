@@ -1,5 +1,4 @@
 class TapesController < ApplicationController
-  sidebar :general
 
   def index
     list

@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  sidebar :general
 
   def index
     list

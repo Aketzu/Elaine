@@ -1,5 +1,4 @@
 class ProgramDescriptionsController < ApplicationController
-  sidebar :general
 
   def index
     list

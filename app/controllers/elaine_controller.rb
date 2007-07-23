@@ -1,5 +1,4 @@
 class ElaineController < ApplicationController
-  sidebar :general
 
   def index
 #    @user = params[:user]

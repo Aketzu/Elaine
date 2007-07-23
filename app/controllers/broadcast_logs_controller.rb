@@ -1,6 +1,5 @@
 class BroadcastLogsController < ApplicationController
-  sidebar :general
-  
+
   def index
     list
     render :action => 'list'

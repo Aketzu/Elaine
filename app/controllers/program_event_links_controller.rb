@@ -1,5 +1,4 @@
 class ProgramEventLinksController < ApplicationController
-  sidebar :general
 
   def index
     list
