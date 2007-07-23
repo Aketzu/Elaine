@@ -1,4 +1,7 @@
+require 'set'
+
 class AccountController < ApplicationController
+
   skip_before_filter :login_required, :only => ['signup', 'change_password', 'login']
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
@@ -12,6 +15,7 @@ class AccountController < ApplicationController
     return unless request.post?
     self.current_user = User.authenticate(params[:login], params[:password])
     if logged_in?
+      get_user_tab_filter
       if params[:remember_me] == "1"
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
@@ -57,4 +61,17 @@ class AccountController < ApplicationController
 			end
 		end
   end
+	
+	private
+		def get_user_tab_filter
+			if (self.current_user && self.current_user.roles)
+				first = self.current_user.roles[0].hide_tabs.to_set
+				
+				self.current_user.roles.collect do |r|
+					first = (first & r.hide_tabs.to_set)
+				end
+			end
+			
+			session[:tabs_filter] = first.to_a.join(" ")
+		end
 end

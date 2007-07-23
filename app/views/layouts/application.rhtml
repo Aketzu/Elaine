@@ -18,28 +18,22 @@
   <%= stylesheet_link_tag 'smartmenu' %>
   <%= stylesheet_link_tag 'lightbox' %>
 
-<% if false %>
-  <%= engine_stylesheet 'login_engine' %>
-  <%= engine_stylesheet "user" %>
-  <%= engine_stylesheet "menu_engine" %>
-
-  <%= engine_javascript "user" %>
-  <%= engine_javascript "menu_engine" %>
-  <%= stylesheet_link_tag "menu_engine.css", :plugin => "menu_engine" %>
-  <%= javascript_include_tag "menu_engine.js", :plugin => "menu_engine" %>
-<% end -%>
 <% if @timeline %>
   <script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>
   <script src="/javascripts/timeline_extension.js" type="text/javascript"></script>
   <script src="timeline_config?channel_id=<%=@channel_id.to_s%>" type="text/javascript"></script>
 <% end -%>
 </head>
-<% if @timeline -%>
-	<body onload="onLoad(<%=@channel_id.to_s%>); onLoadElaine('<%=current_user.roles.collect {|r| r.hide_tabs}.join(', ').scan(/\w+/).uniq unless current_user == :false%>');" onResize="onResize();">
+
+<% if current_user == :false -%>
+  <body>
+<% elsif @timeline -%>
+  <body onload="onLoad(<%=@channel_id.to_s%>); onResize="onResize();">
 <% else -%>
-	<body onLoad="onLoadElaine('<%=current_user.roles.collect {|r| r.hide_tabs}.join(', ').scan(/\w+/).uniq unless current_user == :false %>');">
+  <body <%='onLoad="onLoadElaine(\'' + session[:tabs_filter] + '\');">' %>
 <% end -%>
-	<%= javascript_include_tag 'wz_tooltip' %>
+<%= javascript_include_tag 'wz_tooltip' %><%# This on must be here %>
+
 
 <div id="container-page">
 	<%# cache do -%>
