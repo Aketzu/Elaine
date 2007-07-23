@@ -20,6 +20,6 @@
 }
 * html>body .clearFix { /* for IE5/Mac */
     height:auto;
-    display:inline-block;
+    display:inline;
 }
 

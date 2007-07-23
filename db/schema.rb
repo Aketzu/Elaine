@@ -192,14 +192,13 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "lastname",                  :string,   :limit => 40
     t.column "salt",                      :string,   :limit => 40, :default => "",           :null => false
     t.column "verified",                  :integer,                :default => 0
-    t.column "role",                      :string,   :limit => 40
     t.column "created_at",                :datetime
     t.column "updated_at",                :datetime
     t.column "remember_token",            :string
     t.column "remember_token_expires_at", :datetime
     t.column "content_filter_date",       :date,                   :default => '2007-05-31'
     t.column "language",                  :string
-    t.column "channel_id",                :string,                 :default => "3"
+    t.column "channel_id",                :integer,                :default => 3
   end
 
   create_table "users_roles", :id => false, :force => true do |t|
