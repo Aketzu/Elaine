@@ -12,12 +12,12 @@ if (window.parent) {
 </script>
 
 <%= start_form_tag({:action => 'update', :id => @event}, :name => "edit_form", 'onChange' => "javascript:document.edit_form.reset.disabled=false") %>
-<table>
+<table class="editing">
   <%= render :partial => 'event' %>
 
   <tr>
   <th class="edit"><INPUT type="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
-  <td class="edit"><%= submit_tag 'Update' %></td>
+  <td><%= submit_tag 'Update' %></td>
   </tr>
 <%= end_form_tag %>
 
@@ -25,8 +25,6 @@ if (window.parent) {
   <td colspan=2><hr></td>
   </tr>
 
-<%= render :partial => "belongs_to_tapes", :object => @event.tape_event_links %>
-<%= render :partial => "belongs_to_programs", :object => @event.Programs %>
+	<%= render :partial => "belongs_to_tapes", :object => @event.tape_event_links %>
+	<%= render :partial => "belongs_to_programs", :object => @event.Programs %>
 </table>
-
-<a href="#" onClick="javascript:history.back(-1)">Back</a>

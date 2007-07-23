@@ -1,53 +1,59 @@
+<tr class="other">
+	<th class="edit">Events:</th>
+	<td>
+		<iframe id="newevent" style="position: absolute; left: 40%; width: 50%; height: 400px; border: 2px solid #f33; display:none;">
+		</iframe>
 
-<iframe id="newevent" style="position: absolute; left: 40%; width: 50%; height: 400px; border: 2px solid #f33; display:none;">
-</iframe>
+		<div id="events">
+		<%= render(:partial => 'events', :object => @program.Events) %>
+		</div>
 
-<div id="events">
-<%= render(:partial => 'events', :object => @program.Events) %>
-</div>
+		<%= form_remote_tag :url => { :action => 'add_event' }, 
+			:update => :events, 
+			:before => "Element.show('spinner')",
+			:success => "Element.hide('spinner')",
+			:html => {:id => "neweventform"} %>
 
-<%= form_remote_tag :url => { :action => 'add_event' }, 
-	:update => :events, 
-	:before => "Element.show('spinner')",
-  :success => "Element.hide('spinner')",
-	:html => {:id => "neweventform"} %>
+		<%= error_messages_for 'program_event_link' %>
+	</td>
+</tr>
 
-<%= error_messages_for 'program_event_link' %>
-<p><b>Add event:</b>
-<!--[form:event]-->
-<%= hidden_field 'program_event_link', 'program_id', :value => @program.id %>
+<tr class="other">
+	<th class="edit">Add event:</th>
+	<td>
+		<!--[form:event]-->
+		<%= hidden_field 'program_event_link', 'program_id', :value => @program.id %>
 
-<%= text_field_with_auto_complete :event, 
-	:title, 
-	{:skip_style => true}, 
-	{:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked + "&event[type]=" + $("event_type").value', 
-		:after_update_element => 'auto_complete_on_select'} %>
-<%= hidden_field 'program_event_link', 'event_id' %>
+		<%= text_field_with_auto_complete :event, 
+			:title, 
+			{:skip_style => true}, 
+			{:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked + "&event[type]=" + $("event_type").value', 
+				:after_update_element => 'auto_complete_on_select'} %>
+		<%= hidden_field 'program_event_link', 'event_id' %>
 
-<script type="text/javascript">
-function newevent() {
-	$('newevent').style.display='block';
-	$('newevent').src = "<%=url_for :controller => :events, :action => :new %>?";
-}
-</script>
-<a href="javascript:newevent()">New event</a>
-
-
+		<script type="text/javascript">
+		function newevent() {
+			$('newevent').style.display='block';
+			$('newevent').src = "<%=url_for :controller => :events, :action => :new %>?";
+		}
+		</script>
 
 
-<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
-<br />
-Show: <%=select_tag "event_type", options_for_select(EventType.find_all.map { |t| [t.name, t.id] }.insert(0,["All", "0"])) %>
-<br />
+		<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
+		<br />
+		Show: <%=select_tag "event_type", options_for_select(EventType.find_all.map { |t| [t.name, t.id] }.insert(0,["All", "0"])) %>
+		<br />
 
-<%= submit_tag "Add" %>
-<%= image_tag("spinner.gif",
-		:align => 'middle',
-		:border=> 0,
-		:id => "spinner",
-		:style=>"display: none;") %>
+		<%= submit_tag "Add" %>
+		<%= image_tag("spinner.gif",
+				:align => 'middle',
+				:border=> 0,
+				:id => "spinner",
+				:style=>"display: none;") %>
 
-</p>
-
-<!--[eoform:event]-->
-<%= end_form_tag %>
+		<a href="javascript:newevent()">New event</a>
+		
+		<!--[eoform:event]-->
+		<%= end_form_tag %>
+	</td>
+</tr>

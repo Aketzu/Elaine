@@ -29,7 +29,7 @@
 </tr>
 
 <tr>
-<th class="edit">Length (hh:mm:ss)</th>
+<th class="edit">Length (hh:mm:ss) <%=tooltip_format_time%></th>
 <td class="edit"><%= text_field 'event', 'formatted_length', 'class' => "time",
                        'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>

@@ -7,7 +7,7 @@
 <%= hidden_field 'tape_program_link', 'tape_id' %>
 <%= hidden_field 'tape_program_link', 'program_id' %>
 
-<p><label for="formatted_start_time">Start time (hh:mm:ss)</label><br/>
+<p><label for="formatted_start_time">Start time (hh:mm:ss) <%=tooltip_format_time%></label><br/>
 <%= text_field 'tape_program_link', 'formatted_start_time', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
 
 <%= submit_tag 'Edit' %>

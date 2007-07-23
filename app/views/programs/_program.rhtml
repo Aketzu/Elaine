@@ -5,16 +5,15 @@
 <th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic</th>
 </tr>
 <tr class="generic">
-<th class="edit">Length</th>
+<th class="edit">Length <%=tooltip "This is the length of all events in the program"%></th>
 <td class="edit"><%= @program.formatted_length %>
-<%=tooltip "This is the length of all events in the program"%></td>
+</td>
 </tr>
 
 <tr class="generic">
-<th class="edit">Target length</th>
+<th class="edit">Target length <%=tooltip_format_time%></th>
 <td class="edit"><%= text_field 'program', 'formatted_target_length', 'class' => "time",
-		'onChange' => "javascript:this.value = FormatLength(this.value)" %>
-<%=tooltip "Format: hh:mm:ss<br/>You can omit zeros from the beginning of the string."%></td>
+		'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 
 <tr class="generic">
@@ -24,13 +23,13 @@
 </tr>
 
 <tr class="generic">
-<th class="edit">Min show</th>
-<td class="edit"><%= text_field 'program', 'min_show'  %></td>
+<th class="edit">Min. times to show</th>
+<td class="edit"><%= text_field 'program', 'min_show', 'class' => "time"  %></td>
 </tr>
 
 <tr class="generic">
-<th class="edit">Max show</th>
-<td class="edit"><%= text_field 'program', 'max_show'  %></td>
+<th class="edit">Max. times to show</th>
+<td class="edit"><%= text_field 'program', 'max_show', 'class' => "time"  %></td>
 </tr>
 
 <tr class="generic">
@@ -49,13 +48,13 @@
 </tr>
 
 <tr>
-<th class="edit">Preview image offset (hh:mm:ss)</th>
-<td class="edit"><%= text_field 'program', 'formatted_preview_image_offset', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+<th class="edit">Preview image offset (hh:mm:ss) <%=tooltip_format_time%></th>
+<td class="edit"><%= text_field 'program', 'formatted_preview_image_offset', 'class' => "time", 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
 </tr>
 
 <tr>
-<th class="edit">Preview video offset (hh:mm:ss)</th>
-<td class="edit"><%= text_field 'program', 'formatted_preview_video_offset', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+<th class="edit">Preview video offset (hh:mm:ss) <%=tooltip_format_time%></th>
+<td class="edit"><%= text_field 'program', 'formatted_preview_video_offset', 'class' => "time", 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
 </tr>
 
 <tr>

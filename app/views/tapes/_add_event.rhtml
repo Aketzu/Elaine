@@ -10,7 +10,7 @@
         <td class="edit">
         <%= select("tape_event_link", "event_id", Event.find_all.collect {|u| [ u.title, u.id ] }, {}, {"class" => "options"}) %>
         <br />
-        <label for="formatted_start_time">with start time (hh:mm:ss)</label>
+        <label for="formatted_start_time">with start time (hh:mm:ss) <%=tooltip_format_time%></label>
         <%= text_field 'tape_event_link', 'formatted_start_time',
               'onChange' => "javascript:this.value = FormatLength(this.value)",
               'class' => "time", 'value' => "00:00:00" %>

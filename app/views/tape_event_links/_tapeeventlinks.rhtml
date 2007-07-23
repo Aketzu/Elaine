@@ -7,7 +7,7 @@
 <p><label for="event_id">Event</label><br/>
 <%= select("tape_event_link", "event_id", Event.find_all.collect {|t| [ t.title, t.id ] }) %></p>
 
-<p><label for="formatted_start_time">Start time (hh:mm:ss)</label><br/>
+<p><label for="formatted_start_time">Start time (hh:mm:ss) <%=tooltip_format_time%></label><br/>
 <%= text_field 'tape_event_link', 'formatted_start_time', 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></p>
 
 <!--[eoform:tape_event_link]-->

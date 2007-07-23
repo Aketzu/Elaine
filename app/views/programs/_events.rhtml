@@ -48,7 +48,19 @@
       </td>
     </tr>
   <% end %>
+	
+	<tr>
+		<th align="right" colspan="2">Total length:</th>
+		<td colspan="2"><%=format_length(offset)%></td>
+	</tr>
+	
+	<tr>
+		<th align="right" colspan="2">Target length:</th>
+		<td colspan="2"><%=@program.formatted_target_length%></td>
+	</tr>
+	
+	<tr>
+		<th align="right" colspan="2">Difference:</th>
+		<td colspan="2"><%=format_length((@program.target_length.to_i - offset).abs)%> <%=@program.target_length.to_i > offset ? "too little" : "<font color=\"red\">TOO MUCH!</font>"%></td>
+	</tr>
 </table>
-Total length: <%=format_length(offset)%><br />
-Target length: <%=@program.formatted_target_length%><br />
-Difference: <%=format_length((@program.target_length.to_i - offset).abs)%> <%=@program.target_length.to_i > offset ? "too little" : "too much!"%>

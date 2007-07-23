@@ -17,37 +17,24 @@ function toggleVisibility(type) {
 </script>
 
 <%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "$('reset').disabled=false") %>
-<table id="form_options">
+<table class="editing" id="form_options">
   <%= render :partial => 'program_descriptions', :object => @program.program_descriptions %>
   <%= render :partial => 'program' %>
 
   <tr>
   <th class="edit"><INPUT type="reset" id="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
-  <td class="edit"><%= submit_tag 'Update' %></td>
+  <td><%= submit_tag 'Update' %></td>
   </tr>
 <%= end_form_tag %>
 
-  <tr>
-  <td colspan=2><hr></td>
-  </tr>
+	<tr>
+	<th colspan="2" onclick="toggleVisibility('other')" class="header">Other</th>
+	</tr>
 
   <%= render :partial => "events/belongs_to_tapes", :object => @program.tape_program_links %>
+
+	<%= render :partial => 'add_event' %>
 </table>
 
-<p><strong>Events:</strong></p>
-
-
-<div style="padding-left: 20px;">
-<%= render :partial => 'add_event' %>
-</div>
 
 <%= render :partial => 'vods' %>
-
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
-<a href="#" onClick="javascript:history.back(-1)">Back</a>
