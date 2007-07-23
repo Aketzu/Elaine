@@ -3,10 +3,13 @@
 
 <div id="role_details">
   <p><label for="role_name">Name</label><br/>
-  <%= text_field 'role', 'name'  %></p>
+  <%= text_field 'role', 'name' %></p>
 
   <p><label for="role_description">Description</label><br/>
-  <%= text_area 'role', 'description', {:rows => 5}  %></p>
+  <%= text_area 'role', 'description', {:rows => 5} %></p>
+
+  <p><label for="role_hide_tabs">Hide tabs with id <%= tooltip "Format: Separate with commas, no spaces.<br/>See ids from ie. Programs controllers edit action." %></label><br/>
+  <%= text_field 'role', 'hide_tabs' %></p>
 </div>
 
 <div id="role_permissions">

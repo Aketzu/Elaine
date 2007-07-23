@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 58) do
+ActiveRecord::Schema.define(:version => 59) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(:version => 58) do
     t.column "description", :string
     t.column "omnipotent",  :boolean, :default => false, :null => false
     t.column "system_role", :boolean, :default => false, :null => false
+    t.column "hide_tabs",   :string
   end
 
   create_table "sessions", :force => true do |t|

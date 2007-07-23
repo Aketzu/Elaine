@@ -35,9 +35,9 @@
 <% end -%>
 </head>
 <% if @timeline -%>
-<body onload="onLoad(<%=@channel_id.to_s%>);" onresize="onResize();">
+	<body onload="onLoad(<%=@channel_id.to_s%>); onLoadElaine('<%=current_user.roles.collect {|r| r.hide_tabs}.join(', ').scan(/\w+/).uniq%>');" onResize="onResize();">
 <% else -%>
-<body>
+	<body onLoad="onLoadElaine('<%=current_user.roles.collect {|r| r.hide_tabs}.join(', ').scan(/\w+/).uniq%>');">
 <% end -%>
 	<%= javascript_include_tag 'wz_tooltip' %>
 

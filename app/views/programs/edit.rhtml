@@ -1,21 +1,5 @@
 <h1>Editing program</h1>
 
-<script type="text/javascript">
-function toggleVisibility(type) {
-	rr = $('form_options').rows;
-	for (i=0; i<rr.length; i++) {
-		if (rr[i].className == type) {
-			if (rr[i].orgdisp="") {
-				rr[i].orgdisp=rr[i].style.display;
-			}
-			vis = rr[i].style.display == rr[i].orgdisp;
-
-			rr[i].style.display = vis ? "none" : rr[i].orgdisp;
-		}
-	}
-}
-</script>
-
 <%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "$('reset').disabled=false") %>
 <table class="editing" id="form_options">
   <%= render :partial => 'program_descriptions', :object => @program.program_descriptions %>
