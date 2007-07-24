@@ -8,7 +8,7 @@
   <p><label for="role_description">Description</label><br/>
   <%= text_area 'role', 'description', {:rows => 5} %></p>
 
-  <p><label for="role_hide_tabs">Hide tabs with id <%= tooltip "Format: Separate with commas, no spaces.<br/>See ids from ie. Programs controllers edit action." %></label><br/>
+  <p><label for="role_hide_tabs">Hide tabs with id <%= tooltip "Format: space separated list.<br/>See ids from ie. Programs controllers edit action." %></label><br/>
   <%= text_field 'role', 'hide_tabs' %></p>
 </div>
 

@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 60) do
     t.column "status_id",            :integer,  :default => 1
     t.column "filename",             :string
     t.column "file_location_id",     :integer
+    t.column "no_listing",           :boolean
     t.column "tags",                 :string
     t.column "video_format_id",      :integer
     t.column "target_length",        :integer
