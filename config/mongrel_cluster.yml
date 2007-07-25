@@ -1,6 +1,7 @@
 --- 
+cwd: "/var/rails/deploy/elaine2006/current"
 port: "10001"
 environment: production
 address: 127.0.0.1
-pid_file: "/var/rails/deploy/elaine2006/shared/pids/mongrel.pid"
+pid_file: "tmp/pids/mongrel.pid"
 servers: 5
