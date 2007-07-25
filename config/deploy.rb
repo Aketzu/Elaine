@@ -1,6 +1,9 @@
 # This defines a deployment "recipe" that you can feed to capistrano
 # (http://manuals.rubyonrails.com/read/book/17). It allows you to automate
 # (among other things) the deployment of your application.
+#
+
+require 'mongrel_cluster/recipes'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -14,6 +17,7 @@ set :application, "elaine2006"
 #set :deploy_to, "/data/httpd/asmtv/deploy/elaine2006"
 set :deploy_to, "/var/rails/deploy/elaine2006"
 set :repository, "https://svn.nodeta.fi/elaine2006/trunk"
+set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 #set :user, "mlavi"
 # set :svn, "svn+ssh://moukari.assembly.org/data/livesvn/elaine2006"
 ssh_options[:keys] = %w(~/.ssh/id_dsa /home/mlavi/.ssh/id_dsa /home/akolehma/.ssh/id_dsa)
@@ -21,9 +25,12 @@ ssh_options[:port] = 22
 set :use_sudo, false
 
 # role :web, "intra.assembly.org/livecrew/elaine"
-role :web, "elaine.assembly.org"
-role :app, "elaine.assembly.org"
-role :db,  "elaine.assembly.org", :primary => true
+#role :web, "elaine.assembly.org"
+#role :app, "elaine.assembly.org"
+#role :db,  "elaine.assembly.org", :primary => true
+role :web, "kelvin.aketzu.net"
+role :app, "kelvin.aketzu.net"
+role :db,  "kelvin.aketzu.net", :primary => true
 
 # set :repository, "http://svn.yourhost.com/#{application}/trunk"
 
@@ -148,7 +155,7 @@ task :before_restart do
 		"rake db:sessions:clear RAILS_ENV=development &&" + 
 		"rake db:sessions:clear RAILS_ENV=production"
 	#Restart apache
-	sudo "/usr/sbin/apache2ctl graceful"
+	#sudo "/usr/sbin/apache2ctl graceful"
 end
 
 desc "Customized migrate task. Supposed to bring the DB up from zero."
