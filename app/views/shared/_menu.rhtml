@@ -26,6 +26,9 @@
 							<li><%= link_to 'Playlists', :controller => 'playlists', :action => 'list' %></li>
 							<li><%= link_to 'Timeline', :controller => 'playlists', :action => 'timeline' %></li>
 							<li><%= link_to 'Broadcast Logs', :controller => 'broadcast_logs', :action => 'list' %></li>
+							<% if authorized?(:controller => "channel") -%>
+							<li><%= link_to 'Edit channels', :controller => 'channel', :action => 'list' %></li>
+							<% end %>
 						</ul>
 					</li>
 					<% end %>
@@ -55,6 +58,9 @@
 							<% if authorized?(:controller => 'events', :action => 'new') %>
 								<li><%= link_to 'New Event', :controller => 'events', :action => 'new' %></li>
 							<% end %>
+							<% if authorized?(:controller => "admin") -%>
+							<li><%= link_to 'Event types', :controller => 'event_types', :action => 'list' %></li>
+							<% end %>
 						</ul>
 					</li>
 					<% end %>
@@ -69,6 +75,10 @@
 							<% if authorized?(:controller => 'tapes', :action => 'new') %>
 							<li><%= link_to 'New Tape', :controller => 'tapes', :action => 'new' %></li>
 							<% end %>
+							<% if authorized?(:controller => "admin") -%>
+							<li><%= link_to 'Tape categories', :controller => 'tape_categorys', :action => 'list' %></li>
+							<li><%= link_to 'Tape medias', :controller => 'tape_medias', :action => 'list' %></li>
+							<% end %>
 						</ul>
 					</li>
 					<% end %>
@@ -79,8 +89,9 @@
 						<a href="#">Vods</a>
 						<ul>
 							<li><%= link_to 'List Vods', :controller => 'vods', :action => 'list' %></li>
-							<li><%= link_to 'List Vod Groups', :controller => 'vod_groups', :action => 'list' %></li>
-							<li><%= link_to 'List Video Formats', :controller => 'video_formats', :action => 'list' %></li>
+							<li><%= link_to 'Vod groups', :controller => 'vod_groups', :action => 'list' %></li>
+							<li><%= link_to 'Video formats', :controller => 'video_formats', :action => 'list' %></li>
+							<li><%= link_to 'File locations', :controller => 'file_locations', :action => 'list' %></li>
 						</ul>
 					</li>
 					<% end %>
@@ -99,6 +110,8 @@
 									<li><%= link_to 'Add new user', :controller => 'admin', :action => 'add_user' %></li>
 								</ul>
 							</li>
+							<li><%= link_to 'Languages', :controller => 'languages', :action => 'list' %></li>
+							<li><%= link_to 'Locations', :controller => 'locations', :action => 'list' %></li>
 						</ul>
 					</li>
 					<% end %>

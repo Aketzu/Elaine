@@ -4,14 +4,14 @@
 <p><label for="vod_filename">Filename</label><br/>
 <%= text_field 'vod', 'filename'  %></p>
 
-<p><label for="vod_file_location_id">File location id</label><br/>
-<%= text_field 'vod', 'file_location_id'  %></p>
+<p><label for="vod_file_location_id">File location</label><br/>
+<%= select('vod', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_vods is true").collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></p>
 
-<p><label for="vod_video_format_id">Format id</label><br/>
-<%= text_field 'vod', 'video_format_id'  %></p>
+<p><label for="vod_video_format_id">Video Format</label><br/>
+<%= select('vod', 'video_format_id', VideoFormat.find(:all).collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></p>
 
-<p><label for="vod_program_id">Program id</label><br/>
-<%= text_field 'vod', 'program_id'  %></p>
+<p><label for="vod_program_id">Program</label><br/>
+<%= select('vod', 'program_id', Program.find(:all, :include => [:program_descriptions]).collect { |t| [t.title, t.id] }, {}, {"class" => "options"}) %></p>
 
 <p><label for="vod_length">Length</label><br/>
 <%= text_field 'vod', 'length'  %></p>
