@@ -22,6 +22,10 @@ class AccountController < ApplicationController
       end
       redirect_back_or_default('/')
       flash[:notice] = "Logged in successfully as " + self.current_user.login
+
+			#cleanup old sessions
+			ActiveRecord::Base.connection.execute "delete from sessions where updated_at < now() - interval '60 minute'"
+
 		else
 			flash[:error] = "Invalid username or password. Note that username IS case sensitive."
     end
