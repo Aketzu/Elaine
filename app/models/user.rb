@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
 	has_many :program, :foreign_key => 'owner_id'
+	belongs_to :Channel
 
   # Returns the full name of this user.
   def fullname

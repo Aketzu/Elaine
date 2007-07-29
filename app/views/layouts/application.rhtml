@@ -28,7 +28,7 @@
 <% if current_user == :false -%>
   <body>
 <% elsif @timeline -%>
-  <body onload="onLoad(<%=@channel_id.to_s%>); onResize="onResize();">
+  <body onload="onLoad(<%=@channel_id.to_s%>)" onResize="onResize()">
 <% else -%>
   <body <%='onLoad="onLoadElaine(\'' + session[:tabs_filter] + '\');">' %>
 <% end -%>
