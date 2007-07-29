@@ -1,0 +1,38 @@
+xml.instruct! :xml, :encoding => "ISO-8859-1"
+unless @channel.nil?
+  xml.data("protocol-version" => "1.6") do
+		xml.event(:type => :flashscreen, :target => :production) do
+			xml.screen(:type => :ohjelmisto) do
+				xml.title(@channel.name)
+				for item in @items
+					program = item.Program
+					xml.body(:time => item.start_time.strftime("%H%M")) do
+						xml.cdata!(program.title)
+					end
+				end
+
+				xml.config() do
+					xml.margin(100)
+				end
+      end
+			
+			xml.screen(:type => :seuraava) do
+				xml.title(@channel.name + " Next")
+				item = @items[0]
+				program = item.Program
+				xml.body() do
+					xml.cdata!(program.title)
+				end
+
+				xml.config() do
+					xml.margin(100)
+				end
+      end
+
+			xml.view(0)
+
+    end
+  end
+else
+  xml.error("No such channel")
+end

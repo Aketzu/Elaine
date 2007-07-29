@@ -12,6 +12,7 @@ class PlaylistsController < ApplicationController
 
   def list
     @channel_id = params[:channel_id].to_i
+		@channel_id = params[:playlist][:channel_id].to_i if params[:playlist]
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id
     end

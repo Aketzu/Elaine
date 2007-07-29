@@ -10,6 +10,17 @@ def playlist
   end
 end
 
+def next
+  @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
+  unless @channel.nil?
+    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time', :limit => 10, :include => [:Program])
+  end
+end
+
+def gdata
+	self.next
+end
+
 def vods
   # We assume most vods are past quarantine and thus don't make complicated joins
   #events = Event.find(:all, :conditions => ["quarantine < ?", Time.now])
