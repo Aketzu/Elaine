@@ -12,24 +12,24 @@
   <tr class="header">
      <td>Begin</td>
      <td>End</td>
+     <td>Length</td>
      <td>Title</td>
+     <td>Type</td>
      <td>Actions</td>
   </tr>
   <% for program_event in events %>
     <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
-      <td>
-      <%= format_length(offset) %>
-      </td>
+    <td><%= format_length(offset) %></td>
     <% offset += program_event.length %>
+    <td><%= format_length(offset) %></td>
+    <td><%= format_length(program_event.length) %></td>
     <td>
-      <%= format_length(offset) %>
-      </td>
-      <td>
       <%= link_to program_event.title, 
             :controller => 'events', 
             :action => 'edit', 
             :id => program_event.id %>
-      </td>
+    </td>
+		<td><%= program_event.EventType.name %><%= " @" + program_event.Location.name if program_event.event_type_id == 1%></td>
       <td>
       [
       <%= link_to 'up', :action => 'move_event_up',
