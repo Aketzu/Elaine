@@ -5,6 +5,9 @@ has_many :Programs
 has_many :Vods
 
 def exists?(filename)
+	#Not used anymore
+	return false
+
   begin
     url = URI.parse(self.checker_url)
     logger.info url
@@ -23,12 +26,11 @@ def exists?(filename)
     else
       false
     end
-  rescue Interrupt
+  rescue 
     logger.info "Rescued HTTP request."
     return false
-  else
-    logger.info "Congratulations! No errors!"
   end
+  #logger.info "Congratulations! No errors!"
 end
 
 def works?

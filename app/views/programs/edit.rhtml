@@ -9,16 +9,17 @@
   <th class="edit"><INPUT type="reset" id="reset" name="reset" disabled="true" onClick="javascript:document.edit_form.reset.disabled=true"></th>
   <td><%= submit_tag 'Update' %></td>
   </tr>
+</table>
 <%= end_form_tag %>
-
+<table class="editing">
 	<tr>
 	<th colspan="2" onclick="toggleVisibility('other')" class="header">Other</th>
 	</tr>
 
   <%= render :partial => "events/belongs_to_tapes", :object => @program.tape_program_links %>
+</table>
 
 	<%= render :partial => 'add_event' %>
-</table>
 
 
 <%= render :partial => 'vods' %>

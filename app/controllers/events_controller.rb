@@ -59,15 +59,29 @@ class EventsController < ApplicationController
     @event   = Event.new
     @event.EventType = EventType.find(:first, :conditions => ['name = ?', 'insert'])
     #TODO: Change the database default to 'insert'.
+		
+
+		if request.xml_http_request?
+			render :partial => "new2", :layout => false
+		end
+		
   end
 
   def create
     @event          = Event.new(params[:event])
     if @event.save
-      flash[:notice] = 'Event was successfully created.'
-      redirect_to :action => 'edit', :id => @event.id
+			if request.xml_http_request?
+				render :partial => "new2_2", :layout => false
+			else
+	      flash[:notice] = 'Event was successfully created.'
+	      redirect_to :action => 'edit', :id => @event.id
+			end
     else
-      render :action => 'new'
+			if request.xml_http_request?
+				render :partial => "new2", :layout => false
+			else
+      	render :action => 'new'
+			end
     end
   end
 

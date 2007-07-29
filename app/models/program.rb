@@ -148,7 +148,7 @@ end
 
 def full_filename
   if(self.single_event?)
-    self.Events[0].full_filename
+    self.Events[0].full_filename if self.Events[0]
   else
     'p_' + self.id.to_s + '_' + self.filename.to_s + '.avi'
   end
@@ -156,7 +156,7 @@ end
 
 def file_exists?
   if(self.single_event?)
-      self.Events[0].file_exists?
+      self.Events[0].file_exists? if self.Events[0]
   else
     if(self.FileLocation)
       self.FileLocation.exists?(self.full_filename)

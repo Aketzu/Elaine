@@ -1,18 +1,20 @@
+<% form_remote_tag(:url => {:controller => 'events', :action => 'create'}, :name => "edit_form", :xsuccess => "$('newevent').style.display='none';", :update => 'newevent') do -%>
+<div id="newevent" style="position: fixed; top: 10px; left: 10px; background: #FDD; border: 2px solid #f33; display:none"></div>
+<% end %>
+<%= form_remote_tag :url => { :action => 'add_event' }, 
+	:update => :events, 
+	:before => "Element.show('spinner')",
+	:success => "Element.hide('spinner')",
+	:html => {:id => "neweventform"} %>
+<table class="editing">
 <tr class="other">
 	<th class="edit">Events:</th>
 	<td>
-		<iframe id="newevent" style="position: absolute; left: 40%; width: 50%; height: 400px; border: 2px solid #f33; display:none;">
-		</iframe>
 
 		<div id="events">
 		<%= render(:partial => 'events', :object => @program.Events) %>
 		</div>
 
-		<%= form_remote_tag :url => { :action => 'add_event' }, 
-			:update => :events, 
-			:before => "Element.show('spinner')",
-			:success => "Element.hide('spinner')",
-			:html => {:id => "neweventform"} %>
 
 		<%= error_messages_for 'program_event_link' %>
 	</td>
@@ -32,7 +34,7 @@
 		<%= hidden_field 'program_event_link', 'event_id' %>
 
 		<script type="text/javascript">
-		function newevent() {
+		function xnewevent() {
 			$('newevent').style.display='block';
 			$('newevent').src = "<%=url_for :controller => :events, :action => :new %>?";
 		}
@@ -51,9 +53,10 @@
 				:id => "spinner",
 				:style=>"display: none;") %>
 
-		<a href="javascript:newevent()">New event</a>
+		<%= link_to_remote "New event", :url => {:controller => :events, :action => :new}, :method => :get, :update => :newevent, :success => "$('newevent').style.display='block';"  %>
 		
 		<!--[eoform:event]-->
-		<%= end_form_tag %>
 	</td>
 </tr>
+</table>
+		<%= end_form_tag %>

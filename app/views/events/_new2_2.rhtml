@@ -1,0 +1,7 @@
+<h1>Event created successfully</h1>
+<script type="text/javascript">
+	$('event_title').value = "<%=@event.title%>";
+	$('program_event_link_event_id').value = "<%=@event.id%>";
+	$('newevent').style.display='none';
+	$('neweventform').onsubmit();
+</script>
