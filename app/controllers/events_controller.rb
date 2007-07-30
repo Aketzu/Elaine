@@ -92,6 +92,10 @@ class EventsController < ApplicationController
   def update
     @event           = Event.find(params[:id])
     @tape_event_link = TapeEventLink.find(:first, :conditions => ["event_id = ?", @event.id])
+		if @event.event_type_id = 2
+			@event.location = Location.find("none")
+		end
+		
     if @event.update_attributes(params[:event]) && 
        (@tape_event_link.nil? || @tape_event_link.update_attributes(params[:tape_event_link]))
       flash[:notice] = 'Event was successfully updated.'

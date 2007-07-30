@@ -11,20 +11,9 @@ function auto_complete_on_select(element, selectedElement) {
 
 // ATM this requires the id of the table to be "form_options"
 function toggleVisibility(type) {
-	if(type.length > 0 && $('form_options') != null)
-	{
-		rr = $('form_options').rows;
-		for (i=0; i<rr.length; i++) {
-			if (rr[i].className == type) {
-				if (rr[i].orgdisp="") {
-					rr[i].orgdisp=rr[i].style.display;
-				}
-				vis = rr[i].style.display == rr[i].orgdisp;
-
-				rr[i].style.display = vis ? "none" : rr[i].orgdisp;
-			}
-		}
-	}
+	$$("." + type).each(function(n) {
+				n.toggle();
+	});
 }
 
 function onLoadElaine(tab_ids) {

@@ -1,79 +1,87 @@
 <%= error_messages_for 'event' %>
 
-
 <!--[form:event]-->
 <tr>
 <th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic</th>
 </tr>
 
-<tr class="generic">
+<tbody class="generic">
+<tr>
 <th class="edit">Title</th>
 <td class="edit"><%= text_field 'event', 'title', 'class' => "text", 
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Script</th>
 <td class="edit"><%= text_area 'event', 'script' %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Event type</th>
 <td class="edit"><%= select("event", "event_type_id", EventType.find_all.collect {|t| [ t.name, t.id ] }, {}, 
-											{"class" => "options"}) %></td>
+											{"class" => "options", 'onChange' => "javascript:(this.value==2 ? $('event_location_row').hide() : $('event_location_row').show());"}) %></td>
 </tr>
 
-<tr class="generic">
+<tr id="event_location_row">
 <th class="edit">Location</th>
 <td class="edit"><%= select("event", "location_id", Location.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Notes</th>
 <td class="edit"><%= text_area 'event', 'notes'  %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Length (hh:mm:ss) <%=tooltip_format_time%></th>
 <td class="edit"><%= text_field 'event', 'formatted_length', 'class' => "time",
                        'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Quarantine</th>
 <td class="edit"><%= datetime_select 'event', 'quarantine' %></td>
 </tr>
 
 <% unless @event.created_at.nil? %>
-<tr class="generic">
+<tr>
 <th class="edit">Created</th>
 <td class="edit"><%= @event.created_at %></td>
 </tr>
 
-<tr class="generic">
+<tr>
 <th class="edit">Modified</th>
 <td class="edit"><%= @event.updated_at %></td>
 </tr>
+</tbody>
 <% end %>
 
 <tr>
 <th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">Fileinfo</th>
 </tr>
 
-<tr class="fileinfo">
+<tbody class="fileinfo">
+<tr>
 <th class="edit">File location</th>
 <td class="edit"><%= select('event', 'file_location_id', FileLocation.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></td>
 </tr>
 
-<tr class="fileinfo">
+<tr>
 <th class="edit"><label for"event_filename">Filename (descriptive part)</th>
 <td class="edit"><%= text_field 'event', 'filename', 'class' => "text" %></td>
 </tr>
 
-<tr class="fileinfo">
+<tr>
 <th class="edit">Full filename</th>
 <td class="edit"><%= event.full_filename %>
 <% if event.file_exists? %>(found)<% else %>(not found)<% end %></td>
 </tr>
+</tbody>
 
 <!--[eoform:event]-->
+
+<script type="text/javascript">
+if($("event_event_type_id").value == 2)
+	$("event_location_row").hide();
+</script>
