@@ -4,7 +4,7 @@
  */
 
 Timeline.Graphics = new Object();
-Timeline.Graphics.pngIsTranslucent = !(Timeline.Platform.isIE && Timeline.Platform.isWin32);
+Timeline.Graphics.pngIsTranslucent = (!Timeline.Platform.browser.isIE) || (Timeline.Platform.browser.majorVersion > 6);
 
 Timeline.Graphics.createTranslucentImage = function(doc, url, verticalAlign) {
     var elmt;
@@ -12,7 +12,7 @@ Timeline.Graphics.createTranslucentImage = function(doc, url, verticalAlign) {
         elmt = doc.createElement("img");
         elmt.setAttribute("src", url);
     } else {
-        elmt = doc.createElement("div");
+        elmt = doc.createElement("img");
         elmt.style.display = "inline";
         elmt.style.width = "1px";  // just so that IE will calculate the size property
         elmt.style.height = "1px";
@@ -23,7 +23,7 @@ Timeline.Graphics.createTranslucentImage = function(doc, url, verticalAlign) {
 };
 
 Timeline.Graphics.setOpacity = function(elmt, opacity) {
-    if (Timeline.Platform.isIE) {
+    if (Timeline.Platform.browser.isIE) {
         elmt.style.filter = "progid:DXImageTransform.Microsoft.Alpha(Style=0,Opacity=" + opacity + ")";
     } else {
         var o = (opacity / 100).toString();
@@ -52,6 +52,22 @@ Timeline.Graphics._bubblePointOffset = 6;
 Timeline.Graphics._halfArrowWidth = 18;
 
 Timeline.Graphics.createBubbleForPoint = function(doc, pageX, pageY, contentWidth, contentHeight) {
+    function getWindowDims() {
+        if (typeof window.innerWidth == 'number') {
+	    return { w:window.innerWidth, h:window.innerHeight }; // Non-IE
+	} else if (document.documentElement && document.documentElement.clientWidth) {
+	    return { // IE6+, in "standards compliant mode"
+		w:document.documentElement.clientWidth,
+		h:document.documentElement.clientHeight
+	    };
+	} else if (document.body && document.body.clientWidth) {
+	    return { // IE 4 compatible
+		w:document.body.clientWidth,
+		h:document.body.clientHeight
+	    };
+	}
+    }
+
     var bubble = {
         _closed:    false,
         _doc:       doc,
@@ -65,14 +81,17 @@ Timeline.Graphics.createBubbleForPoint = function(doc, pageX, pageY, contentWidt
             }
         }
     };
-    
-    var docWidth = doc.body.offsetWidth;
-    var docHeight = doc.body.offsetHeight;
-    
+
+    var dims = getWindowDims();
+    var docWidth = dims.w;
+    var docHeight = dims.h;
+
     var margins = Timeline.Graphics._bubbleMargins;
+    contentWidth = parseInt(contentWidth, 10); // harden against bad input bugs
+    contentHeight = parseInt(contentHeight, 10); // getting numbers-as-strings
     var bubbleWidth = margins.left + contentWidth + margins.right;
     var bubbleHeight = margins.top + contentHeight + margins.bottom;
-    
+
     var pngIsTranslucent = Timeline.Graphics.pngIsTranslucent;
     var urlPrefix = Timeline.urlPrefix;
     
@@ -208,4 +227,96 @@ Timeline.Graphics.createBubbleForPoint = function(doc, pageX, pageY, contentWidt
     doc.body.appendChild(div);
     
     return bubble;
+};
+
+Timeline.Graphics.createMessageBubble = function(doc) {
+    var containerDiv = doc.createElement("div");
+    if (Timeline.Graphics.pngIsTranslucent) {
+        var topDiv = doc.createElement("div");
+        topDiv.style.height = "33px";
+        topDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-top-left.png) top left no-repeat";
+        topDiv.style.paddingLeft = "44px";
+        containerDiv.appendChild(topDiv);
+        
+        var topRightDiv = doc.createElement("div");
+        topRightDiv.style.height = "33px";
+        topRightDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-top-right.png) top right no-repeat";
+        topDiv.appendChild(topRightDiv);
+        
+        var middleDiv = doc.createElement("div");
+        middleDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-left.png) top left repeat-y";
+        middleDiv.style.paddingLeft = "44px";
+        containerDiv.appendChild(middleDiv);
+        
+        var middleRightDiv = doc.createElement("div");
+        middleRightDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-right.png) top right repeat-y";
+        middleRightDiv.style.paddingRight = "44px";
+        middleDiv.appendChild(middleRightDiv);
+        
+        var contentDiv = doc.createElement("div");
+        middleRightDiv.appendChild(contentDiv);
+        
+        var bottomDiv = doc.createElement("div");
+        bottomDiv.style.height = "55px";
+        bottomDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-bottom-left.png) bottom left no-repeat";
+        bottomDiv.style.paddingLeft = "44px";
+        containerDiv.appendChild(bottomDiv);
+        
+        var bottomRightDiv = doc.createElement("div");
+        bottomRightDiv.style.height = "55px";
+        bottomRightDiv.style.background = "url(" + Timeline.urlPrefix + "images/message-bottom-right.png) bottom right no-repeat";
+        bottomDiv.appendChild(bottomRightDiv);
+    } else {
+        containerDiv.style.border = "2px solid #7777AA";
+        containerDiv.style.padding = "20px";
+        containerDiv.style.background = "white";
+        Timeline.Graphics.setOpacity(containerDiv, 90);
+        
+        var contentDiv = doc.createElement("div");
+        containerDiv.appendChild(contentDiv);
+    }
+    
+    return {
+        containerDiv:   containerDiv,
+        contentDiv:     contentDiv
+    };
+};
+
+Timeline.Graphics.createAnimation = function(f, from, to, duration) {
+    return new Timeline.Graphics._Animation(f, from, to, duration);
+};
+
+Timeline.Graphics._Animation = function(f, from, to, duration) {
+    this.f = f;
+    
+    this.from = from;
+    this.to = to;
+    this.current = from;
+    
+    this.duration = duration;
+    this.start = new Date().getTime();
+    this.timePassed = 0;
+};
+
+Timeline.Graphics._Animation.prototype.run = function() {
+    var a = this;
+    window.setTimeout(function() { a.step(); }, 100);
+};
+
+Timeline.Graphics._Animation.prototype.step = function() {
+    this.timePassed += 100;
+    
+    var timePassedFraction = this.timePassed / this.duration;
+    var parameterFraction = -Math.cos(timePassedFraction * Math.PI) / 2 + 0.5;
+    var current = parameterFraction * (this.to - this.from) + this.from;
+    
+    try {
+        this.f(current, current - this.current);
+    } catch (e) {
+    }
+    this.current = current;
+    
+    if (this.timePassed < this.duration) {
+        this.run();
+    }
 };

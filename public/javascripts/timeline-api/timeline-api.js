@@ -7,12 +7,7 @@
  *
  *  Include this file in your HTML file as follows:
  *
- *    <script src="http://simile.mit.edu.nyud.net:8080/timeline/api/scripts/timeline-api.js" type="text/javascript"></script>
- *
- *  Note that we are using Coral CND [1] to reduce
- *  the load on our server.
- *
- *  [1] http://coralcdn.org/
+ *    <script src="http://simile.mit.edu/timeline/api/scripts/timeline-api.js" type="text/javascript"></script>
  *
  *==================================================
  */
@@ -27,6 +22,7 @@ Timeline.Platform = new Object();
     */
 
 (function() {
+    var bundle = true;
     var javascriptFiles = [
         "timeline.js",
         
@@ -37,6 +33,7 @@ Timeline.Platform = new Object();
         "util/graphics.js",
         "util/date-time.js",
         "util/data-structure.js",
+        "util/html.js",
         
         "units.js",
         "themes.js",
@@ -55,6 +52,7 @@ Timeline.Platform = new Object();
     ];
     
     var localizedJavascriptFiles = [
+        "timeline.js",
         "labellers.js"
     ];
     var localizedCssFiles = [
@@ -62,8 +60,11 @@ Timeline.Platform = new Object();
     
     // ISO-639 language codes, ISO-3166 country codes (2 characters)
     var supportedLocales = [
+        "cs",       // Czech
+        "de",       // German
         "en",       // English
         "es",       // Spanish
+        "fr",       // French
         "it",       // Italian
         "ru",       // Russian
         "se",       // Swedish
@@ -75,52 +76,114 @@ Timeline.Platform = new Object();
         var desiredLocales = [ "en" ];
         var defaultServerLocale = "en";
         
-        (function() {
-            var heads = document.documentElement.getElementsByTagName("head");
-            for (var h = 0; h < heads.length; h++) {
-                var scripts = heads[h].getElementsByTagName("script");
-                for (var s = 0; s < scripts.length; s++) {
-                    var url = scripts[s].src;
-                    var i = url.indexOf("timeline-api.js");
-                    if (i >= 0) {
-                        Timeline.urlPrefix = url.substr(0, i);
-                        
-                        // Parse parameters
-                        var q = url.indexOf("?");
-                        if (q > 0) {
-                            var params = url.substr(q + 1).split("&");
-                            for (var p = 0; p < params.length; p++) {
-                                var pair = params[p].split("=");
-                                if (pair[0] == "locales") {
-                                    desiredLocales = desiredLocales.concat(pair[1].split(","));
-                                } else if (pair[0] == "defaultLocale") {
-                                    defaultServerLocale = pair[1];
-                                }
-                            }
-                        }
-                        
-                        return;
-                    }
+        var parseURLParameters = function(parameters) {
+            var params = parameters.split("&");
+            for (var p = 0; p < params.length; p++) {
+                var pair = params[p].split("=");
+                if (pair[0] == "locales") {
+                    desiredLocales = desiredLocales.concat(pair[1].split(","));
+                } else if (pair[0] == "defaultLocale") {
+                    defaultServerLocale = pair[1];
+                } else if (pair[0] == "bundle") {
+                    bundle = pair[1] != "false";
                 }
             }
-            throw new Error("Failed to derive URL prefix for Timeline API code files");
+        };
+        
+        (function() {
+            if (typeof Timeline_urlPrefix == "string") {
+                Timeline.urlPrefix = Timeline_urlPrefix;
+                if (typeof Timeline_parameters == "string") {
+                    parseURLParameters(Timeline_parameters);
+                }
+            } else {
+                var heads = document.documentElement.getElementsByTagName("head");
+                for (var h = 0; h < heads.length; h++) {
+                    var scripts = heads[h].getElementsByTagName("script");
+                    for (var s = 0; s < scripts.length; s++) {
+                        var url = scripts[s].src;
+                        var i = url.indexOf("timeline-api.js");
+                        if (i >= 0) {
+                            Timeline.urlPrefix = url.substr(0, i);
+                            var q = url.indexOf("?");
+                            if (q > 0) {
+                                parseURLParameters(url.substr(q + 1));
+                            }
+                            return;
+                        }
+                    }
+                }
+                throw new Error("Failed to derive URL prefix for Timeline API code files");
+            }
         })();
         
-        var includeJavascriptFile = function(filename) {
-            document.write("<script src='" + Timeline.urlPrefix + "scripts/" + filename + "' type='text/javascript'></script>");
-        };
-        var includeCssFile = function(filename) {
-            document.write("<link rel='stylesheet' href='" + Timeline.urlPrefix + "styles/" + filename + "' type='text/css'/>");
+        var includeJavascriptFiles;
+        var includeCssFiles;
+        if ("SimileAjax" in window) {
+            includeJavascriptFiles = function(urlPrefix, filenames) {
+                SimileAjax.includeJavascriptFiles(document, urlPrefix, filenames);
+            }
+            includeCssFiles = function(urlPrefix, filenames) {
+                SimileAjax.includeCssFiles(document, urlPrefix, filenames);
+            }
+        } else {
+            var getHead = function() {
+                return document.getElementsByTagName("head")[0];
+            };
+            var includeJavascriptFile = function(url) {
+                if (document.body == null) {
+                    try {
+                        document.write("<script src='" + url + "' type='text/javascript'></script>");
+                        return;
+                    } catch (e) {
+                        // fall through
+                    }
+                }
+                
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.language = "JavaScript";
+                script.src = url;
+                getHead().appendChild(script);
+            };
+            var includeCssFile = function(url) {
+                if (document.body == null) {
+                    try {
+                        document.write("<link rel='stylesheet' href='" + url + "' type='text/css'/>");
+                        return;
+                    } catch (e) {
+                        // fall through
+                    }
+                }
+                
+                var link = document.createElement("link");
+                link.setAttribute("rel", "stylesheet");
+                link.setAttribute("type", "text/css");
+                link.setAttribute("href", url);
+                getHead().appendChild(link);
+            }
+            
+            includeJavascriptFiles = function(urlPrefix, filenames) {
+                for (var i = 0; i < filenames.length; i++) {
+                    includeJavascriptFile(urlPrefix + filenames[i]);
+                }
+            };
+            includeCssFiles = function(urlPrefix, filenames) {
+                for (var i = 0; i < filenames.length; i++) {
+                    includeCssFile(urlPrefix + filenames[i]);
+                }
+            };
         }
         
         /*
          *  Include non-localized files
          */
-        for (var i = 0; i < javascriptFiles.length; i++) {
-            includeJavascriptFile(javascriptFiles[i]);
-        }
-        for (var i = 0; i < cssFiles.length; i++) {
-            includeCssFile(cssFiles[i]);
+        if (bundle) {
+            includeJavascriptFiles(Timeline.urlPrefix, [ "bundle.js" ]);
+            includeCssFiles(Timeline.urlPrefix, [ "bundle.css" ]);
+        } else {
+            includeJavascriptFiles(Timeline.urlPrefix + "scripts/", javascriptFiles);
+            includeCssFiles(Timeline.urlPrefix + "styles/", cssFiles);
         }
         
         /*
@@ -168,21 +231,13 @@ Timeline.Platform = new Object();
         for (var l = 0; l < supportedLocales.length; l++) {
             var locale = supportedLocales[l];
             if (loadLocale[locale]) {
-                for (var i = 0; i < localizedJavascriptFiles.length; i++) {
-                    includeJavascriptFile("l10n/" + locale + "/" + localizedJavascriptFiles[i]);
-                }
-                for (var i = 0; i < localizedCssFiles.length; i++) {
-                    includeCssFile("l10n/" + locale + "/" + localizedCssFiles[i]);
-                }
+                includeJavascriptFiles(Timeline.urlPrefix + "scripts/l10n/" + locale + "/", localizedJavascriptFiles);
+                includeCssFiles(Timeline.urlPrefix + "styles/l10n/" + locale + "/", localizedCssFiles);
             }
         }
         
-        document.write(
-            "<script type='text/javascript'>" +
-                "Timeline.Platform.serverLocale = '" + defaultServerLocale + "';" + 
-                "Timeline.Platform.clientLocale = '" + defaultClientLocale + "';" +
-            "</script>"
-        );
+        Timeline.Platform.serverLocale = defaultServerLocale;
+        Timeline.Platform.clientLocale = defaultClientLocale;
     } catch (e) {
         alert(e);
     }

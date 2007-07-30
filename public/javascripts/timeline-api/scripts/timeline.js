@@ -2,6 +2,9 @@
  *  Timeline
  *==================================================
  */
+
+Timeline.strings = {}; // localization string tables
+
 Timeline.create = function(elmt, bandInfos, orientation, unit) {
     return new Timeline._Impl(elmt, bandInfos, orientation, unit);
 };
@@ -24,7 +27,9 @@ Timeline.createBandInfo = function(params) {
     
     var etherPainter = new Timeline.GregorianEtherPainter({
         unit:       params.intervalUnit, 
-        theme:      theme 
+        multiple:   ("multiple" in params) ? params.multiple : 1,
+        theme:      theme,
+        align:      ("align" in params) ? params.align : undefined
     });
     
     var layout = new Timeline.StaticTrackBasedLayout({
@@ -72,7 +77,8 @@ Timeline.createHotZoneBandInfo = function(params) {
     var etherPainter = new Timeline.HotZoneGregorianEtherPainter({
         unit:       params.intervalUnit, 
         zones:      params.zones,
-        theme:      theme 
+        theme:      theme,
+        align:      ("align" in params) ? params.align : undefined
     });
     
     var layout = new Timeline.StaticTrackBasedLayout({
@@ -120,7 +126,11 @@ Timeline.loadXML = function(url, f) {
         alert("Failed to load data xml from " + url + "\n" + statusText);
     };
     var fDone = function(xmlhttp) {
-        f(xmlhttp.responseXML, url);
+        var xml = xmlhttp.responseXML;
+        if (!xml.documentElement && xmlhttp.responseStream) {
+            xml.load(xmlhttp.responseStream);
+        } 
+        f(xml, url);
     };
     Timeline.XmlHttp.get(url, fError, fDone);
 };
@@ -145,6 +155,15 @@ Timeline._Impl = function(elmt, bandInfos, orientation, unit) {
     this._unit = (unit != null) ? unit : Timeline.NativeDateUnit;
     
     this._initialize();
+};
+
+Timeline._Impl.prototype.dispose = function() {
+    for (var i = 0; i < this._bands.length; i++) {
+        this._bands[i].dispose();
+    }
+    this._bands = null;
+    this._bandInfos = null;
+    this._containerDiv.innerHTML = "";
 };
 
 Timeline._Impl.prototype.getBandCount = function() {
@@ -199,6 +218,50 @@ Timeline._Impl.prototype.getUnit = function() {
     return this._unit;
 };
 
+Timeline._Impl.prototype.loadXML = function(url, f) {
+    var tl = this;
+    
+    
+    var fError = function(statusText, status, xmlhttp) {
+        alert("Failed to load data xml from " + url + "\n" + statusText);
+        tl.hideLoadingMessage();
+    };
+    var fDone = function(xmlhttp) {
+        try {
+            var xml = xmlhttp.responseXML;
+            if (!xml.documentElement && xmlhttp.responseStream) {
+                xml.load(xmlhttp.responseStream);
+            } 
+            f(xml, url);
+        } finally {
+            tl.hideLoadingMessage();
+        }
+    };
+    
+    this.showLoadingMessage();
+    window.setTimeout(function() { Timeline.XmlHttp.get(url, fError, fDone); }, 0);
+};
+
+Timeline._Impl.prototype.loadJSON = function(url, f) {
+    var tl = this;
+    
+    
+    var fError = function(statusText, status, xmlhttp) {
+        alert("Failed to load json data from " + url + "\n" + statusText);
+        tl.hideLoadingMessage();
+    };
+    var fDone = function(xmlhttp) {
+        try {
+            f(eval('(' + xmlhttp.responseText + ')'), url);
+        } finally {
+            tl.hideLoadingMessage();
+        }
+    };
+    
+    this.showLoadingMessage();
+    window.setTimeout(function() { Timeline.XmlHttp.get(url, fError, fDone); }, 0);
+};
+
 Timeline._Impl.prototype._initialize = function() {
     var containerDiv = this._containerDiv;
     var doc = containerDiv.ownerDocument;
@@ -241,6 +304,19 @@ Timeline._Impl.prototype._initialize = function() {
             );
         }
     }
+    
+    /*
+     *  creating loading UI
+     */
+    var message = Timeline.Graphics.createMessageBubble(doc);
+    message.containerDiv.className = "timeline-message-container";
+    containerDiv.appendChild(message.containerDiv);
+    
+    message.contentDiv.className = "timeline-message";
+    message.contentDiv.innerHTML = "<img src='" + Timeline.urlPrefix + "images/progress-running.gif' /> Loading...";
+    
+    this.showLoadingMessage = function() { message.containerDiv.style.display = "block"; };
+    this.hideLoadingMessage = function() { message.containerDiv.style.display = "none"; };
 };
 
 Timeline._Impl.prototype._distributeWidths = function() {
@@ -284,6 +360,8 @@ Timeline._Band = function(timeline, bandInfo, index) {
     
     this._dragging = false;
     this._changing = false;
+    this._originalScrollSpeed = 5; // pixels
+    this._scrollSpeed = this._originalScrollSpeed;
     this._onScrollListeners = [];
     
     var b = this;
@@ -295,6 +373,22 @@ Timeline._Band = function(timeline, bandInfo, index) {
         b._onHighlightBandScroll();
     };
     
+    /*
+     *  Install a textbox to capture keyboard events
+     */
+    var inputDiv = this._timeline.getDocument().createElement("div");
+    inputDiv.className = "timeline-band-input";
+    this._timeline.addDiv(inputDiv);
+    
+    this._keyboardInput = document.createElement("input");
+    this._keyboardInput.type = "text";
+    inputDiv.appendChild(this._keyboardInput);
+    Timeline.DOM.registerEventWithObject(this._keyboardInput, "keydown", this, this._onKeyDown);
+    Timeline.DOM.registerEventWithObject(this._keyboardInput, "keyup", this, this._onKeyUp);
+    
+    /*
+     *  The band's outer most div that slides with respect to the timeline's div
+     */
     this._div = this._timeline.getDocument().createElement("div");
     this._div.className = "timeline-band";
     this._timeline.addDiv(this._div);
@@ -303,11 +397,18 @@ Timeline._Band = function(timeline, bandInfo, index) {
     Timeline.DOM.registerEventWithObject(this._div, "mousemove", this, this._onMouseMove);
     Timeline.DOM.registerEventWithObject(this._div, "mouseup", this, this._onMouseUp);
     Timeline.DOM.registerEventWithObject(this._div, "mouseout", this, this._onMouseOut);
+    Timeline.DOM.registerEventWithObject(this._div, "dblclick", this, this._onDblClick);
     
+    /*
+     *  The inner div that contains layers
+     */
     this._innerDiv = this._timeline.getDocument().createElement("div");
     this._innerDiv.className = "timeline-band-inner";
     this._div.appendChild(this._innerDiv);
     
+    /*
+     *  Initialize parts of the band
+     */
     this._ether = bandInfo.ether;
     bandInfo.ether.initialize(timeline);
         
@@ -316,10 +417,11 @@ Timeline._Band = function(timeline, bandInfo, index) {
     
     this._eventSource = bandInfo.eventSource;
     if (this._eventSource) {
-        this._eventSource.addListener({
+        this._eventListener = {
             onAddMany: function() { b._onAddMany(); },
             onClear:   function() { b._onClear(); }
-        });
+        }
+        this._eventSource.addListener(this._eventListener);
     }
         
     this._eventPainter = bandInfo.eventPainter;
@@ -334,6 +436,34 @@ Timeline._Band = function(timeline, bandInfo, index) {
 };
 
 Timeline._Band.SCROLL_MULTIPLES = 5;
+
+Timeline._Band.prototype.dispose = function() {
+    this.closeBubble();
+    
+    if (this._eventSource) {
+        this._eventSource.removeListener(this._eventListener);
+        this._eventListener = null;
+        this._eventSource = null;
+    }
+    
+    this._timeline = null;
+    this._bandInfo = null;
+    
+    this._labeller = null;
+    this._ether = null;
+    this._etherPainter = null;
+    this._eventPainter = null;
+    this._decorators = null;
+    
+    this._onScrollListeners = null;
+    this._syncWithBandHandler = null;
+    this._selectorListener = null;
+    
+    this._div = null;
+    this._innerDiv = null;
+    this._keyboardInput = null;
+    this._bubble = null;
+};
 
 Timeline._Band.prototype.addOnScrollListener = function(listener) {
     this._onScrollListeners.push(listener);
@@ -412,12 +542,20 @@ Timeline._Band.prototype.softPaint = function() {
 };
 
 Timeline._Band.prototype.setBandShiftAndWidth = function(shift, width) {
+    var inputDiv = this._keyboardInput.parentNode;
+    var middle = shift + Math.floor(width / 2);
     if (this._timeline.isHorizontal()) {
         this._div.style.top = shift + "px";
         this._div.style.height = width + "px";
+        
+        inputDiv.style.top = middle + "px";
+        inputDiv.style.left = "-1em";
     } else {
         this._div.style.left = shift + "px";
         this._div.style.width = width + "px";
+        
+        inputDiv.style.left = middle + "px";
+        inputDiv.style.top = "-1em";
     }
 };
 
@@ -501,6 +639,11 @@ Timeline._Band.prototype.createLayerDiv = function(zIndex) {
     
     var innerDiv = this._timeline.getDocument().createElement("div");
     innerDiv.className = "timeline-band-layer-inner";
+    if (Timeline.Platform.browser.isIE) {
+        innerDiv.style.cursor = "move";
+    } else {
+        innerDiv.style.cursor = "-moz-grab";
+    }
     div.appendChild(innerDiv);
     
     return innerDiv;
@@ -526,6 +669,16 @@ Timeline._Band.prototype.openBubbleForPoint = function(pageX, pageY, width, heig
     return this._bubble.content;
 };
 
+Timeline._Band.prototype.scrollToCenter = function(date) {
+    var pixelOffset = this._ether.dateToPixelOffset(date);
+    if (pixelOffset < -this._viewLength / 2) {
+        this.setCenterVisibleDate(this.pixelOffsetToDate(pixelOffset + this._viewLength));
+    } else if (pixelOffset > 3 * this._viewLength / 2) {
+        this.setCenterVisibleDate(this.pixelOffsetToDate(pixelOffset - this._viewLength));
+    }
+    this._autoScroll(Math.round(this._viewLength / 2 - this._ether.dateToPixelOffset(date)));
+};
+
 Timeline._Band.prototype._onMouseDown = function(innerFrame, evt, target) {
     this.closeBubble();
     
@@ -549,10 +702,86 @@ Timeline._Band.prototype._onMouseMove = function(innerFrame, evt, target) {
 
 Timeline._Band.prototype._onMouseUp = function(innerFrame, evt, target) {
     this._dragging = false;
+    this._keyboardInput.focus();
 };
 
 Timeline._Band.prototype._onMouseOut = function(innerFrame, evt, target) {
-    this._dragging = false;
+    var coords = Timeline.DOM.getEventRelativeCoordinates(evt, innerFrame);
+    coords.x += this._viewOffset;
+    if (coords.x < 0 || coords.x > innerFrame.offsetWidth ||
+        coords.y < 0 || coords.y > innerFrame.offsetHeight) {
+        this._dragging = false;
+    }
+};
+
+Timeline._Band.prototype._onDblClick = function(innerFrame, evt, target) {
+    var coords = Timeline.DOM.getEventRelativeCoordinates(evt, innerFrame);
+    var distance = coords.x - (this._viewLength / 2 - this._viewOffset);
+    
+    this._autoScroll(-distance);
+};
+
+Timeline._Band.prototype._onKeyDown = function(keyboardInput, evt, target) {
+    if (!this._dragging) {
+        switch (evt.keyCode) {
+        case 27: // ESC
+            break;
+        case 37: // left arrow
+        case 38: // up arrow
+            this._scrollSpeed = Math.min(50, Math.abs(this._scrollSpeed * 1.05));
+            this._moveEther(this._scrollSpeed);
+            break;
+        case 39: // right arrow
+        case 40: // down arrow
+            this._scrollSpeed = -Math.min(50, Math.abs(this._scrollSpeed * 1.05));
+            this._moveEther(this._scrollSpeed);
+            break;
+        default:
+            return true;
+        }
+        this.closeBubble();
+        
+        Timeline.DOM.cancelEvent(evt);
+        return false;
+    }
+    return true;
+};
+
+Timeline._Band.prototype._onKeyUp = function(keyboardInput, evt, target) {
+    if (!this._dragging) {
+        this._scrollSpeed = this._originalScrollSpeed;
+        
+        switch (evt.keyCode) {
+        case 35: // end
+            this.setCenterVisibleDate(this._eventSource.getLatestDate());
+            break;
+        case 36: // home
+            this.setCenterVisibleDate(this._eventSource.getEarliestDate());
+            break;
+        case 33: // page up
+            this._autoScroll(this._timeline.getPixelLength());
+            break;
+        case 34: // page down
+            this._autoScroll(-this._timeline.getPixelLength());
+            break;
+        default:
+            return true;
+        }
+        
+        this.closeBubble();
+        
+        Timeline.DOM.cancelEvent(evt);
+        return false;
+    }
+    return true;
+};
+
+Timeline._Band.prototype._autoScroll = function(distance) {
+    var b = this;
+    var a = Timeline.Graphics.createAnimation(function(abs, diff) {
+        b._moveEther(diff);
+    }, 0, distance, 1000);
+    a.run();
 };
 
 Timeline._Band.prototype._moveEther = function(shift) {
@@ -664,4 +893,3 @@ Timeline._Band.prototype._softPaintDecorators = function() {
         this._decorators[i].softPaint();
     }
 };
-
