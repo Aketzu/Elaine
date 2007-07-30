@@ -8,7 +8,7 @@
 <%= text_area 'vod_group', 'description'  %></p>
 
 <p><label for="vod_group_video_format">Video formats</label><br/>
-<%= collection_select 'vod_group', 'VideoFormats', VideoFormat.find(:all), :id, :name, {}, :multiple => true %></p>
+<%= collection_select 'vod_group', 'VideoFormats', VideoFormat.find(:all, :conditions => "use_for_vods = true"), :id, :name, {}, :multiple => true %></p>
 
 <!--[eoform:vod_group]-->
 

@@ -38,7 +38,7 @@ class VideoFormatsController < ApplicationController
     @video_format = VideoFormat.find(params[:id])
     if @video_format.update_attributes(params[:video_format])
       flash[:notice] = 'VideoFormat was successfully updated.'
-      redirect_to :action => 'show', :id => @video_format
+      redirect_to :action => 'list', :id => @video_format
     else
       render :action => 'edit'
     end
