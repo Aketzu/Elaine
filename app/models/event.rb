@@ -31,11 +31,12 @@ def full_filename
 end
 
 def file_exists?
-  if(self.FileLocation)
-    self.FileLocation.exists?(self.full_filename)
-  else
-    false
-  end
+  #if(self.FileLocation)
+  #  self.FileLocation.exists?(self.full_filename)
+  #else
+  #  false
+  #end
+	file_exists
 end
 
 protected

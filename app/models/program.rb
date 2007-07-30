@@ -155,15 +155,16 @@ def full_filename
 end
 
 def file_exists?
-  if(self.single_event?)
-      self.Events[0].file_exists? if self.Events[0]
-  else
-    if(self.FileLocation)
-      self.FileLocation.exists?(self.full_filename)
-    else
-      nil
-    end
-  end
+  #if(self.single_event?)
+  #    self.Events[0].file_exists? if self.Events[0]
+  #else
+  #  if(self.FileLocation)
+  #    self.FileLocation.exists?(self.full_filename)
+  #  else
+  #    nil
+  #  end
+  #end
+	file_exists
 end
 
 def vods_or_info_updated_at

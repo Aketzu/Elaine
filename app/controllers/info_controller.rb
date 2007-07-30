@@ -64,4 +64,62 @@ def vods
   @language = Language.find(:first, :conditions => ["code = ?", @langcode])
 end
 
+
+def update_files
+	return if request.raw_post.nil?
+
+	Event.transaction do
+
+		if params[:full_update] then
+			ActiveRecord::Base.connection.execute "UPDATE events SET file_exists = false, file_status_updated = now()"
+			ActiveRecord::Base.connection.execute "UPDATE programs SET file_exists = false, file_status_updated = now()"
+			ActiveRecord::Base.connection.execute "UPDATE vods SET file_exists = false, file_status_updated = now()"
+		end
+
+		request.raw_post.each { |f| 
+			match = f.match(/.*([ep])_([0-9]*)_(.*)\.([a-z]*)$/)
+
+			if match then
+				obj = nil
+				obj = Event.find(match[2]) if match[1] == "e"
+				obj = Program.find(match[2]) if match[1] == "p"
+
+				if obj.nil? then
+					logger.info "Couldn't find object for " + match[0]
+					next
+				end
+
+				if obj.filename != match[3] then
+					logger.info "Filename mismatch " + obj.filename + " vs. " + match[0]
+					next
+				end
+
+				obj.file_exists = true
+				obj.file_status_updated = Time.now
+				obj.save!
+
+			else
+				match = f.match(/.*([0-9]*)_(.*)\.([a-z]*)$/)
+
+				if match then
+					obj = Vods.find(:first, :conditions => [ "program_id = ? and filename = ?", match[1], match[2] ])
+					if obj.nil? then
+						logger.info "Couldn't find object for " + match[0]
+						next
+					end
+					obj.file_exists = true
+					obj.file_status_updated = Time.now
+					obj.save!
+					
+				end
+
+			end
+
+		}
+	end  #Transactions
+	
+	render :inline => "OK\n"
+
+end
+
 end

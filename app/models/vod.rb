@@ -32,7 +32,8 @@ def preview_base_filename
 end
 
 def file_exists?
-  self.FileLocation.exists?(self.full_filename)
+  #self.FileLocation.exists?(self.full_filename)
+	file_exists
 end
 
 end

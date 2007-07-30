@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 60) do
+ActiveRecord::Schema.define(:version => 61) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -26,17 +26,19 @@ ActiveRecord::Schema.define(:version => 60) do
   end
 
   create_table "events", :force => true do |t|
-    t.column "title",            :string
-    t.column "script",           :text
-    t.column "location_id",      :integer,  :default => 1
-    t.column "event_type_id",    :integer
-    t.column "notes",            :text
-    t.column "length",           :integer
-    t.column "quarantine",       :datetime
-    t.column "created_at",       :datetime
-    t.column "updated_at",       :datetime
-    t.column "filename",         :string
-    t.column "file_location_id", :integer
+    t.column "title",               :string
+    t.column "script",              :text
+    t.column "location_id",         :integer,  :default => 1
+    t.column "event_type_id",       :integer
+    t.column "notes",               :text
+    t.column "length",              :integer
+    t.column "quarantine",          :datetime
+    t.column "created_at",          :datetime
+    t.column "updated_at",          :datetime
+    t.column "filename",            :string
+    t.column "file_location_id",    :integer
+    t.column "file_exists",         :boolean
+    t.column "file_status_updated", :datetime
   end
 
   create_table "file_locations", :force => true do |t|
@@ -125,11 +127,12 @@ ActiveRecord::Schema.define(:version => 60) do
     t.column "status_id",            :integer,  :default => 1
     t.column "filename",             :string
     t.column "file_location_id",     :integer
-    t.column "no_listing",           :boolean
     t.column "tags",                 :string
     t.column "video_format_id",      :integer
     t.column "target_length",        :integer
     t.column "program_category_id",  :integer
+    t.column "file_exists",          :boolean
+    t.column "file_status_updated",  :datetime
   end
 
   create_table "reference_log_entries", :force => true do |t|
@@ -201,7 +204,7 @@ ActiveRecord::Schema.define(:version => 60) do
     t.column "remember_token_expires_at", :datetime
     t.column "content_filter_date",       :date,                   :default => '2007-05-31'
     t.column "language",                  :string
-    t.column "channel_id",                :string,                 :default => "3"
+    t.column "channel_id",                :integer,                :default => 3
   end
 
   create_table "users_roles", :id => false, :force => true do |t|
@@ -237,15 +240,17 @@ ActiveRecord::Schema.define(:version => 60) do
   end
 
   create_table "vods", :force => true do |t|
-    t.column "filename",         :string
-    t.column "file_location_id", :integer
-    t.column "length",           :integer
-    t.column "filesize",         :integer
-    t.column "video_format_id",  :integer
-    t.column "completed",        :boolean
-    t.column "created_at",       :datetime
-    t.column "updated_at",       :datetime
-    t.column "program_id",       :integer
+    t.column "filename",            :string
+    t.column "file_location_id",    :integer
+    t.column "length",              :integer
+    t.column "filesize",            :integer
+    t.column "video_format_id",     :integer
+    t.column "completed",           :boolean
+    t.column "created_at",          :datetime
+    t.column "updated_at",          :datetime
+    t.column "program_id",          :integer
+    t.column "file_exists",         :boolean
+    t.column "file_status_updated", :datetime
   end
 
 end
