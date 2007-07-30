@@ -36,6 +36,7 @@ class VodGroupsController < ApplicationController
   end
 
   def update
+		params[:vod_group][:VideoFormats].map! { |id| VideoFormat.find(id) || false }
     @vod_group = VodGroup.find(params[:id])
     if @vod_group.update_attributes(params[:vod_group])
       flash[:notice] = 'VodGroup was successfully updated.'

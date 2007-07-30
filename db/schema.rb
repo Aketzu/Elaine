@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 61) do
+ActiveRecord::Schema.define(:version => 62) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -229,7 +229,7 @@ ActiveRecord::Schema.define(:version => 61) do
     t.column "use_for_production", :boolean
   end
 
-  create_table "vod_group_format_links", :force => true do |t|
+  create_table "vod_group_format_links", :id => false, :force => true do |t|
     t.column "vod_group_id",    :integer
     t.column "video_format_id", :integer
   end

@@ -5,5 +5,19 @@
   <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
 
+
+<h2>Programs using this VOD group</h2>
+<%@vod_group.ProgramCategories.each { |pc|%>
+
+<h3>Category <%= pc.name %></h3>
+<ul>
+<%pc.Programs.each { |p|%>
+<li><%=link_to p.title, :controller => :programs, :action => :edit, :id => p.id %></li>
+<%}%>
+</ul>
+<%}%>
+
+
+
 <%= link_to 'Show', :action => 'show', :id => @vod_group %> |
 <%= link_to 'Back', :action => 'list' %>
