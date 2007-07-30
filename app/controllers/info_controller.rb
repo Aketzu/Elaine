@@ -1,3 +1,5 @@
+require 'icalendar'
+
 class InfoController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :require_ssl
@@ -19,6 +21,35 @@ end
 
 def gdata
 	self.next
+end
+
+
+def ical 
+  @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
+  return if @channel.nil?
+  @items = Playlist.find(:all, :conditions => ["channel_id = ? ", @channel.id], :order => 'start_time', :include => [:Program])
+	desc = Hash.new
+	ProgramDescription.find(:all, :conditions => ["language_id = ?", Language.find_by_code("en")]).each { |d| desc[d.program_id] = { :title => d.title, :desc => d.public_description } }
+
+	cal = Icalendar::Calendar.new
+
+	@items.each { |i|
+		cal.event do 
+			dtstart  DateTime.parse(i.start_time.xmlschema)
+			dtend    DateTime.parse(i.end_time.xmlschema)
+			dtstamp  DateTime.parse(i.Program.updated_at.xmlschema)
+			summary desc[i.program_id][:title].chomp
+			description desc[i.program_id][:desc].chomp
+			uid	"http://elaine.assembly.org/programs/" + i.program_id.to_s
+			#url	"http://elaine.assembly.org/programs/" + i.program_id.to_s
+			add_category	i.Program.ProgramCategory.nil? ? "none" : i.Program.ProgramCategory.name 
+			location	"none"	
+			#UID DTSTART DTEND SUMMARY CATEGORIES LOCATION URL COMMENT
+		end
+	}
+
+	
+	render :text => cal.to_ical
 end
 
 def vods
