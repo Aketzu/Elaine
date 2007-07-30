@@ -10,31 +10,31 @@ Search limited to programs newer than <%= @date_filter %>.<br /><br />
         <%= if @program_pages.current.previous 
             then link_to 'Previous page', { 
                    :page => @program_pages.current.previous, 
-                   :params => {'search' => @filter}} 
+                   :params => params.merge({'search' => @filter})} 
             else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {'search' => @filter} %>
+        <%= pagination_links @program_pages, :params => params.merge( {'search' => @filter}) %>
         <%= if @program_pages.current.next 
             then link_to 'Next page', { 
                    :page => @program_pages.current.next,
-                   :params => {'search' => @filter}}
+                   :params => params.merge({'search' => @filter})}
             else 'Next page' end %> 
       <% else %>
         <%= if @program_pages.current.previous 
             then link_to 'Previous page', {
                    :page => @program_pages.current.previous, 
-                   :params => {
+                   :params => params.merge({
                       'find_by_user' => @user.id,
-                      'search' => @filter}} 
+                      'search' => @filter})} 
             else 'Previous page' end %>
-        <%= pagination_links @program_pages, :params => {
+        <%= pagination_links @program_pages, :params => params.merge({
                                                 'find_by_user' => @user.id,
-                                                'search' => @filter} %>
+                                                'search' => @filter}) %>
         <%= if @program_pages.current.next
             then link_to 'Next page', { 
                    :page => @program_pages.current.next, 
-                   :params => {
+                   :params => params.merge({
                       'find_by_user' => @user.id,
-                      'search' => @filter}} 
+                      'search' => @filter})} 
             else 'Next page' end %> 
       <% end %>
     <% end %>
@@ -42,18 +42,18 @@ Search limited to programs newer than <%= @date_filter %>.<br /><br />
 
 <table>
   <tr class="header">
-    <th>Title</th>
-    <th>Length<br />Target</th>
+		<th><%=sortlink "Title", :title%></th>
+    <th><%#=sortlink "Length", :length%>Length<br />[<%=sortlink "Target", :target%>]</th>
 <!--     <th>Notes</th> -->
-    <th>Created<br>Modified</th>
+    <th><%=sortlink "Created", :created%><br><%=sortlink "Modified", :modified%></th>
 <!--     <th>Preview image offset (hh:mm:ss)</th> -->
 <!--     <th>Preview video offset (hh:mm:ss)</th> -->
-    <th>Owner</th>
-    <th>Status</th>
-    <th>Do VOD?</th>
-    <th>Min. show</th>
-    <th>Max. show</th>
-    <th>Quarantine</th>
+    <th><%=sortlink "Owner", :owner%></th>
+    <th><%=sortlink "Status", :status%></th>
+    <th><%=sortlink "Do VOD?", :vod%></th>
+    <th><%=sortlink "Min. show", :minshow%></th>
+    <th><%=sortlink "Max. show", :maxshow%></th>
+    <th><%=sortlink "Quarantine", :quarantine%></th>
     <th>Actions</th>
   </tr>
 

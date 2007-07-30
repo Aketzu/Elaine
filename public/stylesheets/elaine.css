@@ -233,8 +233,15 @@ div.playlist_error_overlap {
 
 div.events_in_program_list {
   margin-left: 30px;
-  width: 50%;
+  width: 80%;
   float: left;
+	position: relative;
+}
+
+.events_in_program_list .actions {
+	display: block;
+	position: absolute;
+	left: 70%;
 }
 
 body, p, ol, ul, td, input, textarea, select {

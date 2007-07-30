@@ -48,10 +48,35 @@ class ProgramsController < ApplicationController
 		@user ||= 0
 
 		buildsearch
+		
+		sort = case params[:sort]
+			when 'title' then 'program_descriptions.title'
+			#when 'length' then 'length'
+			when 'target' then 'target_length'
+			when 'created' then 'programs.created_at'
+			when 'modified' then 'programs.updated_at'
+			when 'owner' then 'users.login'
+			when 'status' then 'program_statuses.name'
+			when 'vod' then 'do_vod'
+			when 'minshow' then 'min_show'
+			when 'maxshow' then 'max_show'
+			when 'quarantine' then 'quarantine'
+			else 'programs.created_at'
+		end
+		order = case params[:order]
+			when 'asc' then 'asc'
+			when 'desc' then 'desc'
+			else ''
+		end
+
+		sort += " " + order
+			
+		sort += ', program_descriptions.language_id, program_event_links.position'
 
 		@program_pages, @programs = paginate(:programs, 
 																				 :per_page => 20,
-																				 :order => 'programs.created_at, program_descriptions.language_id, program_event_links.position',
+																				 :order => sort,
+#'programs.created_at, program_descriptions.language_id, program_event_links.position',
 																				 :include => [:User, :ProgramStatus, :Events, :program_descriptions],
 																				 :conditions => [@search, @searchparams])
 

@@ -34,9 +34,27 @@ class EventsController < ApplicationController
 
 		buildsearch
 
+		sort = case params[:sort]
+			when 'title' then 'title'
+			when 'location' then 'locations.name'
+			when 'type' then 'eventtypes.name'
+			when 'length' then 'length'
+			when 'quarantine' then 'quarantine'
+			when 'created' then 'created_at'
+			when 'modified' then 'updated_at'
+			else 'title'
+		end
+		order = case params[:order]
+			when 'asc' then 'asc'
+			when 'desc' then 'desc'
+			else ''
+		end
+
     @event_pages, @events = paginate(:events, 
                                      :per_page => 20,
-                                     :conditions => [@search, @searchparams])
+																		 :order => sort + " " + order,
+                                     :conditions => [@search, @searchparams],
+																		 :include => [:EventType, :Location])
 		if request.xml_http_request?
 			render :partial => "list", :layout => false
 		end

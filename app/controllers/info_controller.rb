@@ -1,5 +1,3 @@
-require 'icalendar'
-
 class InfoController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :require_ssl
@@ -30,7 +28,7 @@ def ical
 		render :text => "Channel not found"
 		return
 	end
-  @items = Playlist.find(:all, :conditions => ["channel_id = ? ", @channel.id], :order => 'start_time', :include => [:Program, {:Program => :Events}])
+  @items = Playlist.find(:all, :conditions => ["channel_id = ? and (no_listing = false or no_listing is null)", @channel.id], :order => 'start_time', :include => [:Program, {:Program => :Events}])
 	@desc = Hash.new
 	ProgramDescription.find(:all, :conditions => ["language_id = ?", Language.find_by_code("en")]).each { |d| @desc[d.program_id] = { :title => d.title, :desc => d.public_description } }
 

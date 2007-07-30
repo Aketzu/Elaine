@@ -16,4 +16,8 @@ module ApplicationHelper
 	def tooltip_format_time
 		image_tag('tooltip.png', :onmouseover => 'Tip("Format: hh:mm:ss<br/>You can omit zeros from the beginning of the string.")')
 	end
+
+	def sortlink(title, column)
+		link_to title, params.merge({:sort => column, :order => ((params[:sort] == column.to_s && params[:order] == 'asc') ? 'desc' : 'asc') })
+	end
 end

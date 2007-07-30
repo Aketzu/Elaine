@@ -11,7 +11,7 @@
 	User: 
 	<select name="find_by_user">
 	<option value="0">All</option>
-	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user) %>
+	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
 	</select>
 	
 	<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
