@@ -15,6 +15,7 @@
      <td>Length</td>
      <td>Title</td>
      <td>Type</td>
+     <td>File?</td>
      <td>Actions</td>
   </tr>
   <% for program_event in events %>
@@ -30,6 +31,7 @@
             :id => program_event.id %>
     </td>
 		<td><%= program_event.EventType.name %><%= " @" + program_event.Location.name if program_event.event_type_id == 1%></td>
+    <td><%= program_event.file_exists? %></td>
       <td>
       [
       <%= link_to 'up', :action => 'move_event_up',

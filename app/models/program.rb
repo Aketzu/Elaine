@@ -37,7 +37,12 @@ def quarantine
 end
 
 def length
-	@length || @length = (self.Events.sum('length') || 0)
+	return @length if @length
+
+	@length = 0
+	self.Events.each {|e| @length += e.length }
+	return @length
+	#@length || @length = (self.Events.sum('length') || 0)
 end
 
 def status
@@ -170,8 +175,13 @@ def file_exists?
 end
 
 def vods_or_info_updated_at
-  value = self.Vods.maximum(:updated_at)
-  if value.nil? || self.updated_at > value
+  #value = self.Vods.maximum(:updated_at)
+	value = Time.at(0)
+	self.Vods.each {|v|
+		value = v.updated_at if value < v.updated_at
+	}
+
+  if value == 0 || self.updated_at > value
     value = self.updated_at
   end
   value

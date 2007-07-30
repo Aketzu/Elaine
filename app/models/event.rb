@@ -39,6 +39,10 @@ def file_exists?
 	file_exists
 end
 
+def tooltip
+	title + " " + formatted_length + "<br />" + self.EventType.name + " @" + self.Location.name
+end
+
 protected
   def strip_fields
     [:title, :script, :notes].each do |field|

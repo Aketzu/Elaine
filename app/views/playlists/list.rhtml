@@ -8,9 +8,9 @@
 <%= submit_tag "Update", 'name' => 'update' %>
 
 <% if params[:show_past].nil? %>
-<%= link_to "Show past items", :show_past => 1 %>
+<%= link_to "Show past items", :show_past => 1, :channel_id => @channel_id %>
 <% else %>
-<%= link_to "Hide past items" %>
+<%= link_to "Hide past items", :channel_id => @channel_id %>
 <% end %>
 
 <%= end_form_tag %>

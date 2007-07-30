@@ -179,6 +179,10 @@ td.playlist_error_overlap {
   text-align: center;
 }
 
+span.events {
+	font-size: 80%;
+}
+
 /**
  * Playlist controls
  */

@@ -24,32 +24,18 @@ def gdata
 end
 
 
-def ical 
+def ical
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
-  return if @channel.nil?
-  @items = Playlist.find(:all, :conditions => ["channel_id = ? ", @channel.id], :order => 'start_time', :include => [:Program])
-	desc = Hash.new
-	ProgramDescription.find(:all, :conditions => ["language_id = ?", Language.find_by_code("en")]).each { |d| desc[d.program_id] = { :title => d.title, :desc => d.public_description } }
+  if @channel.nil? then
+		render :text => "Channel not found"
+		return
+	end
+  @items = Playlist.find(:all, :conditions => ["channel_id = ? ", @channel.id], :order => 'start_time', :include => [:Program, {:Program => :Events}])
+	@desc = Hash.new
+	ProgramDescription.find(:all, :conditions => ["language_id = ?", Language.find_by_code("en")]).each { |d| @desc[d.program_id] = { :title => d.title, :desc => d.public_description } }
 
-	cal = Icalendar::Calendar.new
-
-	@items.each { |i|
-		cal.event do 
-			dtstart  DateTime.parse(i.start_time.xmlschema)
-			dtend    DateTime.parse(i.end_time.xmlschema)
-			dtstamp  DateTime.parse(i.Program.updated_at.xmlschema)
-			summary desc[i.program_id][:title].chomp
-			description desc[i.program_id][:desc].chomp
-			uid	"http://elaine.assembly.org/programs/" + i.program_id.to_s
-			#url	"http://elaine.assembly.org/programs/" + i.program_id.to_s
-			add_category	i.Program.ProgramCategory.nil? ? "none" : i.Program.ProgramCategory.name 
-			location	"none"	
-			#UID DTSTART DTEND SUMMARY CATEGORIES LOCATION URL COMMENT
-		end
-	}
-
-	
-	render :text => cal.to_ical
+	@headers["Content-Type"] = "text/calendar"
+	render :layout => false
 end
 
 def vods
@@ -89,10 +75,11 @@ def vods
 			HAVING MAX(events.quarantine) < NOW() 
 			" 
 			#WHERE (NOT no_listing OR no_listing IS NULL)
-	@programs = Program.find(@values.map {|v| v.program_id}, :include => [:Vods, :Events]);
-
-  @langcode = params[:id]
+  
+	@langcode = params[:id]
   @language = Language.find(:first, :conditions => ["code = ?", @langcode])
+	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:program_descriptions, :Events, {:Vods => [:VideoFormat, :FileLocation]}]);
+
 end
 
 
@@ -112,7 +99,7 @@ def update_files
 
 			if match then
 				obj = nil
-				obj = Event.find(match[2]) if match[1] == "e"
+				obj = Event.find(match[2], :include => :Programs) if match[1] == "e"
 				obj = Program.find(match[2]) if match[1] == "p"
 
 				if obj.nil? then
@@ -128,6 +115,16 @@ def update_files
 				obj.file_exists = true
 				obj.file_status_updated = Time.now
 				obj.save!
+
+				if obj.is_a?(Event) then
+					obj.Programs.each { |p|
+						if p.single_event? then 
+							p.file_exists = true
+							p.file_status_updated = Time.now
+							p.save!
+						end
+					}
+				end
 
 			else
 				match = f.match(/.*([0-9]*)_(.*)\.([a-z]*)$/)

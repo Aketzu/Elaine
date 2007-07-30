@@ -12,12 +12,6 @@ class ElaineController < ApplicationController
     render :action => 'admin'
   end
   
-  def issues
-  end
-
-  def todo
-  end
-
   def new_ticket
     redirect_to "https://bugs.nodeta.fi/trac/elaine/newticket"
   end

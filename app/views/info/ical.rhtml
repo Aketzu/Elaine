@@ -1,0 +1,27 @@
+<%
+require 'digest/sha1'
+def i(txt)
+	txt.chomp.gsub(/\r/,'').gsub(/([,;\\])/, '\\\\\1').gsub(/\n/,'\n')
+end
+def t(time)
+	time.strftime '%Y%m%dT%H%M%S'
+end
+-%>
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+PRODID:iCal-Elaine
+<% @items.each { |i| -%>
+BEGIN:VEVENT
+SUMMARY:<%=i @desc[i.program_id][:title] %>
+DTSTART:<%=t i.start_time%>
+DTEND:<%=t i.end_time%>
+DTSTAMP:<%=t i.Program.updated_at%>
+URL:http://elaine.assembly.org/programs/<%=i.program_id%>
+UID:elaine-<%=i.id%><%#=Digest::SHA1.hexdigest(i.id.to_s + "-" + i.program_id.to_s)%>
+DESCRIPTION:<%=i @desc[i.program_id][:desc] %>
+CATEGORIES:<%=i.Program.ProgramCategory.nil? ? "none" : i.Program.ProgramCategory.name%>
+LOCATION:<%="none"%>
+END:VEVENT
+<% } -%>
+END:VCALENDAR

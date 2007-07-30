@@ -11,8 +11,6 @@
 						<ul>
 							<li><%= link_to 'Frontpage', :controller => 'elaine', :action => 'index' %></li>
 							<li><%= link_to 'Personal Details', :controller => 'user', :action => 'edit_user', :id => self.current_user.id %></li>
-							<li><%= link_to 'Elaine Known Issues', :controller => 'elaine', :action => 'issues' %></li>
-							<li><%= link_to 'Elaine TODO', :controller => 'elaine', :action => 'todo' %></li>
 							<li><%= link_to 'New Ticket', :controller => 'elaine', :action => 'new_ticket' %></li>
 							<li><%= link_to 'View Tickets', :controller => 'elaine', :action => 'view_tickets' %></li>
 						</ul>

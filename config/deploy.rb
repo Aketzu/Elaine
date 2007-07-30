@@ -151,9 +151,9 @@ end
 desc "Customized restart task."
 task :before_restart do
 	#Clear session cache
-	run "cd #{release_path} && " + 
-		"rake db:sessions:clear RAILS_ENV=development &&" + 
-		"rake db:sessions:clear RAILS_ENV=production"
+	#run "cd #{release_path} && " + 
+	#	"rake db:sessions:clear RAILS_ENV=development &&" + 
+	#	"rake db:sessions:clear RAILS_ENV=production"
 	#Restart apache
 	#sudo "/usr/sbin/apache2ctl graceful"
 end

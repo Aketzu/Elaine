@@ -18,7 +18,7 @@ def validates_uniqueness_of_video_format
 end
 
 def base_filename
-  self.Program.id.to_s + "_" + self.filename
+  self.program_id.to_s + "_" + self.filename
 end
 
 

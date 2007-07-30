@@ -15,7 +15,9 @@ unless @language.nil?
         #program = Program.find(value[:program_id])
 #        vod = Vod.find(value[:vod_id])
         xml.item do
-          desc = program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
+          #desc = program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
+					desc = program.program_descriptions[0]
+
           xml.title(desc.title, :'xml:lang' => @langcode)
           xml.description(desc.public_description, :'xml:lang' => @langcode)      
           xml.link # TODO: Additional info is where?
