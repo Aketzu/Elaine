@@ -13,8 +13,8 @@ var eventSource_with_subevents;
 var eventSource_without_subevents;
 
 /* For test purposes
-var date1 = "Sun, 26 Jul 2006 12:50:00";
-var date2 = "Sun, 26 Jul 2006 12:51:00";
+var date1 = "Mon, 30 Jul 2006 09:50:00";
+var date2 = "Mon, 30 Jul 2006 09:51:00";
 */
 
 // Get server time
@@ -37,14 +37,28 @@ function onLoad(channel_id) {
   eventSource_with_subevents    = new Timeline.DefaultEventSource();
   eventSource_without_subevents = new Timeline.DefaultEventSource();
 
-  //theme.event.label.width   = 250; // px
-  theme.event.bubble.width  = 350;
-  theme.event.bubble.height = 200;
+/*  theme.event.label.width   = 80; // px*/
+  theme.event.bubble.width  = 300;
+  theme.event.bubble.height = 85;
+	theme.ether.backgroundColors = [
+			"#EEEEEE",
+			"#EEEEEE",
+			"#BFC8FF",
+			"#7F92FF"
+	];
 
+  var zones_none = [
+      {   start:      "<%= Playlist.find(:first, :order => 'start_time  ASC').start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= Playlist.find(:first, :order => 'start_time DESC').end_time.strftime("%B %d %Y %H:%M:%S") %>",
+          magnify:    2,
+          unit:       Timeline.DateTime.HOUR,
+          multiple:   5
+      }
+  ];
   var zones_minute = [
       {   start:      "<%= Playlist.find(:first, :order => 'start_time  ASC').start_time.strftime("%B %d %Y %H:%M:%S") %>",
           end:        "<%= Playlist.find(:first, :order => 'start_time DESC').end_time.strftime("%B %d %Y %H:%M:%S") %>",
-          magnify:    1,
+          magnify:    2,
           unit:       Timeline.DateTime.MINUTE,
           multiple:   5
       }
@@ -57,14 +71,24 @@ function onLoad(channel_id) {
           multiple:   1
       }
   ];
+  var zones_day = [
+      {   start:      "<%= Playlist.find(:first, :order => 'start_time  ASC').start_time.strftime("%B %d %Y %H:%M:%S") %>",
+          end:        "<%= Playlist.find(:first, :order => 'start_time DESC').end_time.strftime("%B %d %Y %H:%M:%S") %>",
+          magnify:    1,
+          unit:       Timeline.DateTime.HOUR,
+          multiple:   1
+      }
+  ];
 
   bandInfos = [
     Timeline.createHotZoneBandInfo({
-      zones:          zones_minute,
+      zones:          zones_none,
       timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
-      width:          "40%",
+      width:          "20%",
+      trackHeight:    1.2,
+      trackGap:       0.2,
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
@@ -73,7 +97,9 @@ function onLoad(channel_id) {
       timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_with_subevents,
-      width:          "40%",
+      width:          "60%",
+      trackHeight:    1.2,
+      trackGap:       0.2,
       intervalUnit:   Timeline.DateTime.HOUR,
       intervalPixels: 600
     }),
@@ -82,28 +108,61 @@ function onLoad(channel_id) {
       timezone:       -3,
       theme:          theme,
       eventSource:    eventSource_without_subevents,
-      width:          "20%",
+      width:          "15%",
       showEventText:  false, 
       trackHeight:    0.5,
-      trackGap:       0.2,
-      intervalUnit:   Timeline.DateTime.DAY,
-      intervalPixels: 2400
+      trackGap:       0.1,
+      intervalUnit:   Timeline.DateTime.WEEK,
+      intervalPixels: 50000
+    }), 
+    Timeline.createHotZoneBandInfo({
+      zones:          zones_day,
+      timezone:       -3,
+      theme:          theme,
+      eventSource:    eventSource_without_subevents,
+      width:          "5%",
+      showEventText:  false, 
+      trackHeight:    0.9,
+      trackGap:       -0.9,
+      intervalUnit:   Timeline.DateTime.WEEK,
+      intervalPixels: 15000
     })
   ];
+	
   bandInfos[1].syncWith = 0;
-  bandInfos[2].syncWith = 0;
   bandInfos[1].highlight = true;
+  bandInfos[2].syncWith = 1;
   bandInfos[2].highlight = true;
+  bandInfos[3].syncWith = 2;
+  bandInfos[3].highlight = true;
+
+	for (var i = 0; 2 > i; i++) {
+	bandInfos[i].decorators = [
+  <% @playlists.each_with_index {|playlist, index| %>
+			new Timeline.SpanHighlightDecorator({
+					startDate:  "<%= playlist.start_time.strftime("%B %d %Y %H:%M:%S") %>",
+					endDate:    "<%= (playlist.end_time + 60).strftime("%B %d %Y %H:%M:%S") %>",
+					color:      "<%= cycle("#FF0000", "#00FF00", "#0000FF") %>",
+					opacity:    15,
+					startLabel: "<% playlist.Program.title %>",
+          link:       "/programs/edit/<%=playlist.Program.id.to_s%>",
+					endLabel:   "",
+					theme:      theme
+			})<%= ", " unless index == @playlists.length-1 %>
+	<% } %>
+	]
+	}
 
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id+"&show_events=1", function(xml, url) { eventSource_with_subevents.loadXML(xml, url); });
   Timeline.loadXML("/playlists/timeline_xml?channel_id="+channel_id, function(xml, url) { eventSource_without_subevents.loadXML(xml, url); });
 
   tl = Timeline.create(document.getElementById("tl"), bandInfos);
-  setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1,2], theme);
+  //setupFilterHighlightControls(document.getElementById("controls"), tl, [0,1,2], theme);
 
+  /*
   tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(date1));
   updateCurrentTimeIndicator();
-  /*
+	
   setTimeout("centerTimeline()", centerToCurrentInterval);
   Timeline.loadXML("/playlists/timeline_xml", function(xml, url) { eventSource.loadXML(xml, url); });
   */
