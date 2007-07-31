@@ -230,5 +230,75 @@ class ProgramsController < ApplicationController
     Program.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+
+
+	def import
+		@xml = "nada"
+		return if params[:pmsdata].nil?
+
+		xml = REXML::Document.new params[:pmsdata]
+		
+		@compos = Array.new
+		xml.elements.each("pms-export/compos/compo") { |c| 
+
+			events = Array.new
+			eevents = Array.new
+
+			c.elements.each("entries/entry") { |e|
+				events << { :id => e.attributes["id"],
+					:name => e.attributes["name"],
+					:author => e.attributes["credit"]
+				}
+
+				if params[:doit] then
+					ee = Event.find_by_external_id(e.attributes["id"])
+					ee = Event.new if ee.nil?
+
+					ee.external_id = e.attributes["id"]
+					ee.title = e.attributes["name"]
+					ee.title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
+					ee.length = 60 if ee.length.nil?
+					ee.EventType = EventType.find(:first, :conditions => ['name = ?', 'insert'])
+					ee.save!
+					eevents << ee
+				end
+			}
+
+
+			@compos << {:id => c.attributes["id"],
+				:name => c.attributes["name"],
+				:desc => c.attributes["description"],
+				:events => events}
+
+			if params[:doit] then
+				ep = Program.find_by_external_id(c.attributes["id"])
+				if ep.nil?
+					ep = Program.new
+					ep.do_vod   = true
+					desc = []
+					for language in Language.get_compulsory
+						desc << ProgramDescription.new(:language_id => language.id,
+							:title => c.attributes["name"], 
+							:public_description => c.attributes["description"])
+					end
+					ep.program_descriptions << desc
+				end
+
+				ep.external_id = c.attributes["id"]
+				ep.User = current_user
+				ep.save!
+			
+				eevents.each { |e|
+					if ProgramEventLink.find(:first, :conditions => ["program_id = ? and event_id = ?", ep.id, e.id]).nil? then
+						l = ProgramEventLink.new(:program_id => ep.id, :event_id => e.id)
+						l.save!
+					end
+					
+				}
+
+			end
+		}
+
+	end
   
 end

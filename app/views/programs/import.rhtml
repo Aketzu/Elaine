@@ -1,0 +1,38 @@
+<h1>Import PMS data</h1>
+
+<%=form_tag ({:action => :import}, {:multipart => true})  %>
+
+
+Upload PMS XML file: <br />
+<%= file_field_tag :pmsdata %><br />
+<%=check_box_tag :doit %>Really make the changes<br />
+
+<%= submit_tag %>
+
+
+<%=end_form_tag%>
+
+<% if @compos %>
+<% if params[:doit] %>
+<h2>Imported data</h2>
+<% else %>
+<h2>Data preview, check box and upload again to set</h2>
+<% end %>
+
+<%@compos.each { |c|
+ep = Program.find(:first, :conditions => [ "external_id = ?", c[:id] ])
+%>
+Program: <%=c[:name]%> (<%=c[:desc]%>)<br />
+Elaine program: <%=ep.nil? ? "(new)" : link_to(ep.title, :controller => :programs, :action => :edit, :id => ep.id ) %><br />
+Events: 
+<ul>
+<% c[:events].each { |e|
+	ee = Event.find(:first, :conditions => [ "external_id = ?", e[:id]])
+%>
+	<li><%=e[:name] %> (@elaine: <%=ee.nil? ? "(new)" : link_to(ee.title, :controller => :events, :action => :edit, :id => ee.id)%>)</li>
+<%}%>
+</ul>
+<%}%>
+
+<%end%>
+

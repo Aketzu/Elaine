@@ -144,7 +144,9 @@ def formatted_preview_video_offset=(formatted)
 end
 
 def filename
-  if(self.single_event? && self.Events.length > 0)
+	return "" if self.Events[0].nil?
+
+  if(self.single_event?)
     self.Events[0].filename
   else
     read_attribute(:filename)

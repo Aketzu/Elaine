@@ -42,7 +42,10 @@
 								<li><%= link_to 'New Program', :controller => 'programs', :action => 'new' %></li>
 							<% end %>
 							<%#TODO: Authentication?%>
+							<% if authorized?(:controller => "admin") -%>
 							<li><%= link_to 'Program categories', :controller => 'program_categories' %></li>
+							<li><%= link_to 'Import PMS data', :controller => 'programs', :action => 'import' %></li>
+							<% end %>
 						</ul>
 					</li>
 					<% end %>

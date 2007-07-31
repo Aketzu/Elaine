@@ -38,7 +38,7 @@ class UserController < ApplicationController
   # Displays a paginated list of Users
   def list
     @content_columns = user_content_columns_to_display    
-    @user_pages, @all_users = paginate :user, :per_page => 15, :order => 'login'
+    @user_pages, @all_users = paginate :user, :per_page => 150, :order => 'login'
   end
 
   # Edit the details of any user. The Role which can perform this will almost certainly also
