@@ -31,7 +31,7 @@ xml.data() do
         :end        => (playlist.end_time + 60).strftime("%B %d %Y %H:%M:%S"),
         :isDuration => 'true',
         :link       => "/programs/edit/" + playlist.Program.id.to_s,
-        :color      => cycle("#FF0000", "#00FF00", "#0000FF"),
+        :color      => playlist.color,
         :title      => playlist.Program.title
       )
     end
