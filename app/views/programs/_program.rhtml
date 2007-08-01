@@ -34,7 +34,7 @@
 </tr>
 
 <tr class="generic">
-<th class="edit">Status</th>
+<th class="edit">Status <%= tooltip "Planning = A program idea or script exists.<br>Production = Filming, editing or setting up the studio has started.<br>Complete = The program exists on the file server." %></th>
 <td class="edit"><%= select('program', 'status_id', ProgramStatus.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
