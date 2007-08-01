@@ -9,7 +9,7 @@ class VodController < ApplicationController
 			INNER JOIN program_categories pc ON p.program_category_id = pc.id
 			INNER JOIN vod_groups vg ON pc.vod_group_id = vg.id
 			INNER JOIN vod_group_format_links vgf ON vgf.vod_group_id = vg.id
-			WHERE p.file_exists
+			WHERE p.file_exists AND p.status_id = 3
 			
 			EXCEPT
 
@@ -19,6 +19,7 @@ class VodController < ApplicationController
 			FROM vods v
 			"
 
+	#status_id 3 == complete
 
 		for results in program_ids 
 			program = Program.find(results[:program_id])
