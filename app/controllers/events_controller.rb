@@ -110,8 +110,8 @@ class EventsController < ApplicationController
   def update
     @event           = Event.find(params[:id])
     @tape_event_link = TapeEventLink.find(:first, :conditions => ["event_id = ?", @event.id])
-		if @event.event_type_id = 2
-			@event.location = Location.find("none")
+		if params[:event][:event_type_id] == "2"
+			params[:event][:location_id] = Location.find_by_name("none")
 		end
 		
     if @event.update_attributes(params[:event]) && 

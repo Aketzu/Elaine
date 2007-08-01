@@ -39,7 +39,7 @@ Search limited to programs newer than <%= @date_filter %>.<br />
     <td><%= link_to event.Location.name, :controller => 'locations', :action => 'show', :id => event.location_id %></td>
     <td><%= link_to event.EventType.name, :controller => 'event_types', :action => 'show', :id => event.event_type_id %></td>
     <td><%=h event.formatted_length %></td>
-    <td><%=h event.quarantine.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td><%=h event.quarantine.strftime("%a %d.%m.%Y %H:%M") unless event.quarantine.nil?%></td>
     <td><%=h event.created_at.strftime("%a %d.%m.%Y %H:%M") %><br><%=h event.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
     <td>[
     <%= link_to 'Edit', :action => 'edit', :id => event %>
