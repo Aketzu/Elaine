@@ -1,7 +1,7 @@
-<h1>Editing program</h1>
+<h2>Editing program "<%= @program.program_descriptions[(current_user.language.nil? ? 0 : current_user.language)].title %>"</h2>
 
 <%= start_form_tag({:action => 'update', :id => @program}, :name => "edit_form", 'onChange' => "$('reset').disabled=false") %>
-<table class="editing" id="form_options">
+<table class="editing">
   <%= render :partial => 'program_descriptions', :object => @program.program_descriptions %>
   <%= render :partial => 'program' %>
 
@@ -13,7 +13,7 @@
 <%= end_form_tag %>
 <table class="editing">
 	<tr>
-	<th colspan="2" onclick="toggleVisibility('other')" class="header">Other</th>
+	<th colspan="2" onclick="toggleVisibility('other')" class="header">Events <%=tooltip_collapsable%></th>
 	</tr>
 
   <%= render :partial => "events/belongs_to_tapes", :object => @program.tape_program_links %>
@@ -22,4 +22,4 @@
 	<%= render :partial => 'add_event' %>
 
 
-<%= render :partial => 'vods' %>
+<%# render :partial => 'vods' %>

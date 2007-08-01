@@ -11,7 +11,7 @@ function auto_complete_on_select(element, selectedElement) {
 
 // ATM this requires the id of the table to be "form_options"
 function toggleVisibility(type) {
-	$$("." + type).each(function(n) {
+	$$("*[class^=\"" + type + "\"]").each(function(n) {
 				n.toggle();
 	});
 }

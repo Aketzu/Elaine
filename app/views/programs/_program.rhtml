@@ -1,13 +1,24 @@
 <%= error_messages_for 'program' %>
 
+<% unless @program.created_at.nil? %>
+<p>
+<span style="color: #ccc;">Created: </span><span style="color: #555; font-weight: bold;"><%= @program.created_at.strftime("%d.%m.%Y, %H:%M") %>, </span>
+<span style="color: #ccc;">Modified: </span><span style="color: #555; font-weight: bold;"><%= @program.updated_at.strftime("%d.%m.%Y, %H:%M") %></span></p>
+<% end %>
+
 <!--[form:program]-->
 <tr>
-<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic</th>
+<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic <%=tooltip_collapsable%></th>
 </tr>
+
 <tr class="generic">
-<th class="edit">Length <%=tooltip "This is the length of all events in the program"%></th>
-<td class="edit"><%= @program.formatted_length %>
-</td>
+<th class="edit">Owner</th>
+<td class="edit"><%= select('program', 'owner_id', User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"}) %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Program category</th>
+<td class="edit"><%= select('program', 'program_category_id', ProgramCategory.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr class="generic">
@@ -17,9 +28,25 @@
 </tr>
 
 <tr class="generic">
+<th class="edit">Actual length <%=tooltip "This is the length of all events in the program"%></th>
+<td class="edit"><%= @program.formatted_length %>
+</td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Status</th>
+<td class="edit"><%= select('program', 'status_id', ProgramStatus.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
+</tr>
+
+<tr class="generic">
 <th class="edit">Notes</th>
 <td class="edit"><%= text_area 'program', 'notes', 
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Do vod</th>
+<td class="edit"><%= check_box 'program', 'do_vod' %></td>
 </tr>
 
 <tr class="generic">
@@ -32,38 +59,23 @@
 <td class="edit"><%= text_field 'program', 'max_show', 'class' => "time"  %></td>
 </tr>
 
-<tr class="generic">
-<th class="edit">Do vod</th>
-<td class="edit"><%= check_box 'program', 'do_vod' %></td>
-</tr>
-
-<tr class="generic">
-<th class="edit">Program category</th>
-<td class="edit"><%= select('program', 'program_category_id', ProgramCategory.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
-</tr>
-
 <tr>
+<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">File information <%=tooltip_collapsable%></th>
+</tr>
+
+<tr class="fileinfo">
+<th class="edit">Program video format</th>
+<td class="edit"><%= select('program', 'video_format_id', VideoFormat.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></td>
+</tr>
+
+<tr class="fileinfo">
 <th class="edit">Preview image offset (hh:mm:ss) <%=tooltip_format_time%></th>
 <td class="edit"><%= text_field 'program', 'formatted_preview_image_offset', 'class' => "time", 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
 </tr>
 
-<tr>
+<tr class="fileinfo">
 <th class="edit">Preview video offset (hh:mm:ss) <%=tooltip_format_time%></th>
 <td class="edit"><%= text_field 'program', 'formatted_preview_video_offset', 'class' => "time", 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
-</tr>
-
-<tr>
-<th class="edit">Owner</th>
-<td class="edit"><%= select('program', 'owner_id', User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"}) %></td>
-</tr>
-
-<tr>
-<th class="edit">Status</th>
-<td class="edit"><%= select('program', 'status_id', ProgramStatus.find_all.collect {|t| [ t.name, t.id ] }, {}, {"class" => "options"}) %></td>
-</tr>
-
-<tr>
-<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">File information</th>
 </tr>
 
 <tr class="fileinfo">
@@ -86,16 +98,4 @@
 <td class="edit"><%= @program.full_filename %>
 <% if @program.file_exists? %>(found)<% else %>(not found)<% end %></td>
 </tr>
-
-<% unless @program.created_at.nil? %>
-<tr>
-<th class="edit">Created</th>
-<td class="edit"><%= @program.created_at %></td>
-</tr>
-
-<tr>
-<th class="edit">Modified</th>
-<td class="edit"><%= @program.updated_at %></td>
-</tr>
-<% end %>
 <!--[eoform:program]-->

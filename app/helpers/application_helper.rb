@@ -13,6 +13,10 @@ module ApplicationHelper
 		image_tag('tooltip.png', :onmouseover => 'Tip("' + text + '")')
 	end
 
+	def tooltip_collapsable
+		image_tag('tooltip.png', :onmouseover => 'Tip("This is a collapsable rowgroup.")')
+	end
+
 	def tooltip_format_time
 		image_tag('tooltip.png', :onmouseover => 'Tip("Format: hh:mm:ss<br/>You can omit zeros from the beginning of the string.")')
 	end

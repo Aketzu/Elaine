@@ -13,9 +13,11 @@ body {
 h1 {
   font-size: 20pt;
   margin-top: 10px;
+	margin-bottom: 0px;
 }
 h2 {
-  font-size: 14pt;
+  font-size: 15pt;
+	margin-bottom: 0px;
 }
 h3 {
   font-size: 13pt;
@@ -103,6 +105,7 @@ div.listing_content {
 #content {
   margin:  30px;
   padding-bottom: 5em;
+	margin-top: 0px;
 }
 
 #footer {
