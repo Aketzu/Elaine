@@ -12,6 +12,7 @@ function FormatLength(param)
   dt.setMinutes(0)
   dt.setSeconds(0)
 
+
   switch(times.length)
   {
     case 3:
@@ -21,10 +22,12 @@ function FormatLength(param)
       break;
     case 2:
       dt.setMinutes(parseFloat(times[0]))
-      dt.setSeconds(parseFloat(times[1]))
+			if (times[1] != "") {
+	      dt.setSeconds(parseFloat(times[1]))
+			}
       break;
     default:
-      dt.setSeconds(parseFloat(times[0]))
+      dt.setMinutes(parseFloat(times[0]))
       break;
   }
 

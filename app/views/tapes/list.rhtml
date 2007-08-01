@@ -73,7 +73,7 @@
     <td><%= tape.Events.count %></td>
     <td>[
     <%= link_to 'Edit', :action => 'edit', :id => tape %>
-    <%= link_to 'Destroy', { :action => 'destroy', :id => tape }, :confirm => 'Are you sure?', :post => true %>
+    <%= link_to 'Destroy', { :action => 'destroy', :id => tape }, :confirm => 'Are you sure you want to destroy the item?', :post => true %>
     ]</td>
   </tr>
 <% end %>

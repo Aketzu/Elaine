@@ -16,8 +16,16 @@ class ProgramsController < ApplicationController
 
 		if params[:find_by_user] && params[:find_by_user] != "0"
 			@user = User.find(params[:find_by_user])
+			@user = @user.id unless @user.nil?
 			@search += " AND programs.owner_id = :owner_id "
-			@searchparams[:owner_id] = @user.id
+			@searchparams[:owner_id] = @user
+		end
+		
+		if params[:find_by_category] && params[:find_by_category] != "0"
+			@category = ProgramCategory.find(params[:find_by_category])
+			@category = @category.id unless @category.nil?
+			@search += " AND programs.program_category_id = :category_id "
+			@searchparams[:category_id] = @category
 		end
 
 		@filter ||= params[:search]
@@ -46,6 +54,7 @@ class ProgramsController < ApplicationController
   def list
     session[:original_uri] = request.request_uri
 		@user ||= 0
+		@category ||= 0
 
 		buildsearch
 		
@@ -102,6 +111,7 @@ class ProgramsController < ApplicationController
   def new
     @program          = Program.new
     @program.do_vod   = true
+		@program.User     = current_user
     @program_descriptions = []
     for language in Language.get_compulsory
       @program_descriptions << ProgramDescription.new(:language_id => language.id)

@@ -2,22 +2,28 @@
 
 <%= form_tag [:action => :list], :id => :search %>
 	Find: <%= text_field_with_auto_complete :program_description, :title, {:skip_style => true, :value => @filter}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked'}  %>
-	<%= image_tag("spinner.gif",
-			:align => 'middle',
-			:border=> 0,
-			:id => "spinner",
-			:style=>"display: none;") %>
 
 	User: 
 	<select name="find_by_user">
 	<option value="0">All</option>
-	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user.id) %>
+	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user) %>
+	</select>
+	
+	Category: 
+	<select name="find_by_category">
+	<option value="0">All</option>
+	<%= options_from_collection_for_select(ProgramCategory.find(:all, :order => "name"), "id", "name", @category) %>
 	</select>
 	
 	<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
 	
 	
 	<%=submit_tag :Search %>
+	<%= image_tag("spinner.gif",
+			:align => 'middle',
+			:border=> 0,
+			:id => "spinner",
+			:style=>"display: none;") %>
 
 <%= end_form_tag %>
 

@@ -24,7 +24,7 @@ show_only = ["login", "email", "firstname", "lastname"]
       <%= link_if_authorized 'Show', {:action => 'show', :id => user}  %> |
       <%= link_if_authorized 'Edit', {:action => 'edit_user', :id => user}  %> |
       <% if authorized?(:action => 'delete_user') && (user.login != UserEngine::Config.admin_login) %>
-				<%= link_to 'Destroy', {:action => 'delete_user', :id => user}, :confirm => 'Are you sure?' %>
+				<%= link_to 'Destroy', {:action => 'delete_user', :id => user}, :confirm => 'Are you sure you want to destroy the item?' %>
 			<% end %>
     </td>  
   </tr>
