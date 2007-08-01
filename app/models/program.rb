@@ -15,8 +15,8 @@ has_many   :program_descriptions, :dependent => :destroy
 has_many   :tape_program_links, :dependent => :destroy
 has_many   :Tapes,  :through => :tape_program_links
 has_many   :program_event_links, :order => :position, :dependent => :destroy
-has_many   :Events, :through => :program_event_links, :order => :position, :dependent => :destroy
-has_many   :Vods, :include => [:FileLocation, :VideoFormat]
+has_many   :Events, :through => :program_event_links, :order => :position
+has_many   :vods, :dependent => :destroy
 # Doesn't work like this (ignores link)
 #has_many   :VodFormats, :through => :ProgramCategory
 
@@ -30,6 +30,10 @@ validates_format_of(:filename, :with => /^[a-zA-Z0-9\-\_]*$/, :message => "conta
 
 def owner
 	self.User
+end
+
+def Vods
+	vods
 end
 
 def quarantine
