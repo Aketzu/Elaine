@@ -24,4 +24,25 @@ function onLoadElaine(tab_ids) {
 			toggleVisibility(tabs[i]);
 		}
 	}
+	
+	jsClockGMT();
+}
+
+function jsClockGMT(){
+	// Copyright 1999 - 2001 by Ray Stott
+	if (!document.getElementById('clock0')) {
+		return;
+	}
+	var timeString = document.getElementById('clock0').innerHTML;
+	var time = new Date();
+
+	var hour = time.getHours();
+	var minute = time.getMinutes();
+	var second = time.getSeconds();
+	
+	var temp = " " + ((hour < 10) ? "0" : "") + hour;
+	temp += ((minute < 10) ? ":0" : ":") + minute;
+	temp += ((second < 10) ? ":0" : ":") + second;
+	document.getElementById('clock0').innerHTML = temp;
+	setTimeout("jsClockGMT()",1000);
 }
