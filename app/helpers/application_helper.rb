@@ -72,4 +72,15 @@ module ApplicationHelper
 						(g.to_s(16).length > 1 ? g.to_s(16) : "0"+g.to_s(16)) + 
 						(b.to_s(16).length > 1 ? b.to_s(16) : "0"+b.to_s(16))
 	end
+
+	def elaine_version
+		return @elaine_version if @elaine_version
+		File.open(".svn/entries", "r") { |f|
+			3.times do
+				logger.info f.gets
+			end
+			@elaine_version = "r" + f.gets.chomp
+		}
+		return @elaine_version 
+	end
 end
