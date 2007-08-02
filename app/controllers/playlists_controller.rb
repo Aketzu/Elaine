@@ -108,10 +108,7 @@ class PlaylistsController < ApplicationController
 
   def edit
     @playlist = Playlist.find(params[:id])
-    @channel_id = params[:channel_id].to_i
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end
+		@channel_id = @playlist.channel_id
   end
 
   def update
