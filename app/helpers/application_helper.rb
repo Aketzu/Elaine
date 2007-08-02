@@ -77,7 +77,7 @@ module ApplicationHelper
 		return @elaine_version if @elaine_version
 		File.open(".svn/entries", "r") { |f|
 			3.times do
-				logger.info f.gets
+				f.gets
 			end
 			@elaine_version = "r" + f.gets.chomp
 		}
