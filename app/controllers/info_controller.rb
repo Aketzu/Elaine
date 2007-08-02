@@ -2,21 +2,24 @@ class InfoController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :require_ssl
   layout nil
-  
+ 
+#Used for website
 def playlist
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
   unless @channel.nil?
-    @items = Playlist.find(:all, :conditions => ["channel_id = ?", @channel.id], :order => 'start_time')
+    @items = Playlist.find(:all, :conditions => ["channel_id = ?", @channel.id], :order => 'start_time', :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
   end
 end
+
 
 def next
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
   unless @channel.nil?
-    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time', :limit => 10, :include => [:Program])
+    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time', :limit => 10, :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
   end
 end
 
+#Garo's coming up -flash
 def gdata
 	self.next
 end
@@ -76,7 +79,13 @@ def vods
   
 	@langcode = params[:id]
   @language = Language.find(:first, :conditions => ["code = ?", @langcode])
-	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:program_descriptions, :Events, {:Vods => [:VideoFormat, :FileLocation]}]);
+
+	if @language.nil?
+		render :text => "Invalid language specified"
+		return
+	end
+
+	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:program_descriptions, :Events, {:vods => [:VideoFormat, :FileLocation]}]);
 
 end
 

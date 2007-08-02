@@ -12,7 +12,8 @@ validates_presence_of(:title, :message => "Title must be entered.")
 acts_as_list :scope => :program_id
 
 def language
-  Language.find(self.language_id)
+	self.Language
+  #Language.find(self.language_id)
 end
 
 def strip_fields
