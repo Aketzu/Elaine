@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 63) do
+ActiveRecord::Schema.define(:version => 64) do
 
   create_table "broadcast_logs", :force => true do |t|
     t.column "start_time", :datetime
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 63) do
     t.column "file_exists",         :boolean
     t.column "file_status_updated", :datetime
     t.column "external_id",         :integer
+    t.column "video_format_id",     :integer
   end
 
   create_table "file_locations", :force => true do |t|

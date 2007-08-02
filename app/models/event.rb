@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
 belongs_to :Location
 belongs_to :EventType
 belongs_to :FileLocation
+belongs_to :VideoFormat
 
 has_many :tape_event_links, :dependent => :destroy
 has_many :Tapes,    :through => :tape_event_links
@@ -27,7 +28,12 @@ def formatted_length=(formatted)
 end
 
 def full_filename
-  "e_" + self.id.to_s + "_" + (self.filename || "") + ".avi"
+  "e_" + self.id.to_s + "_" + (self.filename || "") + "." + extension
+end
+
+def extension
+	return "avi" if self.VideoFormat.nil?
+	self.VideoFormat.file_extension
 end
 
 def file_exists?

@@ -157,14 +157,27 @@ def filename
   end
 end
 
+def VideoFormat
+	if self.single_event?
+		self.Events[0].VideoFormat
+	else
+		self.VideoFormat
+	end
+end
+
 def full_filename
 	return "" if self.Events[0].nil?
 
   if(self.single_event?)
     self.Events[0].full_filename if self.Events[0]
   else
-    'p_' + self.id.to_s + '_' + self.filename.to_s + '.avi'
+    'p_' + self.id.to_s + '_' + self.filename.to_s + '.' + extension
   end
+end
+
+def extension
+	return "avi" if self.VideoFormat.nil?
+	self.VideoFormat.file_extension
 end
 
 def file_exists?

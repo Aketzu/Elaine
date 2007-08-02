@@ -65,7 +65,7 @@
 
 <tr class="fileinfo">
 <th class="edit">Program video format</th>
-<td class="edit"><%= select('program', 'video_format_id', VideoFormat.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name, t.id] }, {}, {"class" => "options"}) %></td>
+<td class="edit"><%= select('program', 'video_format_id', VideoFormat.find(:all, :conditions => "use_for_production is true").collect { |t| [t.name + " (." + t.file_extension + ")", t.id] }, {}, {"class" => "options"}) %></td>
 </tr>
 
 <tr class="fileinfo">
