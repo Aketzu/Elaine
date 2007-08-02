@@ -1,4 +1,4 @@
-<h1><%= Channel.find(@channel_id).name %> broadcast log</h1>
+<h2><%= Channel.find(@channel_id).name %> broadcast log</h2>
 
 <%= start_form_tag :action => 'list' %>
   <select name="channel_id" onChange="javascript: this.form.submit()">

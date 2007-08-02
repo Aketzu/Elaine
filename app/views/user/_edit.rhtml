@@ -1,32 +1,54 @@
-<div class="user_edit">
-  <table>
-		<tr>
-		<th class="edit">First Name</th>
-		<td class="edit"><%= text_field 'user', 'firstname' %></td>
-		</tr>
-		<tr>
-		<th class="edit">Last Name</th>
-		<td class="edit"><%= text_field 'user', 'lastname' %></td>
-		</tr>
-		<tr>
-		<th class="edit">Login ID</th>
-		<td class="edit"><%= text_field 'user', 'login' %></td>
-		</tr>
-		<tr>
-		<th class="edit">Email</th>
-		<td class="edit"><%= text_field 'user', 'email' %></td>
-		</tr>
-                <tr>
-		<th class="edit">Date filter</th>
-                <td class="edit"><%= date_select 'user', 'content_filter_date' %></td>
-		</tr>
-                <tr>
-		<th class="edit">Default channel</th>
-                <td class="edit"><%= select('user', 'channel_id', Channel.find_all.collect {|c| [ c.name, c.id ] }) %></td>
-		</tr>
-		
-    <% if submit %>
-      <%= form_input :submit_button, (user.new_record? ? 'Signup' : 'Change Settings'), :class => 'two_columns' %>
-    <% end %>
-  </table>
-</div>
+<tr>
+<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic <%=tooltip_collapsable%></th>
+</tr>
+
+<tbody class="generic">
+<tr>
+	<th class="edit">Owner</th>
+	<td class="edit"><%= select('program', 'owner_id', User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"}) %></td>
+</tr>
+
+<tr>
+	<th class="edit">First Name</th>
+	<td class="edit"><%= text_field 'user', 'firstname' %></td>
+</tr>
+
+<tr>
+	<th class="edit">Last Name</th>
+	<td class="edit"><%= text_field 'user', 'lastname' %></td>
+</tr>
+
+<tr>
+	<th class="edit">Login ID</th>
+	<td class="edit"><%= text_field 'user', 'login' %></td>
+</tr>
+
+<tr>
+	<th class="edit">Email</th>
+	<td class="edit"><%= text_field 'user', 'email' %></td>
+</tr>
+
+<tr>
+	<th class="edit">Date filter</th>
+	<td class="edit"><%= date_select 'user', 'content_filter_date' %></td>
+</tr>
+
+<tr>
+	<th class="edit">Default channel</th>
+	<td class="edit"><%= select('user', 'channel_id', Channel.find_all.collect {|c| [ c.name, c.id ] }) %></td>
+</tr>
+
+<% if current_user.admin? %>
+<tr>
+<th class="edit">Enabled</th>
+<td class="edit"><%= check_box 'user', 'verified' %></td>
+</tr>
+<% end %>
+
+<% if submit %>
+<tr>
+	<th class="edit"></th>
+	<td class="edit"><%= submit_tag (user.new_record? ? 'Signup' : 'Change Settings') %></td>
+</tr>
+<% end %>
+</tbody>

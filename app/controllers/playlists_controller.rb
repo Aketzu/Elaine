@@ -50,7 +50,7 @@ class PlaylistsController < ApplicationController
   end
 
   def timeline_xml
-    @past = Time.at(Time.now.to_i - 3600*5)
+    @past = Time.at(Time.now.to_i - 3600*5*24)
     @channel_id = params[:channel_id].to_i
     if(@channel_id == 0)
       @channel_id = Channel.find(:first).id

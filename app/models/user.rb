@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticated?(password)
+		return false unless self.verified == 1
     crypted_password == encrypt(password)
   end
 
@@ -74,6 +75,7 @@ class User < ActiveRecord::Base
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record? || salt.empty?
       self.crypted_password = encrypt(password)
+			self.verified =1
     end
     
     def password_required?

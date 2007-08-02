@@ -1,4 +1,4 @@
-<h1>New broadcast log entry for <%= Channel.find(@channel_id).name %></h1>
+<h2>New broadcast log entry for <%= Channel.find(@channel_id).name %></h2>
 
 <%= start_form_tag :action => 'create' %>
   <%= render :partial => 'form' %>
