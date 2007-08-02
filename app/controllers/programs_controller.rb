@@ -157,7 +157,7 @@ class ProgramsController < ApplicationController
     end # end transaction
     if @program.update_attributes(params[:program])
       flash[:notice] = 'Program was successfully updated.'
-      redirect_to :action => 'edit', :id => @program
+      redirect_back_or_default :action => 'edit', :id => @program
     else
       render :action => 'edit'
     end

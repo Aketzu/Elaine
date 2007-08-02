@@ -4,7 +4,9 @@
     <th class="playlist_cell" style="width: 10em;">Status</th>
     <th class="playlist_cell" style="width: 1em;">Show in listing</th>
     <th class="playlist_cell" style="width: 10em;">Start time</th>
-    <th class="playlist_cell" style="width: 6em;">Length</th>
+    <th class="playlist_cell" style="width: 5em;">Length</th>
+    <th class="playlist_cell" style="width: 1em;">Dif</th>
+    <th class="playlist_cell" style="width: 5em;">Target length</th>
     <th class="playlist_cell" style="width: 10em;">End time</th>
     <th class="playlist_cell" style="width: 6em;">Movable</th>
     <th class="playlist_cell" style="width: 9.5em;">Actions</th>
@@ -26,40 +28,43 @@ end
   <% if(playlist.end_time > @now) %>
     <% if playlist.start_time > (end_time + 60) %>
     <tr>
-      <td class="playlist_error_gap" colspan="6">
+      <td class="playlist_error_gap"></td>
+      <td class="playlist_error_gap" colspan="3">
       <% if playlist.movable %>
-      <%= link_to_remote 'Fix gap by moving this', :url => { :action => :fix_by_moving, 
-                                          :id => playlist, 
-                                          :channel_id => @channel_id, 
-                                          :difference => (end_time - playlist.start_time) } %>
+				<%= link_to_remote 'Fix gap by moving this', :url => { :action => :fix_by_moving, 
+																						:id => playlist, 
+																						:channel_id => @channel_id, 
+																						:difference => (end_time - playlist.start_time) } %>
       <% else %>
-      There is a <b><%= format_length(playlist.start_time - end_time) %></b> gap here. You can fix this gap with a new entry.
-      <%= link_to_remote 'Pick time', :url => { :action => :pick_time, 
-                                                :id => playlists.at(index-1).id, 
-                                                :channel_id => @channel_id, 
-                                                :end_time => end_time } if index > 1 %><br>
-      Or by changing this to a movable entry.
+				Gap! <%= (index > 1 ? link_to_remote('&nbsp;Pick time to start time&nbsp;', {:url => { :action => :pick_time, :id => playlists.at(index-1).id, :channel_id => @channel_id, :end_time => end_time}}, {"class" => "playlist_error"}) : "") %>
+				<%= tooltip "You can fix this gap with a new entry or by changing this to a movable entry.<br>Picking new time will set the Start time to this gap." %>
       <% end %>
       </td>
+      <td class="playlist_error_gap" colspan="6"><%= format_length(playlist.start_time - end_time) %></td>
     </tr>
     <% end %>
     
     <% if playlist.start_time < end_time %>
     <tr>
-      <td class="playlist_error_overlap" colspan="6">
-      <% if playlist.movable %>
-      <%= link_to_remote 'Fix overlapping by moving "' + playlist.Program.title + '"',
-                          :url => { :action => :fix_by_moving, 
-                                    :id => playlist, 
-                                    :channel_id => @channel_id, 
-                                    :difference => (end_time - playlist.start_time) } %>
+      <% if playlist.movable -%>
+				<td class="playlist_error_overlap"></td>
+				<td class="playlist_error_overlap" colspan="3">
+					<%= link_to_remote 'Fix overlapping by moving "' + playlist.Program.title + '"',
+								:url => {	:action => :fix_by_moving, 
+													:id => playlist, 
+													:channel_id => @channel_id, 
+													:difference => (end_time - playlist.start_time) } %></td>
+				</td>
+				<td class="playlist_error_overlap_nonmovable" colspan="6"><%= "-"+format_length(end_time - playlist.start_time) %></td>
+				</td>
       <% else %>
-      "<%= playlist.Program.title %>" is overlapping
-      "<%= playlists.at(index-1).Program.title if(index > 1)%>"
-      by <%= format_length(end_time - playlist.start_time) %>
-      and is NOT movable.
+				<td class="playlist_error_overlap_nonmovable"></td>
+				<td class="playlist_error_overlap_nonmovable" colspan="3">Nonmovable overlap!
+				<%= tooltip "You can fix this overlap by changing either entries<br>to movable type or changing the target length." %>
+				</td>
+				<td class="playlist_error_overlap_nonmovable" colspan="6"><%= "-"+format_length(end_time - playlist.start_time) %></td>
+				</td>
       <% end %>
-      </td>
     </tr>
     <% end %>
   <% end %>
@@ -86,6 +91,8 @@ end
     <td class="playlist_cell"><%= link_to playlist.no_listing ? "No" : "Yes" , :action => :toggle_show, :id => playlist %></td>
     <td class="playlist_cell"><%= playlist.start_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell"><%= playlist.Program.formatted_length %></td>
+    <td class="playlist_cell"><%= tooltip format_length(playlist.Program.target_length - playlist.Program.length) unless playlist.Program.formatted_target_length.empty? %></td>
+    <td class="playlist_cell"><%= playlist.Program.formatted_target_length unless playlist.Program.formatted_target_length.empty? %></td>
     <td class="playlist_cell"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell" align="center"><% if playlist.movable %>&times;<% end %></td>
     <td class="playlist_cell">[
