@@ -13,9 +13,10 @@ class BroadcastLogsController < ApplicationController
 
   def list
     @channel_id = params[:channel_id].to_i
-    if(@channel_id == 0)
-      @channel_id = Channel.find(:first).id
-    end  
+		@channel_id = params[:playlist][:channel_id].to_i if params[:playlist]
+		@channel_id = current_user.Channel.id if @channel_id == 0
+    @channel_id = Channel.find(:first).id if @channel_id == 0
+
     @broadcast_log_pages, @broadcast_logs = paginate :broadcast_logs, :per_page => 10, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time'
   end
 
