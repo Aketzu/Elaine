@@ -7,11 +7,10 @@ class PlaylistsController < ApplicationController
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
+  verify :method => :post, :only => [ :destroy, :create, :update, :fix_by_moving, :add_to_playlist ],
          :redirect_to => { :action => :list }
 
   def list
-		store_location
     @channel_id = params[:channel_id].to_i
 		@channel_id = params[:playlist][:channel_id].to_i if params[:playlist]
 		@channel_id = current_user.Channel.id if @channel_id == 0
