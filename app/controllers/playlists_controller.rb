@@ -31,9 +31,9 @@ class PlaylistsController < ApplicationController
 
     @channels = Channel.find(:all)
     if params[:show_past].nil?
-      @playlists = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > ?", @channel_id, @past], :order => 'start_time', :include => [{:Program => [:program_descriptions, :ProgramStatus, { :Events => [:EventType, :Location]} ]} ])
+      @playlists = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > ?", @channel_id, @past], :order => 'start_time asc, program_descriptions.language_id', :include => [{:Program => [:program_descriptions, :ProgramStatus, { :Events => [:EventType, :Location]} ]} ])
     else
-      @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time', :include => [{:Program => [:program_descriptions, :ProgramStatus, { :Events => [:EventType, :Location]} ]} ])
+      @playlists = Playlist.find(:all, :conditions => ["channel_id = ?", @channel_id], :order => 'start_time asc, program_descriptions.language_id', :include => [{:Program => [:program_descriptions, :ProgramStatus, { :Events => [:EventType, :Location]} ]} ])
     end
   end
 

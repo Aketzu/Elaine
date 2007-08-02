@@ -7,7 +7,7 @@ class InfoController < ApplicationController
 def playlist
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
   unless @channel.nil?
-    @items = Playlist.find(:all, :conditions => ["channel_id = ?", @channel.id], :order => 'start_time', :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
+    @items = Playlist.find(:all, :conditions => ["channel_id = ?", @channel.id], :order => 'start_time asc, language_id', :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
   end
 end
 
@@ -15,7 +15,7 @@ end
 def next
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
   unless @channel.nil?
-    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time', :limit => 10, :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
+    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time asc, program_descriptions.language_id ', :limit => 10, :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
   end
 end
 
