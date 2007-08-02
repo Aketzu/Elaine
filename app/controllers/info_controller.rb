@@ -15,7 +15,10 @@ end
 def next
   @channel = Channel.find(:first, :conditions => ["name = ?", params[:id]])
   unless @channel.nil?
-    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > now()", @channel.id], :order => 'start_time asc, program_descriptions.language_id ', :limit => 10, :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
+		#curprog = Playlist.find(:first, :conditions => ["channel_id = ? AND start_time <= now()", @channel.id], :order => 'start_time desc', :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
+
+    @items = Playlist.find(:all, :conditions => ["channel_id = ? AND start_time > (now() - interval '5 minutes')", @channel.id], :order => 'start_time asc, program_descriptions.language_id ', :limit => 10, :include => [{:Program => [:Events, {:program_descriptions => :Language}]}])
+		#@items.insert(0,curprog)
   end
 end
 
