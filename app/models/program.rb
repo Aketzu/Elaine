@@ -157,13 +157,13 @@ def filename
   end
 end
 
-def VideoFormat
-	if self.single_event?
-		self.Events[0].VideoFormat
-	else
-		self.VideoFormat
-	end
-end
+#def VideoFormat
+#	if self.single_event?
+#		self.Events[0].VideoFormat
+#	else
+#		self.VideoFormat
+#	end
+#end
 
 def full_filename
 	return "" if self.Events[0].nil?
