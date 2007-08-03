@@ -4,7 +4,8 @@
     <td width="*"></td>
     <td class="header_menu">
 			<% if logged_in? %>
-			<div class="clearFix" style="width:45em;padding:0;background:#FFFFFF;border:1px solid;border-color:#5c5c5c;">
+			<div class="clearFix" style="width:45em;padding:0;background:#FFFFFF;border:1px solid;border-color:#5c5c5c;position: relative;">
+				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"></div>
 				<ul id="Menu1" class="MM">
 					<li>
 						<a href="#">Elaine</a>
@@ -119,10 +120,8 @@
 					<li>
 						<%= link_to 'Logout', :controller => 'account', :action => 'logout' %>
 					</li>
+
 					
-					<li>
-						<span id="clock0" style="float: right; position: relative; right: 4px; top: -20px; width: 100%; margin-bottom: -18px;"></span>
-					</li>
 					
 <% if false %>
 <div class='menuitem level0' onclick="docum='/elaine';" >Elaine<div id='sub_1' class='submenu'><div style='width:auto' id='mn_2' class='menuitem level1' onclick="document.location.href='/elaine';" >Home page</div>
