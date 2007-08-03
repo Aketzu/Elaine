@@ -5,6 +5,10 @@
 
 Upload PMS XML file: <br />
 <%= file_field_tag :pmsdata %><br />
+
+Quarantine until:<br />
+<%=select_datetime%> <br />
+<br />
 <%=check_box_tag :doit %>Really make the changes<br />
 
 <%= submit_tag %>

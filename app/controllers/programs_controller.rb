@@ -246,6 +246,8 @@ class ProgramsController < ApplicationController
 		@xml = "nada"
 		return if params[:pmsdata].nil?
 
+		quarantine = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute], params[:date][:second])
+
 		xml = REXML::Document.new params[:pmsdata]
 		
 		@compos = Array.new
@@ -271,6 +273,7 @@ class ProgramsController < ApplicationController
 					ee.EventType = EventType.find(:first, :conditions => ['name = ?', 'insert'])
 					ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
 					ee.video_format_id = 12
+					ee.quarantine = quarantine
 					ee.save!
 					eevents << ee
 
