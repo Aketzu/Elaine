@@ -88,7 +88,7 @@ def vods
 		return
 	end
 
-	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:program_descriptions, :Events, {:vods => [:VideoFormat, :FileLocation]}]);
+	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:ProgramCategory, :program_descriptions, :Events, {:vods => [:VideoFormat, :FileLocation]}]);
 
 end
 

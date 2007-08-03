@@ -77,9 +77,9 @@ task :backup, :roles => :db, :only => { :primary => true } do
 	file = "elaine_" + `date +%Y%m%d-%H%M%S`.chomp + ".tgz"
 
 	#Usage: rake remote:exec ACTION=backup (or normally in other tasks)
-	sudo "su postgres -c 'pg_dump -Ft elaine2 | gzip > /tmp/#{file}'"
+	run "pg_dump -Ft elaine2 | gzip > /tmp/#{file}"
 	run "svn import -m'Automatic database backup' /tmp/#{file} https://svn.nodeta.fi/elaine2006/backups/#{file}"
-	sudo "su postgres -c rm /tmp/#{file}"
+	run "rm /tmp/#{file}"
 
 end
 

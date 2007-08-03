@@ -19,7 +19,7 @@ unless @language.nil?
 					desc = program.program_descriptions[0]
 
           xml.title(desc.title, :'xml:lang' => @langcode)
-          xml.description(desc.public_description, :'xml:lang' => @langcode)      
+          xml.description(desc.public_description.gsub(/[\n\r]/,''), :'xml:lang' => @langcode)      
           xml.link # TODO: Additional info is where?
           xml.pubDate(xmldatetime(program.vods_or_info_updated_at))
            # TODO: Hardcoded host and proto
@@ -35,23 +35,13 @@ unless @language.nil?
             xml.media(:content, :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :width => "200", :height => "150", :type => "video/flv", :expression => "sample") # TODO: store dimensions and filesize
              # TODO: Use an explicit join to include the relevant formats in the initial select for the collection
              for vod in program.Vods
-               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => "video/x-msvideo", :expression => "full")
+               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => vod.VideoFormat.mime_type, :expression => "full")
              end
           end
           xml.category("Assembly")
           xml.category("video")
           # TODO: Set of nasty assumption hacks
-					if false
-          if program.ProgramCategory.name == "Seminar"
-            xml.category("seminar")
-          end
-          if program.ProgramCategory.name == "Normal"
-            xml.category("AssemblyTV")
-          end
-          if program.ProgramCategory.name == "High motion"
-            xml.category("Compo")
-          end
-					end #if 0
+					xml.category(program.ProgramCategory.name) unless program.ProgramCategory.nil?
         end
       end
     end
