@@ -5,6 +5,7 @@ class AdminMailer < ActionMailer::Base
     @from       = 'elaine@assembly.org'
     @sent_on    = Time.now
 		@auth_token = user.salt
+		@login      = user.login
     @body["auth_token"] = user.salt
   end
 end
