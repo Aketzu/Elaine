@@ -4,7 +4,8 @@ class VodController < ApplicationController
   def next
 		program_ids = Program.find_by_sql "SELECT
 				p.id as program_id,
-				vgf.video_format_id as video_format_id
+				vgf.video_format_id as video_format_id,
+				pc.vod_group_id
 			FROM programs p
 			INNER JOIN program_categories pc ON p.program_category_id = pc.id
 			INNER JOIN vod_groups vg ON pc.vod_group_id = vg.id
@@ -14,10 +15,18 @@ class VodController < ApplicationController
 			EXCEPT
 
 			SELECT
-			 program_id,
-			 video_format_id
+			 v.program_id,
+			 v.video_format_id,
+			 pc.vod_group_id
 			FROM vods v
+			INNER JOIN programs p ON v.program_id = p.id
+			INNER JOIN program_categories pc ON p.program_category_id = pc.id
+
+			ORDER BY 3 desc
+	
 			"
+			#Hack to get compos first. They happen to have largest vod group
+			#id
 
 	#status_id 3 == complete
 
@@ -62,6 +71,7 @@ class VodController < ApplicationController
 					result << @vod.preview_base_filename
 					result << @vod.base_filename
 					result << @program.full_filename
+					result << vod_location.name
 
 					render :text => result.join("|")
 					return
@@ -97,4 +107,12 @@ class VodController < ApplicationController
   def error
      @message = params[:message]
   end
+
+
+	def published
+		@vods = Vod.find(:all, :conditions => ['completed AND events.quarantine < now()'], :include => [{:Program => :Events}, :VideoFormat])
+
+		headers['Content-Type'] = 'text/plain'
+		render :text => @vods.map{|v| [ v.full_filename, v.preview_base_filename + "_preview.jpg", v.preview_base_filename + "_preview.flv" ] }.flatten.sort.uniq.join("\n")
+	end
 end
