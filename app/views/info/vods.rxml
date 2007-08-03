@@ -31,8 +31,8 @@ unless @language.nil?
 					#vods = program.Vods.find(:all, :include => [:FileLocation, :VideoFormat])
 
 					url = program.Vods[0].FileLocation.url
-            xml.media(:thumbnail, :url => url + program.id.to_s + '_' + program.filename + '_preview.jpg', :width => "82", :height => "66") # TODO: store dimensions
-            xml.media(:content, :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :width => "200", :height => "150", :type => "video/flv", :expression => "sample") # TODO: store dimensions and filesize
+            xml.media(:thumbnail, :url => url + program.id.to_s + '_' + program.filename + '_preview.jpg') # TODO: store dimensions
+            xml.media(:content, :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :type => 'video/x-flv', :expression => "sample") # TODO: store dimensions and filesize
              # TODO: Use an explicit join to include the relevant formats in the initial select for the collection
              for vod in program.Vods
                xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => vod.VideoFormat.mime_type, :expression => "full")
