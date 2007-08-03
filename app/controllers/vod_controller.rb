@@ -37,9 +37,9 @@ class VodController < ApplicationController
 			@program = program
 			@vod_format = VideoFormat.find(results[:video_format_id])
 			# TODO: We assume a location with the name of the vod group exists. This should be mapped in the DB.
-			vod_location = FileLocation.find(:first, :conditions => ["name = ?", program.ProgramCategory.VodGroup.name]);
+			vod_location = FileLocation.find(:first, :conditions => ["name = ?", program.ProgramCategory.name]);
 			if vod_location.nil?
-				@result = 'File location "' + program.ProgramCategory.VodGroup.name + '" missing'
+				@result = 'File location "' + program.ProgramCategory.name + '" missing'
 				render :text => @result
 				return
 			end
@@ -71,7 +71,7 @@ class VodController < ApplicationController
 					result << @vod.preview_base_filename
 					result << @vod.base_filename
 					result << @program.full_filename
-					result << vod_location.name
+					result << @program.ProgramCategory.name
 
 					render :text => result.join("|")
 					return
