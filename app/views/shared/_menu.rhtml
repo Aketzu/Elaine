@@ -5,7 +5,7 @@
     <td class="header_menu">
 			<% if logged_in? %>
 			<div class="clearFix" style="width:45em;padding:0;background:#FFFFFF;border:1px solid;border-color:#5c5c5c;position: relative;">
-				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"></div>
+				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"><%= @clock %></div>
 				<ul id="Menu1" class="MM">
 					<li>
 						<a href="#">Elaine</a>
@@ -42,8 +42,11 @@
 							<% if authorized?(:controller => 'programs', :action => 'new') %>
 								<li><%= link_to 'New Program', :controller => 'programs', :action => 'new' %></li>
 							<% end %>
-							<%#TODO: Authentication?%>
-							<li><%= link_to 'Program categories', :controller => 'program_categories' %></li>
+
+              <% if authorized?(:controller => "admin") -%>
+              <li><%= link_to 'Program categories', :controller => 'program_categories' %></li> 
+              <li><%= link_to 'Import PMS data', :controller => 'programs', :action => 'import' %></li> 
+              <% end %> 
 						</ul>
 					</li>
 					<% end %>
