@@ -269,8 +269,34 @@ class ProgramsController < ApplicationController
 					ee.title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
 					ee.length = 60 if ee.length.nil?
 					ee.EventType = EventType.find(:first, :conditions => ['name = ?', 'insert'])
+					ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
 					ee.save!
 					eevents << ee
+
+					ep = Program.find_by_external_id(10000*c.attributes["id"].to_i + e.attributes["id"].to_i)
+					if ep.nil?
+						ep = Program.new
+						ep.do_vod   = true
+						desc = []
+						for language in Language.get_compulsory
+							desc << ProgramDescription.new(:language_id => language.id,
+								:title => ee.title) 
+						end
+						ep.program_descriptions << desc
+					end
+
+					ep.external_id = c.attributes["id"].to_i*10000 + e.attributes["id"].to_i
+					ep.program_category_id = 2
+					ep.User = current_user
+					ep.status_id = 3
+					ep.save!
+				
+					if ProgramEventLink.find(:first, :conditions => ["program_id = ? and event_id = ?", ep.id, ee.id]).nil? then
+						l = ProgramEventLink.new(:program_id => ep.id, :event_id => ee.id)
+						l.save!
+					end
+
+
 				end
 			}
 
@@ -284,7 +310,7 @@ class ProgramsController < ApplicationController
 				ep = Program.find_by_external_id(c.attributes["id"])
 				if ep.nil?
 					ep = Program.new
-					ep.do_vod   = true
+					ep.do_vod   = false
 					desc = []
 					for language in Language.get_compulsory
 						desc << ProgramDescription.new(:language_id => language.id,
@@ -297,14 +323,14 @@ class ProgramsController < ApplicationController
 				ep.external_id = c.attributes["id"]
 				ep.User = current_user
 				ep.save!
-			
+				
 				eevents.each { |e|
 					if ProgramEventLink.find(:first, :conditions => ["program_id = ? and event_id = ?", ep.id, e.id]).nil? then
 						l = ProgramEventLink.new(:program_id => ep.id, :event_id => e.id)
 						l.save!
 					end
-					
 				}
+			
 
 			end
 		}
