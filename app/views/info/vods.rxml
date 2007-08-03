@@ -1,7 +1,7 @@
 xml.instruct! :xml, :encoding => "ISO-8859-1"
 unless @language.nil?
 
-  xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss/") do
+  xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss") do
 
     xml.channel do
       xml.title("Assembly VOD")
@@ -32,10 +32,10 @@ unless @language.nil?
 
 					url = program.Vods[0].FileLocation.url
             xml.media(:thumbnail, :url => url + program.id.to_s + '_' + program.filename + '_preview.jpg') # TODO: store dimensions
-            xml.media(:content, :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :type => 'video/x-flv', :expression => "sample") # TODO: store dimensions and filesize
+            xml.media(:content , :url => url + program.id.to_s + '_' + program.filename + '_preview.flv', :type => 'video/x-flv', :expression => "sample") # TODO: store dimensions and filesize
              # TODO: Use an explicit join to include the relevant formats in the initial select for the collection
              for vod in program.Vods
-               xml.media(:content, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => vod.VideoFormat.mime_type, :expression => "full")
+               xml.media(:content, :duration => vod.length, :url => vod.FileLocation.url + vod.full_filename, :fileSize => vod.filesize.to_s, :bitrate => vod.VideoFormat.vbitrate.to_s, :type => vod.VideoFormat.mime_type, :expression => "full")
              end
           end
           xml.category("Assembly")

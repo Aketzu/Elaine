@@ -75,8 +75,9 @@ def vods
 			JOIN program_event_links ON program_event_links.program_id = programs.id 
 			JOIN events ON program_event_links.event_id = events.id 
 			JOIN vods ON vods.program_id = programs.id
+			WHERE vods.completed
 			GROUP BY programs.id
-			HAVING MAX(events.quarantine) < NOW() 
+			HAVING MAX(events.quarantine) < NOW()
 			" 
 			#WHERE (NOT no_listing OR no_listing IS NULL)
   
@@ -88,7 +89,7 @@ def vods
 		return
 	end
 
-	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:ProgramCategory, :program_descriptions, :Events, {:vods => [:VideoFormat, :FileLocation]}]);
+	@programs = Program.find(@values.map {|v| v.program_id}, :conditions => [ "language_id = ?", @language.id ], :include => [:ProgramCategory, :program_descriptions, :Events, {:vods => [:VideoFormat, :FileLocation]}], :order => "programs.id");
 
 end
 
