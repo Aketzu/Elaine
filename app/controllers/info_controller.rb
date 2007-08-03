@@ -139,8 +139,8 @@ def update_files
 			else
 				match = f.match(/.*([0-9]*)_(.*)\.([a-z]*)$/)
 
-				if match then
-					obj = Vods.find(:first, :conditions => [ "program_id = ? and filename = ?", match[1], match[2] ])
+				if false and match then
+					obj = Vod.find(:first, :conditions => [ "program_id = ? and filename = ?", match[1], match[2] ])
 					if obj.nil? then
 						logger.info "Couldn't find object for " + match[0]
 						next
