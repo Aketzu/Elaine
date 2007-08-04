@@ -10,7 +10,27 @@ class VodsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @vod_pages, @vods = paginate(:vods, :per_page => 100, :order => 'completed, program_id', :include => [:Program, :VideoFormat, :FileLocation])
+		sort = case params[:sort]
+			when 'program' then 'vods.program_id'
+			when 'filename' then 'vods.filename'
+			when 'length' then 'vods.length'
+			when 'filesize' then 'vods.filesize'
+			when 'completed' then 'vods.completed'
+			when 'videoformat' then 'vods.video_format_id'
+			when 'filelocation' then 'vods.file_location_id'
+			when 'updated' then 'vods.updated_at'
+			else 'completed'
+		end
+		order = case params[:order]
+			when 'asc' then 'asc'
+			when 'desc' then 'desc'
+			else ''
+		end
+
+		sort += " " + order
+			
+		sort += ', program_id' 
+    @vod_pages, @vods = paginate(:vods, :per_page => 100, :order => sort, :include => [:Program, :VideoFormat, :FileLocation])
   end
 
   def show

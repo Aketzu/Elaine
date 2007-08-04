@@ -5,21 +5,21 @@ Page: <%= pagination_links(@vod_pages) %>
 
 <table>
   <tr>
-    <th>Program</th>
-    <th>Full filename</th>
-    <th>Length</th>
-    <th>Filesize</th>
-    <th>Completed</th>
-    <th>Video format</th>
-    <th>File location</th>
-    <th>Updated at</th>
+    <th><%=sortlink "Program", :program %></th>
+    <th><%=sortlink "Full filename", :filename %></th>
+    <th><%=sortlink "Length", :length %></th>
+    <th><%=sortlink "Filesize", :filesize %></th>
+    <th><%=sortlink "Completed", :completed %></th>
+    <th><%=sortlink "Video format", :videoformat %></th>
+    <th><%=sortlink "File location", :filelocation %></th>
+    <th><%=sortlink "Updated at", :updated %></th>
     <th>Actions</th>
   </tr>
   
 <% for vod in @vods %>
   <tr>
     <td><%= link_to vod.Program.title, :action => 'edit', :controller => 'programs', :id => vod.Program.id %>
-    <td><%= vod.full_filename %></td>
+    <td><%= link_to vod.full_filename, vod.FileLocation.url + vod.full_filename %></td>
     <td><%= vod.length %></td>
     <td><%= vod.filesize %></td>
     <td><%= vod.completed %></td>
