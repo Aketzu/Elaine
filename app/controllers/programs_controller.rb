@@ -284,6 +284,7 @@ class ProgramsController < ApplicationController
 						desc = []
 						for language in Language.get_compulsory
 							desc << ProgramDescription.new(:language_id => language.id,
+								:public_description => "",
 								:title => ee.title) 
 						end
 						ep.program_descriptions << desc
