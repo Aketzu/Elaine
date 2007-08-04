@@ -295,6 +295,12 @@ class ProgramsController < ApplicationController
 					ep.User = current_user
 					ep.status_id = 3
 					ep.video_format_id = 12
+
+					if params[:tunk] then
+						ep.program_category_id = 7 #2
+						ep.video_format_id = 11 #12
+
+					end
 					ep.save!
 				
 					if ProgramEventLink.find(:first, :conditions => ["program_id = ? and event_id = ?", ep.id, ee.id]).nil? then
