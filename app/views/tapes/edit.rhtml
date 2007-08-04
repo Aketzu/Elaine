@@ -27,13 +27,11 @@
   <td colspan=2><h2>Links:</h2></td>
   </tr>
 
-<%= render :partial => 'programs', :object => @programs %>
+<%= render :partial => 'tape_items', :object => (@programs + @events).sort_by {|t| t.start_time } %>
 
 <%= start_form_tag :action => 'add_program' %>
   <%= render :partial => 'add_program', :object => @tape %>
 <%= end_form_tag %>
-
-<%= render :partial => 'events', :object => @events %>
 
 <%= start_form_tag :action => 'add_event' %>
   <%= render :partial => 'add_event', :object => @tape %>

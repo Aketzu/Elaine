@@ -1,0 +1,55 @@
+<tr>
+  <th class="edit">Programs and Events on this tape</th>
+  <td class="edit">
+    <table>
+      <tr class="header">
+        <th>Start</th>
+        <th></th>
+        <th>End</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+      <% for link in tape_items %>
+      <% if link.is_a?(TapeProgramLink) -%>
+        <% item = Program.find(link.program_id) %>
+      <% elsif link.is_a?(TapeEventLink) -%>
+        <% item = Event.find(link.event_id) %>
+      <% end -%>
+      <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+
+        <td>
+        <%= link.formatted_start_time %>
+        </td>
+
+        <td>
+        ->
+        </td>
+
+        <td>
+        <%= format_length(link.start_time + item.length) %>
+        </td>
+
+        <td>
+        <%= link_to item.title, 
+                  :controller => (link.is_a?(TapeProgramLink) ? 'programs' : 'events'), 
+                  :action => 'show', 
+                  :id => item.id %>
+        </td>
+
+        <td>
+        <%= (link.is_a?(TapeProgramLink) ? "Program" : "Event") %>
+        </td>
+
+        <td>
+        [<%= link_to 'move', {:action => (link.is_a?(TapeProgramLink) ? 'edit_program_link' : 'edit_event_link'), :id => link.id} %>, 
+         <%= link_to 'x', {:action => (link.is_a?(TapeProgramLink) ? 'remove_program' : 'remove_event'), 
+                           :id => link.id}, 
+               :confirm => 'Are you sure you want to destroy the item?',
+               :post => 'true' %>]
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </td>
+</tr>
