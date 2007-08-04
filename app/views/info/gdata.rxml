@@ -7,7 +7,7 @@ unless @channel.nil?
 				for item in @items
 					program = item.Program
 					xml.body(:time => item.start_time.strftime("%H%M")) do
-						xml.cdata!(program.title)
+						xml.cdata!(program.title + "  ")
 					end
 				end
 
@@ -21,7 +21,7 @@ unless @channel.nil?
 				item = @items[0]
 				program = item.Program
 				xml.body() do
-					xml.cdata!(program.title)
+					xml.cdata!(program.title + "  ")
 				end
 
 				xml.config() do

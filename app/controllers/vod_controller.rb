@@ -110,7 +110,7 @@ class VodController < ApplicationController
 
 
 	def published
-		@vods = Vod.find(:all, :conditions => ['completed AND events.quarantine < now()'], :include => [{:Program => :Events}, :VideoFormat])
+		@vods = Vod.find(:all, :conditions => ['completed AND (events.quarantine < now() or events.quarantine is null)'], :include => [{:Program => :Events}, :VideoFormat])
 
 		headers['Content-Type'] = 'text/plain'
 		render :text => @vods.map{|v| [ v.full_filename, v.preview_base_filename + "_preview.jpg", v.preview_base_filename + "_preview.flv" ] }.flatten.sort.uniq.join("\n")
