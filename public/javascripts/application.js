@@ -1,6 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+var date;
 
 function auto_complete_on_select(element, selectedElement) {
 	var entityParts = selectedElement.id.split('::');
@@ -25,7 +26,17 @@ function onLoadElaine(tab_ids) {
 		}
 	}
 	
+	initializeClock();
 	jsClockGMT();
+}
+
+function initializeClock() {
+	if (!document.getElementById('clock0')) {
+		return;
+	}
+
+	var timeString = document.getElementById('clock0').innerHTML;
+	date = new Date(Date.parse(timeString));
 }
 
 function jsClockGMT(){
@@ -33,16 +44,17 @@ function jsClockGMT(){
 	if (!document.getElementById('clock0')) {
 		return;
 	}
-	var timeString = document.getElementById('clock0').innerHTML;
-	var time = new Date();
+	
+	date = new Date(date.valueOf() + 1000);
 
-	var hour = time.getHours();
-	var minute = time.getMinutes();
-	var second = time.getSeconds();
+	var hour = date.getHours();
+	var minute = date.getMinutes();
+	var second = date.getSeconds();
 	
 	var temp = " " + ((hour < 10) ? "0" : "") + hour;
 	temp += ((minute < 10) ? ":0" : ":") + minute;
 	temp += ((second < 10) ? ":0" : ":") + second;
+	document.getElementById('clock0').innerHTML = "";
 	document.getElementById('clock0').innerHTML = temp;
 	setTimeout("jsClockGMT()",1000);
 }

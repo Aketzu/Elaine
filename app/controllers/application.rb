@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
 	before_filter :login_required
   before_filter :login_from_cookie
+	before_filter :set_clock
 
   before_filter :require_ssl if (RAILS_ENV == "production")
 		# && !["vod", "vod_formats"].include?(params[:controller])
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
       redirect_to :protocol => "http://"
     end
   end
+	
+	def set_clock
+		@clock = Time.now()
+	end
 
 end
