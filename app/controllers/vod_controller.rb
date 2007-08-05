@@ -1,6 +1,33 @@
 class VodController < ApplicationController
   skip_before_filter :login_required
 
+	def queue
+		@program_ids = Program.find_by_sql "SELECT
+				p.id as program_id,
+				vgf.video_format_id as video_format_id,
+				pc.vod_group_id
+			FROM programs p
+			INNER JOIN program_categories pc ON p.program_category_id = pc.id
+			INNER JOIN vod_groups vg ON pc.vod_group_id = vg.id
+			INNER JOIN vod_group_format_links vgf ON vgf.vod_group_id = vg.id
+			WHERE p.file_exists AND p.status_id = 3 AND p.do_vod
+			
+			EXCEPT
+
+			SELECT
+			 v.program_id,
+			 v.video_format_id,
+			 pc.vod_group_id
+			FROM vods v
+			INNER JOIN programs p ON v.program_id = p.id
+			INNER JOIN program_categories pc ON p.program_category_id = pc.id
+
+			ORDER BY 3 desc
+	
+			"
+
+	end
+
   def next
 		program_ids = Program.find_by_sql "SELECT
 				p.id as program_id,

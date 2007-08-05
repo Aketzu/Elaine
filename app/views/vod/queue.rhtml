@@ -1,0 +1,10 @@
+<h2>Still to vod</h2>
+
+<ul>
+<% @program_ids.each { |pi|
+p = Program.find(pi[:program_id])
+vf = VideoFormat.find(pi[:video_format_id])
+%>
+<li><%=p.title%>, format <%=vf.name%></li>
+<% } %>
+</ul>
