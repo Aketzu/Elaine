@@ -77,7 +77,7 @@ def vods
 			JOIN vods ON vods.program_id = programs.id
 			WHERE vods.completed
 			GROUP BY programs.id
-			HAVING MAX(events.quarantine) < NOW()
+			HAVING MAX(events.quarantine) < NOW() OR max(events.quarantine) IS NULL
 			" 
 			#WHERE (NOT no_listing OR no_listing IS NULL)
   

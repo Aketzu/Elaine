@@ -273,6 +273,9 @@ class ProgramsController < ApplicationController
 					ee.EventType = EventType.find(:first, :conditions => ['name = ?', 'insert'])
 					ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
 					ee.video_format_id = 12
+					if params[:tunk] then
+						ee.video_format_id = 11 #12
+					end
 					ee.quarantine = quarantine
 					ee.save!
 					eevents << ee
