@@ -2,6 +2,8 @@ class InfoController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :require_ssl
   layout nil
+
+	caches_page     :vods, :ical, :playlist, :next, :gdata
  
 #Used for website
 def playlist
@@ -106,7 +108,7 @@ def update_files
 		end
 
 		request.raw_post.each { |f| 
-			match = f.match(/.*([ep])_([0-9]*)_(.*)\.([a-z]*)$/)
+			match = f.match(/.*\/([ep])_([0-9]*)_(.*)\.([a-z]*)$/)
 
 			if match then
 				obj = nil
