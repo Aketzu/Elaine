@@ -1,8 +1,0 @@
-<% for column in Playlist.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @playlist.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to 'Edit', :action => 'edit', :id => @playlist %> |
-<a href="#" onClick="javascript:history.back(-1)">Back</a>

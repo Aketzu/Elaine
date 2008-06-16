@@ -1,8 +1,0 @@
-<% for column in VideoFormat.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @video_format.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to 'Edit', :action => 'edit', :id => @video_format %> |
-<%= link_to 'Back', :action => 'list' %>

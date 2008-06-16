@@ -1,7 +1,0 @@
-<h2>Editing playlist entry for <%= @playlist.channel.name %></h2>
-
-<%= start_form_tag :action => 'update', :id => @playlist %>
-  <%= render :partial => 'playlist', :object => @playlist %>
-<%= end_form_tag %>
-
-<a href="#" onClick="javascript:history.back(-1)">Back</a>

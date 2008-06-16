@@ -1,9 +1,0 @@
-<h2>Editing vod</h2>
-
-<%= start_form_tag :action => 'update', :id => @vod %>
-  <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
-<%= end_form_tag %>
-
-<%= link_to 'Show', :action => 'show', :id => @vod %> |
-<%= link_to 'Back', :action => 'list' %>

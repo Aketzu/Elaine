@@ -1,8 +1,0 @@
-<tr class="other">
-  <th class="edit">Belongs to programs</th>
-  <td>
-  <% for program in belongs_to_programs %>
-    <div><%= link_to program.title, :controller => 'programs', :action => 'edit', :id => program.id %></div>
-  <% end %>
-  </td>
-</tr>

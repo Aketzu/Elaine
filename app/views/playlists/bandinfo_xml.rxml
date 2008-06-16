@@ -1,9 +1,0 @@
-xml.HotZoneBandInfo() do
-  xml.zones() do
-    xml.zone(
-    :start   => "Aug 01 2006 00:00:00 GMT-0500",
-    :end     => "Sep 01 2006 00:00:00 GMT-0500",
-    :magnify => 'true',
-    :unit    => 'Timeline.DateTime.WEEK')
-  end
-end
