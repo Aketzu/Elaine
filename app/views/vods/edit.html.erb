@@ -1,0 +1,32 @@
+<h1>Editing vod</h1>
+
+<% form_for(@vod) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </p>
+  <p>
+    <%= f.label :program_id %><br />
+    <%= f.text_field :program_id %>
+  </p>
+  <p>
+    <%= f.label :vod_format_id %><br />
+    <%= f.text_field :vod_format_id %>
+  </p>
+  <p>
+    <%= f.label :filesize %><br />
+    <%= f.text_field :filesize %>
+  </p>
+  <p>
+    <%= f.label :length %><br />
+    <%= f.text_field :length %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @vod %> |
+<%= link_to 'Back', vods_path %>

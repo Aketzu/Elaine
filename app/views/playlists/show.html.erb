@@ -1,0 +1,23 @@
+<p>
+  <b>Program:</b>
+  <%=h @playlist.program_id %>
+</p>
+
+<p>
+  <b>Channel:</b>
+  <%=h @playlist.channel_id %>
+</p>
+
+<p>
+  <b>Start at:</b>
+  <%=h @playlist.start_at %>
+</p>
+
+<p>
+  <b>Movable:</b>
+  <%=h @playlist.movable %>
+</p>
+
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Back', playlists_path %>

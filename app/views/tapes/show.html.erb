@@ -1,0 +1,23 @@
+<p>
+  <b>Code:</b>
+  <%=h @tape.code %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @tape.title %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%=h @tape.length %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @tape.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_tape_path(@tape) %> |
+<%= link_to 'Back', tapes_path %>

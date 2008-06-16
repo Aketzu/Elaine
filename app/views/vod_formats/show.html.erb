@@ -1,0 +1,58 @@
+<p>
+  <b>Name:</b>
+  <%=h @vod_format.name %>
+</p>
+
+<p>
+  <b>Vcodec:</b>
+  <%=h @vod_format.vcodec %>
+</p>
+
+<p>
+  <b>Acodec:</b>
+  <%=h @vod_format.acodec %>
+</p>
+
+<p>
+  <b>Container:</b>
+  <%=h @vod_format.container %>
+</p>
+
+<p>
+  <b>Vbitrate:</b>
+  <%=h @vod_format.vbitrate %>
+</p>
+
+<p>
+  <b>Abitrate:</b>
+  <%=h @vod_format.abitrate %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @vod_format.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @vod_format.height %>
+</p>
+
+<p>
+  <b>Framerate:</b>
+  <%=h @vod_format.framerate %>
+</p>
+
+<p>
+  <b>Mime type:</b>
+  <%=h @vod_format.mime_type %>
+</p>
+
+<p>
+  <b>File extension:</b>
+  <%=h @vod_format.file_extension %>
+</p>
+
+
+<%= link_to 'Edit', edit_vod_format_path(@vod_format) %> |
+<%= link_to 'Back', vod_formats_path %>

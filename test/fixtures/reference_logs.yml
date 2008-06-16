@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  channel_id: 1
+  tape_id: 1
+  start_at: 1
+  end_at: 1
+
+two:
+  channel_id: 1
+  tape_id: 1
+  start_at: 1
+  end_at: 1

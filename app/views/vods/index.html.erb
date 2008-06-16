@@ -1,0 +1,28 @@
+<h1>Listing vods</h1>
+
+<table>
+  <tr>
+    <th>Filename</th>
+    <th>Program</th>
+    <th>Vod format</th>
+    <th>Filesize</th>
+    <th>Length</th>
+  </tr>
+
+<% for vod in @vods %>
+  <tr>
+    <td><%=h vod.filename %></td>
+    <td><%=h vod.program_id %></td>
+    <td><%=h vod.vod_format_id %></td>
+    <td><%=h vod.filesize %></td>
+    <td><%=h vod.length %></td>
+    <td><%= link_to 'Show', vod %></td>
+    <td><%= link_to 'Edit', edit_vod_path(vod) %></td>
+    <td><%= link_to 'Destroy', vod, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vod', new_vod_path %>

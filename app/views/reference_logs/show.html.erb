@@ -1,0 +1,23 @@
+<p>
+  <b>Channel:</b>
+  <%=h @reference_log.channel_id %>
+</p>
+
+<p>
+  <b>Tape:</b>
+  <%=h @reference_log.tape_id %>
+</p>
+
+<p>
+  <b>Start at:</b>
+  <%=h @reference_log.start_at %>
+</p>
+
+<p>
+  <b>End at:</b>
+  <%=h @reference_log.end_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_reference_log_path(@reference_log) %> |
+<%= link_to 'Back', reference_logs_path %>

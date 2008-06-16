@@ -1,0 +1,28 @@
+<p>
+  <b>Filename:</b>
+  <%=h @vod.filename %>
+</p>
+
+<p>
+  <b>Program:</b>
+  <%=h @vod.program_id %>
+</p>
+
+<p>
+  <b>Vod format:</b>
+  <%=h @vod.vod_format_id %>
+</p>
+
+<p>
+  <b>Filesize:</b>
+  <%=h @vod.filesize %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%=h @vod.length %>
+</p>
+
+
+<%= link_to 'Edit', edit_vod_path(@vod) %> |
+<%= link_to 'Back', vods_path %>

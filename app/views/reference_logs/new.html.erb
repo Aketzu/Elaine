@@ -1,0 +1,27 @@
+<h1>New reference_log</h1>
+
+<% form_for(@reference_log) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :channel_id %><br />
+    <%= f.text_field :channel_id %>
+  </p>
+  <p>
+    <%= f.label :tape_id %><br />
+    <%= f.text_field :tape_id %>
+  </p>
+  <p>
+    <%= f.label :start_at %><br />
+    <%= f.text_field :start_at %>
+  </p>
+  <p>
+    <%= f.label :end_at %><br />
+    <%= f.text_field :end_at %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', reference_logs_path %>

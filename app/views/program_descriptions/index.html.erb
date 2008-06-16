@@ -1,0 +1,26 @@
+<h1>Listing program_descriptions</h1>
+
+<table>
+  <tr>
+    <th>Program</th>
+    <th>Lang</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+
+<% for program_description in @program_descriptions %>
+  <tr>
+    <td><%=h program_description.program_id %></td>
+    <td><%=h program_description.lang %></td>
+    <td><%=h program_description.title %></td>
+    <td><%=h program_description.description %></td>
+    <td><%= link_to 'Show', program_description %></td>
+    <td><%= link_to 'Edit', edit_program_description_path(program_description) %></td>
+    <td><%= link_to 'Destroy', program_description, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New program_description', new_program_description_path %>

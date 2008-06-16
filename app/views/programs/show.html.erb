@@ -1,0 +1,88 @@
+<p>
+  <b>Category:</b>
+  <%=h @program.category_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @program.status %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @program.type %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @program.notes %>
+</p>
+
+<p>
+  <b>Quarantine:</b>
+  <%=h @program.quarantine %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%=h @program.filename %>
+</p>
+
+<p>
+  <b>File exists:</b>
+  <%=h @program.file_exists %>
+</p>
+
+<p>
+  <b>File status updated:</b>
+  <%=h @program.file_status_updated %>
+</p>
+
+<p>
+  <b>File aspect:</b>
+  <%=h @program.file_aspect %>
+</p>
+
+<p>
+  <b>File resx:</b>
+  <%=h @program.file_resx %>
+</p>
+
+<p>
+  <b>File resy:</b>
+  <%=h @program.file_resy %>
+</p>
+
+<p>
+  <b>File length:</b>
+  <%=h @program.file_length %>
+</p>
+
+<p>
+  <b>Target length:</b>
+  <%=h @program.target_length %>
+</p>
+
+<p>
+  <b>Pms:</b>
+  <%=h @program.pms_id %>
+</p>
+
+<p>
+  <b>Preview image offset:</b>
+  <%=h @program.preview_image_offset %>
+</p>
+
+<p>
+  <b>Do vod:</b>
+  <%=h @program.do_vod %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%=h @program.hidden %>
+</p>
+
+
+<%= link_to 'Edit', edit_program_path(@program) %> |
+<%= link_to 'Back', programs_path %>

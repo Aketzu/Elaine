@@ -1,0 +1,28 @@
+<h1>Editing tape</h1>
+
+<% form_for(@tape) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :length %><br />
+    <%= f.text_field :length %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @tape %> |
+<%= link_to 'Back', tapes_path %>

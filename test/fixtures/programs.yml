@@ -1,0 +1,39 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category_id: 1
+  status: MyString
+  type: MyString
+  notes: MyText
+  quarantine: 2008-06-16 22:53:55
+  filename: MyString
+  file_exists: false
+  file_status_updated: false
+  file_aspect: MyString
+  file_resx: 1
+  file_resy: 1
+  file_length: 1
+  target_length: 1
+  pms_id: 1
+  preview_image_offset: 1
+  do_vod: false
+  hidden: false
+
+two:
+  category_id: 1
+  status: MyString
+  type: MyString
+  notes: MyText
+  quarantine: 2008-06-16 22:53:55
+  filename: MyString
+  file_exists: false
+  file_status_updated: false
+  file_aspect: MyString
+  file_resx: 1
+  file_resy: 1
+  file_length: 1
+  target_length: 1
+  pms_id: 1
+  preview_image_offset: 1
+  do_vod: false
+  hidden: false

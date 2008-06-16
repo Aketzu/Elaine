@@ -1,0 +1,55 @@
+<h1>New vod_format</h1>
+
+<% form_for(@vod_format) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :vcodec %><br />
+    <%= f.text_field :vcodec %>
+  </p>
+  <p>
+    <%= f.label :acodec %><br />
+    <%= f.text_field :acodec %>
+  </p>
+  <p>
+    <%= f.label :container %><br />
+    <%= f.text_field :container %>
+  </p>
+  <p>
+    <%= f.label :vbitrate %><br />
+    <%= f.text_field :vbitrate %>
+  </p>
+  <p>
+    <%= f.label :abitrate %><br />
+    <%= f.text_field :abitrate %>
+  </p>
+  <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+  <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :framerate %><br />
+    <%= f.text_field :framerate %>
+  </p>
+  <p>
+    <%= f.label :mime_type %><br />
+    <%= f.text_field :mime_type %>
+  </p>
+  <p>
+    <%= f.label :file_extension %><br />
+    <%= f.text_field :file_extension %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', vod_formats_path %>

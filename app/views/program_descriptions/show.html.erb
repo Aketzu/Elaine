@@ -1,0 +1,23 @@
+<p>
+  <b>Program:</b>
+  <%=h @program_description.program_id %>
+</p>
+
+<p>
+  <b>Lang:</b>
+  <%=h @program_description.lang %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @program_description.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @program_description.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_program_description_path(@program_description) %> |
+<%= link_to 'Back', program_descriptions_path %>

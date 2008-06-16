@@ -1,0 +1,28 @@
+<h1>Editing program_description</h1>
+
+<% form_for(@program_description) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :program_id %><br />
+    <%= f.text_field :program_id %>
+  </p>
+  <p>
+    <%= f.label :lang %><br />
+    <%= f.text_field :lang %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @program_description %> |
+<%= link_to 'Back', program_descriptions_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  vcodec: MyString
+  acodec: MyString
+  container: MyString
+  vbitrate: 1
+  abitrate: 1
+  width: 1
+  height: 1
+  framerate: 9.99
+  mime_type: MyString
+  file_extension: MyString
+
+two:
+  name: MyString
+  vcodec: MyString
+  acodec: MyString
+  container: MyString
+  vbitrate: 1
+  abitrate: 1
+  width: 1
+  height: 1
+  framerate: 9.99
+  mime_type: MyString
+  file_extension: MyString

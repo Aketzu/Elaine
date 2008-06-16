@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  default_do_vod: false
+  default_hidden: false
+
+two:
+  name: MyString
+  description: MyString
+  default_do_vod: false
+  default_hidden: false

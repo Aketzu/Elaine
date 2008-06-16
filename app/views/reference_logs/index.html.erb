@@ -1,0 +1,26 @@
+<h1>Listing reference_logs</h1>
+
+<table>
+  <tr>
+    <th>Channel</th>
+    <th>Tape</th>
+    <th>Start at</th>
+    <th>End at</th>
+  </tr>
+
+<% for reference_log in @reference_logs %>
+  <tr>
+    <td><%=h reference_log.channel_id %></td>
+    <td><%=h reference_log.tape_id %></td>
+    <td><%=h reference_log.start_at %></td>
+    <td><%=h reference_log.end_at %></td>
+    <td><%= link_to 'Show', reference_log %></td>
+    <td><%= link_to 'Edit', edit_reference_log_path(reference_log) %></td>
+    <td><%= link_to 'Destroy', reference_log, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New reference_log', new_reference_log_path %>

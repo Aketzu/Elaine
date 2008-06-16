@@ -1,0 +1,20 @@
+<h1>Editing vod_file</h1>
+
+<% form_for(@vod_file) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </p>
+  <p>
+    <%= f.label :full_path %><br />
+    <%= f.text_field :full_path %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @vod_file %> |
+<%= link_to 'Back', vod_files_path %>

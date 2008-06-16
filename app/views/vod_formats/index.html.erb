@@ -1,0 +1,40 @@
+<h1>Listing vod_formats</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Vcodec</th>
+    <th>Acodec</th>
+    <th>Container</th>
+    <th>Vbitrate</th>
+    <th>Abitrate</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Framerate</th>
+    <th>Mime type</th>
+    <th>File extension</th>
+  </tr>
+
+<% for vod_format in @vod_formats %>
+  <tr>
+    <td><%=h vod_format.name %></td>
+    <td><%=h vod_format.vcodec %></td>
+    <td><%=h vod_format.acodec %></td>
+    <td><%=h vod_format.container %></td>
+    <td><%=h vod_format.vbitrate %></td>
+    <td><%=h vod_format.abitrate %></td>
+    <td><%=h vod_format.width %></td>
+    <td><%=h vod_format.height %></td>
+    <td><%=h vod_format.framerate %></td>
+    <td><%=h vod_format.mime_type %></td>
+    <td><%=h vod_format.file_extension %></td>
+    <td><%= link_to 'Show', vod_format %></td>
+    <td><%= link_to 'Edit', edit_vod_format_path(vod_format) %></td>
+    <td><%= link_to 'Destroy', vod_format, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vod_format', new_vod_format_path %>

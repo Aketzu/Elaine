@@ -1,0 +1,26 @@
+<h1>Listing tapes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Title</th>
+    <th>Length</th>
+    <th>Type</th>
+  </tr>
+
+<% for tape in @tapes %>
+  <tr>
+    <td><%=h tape.code %></td>
+    <td><%=h tape.title %></td>
+    <td><%=h tape.length %></td>
+    <td><%=h tape.type %></td>
+    <td><%= link_to 'Show', tape %></td>
+    <td><%= link_to 'Edit', edit_tape_path(tape) %></td>
+    <td><%= link_to 'Destroy', tape, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tape', new_tape_path %>

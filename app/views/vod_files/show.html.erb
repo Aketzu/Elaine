@@ -1,0 +1,13 @@
+<p>
+  <b>Filename:</b>
+  <%=h @vod_file.filename %>
+</p>
+
+<p>
+  <b>Full path:</b>
+  <%=h @vod_file.full_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_vod_file_path(@vod_file) %> |
+<%= link_to 'Back', vod_files_path %>
