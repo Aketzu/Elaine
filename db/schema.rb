@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080616190902) do
+ActiveRecord::Schema.define(:version => 20080625172427) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20080616190902) do
 
   add_index "program_descriptions", ["program_id"], :name => "index_program_descriptions_on_program_id"
 
+  create_table "program_tape_links", :force => true do |t|
+    t.integer  "program_id"
+    t.integer  "tape_id"
+    t.integer  "start_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_tape_links", ["program_id", "tape_id"], :name => "index_program_tape_links_on_program_id_and_tape_id"
+
   create_table "program_user_links", :force => true do |t|
     t.integer  "program_id"
     t.integer  "user_id"
@@ -59,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20080616190902) do
   add_index "program_user_links", ["program_id", "user_id"], :name => "index_program_user_links_on_program_id_and_user_id"
 
   create_table "programs", :force => true do |t|
-    t.integer  "category_id"
+    t.integer  "program_category_id"
     t.string   "status"
     t.string   "type"
     t.text     "notes"
@@ -80,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20080616190902) do
     t.datetime "updated_at"
   end
 
-  add_index "programs", ["category_id"], :name => "index_programs_on_category_id"
+  add_index "programs", ["program_category_id"], :name => "index_programs_on_program_category_id"
   add_index "programs", ["do_vod"], :name => "index_programs_on_do_vod"
   add_index "programs", ["pms_id"], :name => "index_programs_on_pms_id"
 
@@ -104,16 +114,6 @@ ActiveRecord::Schema.define(:version => 20080616190902) do
 
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-
-  create_table "tape_program_links", :force => true do |t|
-    t.integer  "program_id"
-    t.integer  "tape_id"
-    t.integer  "start_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tape_program_links", ["program_id", "tape_id"], :name => "index_tape_program_links_on_program_id_and_tape_id"
 
   create_table "tapes", :force => true do |t|
     t.string   "code"

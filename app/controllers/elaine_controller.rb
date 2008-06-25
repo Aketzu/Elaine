@@ -1,0 +1,2 @@
+class ElaineController < ApplicationController
+end

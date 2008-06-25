@@ -23,7 +23,7 @@ class CreatePrograms < ActiveRecord::Migration
     end
 		add_index :programs, :pms_id
 		add_index :programs, :do_vod
-		add_index :programs, :category_id
+		add_index :programs, :program_category_id
   end
 
   def self.down
