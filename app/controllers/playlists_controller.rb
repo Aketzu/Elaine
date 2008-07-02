@@ -21,6 +21,15 @@ class PlaylistsController < ApplicationController
     end
   end
 
+
+	def timeline
+    respond_to do |format|
+      format.html # show.html.erb
+      #format.xml  { render :xml => @playlist }
+    end
+
+	end
+
   # GET /playlists/new
   # GET /playlists/new.xml
   def new

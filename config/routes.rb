@@ -19,13 +19,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :channels
 
-  map.resources :playlists
+  map.resources :playlists, :collection => {:timeline => :get}
 
   map.resources :program_descriptions
 
   map.resources :program_categories
 
-  map.resources :programs
+  map.resources :programs, :collection => {:import => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

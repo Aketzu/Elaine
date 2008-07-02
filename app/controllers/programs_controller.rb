@@ -21,6 +21,13 @@ class ProgramsController < ApplicationController
     end
   end
 
+
+	def import 
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+	end
+
   # GET /programs/new
   # GET /programs/new.xml
   def new

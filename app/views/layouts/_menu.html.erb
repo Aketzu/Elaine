@@ -12,8 +12,8 @@
 						<ul>
 							<li><%= link_to 'Frontpage', :controller => 'elaine', :action => 'index' %></li>
 							<li><%= link_to 'Personal Details', edit_user_path(self.current_user.id) %></li>
-							<li><%= link_to 'New Ticket', :controller => 'elaine', :action => 'new_ticket' %></li>
-							<li><%= link_to 'View Tickets', :controller => 'elaine', :action => 'view_tickets' %></li>
+							<li><%= link_to 'New Ticket', 'https://bugs.nodeta.fi/trac/elaine/newticket' %></li>
+							<li><%= link_to 'View Tickets', 'https://bugs.nodeta.fi/trac/elaine/report/1?sort=created&asc=1' %></li>
 						</ul>
 					</li>
 					
@@ -23,8 +23,8 @@
 						<a href="#">Playlists</a>
 						<ul>
 							<li><%= link_to 'Playlists', playlists_path %></li>
-							<li><%= link_to 'Timeline', :controller => 'playlists', :action => 'timeline' %></li>
-							<li><%= link_to 'Broadcast Logs', :controller => 'broadcast_logs', :action => 'list' %></li>
+							<li><%= link_to 'Timeline', timeline_playlists_path %></li>
+							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
 							<% if authorized?(:controller => "channel") -%>
 							<li><%= link_to 'Edit channels', channels_path %></li>
 							<% end %>
@@ -38,14 +38,14 @@
 						<a href="#">Programs</a>
 						<ul>
 							<li><%= link_to 'List Programs', programs_path %></li>
-							<li><%= link_to 'User\'s Programs', :controller => 'programs', :action => 'list', :find_by_user => self.current_user.id%></li>
+							<li><%= link_to 'User\'s Programs', programs_path( :find_by_user => self.current_user.id ) %></li>
 							<% if authorized?(:controller => 'programs', :action => 'new') %>
 								<li><%= link_to 'New Program', new_program_path %></li>
 							<% end %>
 
               <% if authorized?(:controller => "admin") -%>
               <li><%= link_to 'Program categories', program_categories_path %></li> 
-              <li><%= link_to 'Import PMS data', :controller => 'programs', :action => 'import' %></li> 
+              <li><%= link_to 'Import PMS data', import_programs_path %></li> 
               <% end %> 
 						</ul>
 					</li>
@@ -56,13 +56,9 @@
 						<a href="#">Tapes</a>
 						<ul>
 							<li><%= link_to 'List Tapes', tapes_path %></li>
-							<li><%= link_to 'User\'s Tapes', :controller => 'tapes', :action => 'list_by_user' %></li>
+							<li><%= link_to 'User\'s Tapes', tapes_path(:list => :user) %></li>
 							<% if authorized?(:controller => 'tapes', :action => 'new') %>
 							<li><%= link_to 'New Tape', new_tape_path %></li>
-							<% end %>
-							<% if authorized?(:controller => "admin") -%>
-							<li><%= link_to 'Tape categories', :controller => 'tape_categorys', :action => 'list' %></li>
-							<li><%= link_to 'Tape medias', :controller => 'tape_medias', :action => 'list' %></li>
 							<% end %>
 						</ul>
 					</li>
@@ -74,9 +70,8 @@
 						<a href="#">Vods</a>
 						<ul>
 							<li><%= link_to 'List Vods', vods_path %></li>
-							<li><%= link_to 'Vod groups', :controller => 'vod_groups', :action => 'list' %></li>
-							<li><%= link_to 'Video formats', :controller => 'video_formats', :action => 'list' %></li>
-							<li><%= link_to 'File locations', :controller => 'file_locations', :action => 'list' %></li>
+							<li><%= link_to 'Vod formats', vod_formats_path %></li>
+							<li><%= link_to 'Vod files', vod_files_path %></li>
 						</ul>
 					</li>
 					<% end %>
