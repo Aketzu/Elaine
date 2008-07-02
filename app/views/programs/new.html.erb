@@ -1,76 +1,8 @@
 <h1>New program</h1>
 
 <% form_for(@program) do |f| %>
-  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :program_category_id %><br />
-    <%= f.text_field :program_category_id %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
-  </p>
-  <p>
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
-  </p>
-  <p>
-    <%= f.label :quarantine %><br />
-    <%= f.datetime_select :quarantine %>
-  </p>
-  <p>
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </p>
-  <p>
-    <%= f.label :file_exists %><br />
-    <%= f.check_box :file_exists %>
-  </p>
-  <p>
-    <%= f.label :file_status_updated %><br />
-    <%= f.check_box :file_status_updated %>
-  </p>
-  <p>
-    <%= f.label :file_aspect %><br />
-    <%= f.text_field :file_aspect %>
-  </p>
-  <p>
-    <%= f.label :file_resx %><br />
-    <%= f.text_field :file_resx %>
-  </p>
-  <p>
-    <%= f.label :file_resy %><br />
-    <%= f.text_field :file_resy %>
-  </p>
-  <p>
-    <%= f.label :file_length %><br />
-    <%= f.text_field :file_length %>
-  </p>
-  <p>
-    <%= f.label :target_length %><br />
-    <%= f.text_field :target_length %>
-  </p>
-  <p>
-    <%= f.label :pms_id %><br />
-    <%= f.text_field :pms_id %>
-  </p>
-  <p>
-    <%= f.label :preview_image_offset %><br />
-    <%= f.text_field :preview_image_offset %>
-  </p>
-  <p>
-    <%= f.label :do_vod %><br />
-    <%= f.check_box :do_vod %>
-  </p>
-  <p>
-    <%= f.label :hidden %><br />
-    <%= f.check_box :hidden %>
-  </p>
+	<%= render :partial => "form", :object => f %>
   <p>
     <%= f.submit "Create" %>
   </p>

@@ -1,5 +1,6 @@
 class Tape < ActiveRecord::Base
 	has_many :reference_logs
-	has_and_belongs_to_many :programs
+	has_many :programs_tapes
+	has_many :programs, :through => :programs_tapes
 
 end

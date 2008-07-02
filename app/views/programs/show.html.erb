@@ -1,6 +1,6 @@
 <p>
   <b>Category:</b>
-  <%=h @program.category_id %>
+  <%=h @program.program_category_id %>
 </p>
 
 <p>
@@ -9,8 +9,8 @@
 </p>
 
 <p>
-  <b>Type:</b>
-  <%=h @program.type %>
+  <b>Program type:</b>
+  <%=h @program.programtype %>
 </p>
 
 <p>
@@ -82,7 +82,6 @@
   <b>Hidden:</b>
   <%=h @program.hidden %>
 </p>
-
 
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', programs_path %>

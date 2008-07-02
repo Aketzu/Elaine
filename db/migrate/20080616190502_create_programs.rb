@@ -3,7 +3,7 @@ class CreatePrograms < ActiveRecord::Migration
     create_table :programs do |t|
       t.integer :program_category_id
       t.string :status
-      t.string :type
+      t.string :programtype
       t.text :notes
       t.datetime :quarantine
       t.string :filename

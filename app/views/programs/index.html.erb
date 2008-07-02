@@ -23,7 +23,7 @@
 
 <% for program in @programs %>
   <tr>
-    <td><%=h program.category_id %></td>
+    <td><%=h program.program_category.name %></td>
     <td><%=h program.status %></td>
     <td><%=h program.type %></td>
     <td><%=h program.notes %></td>

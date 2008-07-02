@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email,    :case_sensitive => false
   validates_format_of       :email,    :with => RE_EMAIL_OK, :message => MSG_EMAIL_BAD
 
-	has_and_belongs_to_many :programs
+	has_many :programs_users
+	has_many :programs, :through => :programs_users
   
 
   # HACK HACK HACK -- how to do attr_accessible from here?

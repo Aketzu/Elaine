@@ -1,0 +1,54 @@
+  <%= form.error_messages %>
+
+  <p>
+    <%= form.label :program_category_id %><br />
+    <%= form.select :program_category_id, ProgramCategory.find(:all).collect { |p| [p.name, p.id] } %>
+  </p>
+  <p>
+    <%= form.label :status %><br />
+    <%= form.select  :status, Program.ProgramStatusList %>
+  </p>
+  <p>
+    <%= form.label :programtype %><br />
+    <%= form.select :programtype, Program.ProgramTypeList %>
+  </p>
+  <p>
+    <%= form.label :notes %><br />
+    <%= form.text_area :notes %>
+  </p>
+  <p>
+    <%= form.label :quarantine %><br />
+    <%= form.datetime_select :quarantine %>
+  </p>
+  <p>
+    <%= form.label "Filename (base part)" %><br />
+    <%= form.text_field :filename %>
+  </p>
+  <p>
+    <%= form.label :file_exists %><br />
+    <%= @program.file_exists ? "Yes" : "No" %>
+  </p>
+  <p>
+    <%= form.label :file_status_updated %><br />
+    <%= @program.file_status_updated ? "Yes" : "No" %>
+  </p>
+  <p>
+    <%= form.label "File info" %><br />
+		<%= @program.file_resx%> x <%= @program.file_resy %> (<%= @program.file_aspect %>)
+  </p>
+  <p>
+    <%= form.label :target_length %><br />
+    <%= form.text_field :target_length %> (detected <%=@program.file_length_time %>)
+  </p>
+  <p>
+    <%= form.label :preview_image_offset %><br />
+    <%= form.text_field :preview_image_offset %>
+  </p>
+  <p>
+    <%= form.label :do_vod %><br />
+    <%= form.check_box :do_vod %>
+  </p>
+  <p>
+    <%= form.label :hidden %><br />
+    <%= form.check_box :hidden %>
+  </p>
