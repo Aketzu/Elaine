@@ -2,7 +2,11 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: sqlite3
+<% if `uname -n`.strip == "kelvin.aketzu.net" %>
+  database: ../../shared/db/development.sqlite3
+<% else %>
   database: db/development.sqlite3
+<% end %>
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
