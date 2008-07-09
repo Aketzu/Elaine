@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+		<th>Title</th>
     <th>Category</th>
     <th>Status</th>
     <th>Type</th>
@@ -23,9 +24,10 @@
 
 <% for program in @programs %>
   <tr>
-    <td><%=h program.program_category.name %></td>
+    <td><%=h program.program_descriptions[0].title %></td>
+    <td><%=h program.program_category.name if program.program_category_id != 0%></td>
     <td><%=h program.status %></td>
-    <td><%=h program.type %></td>
+    <td><%=h program.programtype %></td>
     <td><%=h program.notes %></td>
     <td><%=h program.quarantine %></td>
     <td><%=h program.filename %></td>

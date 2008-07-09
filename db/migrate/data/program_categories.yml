@@ -1,0 +1,24 @@
+program_categories-1:
+  id: "1"
+  name: "2007 Seminars"
+  description: "Assembly ARTtech seminars"
+program_categories-2:
+  id: "2"
+  name: "2007 Compos"
+  description: "Compo entries provided by HallAV"
+program_categories-3:
+  id: "3"
+  name: "2007 AssemblyTV"
+  description: "All TV programs"
+program_categories-4:
+  id: "4"
+  name: "2006 Seminars"
+  description: "Assembly ARTtech seminars"
+program_categories-5:
+  id: "5"
+  name: "2006 AssemblyTV"
+  description: "All TV programs"
+program_categories-6:
+  id: "6"
+  name: "2006 Compos"
+  description: "Compo entries provided by HallAV"
