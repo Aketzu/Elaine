@@ -1,6 +1,8 @@
 set :application, "Elaine3"
 set :repository,  "https://svn.nodeta.fi/elaine2006/trunk"
 
+set :rails_env, "development"
+
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location

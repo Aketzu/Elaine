@@ -1,4 +1,5 @@
 class Program < ActiveRecord::Base
+	acts_as_tree :foreign_key => :program_id
 	belongs_to :program_category
 
 	has_many :program_descriptions
@@ -26,4 +27,7 @@ class Program < ActiveRecord::Base
 	def file_length_time
 		timesize(file_length)
 	end
+
+	named_scope :roots, :conditions => {:program_id => nil}
+	named_scope :children_of, lambda { |prog| { :conditions => { :program_id => prog } } }
 end

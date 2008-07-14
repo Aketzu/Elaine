@@ -39,6 +39,10 @@ def new_tbl(table, data)
 			id = row.hash
 			f.write "#{table}-#{id}:\n"
 			row.each { |name, val|
+				val ||= "";
+				val = val.to_s
+				val.strip!
+				val.gsub! "\"", "\\\""
 				f.write "  #{name}: \"#{val}\"\n"
 			}
 		}
@@ -59,52 +63,146 @@ dump_tbl("program_categories") { |name, val|
 
 @programs_users = Array.new
 
-#BIG TODO: events migration
-
 #Fetch all programs & events & links
 #if exactly one event for program then merge data
 #if multiple events per program then leave program as parent and create
 # subprograms from events
 
-dump_tbl("programs") { |name, val|
-	next if name == "min_show" || name == "max_show" || name == "preview_video_offset" || name == "file_location_id"|| name == "tags" || name == "video_format_id"
+events = Hash.new
 
-	name = "pms_id" if name == "external_id"
-
-	if name == "status_id"
-		name = "status"
-		val = case val
-			when "1"; "Planning"
-			when "2"; "Production"
-			when "3"; "Done"
-			else; ""
-			end
-	end
-
-	if name == "owner_id"
-		@programs_users << {:program_id => @curid, :user_id => val, :usertype => "Owner"}
-		next
-	end
-
-	[name, val]
+res = @conn.exec('select * from events order by 1')
+res.each { |row|
+	r = Hash.new
+	row.each { |name,val|
+		r[name] = val
+	}
+	events[row["id"]] = r
 }
 
-new_tbl("programs_users", @programs_users)
+programs = Hash.new
 
-dump_tbl("program_descriptions") { |name, val|
-	next if name == 'private_description' || name == "position"
-	name = "description" if name == "public_description"
+res = @conn.exec('select max(id) from programs')
+@maxid = res[0][0].to_i+1
 
-	if name == "language_id"
-		name = "lang"
-		val = case val
-			when "1"; "en"
-			when "2"; "fi"
-			else; ""
+res = @conn.exec('select * from programs order by 1')
+res.each { |row|
+	r = Hash.new
+	row.each { |name,val|
+		next if name == "min_show" || name == "max_show" || name == "preview_video_offset" || name == "file_location_id"|| name == "tags" || name == "video_format_id"
+
+		name = "pms_id" if name == "external_id"
+
+		if name == "status_id"
+			name = "status"
+			val = case val
+				when "1"; "Planning"
+				when "2"; "Production"
+				when "3"; "Done"
+				else; ""
+				end
 		end
-	end
-	[name, val]
+		if name == "owner_id"
+			@programs_users << {:program_id => @curid, :user_id => val, :usertype => "Owner"}
+			next
+		end
+		r[name] = val
+	}
+	programs[row["id"]] = r
 }
+
+program_event_links = Hash.new
+res = @conn.exec('select * from program_event_links order by 2,1')
+res.each { |row|
+	id = row["program_id"]
+	program_event_links[id] ||= Array.new
+	program_event_links[id] << events[row["event_id"]]
+}
+
+newprograms = Array.new
+progdesc = Array.new
+maxdescid = 0
+res = @conn.exec('select * from program_descriptions order by 1')
+res.each { |row|
+	r = Hash.new
+	row.each { |name,val|
+		next if name == 'private_description' || name == "position"
+		name = "description" if name == "public_description"
+
+		if name == "language_id"
+			name = "lang"
+			val = case val
+				when "1"; "en"
+				when "2"; "fi"
+				else; ""
+			end
+		end
+		r[name] = val
+	}
+	maxdescid = row["id"].to_i if row["id"].to_i > maxdescid
+	progdesc << r
+}
+programs.each { |pid, prog| 
+	if program_event_links[pid] == nil || program_event_links[pid].length == 0
+		#Do nothing, all is good
+		newprograms << prog
+	elsif program_event_links[pid].length == 1
+		#Update data
+		event = program_event_links[pid][0]
+
+		prog["notes"] += "\n" + event["notes"] if event["notes"]
+		prog["notes"] += "\n" + event["script"] if event["script"]
+		prog["target_length"] ||= event["length"]
+		prog["filename"] ||= event["filename"]
+		prog["quarantine"] = event["quarantine"]
+		prog["pms_id"] ||= event["external_id"]
+		prog["programtype"] = case event["event_type_id"]
+			when "1"; "Live"
+			when "2"; "Insert"
+			end
+
+		newprograms << prog
+	else # >1
+		progtype = program_event_links[pid][0]["event_type_id"]
+
+		program_event_links[pid].each { |event|
+			newprog = prog.dup
+			newprog["id"] = @maxid
+			@maxid = @maxid + 1
+			newprog["program_id"] = pid
+			maxdescid = maxdescid + 1
+			progdesc << { :id => maxdescid, :program_id => newprog["id"], :lang => :en, :title => event["title"] }	
+
+			newprog["notes"] += "\n" + event["notes"] if event["notes"]
+			newprog["notes"] += "\n" + event["script"] if event["script"]
+			newprog["target_length"] ||= event["length"]
+			newprog["filename"] ||= event["filename"]
+			newprog["quarantine"] = event["quarantine"]
+			newprog["pms_id"] ||= event["external_id"]
+			newprog["programtype"] = case event["event_type_id"]
+				when "1"; "Live"
+				when "2"; "Insert"
+				end
+			progtype = 3 if progtype != event["event_type_id"]
+
+			newprograms << newprog
+
+		}
+		prog["programtype"] = case progtype
+			when "1"; "Live"
+			when "2"; "Insert"
+			when "3"; "Insert+Live"
+			end
+
+		newprograms << prog
+	end
+
+}
+
+
+new_tbl("programs", newprograms)
+new_tbl("programs_users", @programs_users)
+new_tbl("program_descriptions", progdesc)
+
 dump_tbl("playlists") { |name, val|
 	next if name == 'no_listing'
 	name = "start_at" if name == "start_time"

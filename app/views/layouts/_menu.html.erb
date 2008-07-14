@@ -8,9 +8,9 @@
 				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"><%= @clock %></div>
 				<ul id="Menu1" class="MM">
 					<li>
-						<a href="#">Elaine</a>
+						<%= link_to 'Elaine', root_path %>
 						<ul>
-							<li><%= link_to 'Frontpage', :controller => 'elaine', :action => 'index' %></li>
+							<li><%= link_to 'Frontpage', root_path %></li>
 							<li><%= link_to 'Personal Details', edit_user_path(self.current_user.id) %></li>
 							<li><%= link_to 'New Ticket', 'https://bugs.nodeta.fi/trac/elaine/newticket' %></li>
 							<li><%= link_to 'View Tickets', 'https://bugs.nodeta.fi/trac/elaine/report/1?sort=created&asc=1' %></li>
@@ -20,7 +20,7 @@
 					
 					<% if authorized?(:controller => "playlists") %>
 					<li>
-						<a href="#">Playlists</a>
+						<%= link_to 'Playlists', playlists_path %>
 						<ul>
 							<li><%= link_to 'Playlists', playlists_path %></li>
 							<li><%= link_to 'Timeline', timeline_playlists_path %></li>
@@ -35,7 +35,7 @@
 					
 					<% if authorized?(:controller => "programs") %>
 					<li>
-						<a href="#">Programs</a>
+						<%= link_to 'Programs', programs_path %>
 						<ul>
 							<li><%= link_to 'List Programs', programs_path %></li>
 							<li><%= link_to 'User\'s Programs', programs_path( :find_by_user => self.current_user.id ) %></li>
@@ -53,7 +53,7 @@
 					
 					<% if authorized?(:controller => "tapes") %>
 					<li>
-						<a href="#">Tapes</a>
+						<%= link_to 'Tapes', tapes_path %>
 						<ul>
 							<li><%= link_to 'List Tapes', tapes_path %></li>
 							<li><%= link_to 'User\'s Tapes', tapes_path(:list => :user) %></li>
@@ -67,7 +67,7 @@
 					
 					<% if authorized?(:controller => "admin") %>
 					<li>
-						<a href="#">Vods</a>
+						<%= link_to 'Vods', vods_path %>
 						<ul>
 							<li><%= link_to 'List Vods', vods_path %></li>
 							<li><%= link_to 'Vod formats', vod_formats_path %></li>
@@ -81,7 +81,6 @@
 					<li>
 						<a href="#">Admin</a>
 						<ul>
-							<li><%= link_to 'Admin', :controller => 'elaine', :action => 'index' %></li>
 							<li><%= link_to 'Send \'Change password\' links', :controller => 'admin', :action => 'send_change_password_link' %></li>
 							<li><%= link_to 'Roles', :controller => 'role', :action => 'list' %></li>
 							<li><%= link_to 'Permissions', :controller => 'permission', :action => 'list' %></li>

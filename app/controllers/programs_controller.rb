@@ -2,7 +2,7 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.xml
   def index
-    @programs = Program.find(:all, :include => [:program_descriptions, :program_category])
+    @programs = Program.roots.find(:all, :include => [:program_descriptions, :program_category])
 
     respond_to do |format|
       format.html # index.html.erb
