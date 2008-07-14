@@ -311,3 +311,8 @@ tapes-65:
   code: "seminars summer '07: imguis"
   title: "seminar: imguis"
   length: "2189"
+tapes-66:
+  id: "66"
+  code: "ASM07-COMPO1"
+  title: "Assembly 2007 Game Dev Compo"
+  length: "3600"

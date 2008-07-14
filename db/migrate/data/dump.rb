@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'postgres'
 
-conn = PGconn.connect("localhost", 5433, '', '', 'akolehma', 'akolehma', '')
+conn = PGconn.connect("localhost", 5433, '', '', 'akolehma', 'akolehma', 'foo')
 
 #Botched local DB
 conn.set_client_encoding("UTF-8")
@@ -102,7 +102,7 @@ res.each { |row|
 				end
 		end
 		if name == "owner_id"
-			@programs_users << {:program_id => @curid, :user_id => val, :usertype => "Owner"}
+			@programs_users << {:program_id => row["id"], :user_id => val, :usertype => "Owner"}
 			next
 		end
 		r[name] = val
@@ -148,10 +148,11 @@ programs.each { |pid, prog|
 	elsif program_event_links[pid].length == 1
 		#Update data
 		event = program_event_links[pid][0]
-
+		prog["notes"] ||= ""
 		prog["notes"] += "\n" + event["notes"] if event["notes"]
 		prog["notes"] += "\n" + event["script"] if event["script"]
 		prog["target_length"] ||= event["length"]
+		#FIXME: Lengths are not correct always
 		prog["filename"] ||= event["filename"]
 		prog["quarantine"] = event["quarantine"]
 		prog["pms_id"] ||= event["external_id"]

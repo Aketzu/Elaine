@@ -1,55 +1,43 @@
 <h1>Listing programs</h1>
 
-<table>
-  <tr>
-		<th>Title</th>
-    <th>Category</th>
-    <th>Status</th>
-    <th>Type</th>
-    <th>Notes</th>
-    <th>Quarantine</th>
-    <th>Filename</th>
-    <th>File exists</th>
-    <th>File status updated</th>
-    <th>File aspect</th>
-    <th>File resx</th>
-    <th>File resy</th>
-    <th>File length</th>
-    <th>Target length</th>
-    <th>Pms</th>
-    <th>Preview image offset</th>
-    <th>Do vod</th>
-    <th>Hidden</th>
-  </tr>
+<% form_tag programs_path, :id => :search, :method => :get do %>
+	Find: <%= text_field :program_description, :title %>
+	<%# TODO %>
+	<%#= text_field_with_auto_complete :program_description, :title, {:skip_style => true, :value => @filter}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked'}  %>
 
-<% for program in @programs %>
-  <tr>
-    <td><%=h program.program_descriptions[0].title %> <br />
-			<%=h program.children.count%></td>
-    <td><%=h program.program_category.name if program.program_category_id != 0%></td>
-    <td><%=h program.status %></td>
-    <td><%=h program.programtype %></td>
-    <td><%=h program.notes %></td>
-    <td><%=h program.quarantine %></td>
-    <td><%=h program.filename %></td>
-    <td><%=h program.file_exists %></td>
-    <td><%=h program.file_status_updated %></td>
-    <td><%=h program.file_aspect %></td>
-    <td><%=h program.file_resx %></td>
-    <td><%=h program.file_resy %></td>
-    <td><%=h program.file_length %></td>
-    <td><%=h program.target_length %></td>
-    <td><%=h program.pms_id %></td>
-    <td><%=h program.preview_image_offset %></td>
-    <td><%=h program.do_vod %></td>
-    <td><%=h program.hidden %></td>
-    <td><%= link_to 'Show', program %></td>
-    <td><%= link_to 'Edit', edit_program_path(program) %></td>
-    <td><%= link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	User:
+	<select name="find_by_user">
+	<option value="0">All</option>
+	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user) %>
+	</select>
+
+	Category:
+	<select name="find_by_category">
+	<option value="0">All</option>
+	<%= options_from_collection_for_select(ProgramCategory.find(:all, :order => "name"), "id", "name", @category) %>
+	</select>
+
+	<%=check_box_tag "ignore_date_filter", 1, params[:ignore_date_filter] %> Ignore date filter
+
+
+	<%=submit_tag :Search %>
+	<%= image_tag("spinner.gif",
+		:align => 'middle',
+		:border=> 0,
+		:id => "spinner",
+		:style=>"display: none;") %>
+
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New program', new_program_path %>
+<div id="programs">
+<%= render :partial => "list" %>
+</div>
+
+<%= observe_form 'search',
+	:update => 'programs',
+	:before => "Element.show('spinner')",
+	:success => "Element.hide('spinner')",
+	:url => programs_path,
+	:method => :get,
+	:frequency => 2 %>

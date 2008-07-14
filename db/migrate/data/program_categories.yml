@@ -22,3 +22,7 @@ program_categories-6:
   id: "6"
   name: "2006 Compos"
   description: "Compo entries provided by HallAV"
+program_categories-7:
+  id: "7"
+  name: "2007 PAL Compos"
+  description: "PAL Compos (short film)"

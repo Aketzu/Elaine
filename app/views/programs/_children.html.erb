@@ -1,0 +1,31 @@
+<% index = 0 %>
+<% offset = 0 %>
+<% children.each { |program| %>
+<div class="events_in_program_list">
+  <div class="actions">
+  [
+  <%#= link_to 'up', :action => 'move_event_up',
+                    :id => @curprog.id,
+                    :program_event_id => program.id%>
+  <%#= link_to 'down', :action => 'move_event_down',
+                      :id => @curprog.id,
+                      :program_event_id => program.id %>
+		 <%# TODO: implement unlink %>
+  <%= link_to 'unlink', program, 
+			:confirm => 'Are you sure you want to unlink?',
+                         :method => :get %>
+  <%= link_to 'destroy', program, 
+			:confirm => 'Are you sure you want to destroy the item?',
+                         :method => :delete %>
+  ]
+  </div>
+  <div><b><%= index += 1 %>.</b>
+  <%= format_length(offset) %>
+
+  <% offset += program.target_length %>
+  <%= format_length(offset) %>
+
+  <%= link_to program.title, edit_program_path(program) %>
+  </div>
+</div>
+<% } %>

@@ -1,0 +1,47 @@
+<% if @date_filter %>
+Search limited to programs newer than <%= @date_filter %>.<br /><br />
+<% end %>
+
+<%= link_to 'New program', :action => 'new' %>
+
+<%= will_paginate @programs %>
+
+<table>
+  <tr class="header">
+		<th><%=sortlink "Title", :title%></th>
+    <th><%#=sortlink "Length", :length%>Length<br />[<%=sortlink "Target", :target%>]</th>
+    <th><%=sortlink "Created", :created%><br><%=sortlink "Modified", :modified%></th>
+    <th><%=sortlink "Owner", :owner%></th>
+    <th><%=sortlink "Status", :status%></th>
+    <th><%=sortlink "Do VOD?", :vod%></th>
+    <th><%=sortlink "Quarantine", :quarantine%></th>
+    <th>Actions</th>
+  </tr>
+
+<% for program in @programs 
+	@curprog = program %>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%= link_to program.title, edit_program_path(program) %></td>
+    <td><%=h program.formatted_length %><br />[<%=h program.formatted_target_length%>]</td>
+    <td><%=h program.created_at.strftime("%a %d.%m.%Y %H:%M") %><br/><%=h program.updated_at.strftime("%a %d.%m.%Y %H:%M") %></td>
+    <td><%=program.owner.login%></td>
+    <td><%=program.status%></td>
+    <td><%=h program.do_vod %></td>
+    <td><%= program.quarantine.strftime("%a %d.%m.%Y %H:%M") if program.quarantine%></td>
+    <td>[
+      
+      <%= link_to 'Edit', edit_program_path(program) %>
+      <%= link_to 'Destroy', program, :confirm => 'Are you sure you want to destroy the item?', 
+              :method => :delete %>
+    ]</td>
+  </tr>
+
+  <tr class="<%= @current_cycle %>">
+    <td colspan="12"><%= render(:partial => 'children', :object => program.children) %></td>
+  </tr>
+
+<% end %>
+</table>
+
+<%= link_to 'New program', :action => 'new' %>
+<%= will_paginate @programs %>

@@ -18,6 +18,10 @@ class Program < ActiveRecord::Base
 		["Insert", "Insert+Live", "Live"]
 	end
 
+	def title
+		program_descriptions[0].title
+	end
+
 
 	def timesize(secs)
 		secs ||= 0
@@ -26,6 +30,25 @@ class Program < ActiveRecord::Base
 
 	def file_length_time
 		timesize(file_length)
+	end
+
+	def formatted_length
+		#TODO: get from subprog lengths...
+		timesize(target_length)
+	end
+	def formatted_target_length
+		timesize(target_length)
+	end
+	def formatted_preview_image_offset
+		timesize(preview_image_offset)
+	end
+
+	def owner
+		#TODO user which has correct type	
+		users[0] || User.new
+	end
+	def owner_id
+		owner.id
 	end
 
 	named_scope :roots, :conditions => {:program_id => nil}
