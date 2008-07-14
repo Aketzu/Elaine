@@ -16,7 +16,8 @@
 # Please note: if you change this, all the passwords will be invalidated, so DO
 # keep it someplace secure.  Use the random value given or type in the lyrics to
 # your favorite Jay-Z song or something; any moderately long, unpredictable text.
-REST_AUTH_SITE_KEY         = 'a58520dc47e614d5a83b4158fe0980ec4f0d0c01'
+#REST_AUTH_SITE_KEY         = 'a58520dc47e614d5a83b4158fe0980ec4f0d0c01'
+REST_AUTH_SITE_KEY = nil
   
 # Repeated applications of the hash make brute force (even with a compromised
 # database and site key) harder, and scale with Moore's law.
@@ -35,4 +36,5 @@ REST_AUTH_SITE_KEY         = 'a58520dc47e614d5a83b4158fe0980ec4f0d0c01'
 # * http://www.owasp.org/index.php/Hashing_Java
 # * "An Illustrated Guide to Cryptographic Hashes":http://www.unixwiz.net/techtips/iguide-crypto-hashes.html
 
-REST_AUTH_DIGEST_STRETCHES = 10
+#REST_AUTH_DIGEST_STRETCHES = 10
+REST_AUTH_DIGEST_STRETCHES = 1
