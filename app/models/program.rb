@@ -1,6 +1,7 @@
 class Program < ActiveRecord::Base
-	acts_as_tree :foreign_key => :program_id
+	acts_as_tree :foreign_key => :program_id, :include => :program_descriptions
 	belongs_to :program_category
+	belongs_to :owner, :class_name => "User"
 
 	has_many :program_descriptions
 	has_many :playlists
@@ -19,13 +20,21 @@ class Program < ActiveRecord::Base
 	end
 
 	def title
-		program_descriptions[0].title
+		program_descriptions.first.title
 	end
 
 
 	def timesize(secs)
 		secs ||= 0
 		"%02d:%02d:%02d" % [ secs/3600, secs/60%60, secs%60 ]
+	end
+	def untimesize(str) 
+		secs = 0
+		str.split(":").each { |p|
+			secs *= 60
+			secs += p.to_i
+		}
+		secs
 	end
 
 	def file_length_time
@@ -36,19 +45,26 @@ class Program < ActiveRecord::Base
 		#TODO: get from subprog lengths...
 		timesize(target_length)
 	end
+
 	def formatted_target_length
 		timesize(target_length)
 	end
+
+	def formatted_target_length=(formatted)
+	  self.target_length = untimesize(formatted)
+	end
+
 	def formatted_preview_image_offset
 		timesize(preview_image_offset)
 	end
-
-	def owner
-		#TODO user which has correct type	
-		users[0] || User.new
+	def formatted_preview_image_offset=(formatted)
+	  self.preview_image_offset = untimesize(formatted)
 	end
-	def owner_id
-		owner.id
+
+
+	def full_filename
+		#FIXME
+		filename
 	end
 
 	named_scope :roots, :conditions => {:program_id => nil}

@@ -3,6 +3,7 @@ class CreatePrograms < ActiveRecord::Migration
     create_table :programs do |t|
       t.integer :program_category_id
       t.integer :program_id
+      t.integer :owner_id
       t.string :status
       t.string :programtype
       t.text :notes
@@ -26,6 +27,7 @@ class CreatePrograms < ActiveRecord::Migration
 		add_index :programs, :do_vod
 		add_index :programs, :program_category_id
 		add_index :programs, :program_id
+		add_index :programs, :owner_id
   end
 
   def self.down

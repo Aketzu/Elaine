@@ -1,572 +1,572 @@
-program_descriptions--608963778:
+program_descriptions--609072738:
   program_id: "4"
   title: "Opening ceremony"
   id: "7"
   description: "Assembly 2006 opening"
   lang: "en"
-program_descriptions--608964298:
+program_descriptions--609073258:
   program_id: "4"
   title: "Avajaisseremonia"
   id: "8"
   description: ""
   lang: "fi"
-program_descriptions--608964828:
+program_descriptions--609073888:
   program_id: "5"
   title: "Assembly News"
   id: "9"
   description: "Live news from Assembly 2006"
   lang: "en"
-program_descriptions--608965318:
+program_descriptions--609074378:
   program_id: "5"
   title: "Assembly uutiset"
   id: "10"
   description: "Suora uutislähetys Hartwall Areenan sydänmestä"
   lang: "fi"
-program_descriptions--608965948:
+program_descriptions--609074888:
   program_id: "6"
   title: "TG; Welcome to AssemblyTV!"
   id: "11"
   description: "\"Welcome to AssemblyTV! The broadcast starts at 12.00pm\""
   lang: "en"
-program_descriptions--608966438:
+program_descriptions--609075508:
   program_id: "6"
   title: "Tervetuloa AssemblyTV:n pariin"
   id: "12"
   description: ""
   lang: "fi"
-program_descriptions--608966968:
+program_descriptions--609076008:
   program_id: "7"
   title: "Assembly update."
   id: "13"
   description: "Assembly update"
   lang: "en"
-program_descriptions--608967468:
+program_descriptions--609076508:
   program_id: "7"
   title: "Assembly update"
   id: "14"
   description: "Päivitystä Assemblyn tapahtumiin."
   lang: "fi"
-program_descriptions--608968078:
+program_descriptions--609077018:
   program_id: "8"
   title: "Assembly update"
   id: "15"
   description: "News from the Hartwall Areena. s"
   lang: "en"
-program_descriptions--608968588:
+program_descriptions--609077628:
   program_id: "8"
   title: "Assembly uutiset"
   id: "16"
   description: "Uutisia suoraan Hartwall Areenan sydänmestä"
   lang: "fi"
-program_descriptions--608969098:
+program_descriptions--609078138:
   program_id: "9"
   title: "Star Wreck marathon part 1"
   id: "17"
   description: "AssemblyTV presents: Star Wreck movie marathon part 1."
   lang: "en"
-program_descriptions--608969708:
+program_descriptions--609078628:
   program_id: "9"
   title: "Star Wreck marathon osa yksi"
   id: "18"
   description: "AssemblyTV esittää: Star Wreck. Koe kapteeni Pirk:n seikkailut pitkin universumia."
   lang: "fi"
-program_descriptions--608970208:
+program_descriptions--609079258:
   program_id: "10"
   title: "Building on Wednesday"
   id: "19"
   description: "Hosting & insert about build days"
   lang: "en"
-program_descriptions--608970728:
+program_descriptions--609079748:
   program_id: "10"
   title: "Rakennuskeskiviikko"
   id: "20"
   description: ""
   lang: "fi"
-program_descriptions--608971228:
+program_descriptions--609080258:
   program_id: "11"
   title: "Abyss interview"
   id: "21"
   description: "Interview with Abyss"
   lang: "en"
-program_descriptions--608971838:
+program_descriptions--609080878:
   program_id: "11"
   title: "Abyssin haastattelu"
   id: "22"
   description: ""
   lang: "fi"
-program_descriptions--608972338:
+program_descriptions--609081378:
   program_id: "12"
   title: "Commercial content"
   id: "23"
   description: "Commercial content"
   lang: "en"
-program_descriptions--608972858:
+program_descriptions--609081878:
   program_id: "12"
   title: "Commercial content"
   id: "24"
   description: "Commercial content"
   lang: "fi"
-program_descriptions--608973438:
+program_descriptions--609082388:
   program_id: "14"
   title: "ASM Update: Interview /w Abyss & Pehu"
   id: "27"
   description: ""
   lang: "en"
-program_descriptions--608973968:
+program_descriptions--609082998:
   program_id: "14"
   title: "Abyssin ja Pehun live-haastis"
   id: "28"
   description: ""
   lang: "fi"
-program_descriptions--608974488:
+program_descriptions--609083498:
   program_id: "16"
   title: "Mediagallery content"
   id: "31"
   description: "Mediagallery content"
   lang: "en"
-program_descriptions--608974988:
+program_descriptions--609083998:
   program_id: "16"
   title: "Mediagallery content"
   id: "32"
   description: "Mediagallery content"
   lang: "fi"
-program_descriptions--608975618:
+program_descriptions--609084628:
   program_id: "17"
   title: "10min of demos"
   id: "33"
   description: ""
   lang: "en"
-program_descriptions--608976108:
+program_descriptions--609085118:
   program_id: "17"
   title: "10 minuuttia demoja"
   id: "34"
   description: ""
   lang: "fi"
-program_descriptions--608976638:
+program_descriptions--609085628:
   program_id: "19"
   title: "TG: Coming up"
   id: "37"
   description: "TG: Coming up: Assembly Update / Seminars"
   lang: "en"
-program_descriptions--608977128:
+program_descriptions--609086238:
   program_id: "19"
   title: "tulossa seuraavaksi"
   id: "38"
   description: "TG: Coming up: Assembly Update / Seminars"
   lang: "fi"
-program_descriptions--608977758:
+program_descriptions--609086738:
   program_id: "20"
   title: "Assembly Update"
   id: "39"
   description: "Assembly Update: Seminars and Mupe"
   lang: "en"
-program_descriptions--608978248:
+program_descriptions--609087238:
   program_id: "20"
   title: "Assembly Update"
   id: "40"
   description: ""
   lang: "fi"
-program_descriptions--608978778:
+program_descriptions--609087748:
   program_id: "21"
   title: "Demos from previous years"
   id: "41"
   description: "Demos from previous years"
   lang: "en"
-program_descriptions--608979348:
+program_descriptions--609088358:
   program_id: "21"
   title: "Demos from previous years"
   id: "42"
   description: "Demoja AssemblyTV:n arkistosta"
   lang: "fi"
-program_descriptions--608979898:
+program_descriptions--609088858:
   program_id: "22"
   title: "Assembly history part I: Old stuff"
   id: "43"
   description: "Old stuff"
   lang: "en"
-program_descriptions--608980408:
+program_descriptions--609089358:
   program_id: "22"
   title: "Assembly history part I: Old stuff"
   id: "44"
   description: ""
   lang: "fi"
-program_descriptions--608980918:
+program_descriptions--609089988:
   program_id: "23"
   title: "AssemblyTV introduction video"
   id: "45"
   description: "AssemblyTV introduction video"
   lang: "en"
-program_descriptions--608981528:
+program_descriptions--609090478:
   program_id: "23"
   title: "AssemblyTV introduction video"
   id: "46"
   description: ""
   lang: "fi"
-program_descriptions--608982028:
+program_descriptions--609090988:
   program_id: "24"
   title: "Commercial content"
   id: "47"
   description: "Commercials, 2min"
   lang: "en"
-program_descriptions--608982548:
+program_descriptions--609091598:
   program_id: "24"
   title: "Mainoksia"
   id: "48"
   description: ""
   lang: "fi"
-program_descriptions--608983048:
+program_descriptions--609092098:
   program_id: "25"
   title: "DTV: What is demoscene and scene.org awards"
   id: "49"
   description: "DTV: What is demoscene and scene.org awards TEASER"
   lang: "en"
-program_descriptions--608983658:
+program_descriptions--609092598:
   program_id: "25"
   title: "DTV"
   id: "50"
   description: ""
   lang: "fi"
-program_descriptions--608984158:
+program_descriptions--609093098:
   program_id: "26"
   title: "Gaming: Age limits"
   id: "51"
   description: "Interview with Matti Paloheimo, Director of Finnish Board of Film Classification about age limits in games (in Finnish)."
   lang: "en"
-program_descriptions--608984678:
+program_descriptions--609093718:
   program_id: "26"
   title: "Pelien ikärajat"
   id: "52"
   description: "Suomen Elokuvatarkastamon johtajan Matti Paloheimon haastattelu pelien ikärajoista."
   lang: "fi"
-program_descriptions--608985288:
+program_descriptions--609094218:
   program_id: "27"
   title: "Setok makes it work"
   id: "53"
   description: "Setok makes Assembly 2006 work."
   lang: "en"
-program_descriptions--608985788:
+program_descriptions--609094718:
   program_id: "27"
   title: "Setok auttaa"
   id: "54"
   description: "Setok rakentaa Assembly 2006 tapahtuman."
   lang: "fi"
-program_descriptions--608986308:
+program_descriptions--609095348:
   program_id: "28"
   title: "Outsiders"
   id: "55"
   description: "interviews at Pasila railway station - do THEY know what assembly is about."
   lang: "en"
-program_descriptions--608986808:
+program_descriptions--609095838:
   program_id: "28"
   title: "Ulkopuoliset"
   id: "56"
   description: "Haastatteluja Pasilan rautatieasemalta - tietävätkö muut, mistä Assemblyssä on kyse."
   lang: "fi"
-program_descriptions--608987428:
+program_descriptions--609096348:
   program_id: "29"
   title: "Walking with VIP-person"
   id: "57"
   description: ""
   lang: "en"
-program_descriptions--608987918:
+program_descriptions--609096958:
   program_id: "29"
   title: "Kulisseissa kuhisee"
   id: "58"
   description: ""
   lang: "fi"
-program_descriptions--608988448:
+program_descriptions--609097468:
   program_id: "30"
   title: "Emma"
   id: "59"
   description: "Movie - 21min"
   lang: "en"
-program_descriptions--608988938:
+program_descriptions--609097968:
   program_id: "30"
   title: "Emma"
   id: "60"
   description: ""
   lang: "fi"
-program_descriptions--608989558:
+program_descriptions--609098468:
   program_id: "35"
   title: "Emma"
   id: "69"
   description: "Movie - 21min"
   lang: "en"
-program_descriptions--608990048:
+program_descriptions--609099088:
   program_id: "35"
   title: "Emma"
   id: "70"
   description: "kotimainen lyhytelokuva, pituus 21min, tuotantovuosi 2005"
   lang: "fi"
-program_descriptions--608990578:
+program_descriptions--609099588:
   program_id: "36"
   title: "Kauppalehti NettiTV"
   id: "71"
   description: "Digimedian tulevaisuus"
   lang: "en"
-program_descriptions--608991178:
+program_descriptions--609100088:
   program_id: "36"
   title: "kauppalehti NettiTv"
   id: "72"
   description: ""
   lang: "fi"
-program_descriptions--608991688:
+program_descriptions--609100708:
   program_id: "37"
   title: "Hosting"
   id: "73"
   description: "Livejuonto"
   lang: "en"
-program_descriptions--608992208:
+program_descriptions--609101198:
   program_id: "37"
   title: "Hosting"
   id: "74"
   description: ""
   lang: "fi"
-program_descriptions--608992708:
+program_descriptions--609101708:
   program_id: "39"
   title: "Gaming: DJ Orkidea interview"
   id: "77"
   description: "Interview with Tapio Hakanen (DJ Orkidea), a finnish dj and music producer working at Sulake making music for games. (interview in Finnish)"
   lang: "en"
-program_descriptions--608993318:
+program_descriptions--609102288:
   program_id: "39"
   title: "Pelimusiikki: DJ Orkidean haastattelu"
   id: "78"
   description: "Haastattelussa Tapio Hakanen (DJ Orkidea). Hakanen keikkailee dj:nä ja tekee peleihin musiikkia Sulake-pelifirmassa."
   lang: "fi"
-program_descriptions--608993818:
+program_descriptions--609102828:
   program_id: "40"
   title: "Behind the scenes with Setok"
   id: "79"
   description: "Setok takes you for a spin around the organiser areas throughout the Areena."
   lang: "en"
-program_descriptions--608994338:
+program_descriptions--609103328:
   program_id: "40"
   title: "Kulisseissa kuhisee"
   id: "80"
   description: "Lähde kävelylle Setokin kanssa Areenan ympäri organiser-alueille."
   lang: "fi"
-program_descriptions--608994838:
+program_descriptions--609103828:
   program_id: "42"
   title: "Feelings from the doors, Asm is open!"
   id: "83"
   description: "Feelings from the doors, Asm is open!"
   lang: "en"
-program_descriptions--608995448:
+program_descriptions--609104448:
   program_id: "42"
   title: "Feelings from the doors, Asm is open!"
   id: "84"
   description: ""
   lang: "fi"
-program_descriptions--608995948:
+program_descriptions--609104948:
   program_id: "45"
   title: "DTV: Scene.org awards"
   id: "89"
   description: ""
   lang: "en"
-program_descriptions--608996468:
+program_descriptions--609105448:
   program_id: "45"
   title: "DTV: Scene.org awards"
   id: "90"
   description: ""
   lang: "fi"
-program_descriptions--608997088:
+program_descriptions--609106078:
   program_id: "46"
   title: "Gaming: Level7 part 1"
   id: "91"
   description: "Visit to Level7 gaming cafe in Helsinki, Finland. Owner Kim introduces the place."
   lang: "en"
-program_descriptions--608997578:
+program_descriptions--609106568:
   program_id: "46"
   title: "Pelikahvila: Level7 part 1"
   id: "92"
   description: "Vierailu Level7 pelikahvilaan Helsingissä. Kahvilan omistaja Kim esittelee paikan."
   lang: "fi"
-program_descriptions--608998108:
+program_descriptions--609107078:
   program_id: "50"
   title: "Star Wreck Interview and hosting about the marathon"
   id: "99"
   description: "Star Wreck Interview and hosting about the marathon"
   lang: "en"
-program_descriptions--608998598:
+program_descriptions--609107578:
   program_id: "50"
   title: "Star Wreck haastattelu"
   id: "100"
   description: ""
   lang: "fi"
-program_descriptions--608999228:
+program_descriptions--609108198:
   program_id: "51"
   title: "TG: Coming Up"
   id: "101"
   description: "Coming up: Star Wreck part 2"
   lang: "en"
-program_descriptions--608999718:
+program_descriptions--609108698:
   program_id: "51"
   title: "Seuraavaksi ohjelmistossa"
   id: "102"
   description: ""
   lang: "fi"
-program_descriptions--609000248:
+program_descriptions--609109198:
   program_id: "52"
   title: "Interviewing Alive"
   id: "103"
   description: "An interview with alive.assembly.org developer Karri Saarinen. Have you checked it out yet?"
   lang: "en"
-program_descriptions--609000738:
+program_descriptions--609109818:
   program_id: "52"
   title: "Alive-kehittäjän haastattelu"
   id: "104"
   description: "Alive.assembly.org palvelun kehittäjä Karri Saarisen haastattelu. Oletko sinä vielä tsekannut tätä uutuutta?"
   lang: "fi"
-program_descriptions--609001368:
+program_descriptions--609110318:
   program_id: "53"
   title: "Game Dev Compo 06"
   id: "105"
   description: "Assembly 2006 Game Development Compo"
   lang: "en"
-program_descriptions--609001858:
+program_descriptions--609110818:
   program_id: "53"
   title: "Game Dev Compo 06"
   id: "106"
   description: "Assembly 2006:n pelinkehityskilpailu."
   lang: "fi"
-program_descriptions--609002388:
+program_descriptions--609111448:
   program_id: "54"
   title: "Interview with Abyss"
   id: "107"
   description: "Assembly's anniversary interview with The Man, Jussi Laakkonen himself."
   lang: "en"
-program_descriptions--609003008:
+program_descriptions--609111938:
   program_id: "54"
   title: "Valokeilassa: Abyss ja 15 vuotta Assemblyjä"
   id: "108"
   description: "Viidennentoista Assembly-vuoden kunniaksi hieman pintaa syvemmälle menevä haastattelu Jussi Laakkosen kanssa."
   lang: "fi"
-program_descriptions--609003508:
+program_descriptions--609112448:
   program_id: "55"
   title: "Compo interview"
   id: "109"
   description: "Compo interview"
   lang: "en"
-program_descriptions--609004028:
+program_descriptions--609112948:
   program_id: "55"
   title: "Compo interview"
   id: "110"
   description: "Compo interview"
   lang: "fi"
-program_descriptions--609004528:
+program_descriptions--609113568:
   program_id: "56"
   title: "Visitor interviews"
   id: "111"
   description: "Visitor interviews"
   lang: "en"
-program_descriptions--609005148:
+program_descriptions--609114058:
   program_id: "56"
   title: "Visitor interviews"
   id: "112"
   description: ""
   lang: "fi"
-program_descriptions--609005648:
+program_descriptions--609114568:
   program_id: "57"
   title: "DTV jingles / mainokset"
   id: "113"
   description: ""
   lang: "en"
-program_descriptions--609006168:
+program_descriptions--609115188:
   program_id: "57"
   title: "DTV jingles / mainokset"
   id: "114"
   description: ""
   lang: "fi"
-program_descriptions--609006678:
+program_descriptions--609115688:
   program_id: "58"
   title: "Asm '03 Mobile Game Dev Compo"
   id: "115"
   description: "Assembly 2003 mobile game development compo."
   lang: "en"
-program_descriptions--609007288:
+program_descriptions--609116188:
   program_id: "58"
   title: "Asm '03 Mobile Game Dev Compo"
   id: "116"
   description: "Assembly 2003 mobiilipelien kehityskilpailu."
   lang: "fi"
-program_descriptions--609007798:
+program_descriptions--609116818:
   program_id: "59"
   title: "Seminar: Linux 4k coding"
   id: "117"
   description: "Speaker: Markku Reunanen,
 The presentation deals with the different optimization techniques used in Linux 4k intro coding such as compression, tools and code level tricks. By knowing the tricks of the trade you can save several hundreds of bytes leaving more space for the actual content. The presentation is based on the observations Markku and Antti Silvast made during the making of three 4k intros: Yellow Rose of Texas, Je Regrette and Make It 4k."
   lang: "en"
-program_descriptions--609008308:
+program_descriptions--609117308:
   program_id: "59"
   title: "Seminaari: Linux 4k coding"
   id: "118"
   description: ""
   lang: "fi"
-program_descriptions--609008938:
+program_descriptions--609117818:
   program_id: "61"
   title: "Star Wreck -movie marathon part 2"
   id: "121"
   description: "Star Wreck -movie marathon part 2"
   lang: "en"
-program_descriptions--609009428:
+program_descriptions--609118318:
   program_id: "61"
   title: "Star Wreck -movie marathon part 2"
   id: "122"
   description: "Star Wreck -movie marathon part 2"
   lang: "fi"
-program_descriptions--609009958:
+program_descriptions--609118928:
   program_id: "62"
   title: "Seminar: Mobility with MUPE - developer's point of view"
   id: "123"
   description: "Speaker: Matti Nelimarkka,
 MUPE (Multi-User Publishing Environment) is an open source client-server architecture developed by Nokia. It provides a fast developing environment - specially for multi-player games. The scope of this presentation is to evaluate the pros and cons of MUPE and also the developing of MUPE-applications."
   lang: "en"
-program_descriptions--609010448:
+program_descriptions--609119418:
   program_id: "62"
   title: "Seminaari: Mobility with MUPE - developer's point of view"
   id: "124"
   description: ""
   lang: "fi"
-program_descriptions--609011068:
+program_descriptions--609119928:
   program_id: "63"
   title: "Seminar: The Art of Pixels: from sprites to Photoshop"
   id: "125"
   description: "Speaker: Tamas Polgar,
 This presentation is the introduction of the new volume of Freax, the Freax Art Album. This year Tomcat is to give you a glance of how 2D computer art evolved from the first, primitive single-color sprites to today's masterful digital paintings, and how different styles influenced artists on the demoscene."
   lang: "en"
-program_descriptions--609011558:
+program_descriptions--609120548:
   program_id: "63"
   title: "Seminaari: The Art of Pixels: from sprites to Photoshop"
   id: "126"
   description: ""
   lang: "fi"
-program_descriptions--609012088:
+program_descriptions--609121048:
   program_id: "64"
   title: "Visitor interviews"
   id: "127"
   description: "Visitor interviews"
   lang: "en"
-program_descriptions--609012588:
+program_descriptions--609121548:
   program_id: "64"
   title: "Kävijähaastatteluita"
   id: "128"
   description: "Kävijähaastatteluita"
   lang: "fi"
-program_descriptions--609013208:
+program_descriptions--609122178:
   program_id: "65"
   title: "Seminar: The Neglected Art of Fixed Point Arithmetic"
   id: "129"
   description: "Speaker: Jetro Lauha,
 Even if floating point is nowadays the typical way to do your math, you will learn when and why fixed point arithmetic is still relevant. In addition to covering the essentials of coping with fixed point, also a few tricks of the trade and other useful implementation tips will be shared."
   lang: "en"
-program_descriptions--609013718:
+program_descriptions--609122668:
   program_id: "65"
   title: "Seminaari: The Neglected Art of Fixed Point Arithmetic"
   id: "130"
   description: ""
   lang: "fi"
-program_descriptions--609014228:
+program_descriptions--609123178:
   program_id: "66"
   title: "Seminar: Cutting corners, not polygons"
   id: "131"
@@ -582,158 +582,158 @@ Using examples from the development of their much appraised demos on Game Boy Ad
     * How to optimize your problem rather than shaving a cycle off of your mainloop.
     * Working with the quirks of your platform rather than against them."
   lang: "en"
-program_descriptions--609014838:
+program_descriptions--609123668:
   program_id: "66"
   title: "Seminaari: Cutting corners, not polygons"
   id: "132"
   description: ""
   lang: "fi"
-program_descriptions--609015338:
+program_descriptions--609124298:
   program_id: "67"
   title: "Gaming: Level7 part 2"
   id: "133"
   description: "Second part of the interview with Level7 gaming cafe owner Kim."
   lang: "en"
-program_descriptions--609015858:
+program_descriptions--609124788:
   program_id: "67"
   title: "Pelikahvila: Level7 part 2"
   id: "134"
   description: "Toinen osa Level7 pelikahvilan omistajan Kimin haastattelusta."
   lang: "fi"
-program_descriptions--609016358:
+program_descriptions--609125298:
   program_id: "69"
   title: "Demos from previous years"
   id: "137"
   description: "Demos from previous years"
   lang: "en"
-program_descriptions--609016968:
+program_descriptions--609125908:
   program_id: "69"
   title: "Demos from previous years"
   id: "138"
   description: ""
   lang: "fi"
-program_descriptions--609017468:
+program_descriptions--609126408:
   program_id: "70"
   title: "Demos from previous years."
   id: "139"
   description: ""
   lang: "en"
-program_descriptions--609017988:
+program_descriptions--609126908:
   program_id: "70"
   title: "Demos from previous years."
   id: "140"
   description: ""
   lang: "fi"
-program_descriptions--609018498:
+program_descriptions--609127498:
   program_id: "71"
   title: "TG: Coming up Concert / Mysterious Ways"
   id: "141"
   description: "TG: Coming up Concert / Mysterious Ways
 2min long"
   lang: "en"
-program_descriptions--609019108:
+program_descriptions--609128028:
   program_id: "71"
   title: "TG: Coming up Concert / Mysterious Ways"
   id: "142"
   description: "TG: Coming up Concert / Mysterious Ways"
   lang: "fi"
-program_descriptions--609019628:
+program_descriptions--609128538:
   program_id: "72"
   title: "Mysterious Ways concert"
   id: "143"
   description: "Mysterious Ways"
   lang: "en"
-program_descriptions--609020128:
+program_descriptions--609129028:
   program_id: "72"
   title: "Mysterious Ways concert"
   id: "144"
   description: "Mysterious Ways"
   lang: "fi"
-program_descriptions--609020758:
+program_descriptions--609129648:
   program_id: "73"
   title: "Good Morning Assembly"
   id: "145"
   description: "Good Morning Assembly, hope you feel well. Next coming"
   lang: "en"
-program_descriptions--609021248:
+program_descriptions--609130138:
   program_id: "73"
   title: "Good Morning Assembly"
   id: "146"
   description: ""
   lang: "fi"
-program_descriptions--609021778:
+program_descriptions--609130648:
   program_id: "74"
   title: "Panel conversation about gaming (games evolution?)"
   id: "147"
   description: "Panel conversation about gaming (games evolution?)"
   lang: "en"
-program_descriptions--609022268:
+program_descriptions--609131268:
   program_id: "74"
   title: "Panel conversation about gaming (games evolution?)"
   id: "148"
   description: ""
   lang: "fi"
-program_descriptions--609022898:
+program_descriptions--609131768:
   program_id: "75"
   title: "Express street basketball"
   id: "149"
   description: "Express street basketball"
   lang: "en"
-program_descriptions--609023388:
+program_descriptions--609132268:
   program_id: "75"
   title: "Express street basketball"
   id: "150"
   description: ""
   lang: "fi"
-program_descriptions--609023918:
+program_descriptions--609132778:
   program_id: "76"
   title: "Commercial Content, 7min"
   id: "151"
   description: "Commercials 7 minutes"
   lang: "en"
-program_descriptions--609024418:
+program_descriptions--609133378:
   program_id: "76"
   title: "Commercial Content, 7min"
   id: "152"
   description: "Commercials, 7 minutes"
   lang: "fi"
-program_descriptions--609025028:
+program_descriptions--609133888:
   program_id: "77"
   title: "DTV"
   id: "153"
   description: ""
   lang: "en"
-program_descriptions--609025538:
+program_descriptions--609134378:
   program_id: "77"
   title: "DTV"
   id: "154"
   description: ""
   lang: "fi"
-program_descriptions--609026048:
+program_descriptions--609134998:
   program_id: "78"
   title: "Golden memories"
   id: "155"
   description: ""
   lang: "en"
-program_descriptions--609026668:
+program_descriptions--609135488:
   program_id: "78"
   title: "Kultaisia muistoja: Konsertti vuodelta 2003"
   id: "156"
   description: ""
   lang: "fi"
-program_descriptions--609027168:
+program_descriptions--609135998:
   program_id: "79"
   title: "DTV."
   id: "157"
   description: "Buenzli 05 and Scene Awards 05"
   lang: "en"
-program_descriptions--609027688:
+program_descriptions--609136608:
   program_id: "79"
   title: "DTV."
   id: "158"
   description: ""
   lang: "fi"
-program_descriptions--609028188:
+program_descriptions--609137108:
   program_id: "80"
   title: "Poika ja vesi"
   id: "159"
@@ -742,49 +742,49 @@ program_descriptions--609028188:
 
 www.mystinenportaali.com/iat/"
   lang: "en"
-program_descriptions--609028808:
+program_descriptions--609137608:
   program_id: "80"
   title: "Poika ja vesi"
   id: "160"
   description: ""
   lang: "fi"
-program_descriptions--609029308:
+program_descriptions--609138118:
   program_id: "81"
   title: "Rannalla"
   id: "161"
   description: "Movie - Made by IAT, 20min,"
   lang: "en"
-program_descriptions--609029828:
+program_descriptions--609138718:
   program_id: "81"
   title: "Rannalla"
   id: "162"
   description: ""
   lang: "fi"
-program_descriptions--609030338:
+program_descriptions--609139228:
   program_id: "82"
   title: "Visitor interviews"
   id: "163"
   description: ""
   lang: "en"
-program_descriptions--609030948:
+program_descriptions--609139718:
   program_id: "82"
   title: "Kävijähaastatteluja"
   id: "164"
   description: ""
   lang: "fi"
-program_descriptions--609031468:
+program_descriptions--609140348:
   program_id: "83"
   title: "Old demos"
   id: "165"
   description: ""
   lang: "en"
-program_descriptions--609031968:
+program_descriptions--609140838:
   program_id: "83"
   title: "Vanhoja demoja"
   id: "166"
   description: ""
   lang: "fi"
-program_descriptions--609032598:
+program_descriptions--609141348:
   program_id: "84"
   title: "Seminars: Games development using Microsoft XNA Studio and  Direct3D 10 essentials"
   id: "167"
@@ -795,101 +795,101 @@ Direct3D 10 essentials:
 Speaker: Niko Suni,
 As the release of Microsoft's newest graphics programming interface is nearing, we will take a practical look at some of it's new features, flexibility and performance enhancements and briefly discuss about migration to it from older interfaces such as Direct3D 9."
   lang: "en"
-program_descriptions--609033088:
+program_descriptions--609141968:
   program_id: "84"
   title: "Seminaarit: Games development using Microsoft XNA Studio and  Direct3D 10 essentials"
   id: "168"
   description: ""
   lang: "fi"
-program_descriptions--609033618:
+program_descriptions--609142468:
   program_id: "87"
   title: "Sponsor interviews"
   id: "173"
   description: "Sponsor interviews"
   lang: "en"
-program_descriptions--609034108:
+program_descriptions--609142968:
   program_id: "87"
   title: "Sponsor interviews"
   id: "174"
   description: ""
   lang: "fi"
-program_descriptions--609034738:
+program_descriptions--609143468:
   program_id: "88"
   title: "Oldschool area / What is it and whats going on there?"
   id: "175"
   description: "Oldschool area / What is it and whats going on there?"
   lang: "en"
-program_descriptions--609035228:
+program_descriptions--609144088:
   program_id: "88"
   title: "Oldschool area / What is it and whats going on there?"
   id: "176"
   description: ""
   lang: "fi"
-program_descriptions--609035758:
+program_descriptions--609144588:
   program_id: "89"
   title: "Feelings from the doors, Asm is open"
   id: "177"
   description: "Feelings from the doors, Asm is open!"
   lang: "en"
-program_descriptions--609036258:
+program_descriptions--609145088:
   program_id: "89"
   title: "Feelings from the doors, Asm is open!"
   id: "178"
   description: "Feelings from the doors, Asm is open!"
   lang: "fi"
-program_descriptions--609036868:
+program_descriptions--609145708:
   program_id: "92"
   title: "Seminar: The New Procedure"
   id: "183"
   description: "Speaker: Nick Rooke,
 The abundance of CPU based power in next generation console systems has led to a recent growth of procedural technologies. Ranging from animation to textures to L systems, these new tools aim to provide developers with the facilities to rapidly create and iterate content. This presentation seeks to examine the potential of these new tools to the gaming experience, and how they will fundamentally alter the nature of games from \"static\" products to evolving and fluid \"platforms\" which for the first time will add the \"4th dimension\" to the gaming experience."
   lang: "en"
-program_descriptions--609037378:
+program_descriptions--609146198:
   program_id: "92"
   title: "Seminar: The New Procedure"
   id: "184"
   description: ""
   lang: "fi"
-program_descriptions--609037888:
+program_descriptions--609146708:
   program_id: "93"
   title: "Seminar: Mobile 3D hardware"
   id: "185"
   description: "Speaker: Umesh Gowda,
 Preliminary information: this session will provide information on the latest trends in the mobile 3D hardware."
   lang: "en"
-program_descriptions--609038508:
+program_descriptions--609147308:
   program_id: "93"
   title: "Seminar: Mobile 3D hardware"
   id: "186"
   description: ""
   lang: "fi"
-program_descriptions--609039008:
+program_descriptions--609147818:
   program_id: "94"
   title: "Seminar: \"It ain't 1996 anymore\" - entry into today's games industry"
   id: "187"
   description: "Speaker: Matias Myllyrinne,
 So you want to start up your own company and make AAA hit games? After all, many of today's leading developers started this way. But we cannot apply the methods of yesterday successfully to a changed environment. The games industry has changed significantly in the past ten years since Remedy was set up. The barriers and stakes are higher. I'd like to briefly talk about the changes of the past years and explore the underlying trends. There are advantages to be found. I don't have silver bullets but will elaborate on some chances and openings that have become available through this change."
   lang: "en"
-program_descriptions--609039528:
+program_descriptions--609148318:
   program_id: "94"
   title: "Seminar: \"It ain't 1996 anymore\" - entry into today's games industry"
   id: "188"
   description: ""
   lang: "fi"
-program_descriptions--609040028:
+program_descriptions--609148818:
   program_id: "95"
   title: "Seminar: History and Future of 3D audio"
   id: "189"
   description: "Speaker: Peter Harrison,
 Preliminary information: This session will touch upon the use of 3D audio on computers, its history and its future. High quality demonstrations of what 3D audio really can be are provided using a 5.1 surround sound system. Hearing is believing!"
   lang: "en"
-program_descriptions--609040648:
+program_descriptions--609149428:
   program_id: "95"
   title: "Seminar: History and Future of 3D audio"
   id: "190"
   description: ""
   lang: "fi"
-program_descriptions--609041148:
+program_descriptions--609149928:
   program_id: "97"
   title: "Seminar: World of Viruses"
   id: "193"
@@ -904,340 +904,340 @@ In this presentation Mikko Hyppönen, who is the Chief Research Officer at F-Sec
     * Viruses on mobile phones
     * Where is the network police?"
   lang: "en"
-program_descriptions--609041668:
+program_descriptions--609150428:
   program_id: "97"
   title: "Seminar: World of Viruses"
   id: "194"
   description: ""
   lang: "fi"
-program_descriptions--609042178:
+program_descriptions--609151048:
   program_id: "98"
   title: "Seminar: Standards and Opera"
   id: "195"
   description: "Speakers: Charles McCathieNevile and Gorm Eriksen,
 An overview of why Opera is involved in Standards work and what it means - in particular, looking at how W3C works, and how and why Opera widgets are (mostly) based on W3C standards as a good way to enable cool stuff."
   lang: "en"
-program_descriptions--609042778:
+program_descriptions--609151538:
   program_id: "98"
   title: "Seminar: Standards and Opera"
   id: "196"
   description: ""
   lang: "fi"
-program_descriptions--609043298:
+program_descriptions--609152048:
   program_id: "99"
   title: "Seminar: Opera Mini: coping with J2ME fragmentation"
   id: "197"
   description: "Speaker: Balder Mørk,
 Opera Mini is a server-client based browsing solution from Opera Software. The client is written in J2ME, granting the majority of Java-enabled handsets available today access to the full World Wide Web. The wide array of CPU speeds, display sizes, supported APIs etc. makes the current mobile Java market very fragmented. This talk will focus on how to write a MIDlet with maximum compatibility, while utilizing as much as possible of the device's potential."
   lang: "en"
-program_descriptions--609043798:
+program_descriptions--609152608:
   program_id: "99"
   title: "Seminar: Opera Mini: coping with J2ME fragmentation"
   id: "198"
   description: ""
   lang: "fi"
-program_descriptions--609044418:
+program_descriptions--609153158:
   program_id: "100"
   title: "Seminar: The Naked PSP"
   id: "199"
   description: "Speaker: TyRaNiD,
 Delving into the inner workings of the Sony Playstation Portable handheld games console, an aid to demo coders or homebrew developers in understanding how the PSP's kernel operates, how to run code on the device and how to build your own software. The presentation will touch on the history of the PSP and free development, the modular structure Sony put in place for application devlopment, the kernel's threading primitives, application debugging as well as graphics support and audio programming. This will all be aided with real time demonstrations of the kernel's inner workings and structures."
   lang: "en"
-program_descriptions--609044908:
+program_descriptions--609153658:
   program_id: "100"
   title: "Seminar: The Naked PSP"
   id: "200"
   description: ""
   lang: "fi"
-program_descriptions--609045438:
+program_descriptions--609154158:
   program_id: "101"
   title: "Gaming: Assembly GameLab"
   id: "201"
   description: "Introduction to Assembly GameLab and interviews of players. (in Finnish)"
   lang: "en"
-program_descriptions--609045928:
+program_descriptions--609154768:
   program_id: "101"
   title: "Assembly GameLab"
   id: "202"
   description: "Assemblyn GameLab:in, eli pelaajien alueen esittely ja muutamien pelaajien haastatteluita."
   lang: "fi"
-program_descriptions--609046548:
+program_descriptions--609155268:
   program_id: "102"
   title: "DTV: I made it - Assembly04"
   id: "203"
   description: ""
   lang: "en"
-program_descriptions--609047038:
+program_descriptions--609155768:
   program_id: "102"
   title: "DTV: I made it - Assembly04"
   id: "204"
   description: ""
   lang: "fi"
-program_descriptions--609047568:
+program_descriptions--609156388:
   program_id: "103"
   title: "Assembly 15min"
   id: "205"
   description: ""
   lang: "en"
-program_descriptions--609048068:
+program_descriptions--609156878:
   program_id: "103"
   title: "Assembly"
   id: "206"
   description: ""
   lang: "fi"
-program_descriptions--609048678:
+program_descriptions--609157388:
   program_id: "106"
   title: "DTV: Evoke05"
   id: "211"
   description: ""
   lang: "en"
-program_descriptions--609049188:
+program_descriptions--609157888:
   program_id: "106"
   title: "DTV: Evoke05"
   id: "212"
   description: ""
   lang: "fi"
-program_descriptions--609049698:
+program_descriptions--609158498:
   program_id: "107"
   title: "Visitor gallup part 1"
   id: "213"
   description: "Chatting with Assembly visitors about their first feelings, party plans and how they are going to treat their numbing body parts."
   lang: "en"
-program_descriptions--609050308:
+program_descriptions--609158998:
   program_id: "107"
   title: "Kävijägallup osa 1"
   id: "214"
   description: "Jutustelua Assemblyn kävijöiden kanssa ensitunnelmista, party suunnitelmista ja kuinka he hoitavat puutuvia paikkojaan."
   lang: "fi"
-program_descriptions--609050808:
+program_descriptions--609159498:
   program_id: "108"
   title: "Asm '06 Fast Music Compo"
   id: "215"
   description: ""
   lang: "en"
-program_descriptions--609051328:
+program_descriptions--609160108:
   program_id: "108"
   title: "Asm '06 Fast Music Compo"
   id: "216"
   description: ""
   lang: "fi"
-program_descriptions--609051828:
+program_descriptions--609160608:
   program_id: "109"
   title: "Studio  interview: Fast Music Compo"
   id: "217"
   description: ""
   lang: "en"
-program_descriptions--609052438:
+program_descriptions--609161108:
   program_id: "109"
   title: "Studio  interview: Fast Music Compo"
   id: "218"
   description: ""
   lang: "fi"
-program_descriptions--609052938:
+program_descriptions--609161738:
   program_id: "110"
   title: "Assembly News (+ hosting to Star Wreck-seminar & Fast Music Compo)"
   id: "219"
   description: ""
   lang: "en"
-program_descriptions--609053458:
+program_descriptions--609162228:
   program_id: "110"
   title: "Assembly News (+ hosting to Star Wreck-seminar & Fast Music Compo)"
   id: "220"
   description: ""
   lang: "fi"
-program_descriptions--609053968:
+program_descriptions--609162738:
   program_id: "113"
   title: "Fast Graphics Compo 06"
   id: "225"
   description: ""
   lang: "en"
-program_descriptions--609054578:
+program_descriptions--609163238:
   program_id: "113"
   title: "Fast Graphics Compo 06"
   id: "226"
   description: ""
   lang: "fi"
-program_descriptions--609055098:
+program_descriptions--609163858:
   program_id: "114"
   title: "IAT: Meitä on käsiteltävä varovasti:"
   id: "227"
   description: ""
   lang: "en"
-program_descriptions--609055598:
+program_descriptions--609164358:
   program_id: "114"
   title: "IAT: Meitä on käsiteltävä varovasti"
   id: "228"
   description: ""
   lang: "fi"
-program_descriptions--609056218:
+program_descriptions--609164858:
   program_id: "115"
   title: "Assembly Update: interview"
   id: "229"
   description: ""
   lang: "en"
-program_descriptions--609056708:
+program_descriptions--609165478:
   program_id: "115"
   title: "Assembly Update: interview"
   id: "230"
   description: ""
   lang: "fi"
-program_descriptions--609057238:
+program_descriptions--609165978:
   program_id: "116"
   title: "Art in Assembly"
   id: "231"
   description: ""
   lang: "en"
-program_descriptions--609057728:
+program_descriptions--609166478:
   program_id: "116"
   title: "Art in Assembly"
   id: "232"
   description: ""
   lang: "fi"
-program_descriptions--609058358:
+program_descriptions--609167108:
   program_id: "117"
   title: "WID - What is Demoscene? (a DTV demoscene documentary made in 2005"
   id: "233"
   description: "a DTV demoscene documentary made in 2005"
   lang: "en"
-program_descriptions--609058848:
+program_descriptions--609167598:
   program_id: "117"
   title: "WID - What is Demoscene?"
   id: "234"
   description: ""
   lang: "fi"
-program_descriptions--609059378:
+program_descriptions--609168108:
   program_id: "118"
   title: "Commercial content 5min"
   id: "235"
   description: ""
   lang: "en"
-program_descriptions--609059878:
+program_descriptions--609168598:
   program_id: "118"
   title: "Commercial content 5min"
   id: "236"
   description: ""
   lang: "fi"
-program_descriptions--609060488:
+program_descriptions--609169228:
   program_id: "119"
   title: "Commercial content 6min"
   id: "237"
   description: ""
   lang: "en"
-program_descriptions--609060998:
+program_descriptions--609169718:
   program_id: "119"
   title: "Commercial content 6min"
   id: "238"
   description: ""
   lang: "fi"
-program_descriptions--609061508:
+program_descriptions--609170228:
   program_id: "120"
   title: "Delusion Pictures: Pysäkki"
   id: "239"
   description: ""
   lang: "en"
-program_descriptions--609062118:
+program_descriptions--609170848:
   program_id: "120"
   title: "Delusion Pictures: Pysäkki"
   id: "240"
   description: ""
   lang: "fi"
-program_descriptions--609062618:
+program_descriptions--609171348:
   program_id: "121"
   title: "Asm '06 Instrumental Music Compo"
   id: "241"
   description: ""
   lang: "en"
-program_descriptions--609063138:
+program_descriptions--609171848:
   program_id: "121"
   title: "Asm '06 Instrumental Music Compo"
   id: "242"
   description: ""
   lang: "fi"
-program_descriptions--609063638:
+program_descriptions--609172468:
   program_id: "122"
   title: "Asm '06 Drawn Graphics Compo"
   id: "243"
   description: ""
   lang: "en"
-program_descriptions--609064258:
+program_descriptions--609172958:
   program_id: "122"
   title: "Asm '06 Drawn Graphics Compo 06"
   id: "244"
   description: ""
   lang: "fi"
-program_descriptions--609064758:
+program_descriptions--609173468:
   program_id: "124"
   title: "Jingle DTV Assembly"
   id: "247"
   description: ""
   lang: "en"
-program_descriptions--609065278:
+program_descriptions--609173958:
   program_id: "124"
   title: "Jingle DTV Assembly"
   id: "248"
   description: ""
   lang: "fi"
-program_descriptions--609065858:
+program_descriptions--609174588:
   program_id: "125"
   title: "Gaming: Variety of Assembly games"
   id: "249"
   description: "Interviews of players and presentations of different games played at Assembly 2006. (in Finnish)"
   lang: "en"
-program_descriptions--609066398:
+program_descriptions--609175078:
   program_id: "125"
   title: "Assembly 2006 pelivalikoima"
   id: "250"
   description: "Pelaajien haastatteluita ja Assemblyssa pelattavien erilaisten pelien esittelyjä."
   lang: "fi"
-program_descriptions--609066918:
+program_descriptions--609175588:
   program_id: "126"
   title: "Irti"
   id: "251"
   description: "Movie made by Welhofilmi"
   lang: "en"
-program_descriptions--609067418:
+program_descriptions--609176198:
   program_id: "126"
   title: "Irti"
   id: "252"
   description: ""
   lang: "fi"
-program_descriptions--609068048:
+program_descriptions--609176698:
   program_id: "127"
   title: "Asm '06 Oldskool Music Compo"
   id: "253"
   description: ""
   lang: "en"
-program_descriptions--609068538:
+program_descriptions--609177198:
   program_id: "127"
   title: "Asm '06 Oldskool Music Compo"
   id: "254"
   description: ""
   lang: "fi"
-program_descriptions--609069068:
+program_descriptions--609177808:
   program_id: "128"
   title: "Asm '06 Oldskool Graphics Compo"
   id: "255"
   description: ""
   lang: "en"
-program_descriptions--609069558:
+program_descriptions--609178308:
   program_id: "128"
   title: "Asm '06 Oldskool Graphics Compo"
   id: "256"
   description: ""
   lang: "fi"
-program_descriptions--609070178:
+program_descriptions--609178818:
   program_id: "129"
   title: "Asm '06 Oldskool Demo Compo"
   id: "257"
   description: ""
   lang: "en"
-program_descriptions--609070668:
+program_descriptions--609179308:
   program_id: "129"
   title: "Asm '06 Oldskool Demo Compo"
   id: "258"
   description: ""
   lang: "fi"
-program_descriptions--609071198:
+program_descriptions--609179938:
   program_id: "130"
   title: "Seminar: Keynote: Star Wreck"
   id: "259"
@@ -1246,137 +1246,137 @@ The creators of Star Wreck take you on a guided tour through the production phas
 
 Energia Productions will also reveal exclusive information on the future productions, so come along, meet the Stars of Wreck and join the creation of the future filmmaking."
   lang: "en"
-program_descriptions--609071798:
+program_descriptions--609180428:
   program_id: "130"
   title: "Seminar: Keynote: Star Wreck"
   id: "260"
   description: ""
   lang: "fi"
-program_descriptions--609072308:
+program_descriptions--609180938:
   program_id: "131"
   title: "Gaming: World Gamemaster Tournament"
   id: "261"
   description: "Interview with Wanting Yang, one of the organizers of the World Gamemaster Tournament (WGT)."
   lang: "en"
-program_descriptions--609072818:
+program_descriptions--609181558:
   program_id: "131"
   title: "World Gamemaster Tournament"
   id: "262"
   description: "World Gamemaster Tournamentin (WGT) organisaattorin Wanting Yangin haastattelu."
   lang: "fi"
-program_descriptions--609073328:
+program_descriptions--609182058:
   program_id: "132"
   title: "Good Morning Assembly"
   id: "263"
   description: ""
   lang: "en"
-program_descriptions--609073948:
+program_descriptions--609182558:
   program_id: "132"
   title: "Hyvää Huomenta Assembly"
   id: "264"
   description: ""
   lang: "fi"
-program_descriptions--609074448:
+program_descriptions--609183068:
   program_id: "134"
   title: "Lelulaatikon demohetki by Plaumau pluki pluki"
   id: "267"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609074968:
+program_descriptions--609183678:
   program_id: "134"
   title: "Lelulaatikon demohetki by Plaumau pluki pluki"
   id: "268"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609075468:
+program_descriptions--609184188:
   program_id: "135"
   title: "Abyss ja Pehu by Valot Pois"
   id: "269"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609076088:
+program_descriptions--609184678:
   program_id: "135"
   title: "Abyss ja Pehu by Valot Pois"
   id: "270"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609076588:
+program_descriptions--609185298:
   program_id: "136"
   title: "Serious Sauna Trip by Sähköliike"
   id: "271"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609077108:
+program_descriptions--609185788:
   program_id: "136"
   title: "Serious Sauna Trip by Sähköliike"
   id: "272"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609077698:
+program_descriptions--609186298:
   program_id: "138"
   title: "Seminar: Getting a job in games"
   id: "275"
   description: "Speaker: Jussi Laakkonen,
 The games industry employs tens of thousands of persons worldwide, and close to a 1000 persons in Finland alone. Making games might sound like a dream job, but it's a job nonetheless - hard work, blood, sweat and tears at times. If you are determined to give it a try and plan to get a job in games development, check out this session in which Jussi Laakkonen, business development director for Bugbear Entertainment, discusses how to get the right skills for making games, what education is available and how to land your first job in games development."
   lang: "en"
-program_descriptions--609078228:
+program_descriptions--609186918:
   program_id: "138"
   title: "Seminar: Getting a job in games"
   id: "276"
   description: ""
   lang: "fi"
-program_descriptions--609078748:
+program_descriptions--609187418:
   program_id: "139"
   title: "X Rules by CyBrod"
   id: "277"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609079248:
+program_descriptions--609187918:
   program_id: "139"
   title: "X Rules by CyBrod"
   id: "278"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609079868:
+program_descriptions--609188428:
   program_id: "140"
   title: "Seminar: Bringing your first game to market"
   id: "279"
   description: "Speaker: Johan Sjöberg,
 So you made your first game and it is really good and probably there should be somebody out there who would like to buy it, right! Or? This lecture gives you a crash course in how to bring a game to the market. We will look at what a publisher deal mean for you as a developer and what alternatives are there to sign with a publisher. Should you go for digital distribution and what are the pro's and con's with that. What is the difference between a distribution deal and license deal and what could you expect to get back in royalty on your game? We will also look at what you as a developer much think about getting into this competitive business. If you are working on a game that could be commercially viable this lecture is for you."
   lang: "en"
-program_descriptions--609080358:
+program_descriptions--609189038:
   program_id: "140"
   title: "Seminar: Bringing your first game to market"
   id: "280"
   description: ""
   lang: "fi"
-program_descriptions--609080888:
+program_descriptions--609189538:
   program_id: "141"
   title: "Seminar: Experiences from 10 years of game development"
   id: "281"
   description: "Speaker: Tobias Sjögren,
 Does games development always mean late nights, a lot of caffeine and broken deadlines? You will hear from an experienced game developer about ways to structure your development in order to the avoid problems that still haunts this business. You will also get to hear real world stories and examples from small productions and big AAA-games projects and learn about how different publishers view game development. You should attend this lecture if you like to learn some ways to structure your team and your project to be able to deliver best possible quality on time with out ending up burned."
   lang: "en"
-program_descriptions--609081378:
+program_descriptions--609190038:
   program_id: "141"
   title: "Seminar: Experiences from 10 years of game development"
   id: "282"
   description: ""
   lang: "fi"
-program_descriptions--609081998:
+program_descriptions--609190668:
   program_id: "142"
   title: "Seminar: Silent Grove Studios - a story of a start-up game developer"
   id: "283"
   description: "Speaker: Henrik Öquist,
 Silent Grove Studios started out as a group of hobbyists six years ago, and since four years time we've worked on one single product, Dawnspire: Prelude. This year Dawnspire: Prelude will be released as a commercial product. The presentation will cover the journey we've done from that go-lucky group of game-lovers to a young game development company that's about to launch its first title. I'll talk about the lessons we've learned along the road, how we've worked and share a few things about what our game is about."
   lang: "en"
-program_descriptions--609082488:
+program_descriptions--609191158:
   program_id: "142"
   title: "Seminar: Silent Grove Studios - a story of a start-up game developer"
   id: "284"
   description: ""
   lang: "fi"
-program_descriptions--609083018:
+program_descriptions--609191668:
   program_id: "143"
   title: "Seminar: Snowflake Studios & Online development"
   id: "285"
@@ -1387,1646 +1387,1646 @@ Now Snowflake Studios is developing it's own new generation game engine \"Mammot
 
 In this presentation Lasse Liljedahl from Snowflake Studios tells the story of a small mod development team, which succeeded to make one of the biggest Battlefield 1942 modifications purely as web development and how Snowflake has now moved on to make it's own game engine, game editor and a stand alone games."
   lang: "en"
-program_descriptions--609083628:
+program_descriptions--609192288:
   program_id: "143"
   title: "Seminar: Snowflake Studios & Online development"
   id: "286"
   description: ""
   lang: "fi"
-program_descriptions--609084128:
+program_descriptions--609192788:
   program_id: "145"
   title: "Wild Food by Tekotuotanto"
   id: "289"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609084648:
+program_descriptions--609193288:
   program_id: "145"
   title: "Wild Food by Tekotuotanto"
   id: "290"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609085148:
+program_descriptions--609193788:
   program_id: "146"
   title: "Whats up with adults by maxon"
   id: "291"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609085758:
+program_descriptions--609194408:
   program_id: "146"
   title: "Whats up with adults by maxon"
   id: "292"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609086258:
+program_descriptions--609194908:
   program_id: "147"
   title: "Keybored by Jadajada"
   id: "293"
   description: "Short Film 06"
   lang: "en"
-program_descriptions--609086778:
+program_descriptions--609195408:
   program_id: "147"
   title: "Keybored by Jadajada"
   id: "294"
   description: "Short Film 06"
   lang: "fi"
-program_descriptions--609087288:
+program_descriptions--609196028:
   program_id: "148"
   title: "Confront by HOViNET team"
   id: "295"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609087888:
+program_descriptions--609196518:
   program_id: "148"
   title: "Confront by HOViNET team"
   id: "296"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609088408:
+program_descriptions--609197028:
   program_id: "149"
   title: "AgonyTorment by Nosfe"
   id: "297"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609088908:
+program_descriptions--609197638:
   program_id: "149"
   title: "AgonyTorment by Nosfe"
   id: "298"
   description: "Lyhytelokuva"
   lang: "fi"
-program_descriptions--609089528:
+program_descriptions--609198148:
   program_id: "150"
   title: "drugs by Jumalauta"
   id: "299"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609090018:
+program_descriptions--609198648:
   program_id: "150"
   title: "drugs by Jumalauta"
   id: "300"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609090548:
+program_descriptions--609199148:
   program_id: "151"
   title: "Lappari live: Embreach"
   id: "301"
   description: "Embreach performs Friday night at Lappari"
   lang: "en"
-program_descriptions--609091038:
+program_descriptions--609199768:
   program_id: "151"
   title: "Lappari live: Embreach"
   id: "302"
   description: "Heviä illan ratoksi"
   lang: "fi"
-program_descriptions--609091658:
+program_descriptions--609200268:
   program_id: "152"
   title: "Korch Fu by Innovators"
   id: "303"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609092148:
+program_descriptions--609200768:
   program_id: "152"
   title: "Korch Fu by Innovators"
   id: "304"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609092678:
+program_descriptions--609201388:
   program_id: "153"
   title: "Unknown Media by TimeScratchers"
   id: "305"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609093178:
+program_descriptions--609201878:
   program_id: "153"
   title: "Unknown Media by TimeScratchers"
   id: "306"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609093788:
+program_descriptions--609202388:
   program_id: "154"
   title: "Making of Racing Pitch video by tAAt 2006"
   id: "307"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609094298:
+program_descriptions--609202958:
   program_id: "154"
   title: "Making of Racing Pitch video by tAAt 2006"
   id: "308"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609094808:
+program_descriptions--609203498:
   program_id: "156"
   title: "Old demos"
   id: "311"
   description: "Old demos from miniDV-tapes, 50min"
   lang: "en"
-program_descriptions--609095418:
+program_descriptions--609203998:
   program_id: "156"
   title: "Vanhoja demoja"
   id: "312"
   description: "50min setti"
   lang: "fi"
-program_descriptions--609095918:
+program_descriptions--609204498:
   program_id: "157"
   title: "DTV Scene awards 2004"
   id: "313"
   description: "Demoscene TV awards 2004 + other stuff"
   lang: "en"
-program_descriptions--609096438:
+program_descriptions--609205108:
   program_id: "157"
   title: "DTV Scene awards 2004"
   id: "314"
   description: "Demoscene awards 2004 + muuta sälää"
   lang: "fi"
-program_descriptions--609096938:
+program_descriptions--609205608:
   program_id: "158"
   title: "Assembly News and coming up"
   id: "315"
   description: ""
   lang: "en"
-program_descriptions--609097548:
+program_descriptions--609206108:
   program_id: "158"
   title: "Assembly uutiset"
   id: "316"
   description: ""
   lang: "fi"
-program_descriptions--609098048:
+program_descriptions--609206728:
   program_id: "159"
   title: "Asus DDR Finals"
   id: "317"
   description: ""
   lang: "en"
-program_descriptions--609098568:
+program_descriptions--609207218:
   program_id: "159"
   title: "Asus DDR Finals"
   id: "318"
   description: ""
   lang: "fi"
-program_descriptions--609099078:
+program_descriptions--609207728:
   program_id: "160"
   title: "Freestyle Music Compo 06"
   id: "319"
   description: ""
   lang: "en"
-program_descriptions--609099678:
+program_descriptions--609208228:
   program_id: "160"
   title: "Freestyle Music Compo 06"
   id: "320"
   description: ""
   lang: "fi"
-program_descriptions--609100198:
+program_descriptions--609208838:
   program_id: "161"
   title: "Freestyle Graphics Compo 06"
   id: "321"
   description: ""
   lang: "en"
-program_descriptions--609100698:
+program_descriptions--609209338:
   program_id: "161"
   title: "Freestyle Graphics Compo 06"
   id: "322"
   description: ""
   lang: "fi"
-program_descriptions--609101318:
+program_descriptions--609209838:
   program_id: "162"
   title: "From Assemblytv Archive: Old Demos"
   id: "323"
   description: ""
   lang: "en"
-program_descriptions--609101808:
+program_descriptions--609210448:
   program_id: "162"
   title: "From Assemblytv Archive: Old Demos"
   id: "324"
   description: ""
   lang: "fi"
-program_descriptions--609102338:
+program_descriptions--609210948:
   program_id: "163"
   title: "Star Wreck -trivia"
   id: "325"
   description: ""
   lang: "en"
-program_descriptions--609102828:
+program_descriptions--609211448:
   program_id: "163"
   title: "Star Wreck -trivia"
   id: "326"
   description: ""
   lang: "fi"
-program_descriptions--609103448:
+program_descriptions--609212078:
   program_id: "164"
   title: "Visitor interviews from Saturday"
   id: "327"
   description: ""
   lang: "en"
-program_descriptions--609103938:
+program_descriptions--609212568:
   program_id: "164"
   title: "Lauantaisia kävijähaastatteluja"
   id: "328"
   description: ""
   lang: "fi"
-program_descriptions--609104468:
+program_descriptions--609213078:
   program_id: "165"
   title: "ASM'06 Browser Demo Compo"
   id: "329"
   description: ""
   lang: "en"
-program_descriptions--609104968:
+program_descriptions--609213578:
   program_id: "165"
   title: "ASM'06 Browser Demo Compo"
   id: "330"
   description: ""
   lang: "fi"
-program_descriptions--609105578:
+program_descriptions--609214188:
   program_id: "167"
   title: "Compo interview 5min"
   id: "333"
   description: ""
   lang: "en"
-program_descriptions--609106088:
+program_descriptions--609214688:
   program_id: "167"
   title: "kompostudio 5min"
   id: "334"
   description: ""
   lang: "fi"
-program_descriptions--609106598:
+program_descriptions--609215188:
   program_id: "168"
   title: "Hosting: Prize Ceremony 1 is starting up"
   id: "335"
   description: ""
   lang: "en"
-program_descriptions--609107208:
+program_descriptions--609215808:
   program_id: "168"
   title: "Hosting: Prize Ceremony 1 is starting up"
   id: "336"
   description: ""
   lang: "fi"
-program_descriptions--609107708:
+program_descriptions--609216308:
   program_id: "169"
   title: "Prize Ceremony 1"
   id: "337"
   description: ""
   lang: "en"
-program_descriptions--609108228:
+program_descriptions--609216808:
   program_id: "169"
   title: "Prize Ceremony 1"
   id: "338"
   description: ""
   lang: "fi"
-program_descriptions--609108728:
+program_descriptions--609217428:
   program_id: "170"
   title: "Pictures from Assembly´06"
   id: "339"
   description: ""
   lang: "en"
-program_descriptions--609109338:
+program_descriptions--609217918:
   program_id: "170"
   title: "Pictures from Assembly´06"
   id: "340"
   description: ""
   lang: "fi"
-program_descriptions--609109838:
+program_descriptions--609218428:
   program_id: "172"
   title: "MUPE: Demoing mobilephone software from contest and Prize giving."
   id: "343"
   description: ""
   lang: "en"
-program_descriptions--609110358:
+program_descriptions--609218928:
   program_id: "172"
   title: "MUPE: Demoing mobilephone software from contest and Prize giving."
   id: "344"
   description: ""
   lang: "fi"
-program_descriptions--609110938:
+program_descriptions--609219538:
   program_id: "173"
   title: "Mobile Demo Compo 06"
   id: "345"
   description: ""
   lang: "en"
-program_descriptions--609111468:
+program_descriptions--609220028:
   program_id: "173"
   title: "Mobile Demo Compo 06"
   id: "346"
   description: ""
   lang: "fi"
-program_descriptions--609111988:
+program_descriptions--609220538:
   program_id: "175"
   title: "Interview with Opera guys"
   id: "349"
   description: ""
   lang: "en"
-program_descriptions--609112488:
+program_descriptions--609221158:
   program_id: "175"
   title: "Operan tekijöiden haastattelu"
   id: "350"
   description: ""
   lang: "fi"
-program_descriptions--609113108:
+program_descriptions--609221658:
   program_id: "177"
   title: "Compo interview 13min"
   id: "353"
   description: ""
   lang: "en"
-program_descriptions--609113598:
+program_descriptions--609222158:
   program_id: "177"
   title: "Compo interview 13min"
   id: "354"
   description: ""
   lang: "fi"
-program_descriptions--609114128:
+program_descriptions--609222788:
   program_id: "178"
   title: "Assembly '06 64k Intro Compo"
   id: "355"
   description: "Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--609114618:
+program_descriptions--609223278:
   program_id: "178"
   title: "Assembly '06 64k introkilpailu"
   id: "356"
   description: "Assembly '06 64k introkilpailu."
   lang: "fi"
-program_descriptions--609115238:
+program_descriptions--609223788:
   program_id: "179"
   title: "Hosting Short Film Compo - Star Wreck group"
   id: "357"
   description: ""
   lang: "en"
-program_descriptions--609115728:
+program_descriptions--609224278:
   program_id: "179"
   title: "Hosting Short Film Compo - Star Wreck group"
   id: "358"
   description: ""
   lang: "fi"
-program_descriptions--609116258:
+program_descriptions--609224908:
   program_id: "180"
   title: "Assembly 2006 Demo Compo"
   id: "359"
   description: "Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609116858:
+program_descriptions--609225398:
   program_id: "180"
   title: "Assembly 2006 Demo Compo"
   id: "360"
   description: "Assembly 2006 demo compo."
   lang: "fi"
-program_descriptions--609117368:
+program_descriptions--609225908:
   program_id: "181"
   title: "Collection of moments on Warcraft 3 and CounterStrike-finals"
   id: "361"
   description: ""
   lang: "en"
-program_descriptions--609117878:
+program_descriptions--609226518:
   program_id: "181"
   title: "Insert: Collection of moments on Warcraft 3 and CounterStrike-finals"
   id: "362"
   description: ""
   lang: "fi"
-program_descriptions--609118388:
+program_descriptions--609227018:
   program_id: "182"
   title: "Non-qualified Realtime Compo Entries"
   id: "363"
   description: ""
   lang: "en"
-program_descriptions--609118998:
+program_descriptions--609227518:
   program_id: "182"
   title: "Non-qualified Realtime Compo Entries"
   id: "364"
   description: ""
   lang: "fi"
-program_descriptions--609119498:
+program_descriptions--609228128:
   program_id: "183"
   title: "Snowflake Studios"
   id: "365"
   description: "Mikko \"Luppis\" Törmälä interviews Lasse Liljedahl and Tapani Valkonen from Snowflake Studios, a new Finnish game development community.
 [In Finnish!]"
   lang: "en"
-program_descriptions--609120018:
+program_descriptions--609228628:
   program_id: "183"
   title: "Snowflake Studios"
   id: "366"
   description: "Mikko \"Luppis\" Törmälä haastattelee Lasse Liljedahlia ja Tapani Valkosta Snowflake Studiosilta."
   lang: "fi"
-program_descriptions--609120518:
+program_descriptions--609229138:
   program_id: "184"
   title: "Feelings from the visitors"
   id: "367"
   description: ""
   lang: "en"
-program_descriptions--609121128:
+program_descriptions--609229628:
   program_id: "184"
   title: "Feelings from the visitors"
   id: "368"
   description: ""
   lang: "fi"
-program_descriptions--609121628:
+program_descriptions--609230258:
   program_id: "185"
   title: "Yllatys"
   id: "369"
   description: ""
   lang: "en"
-program_descriptions--609122148:
+program_descriptions--609230748:
   program_id: "185"
   title: "yllatys"
   id: "370"
   description: ""
   lang: "fi"
-program_descriptions--609122768:
+program_descriptions--609231258:
   program_id: "186"
   title: "Feeling from the organizers"
   id: "371"
   description: ""
   lang: "en"
-program_descriptions--609123258:
+program_descriptions--609231878:
   program_id: "186"
   title: "Feeling from the organizers"
   id: "372"
   description: ""
   lang: "fi"
-program_descriptions--609123788:
+program_descriptions--609232378:
   program_id: "187"
   title: "Lappari Live: Goto80 & Jossystem"
   id: "373"
   description: ""
   lang: "en"
-program_descriptions--609124278:
+program_descriptions--609232878:
   program_id: "187"
   title: "Lappari Live: Goto80 & Jossystem"
   id: "374"
   description: ""
   lang: "fi"
-program_descriptions--609124898:
+program_descriptions--609233388:
   program_id: "188"
   title: "Lappari Live: Desert Planet"
   id: "375"
   description: ""
   lang: "en"
-program_descriptions--609125388:
+program_descriptions--609233998:
   program_id: "188"
   title: "Lappari Live: Desert Planet"
   id: "376"
   description: ""
   lang: "fi"
-program_descriptions--609125918:
+program_descriptions--609234508:
   program_id: "189"
   title: "Good Morning Assembly : Sunday"
   id: "377"
   description: ""
   lang: "en"
-program_descriptions--609126408:
+program_descriptions--609234998:
   program_id: "189"
   title: "Hyvää Huomenta Assembly"
   id: "378"
   description: ""
   lang: "fi"
-program_descriptions--609127028:
+program_descriptions--609235618:
   program_id: "190"
   title: "The Second Hand: Triolis"
   id: "379"
   description: ""
   lang: "en"
-program_descriptions--609127518:
+program_descriptions--609236108:
   program_id: "190"
   title: "The Second Hand: Triolis"
   id: "380"
   description: ""
   lang: "fi"
-program_descriptions--609128048:
+program_descriptions--609236618:
   program_id: "192"
   title: "Guitar hero finals"
   id: "383"
   description: ""
   lang: "en"
-program_descriptions--609128658:
+program_descriptions--609237228:
   program_id: "192"
   title: "Guitar hero finals"
   id: "384"
   description: ""
   lang: "fi"
-program_descriptions--609129158:
+program_descriptions--609237728:
   program_id: "194"
   title: "First Contact by Hazel / Future Vision"
   id: "387"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609129678:
+program_descriptions--609238228:
   program_id: "194"
   title: "First Contact by Hazel / Future Vision"
   id: "388"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609130178:
+program_descriptions--609238738:
   program_id: "195"
   title: "Dance game finals"
   id: "389"
   description: ""
   lang: "en"
-program_descriptions--609130788:
+program_descriptions--609239338:
   program_id: "195"
   title: "dance game finals"
   id: "390"
   description: ""
   lang: "fi"
-program_descriptions--609131288:
+program_descriptions--609239848:
   program_id: "197"
   title: "Talking about Guitar hero and Dance game"
   id: "393"
   description: ""
   lang: "en"
-program_descriptions--609131808:
+program_descriptions--609240338:
   program_id: "197"
   title: "Talking about Guitar hero and Dance game"
   id: "394"
   description: ""
   lang: "fi"
-program_descriptions--609132318:
+program_descriptions--609240958:
   program_id: "198"
   title: "Tekopohjavesi - Artificial Bilge by tAAt"
   id: "395"
   description: "Short Film ASM06"
   lang: "en"
-program_descriptions--609132918:
+program_descriptions--609241448:
   program_id: "198"
   title: "Tekopohjavesi - Artificial Bilge by tAAt"
   id: "396"
   description: "Lyhytelokuva ASM06"
   lang: "fi"
-program_descriptions--609133438:
+program_descriptions--609241958:
   program_id: "201"
   title: "Robowar 12kg finals"
   id: "401"
   description: "12kg max series finals of Robowar competition with the winners interview presenting his winning machine (in Finnish)."
   lang: "en"
-program_descriptions--609133938:
+program_descriptions--609242568:
   program_id: "201"
   title: "Robosota 12kg finaalit"
   id: "402"
   description: "Maksimissaan 12kg sarjan Robosodan finaalit, voittajan haastattelu ja voittorobon esittely."
   lang: "fi"
-program_descriptions--609134558:
+program_descriptions--609243068:
   program_id: "202"
   title: "Visitor & sponsor interviews"
   id: "403"
   description: "Visitor & sponsor interviews."
   lang: "en"
-program_descriptions--609135048:
+program_descriptions--609243568:
   program_id: "202"
   title: "Kävijä- ja sponsorihaastattelu"
   id: "404"
   description: "Kävijä- ja sponsorihaastattelu."
   lang: "fi"
-program_descriptions--609135578:
+program_descriptions--609244078:
   program_id: "203"
   title: "Assembly 2006 Short Film Compo"
   id: "405"
   description: "Assembly 2006 short film compo."
   lang: "en"
-program_descriptions--609136068:
+program_descriptions--609244678:
   program_id: "203"
   title: "Assembly 2006 lyhytelokuvacompo"
   id: "406"
   description: "Assembly 2006 lyhytelokuvacompo."
   lang: "fi"
-program_descriptions--609136688:
+program_descriptions--609245188:
   program_id: "204"
   title: "Walkabout with Setok and Matthew"
   id: "407"
   description: "Setok and Matthew take a tour through Areena."
   lang: "en"
-program_descriptions--609137178:
+program_descriptions--609245678:
   program_id: "204"
   title: "Kiertoajelu Setokin ja Matthewin seurassa"
   id: "408"
   description: "Setok ja Matthew kiertävät Areenan nähtävyyksiä."
   lang: "fi"
-program_descriptions--609137708:
+program_descriptions--609246298:
   program_id: "205"
   title: "ITG"
   id: "409"
   description: "ITG"
   lang: "en"
-program_descriptions--609138208:
+program_descriptions--609246788:
   program_id: "205"
   title: "ITG"
   id: "410"
   description: "ITG-tanssipeli"
   lang: "fi"
-program_descriptions--609138818:
+program_descriptions--609247298:
   program_id: "206"
   title: "Robosota 450g finals"
   id: "411"
   description: "The finals of the Robosota competition, 450g class."
   lang: "en"
-program_descriptions--609139328:
+program_descriptions--609247908:
   program_id: "206"
   title: "Robosota 450g finaalit"
   id: "412"
   description: "Robosodan finaalit, 450g luokka."
   lang: "fi"
-program_descriptions--609139838:
+program_descriptions--609248408:
   program_id: "207"
   title: "Tooth Brush Chain"
   id: "413"
   description: "Some Assembly visitors made a long chain from sponsor material."
   lang: "en"
-program_descriptions--609140448:
+program_descriptions--609248908:
   program_id: "207"
   title: "Hammasharjaketju"
   id: "414"
   description: "Muutama Assembly-kävijä teki sponsoritavarasta pitkän ketjun."
   lang: "fi"
-program_descriptions--609140948:
+program_descriptions--609249418:
   program_id: "208"
   title: "Hosting: Prize Ceremony 2 and Closing ceremony"
   id: "415"
   description: ""
   lang: "en"
-program_descriptions--609141468:
+program_descriptions--609250018:
   program_id: "208"
   title: "Hosting: Prize Ceremony 2 and Closing Ceremony"
   id: "416"
   description: ""
   lang: "fi"
-program_descriptions--609141968:
+program_descriptions--609250528:
   program_id: "209"
   title: "Closing Ceremony"
   id: "417"
   description: ""
   lang: "en"
-program_descriptions--609142578:
+program_descriptions--609251018:
   program_id: "209"
   title: "Closing Ceremony"
   id: "418"
   description: ""
   lang: "fi"
-program_descriptions--609143078:
+program_descriptions--609251638:
   program_id: "210"
   title: "Prize Ceremony 2"
   id: "419"
   description: ""
   lang: "en"
-program_descriptions--609143598:
+program_descriptions--609252128:
   program_id: "210"
   title: "Palkintojenjako 2"
   id: "420"
   description: ""
   lang: "fi"
-program_descriptions--609144108:
+program_descriptions--609252638:
   program_id: "211"
   title: "Collection of finest moments of Assembly '06"
   id: "421"
   description: ""
   lang: "en"
-program_descriptions--609144708:
+program_descriptions--609253248:
   program_id: "211"
   title: "Collection of finest moments of Assembly '06"
   id: "422"
   description: ""
   lang: "fi"
-program_descriptions--609145228:
+program_descriptions--609253748:
   program_id: "212"
   title: "Assembly News / The last news broadcast of AsmTV2006"
   id: "423"
   description: ""
   lang: "en"
-program_descriptions--609145728:
+program_descriptions--609254248:
   program_id: "212"
   title: "Assembly News / The last news broadcast of AsmTV2006"
   id: "424"
   description: ""
   lang: "fi"
-program_descriptions--609146348:
+program_descriptions--609254758:
   program_id: "213"
   title: "Asm Update: Last moments from Assembly´06"
   id: "425"
   description: "Asm update Interview: Assembly '06 is almost done, what does Jussi and/or Pehu think about it?"
   lang: "en"
-program_descriptions--609146838:
+program_descriptions--609255358:
   program_id: "213"
   title: "Assembly Update: Viimeisiä viedään"
   id: "426"
   description: ""
   lang: "fi"
-program_descriptions--609147368:
+program_descriptions--609255858:
   program_id: "214"
   title: "AssemblyTV thanks everyone!"
   id: "427"
   description: ""
   lang: "en"
-program_descriptions--609147858:
+program_descriptions--609256358:
   program_id: "214"
   title: "AssemblyTV thanks everyone!"
   id: "428"
   description: ""
   lang: "fi"
-program_descriptions--609148478:
+program_descriptions--609256978:
   program_id: "215"
   title: "last tg"
   id: "429"
   description: "Assembly event and AssemblyTV broadcast for year 2006 have now ended. Thank you for joining!"
   lang: "en"
-program_descriptions--609148968:
+program_descriptions--609257468:
   program_id: "215"
   title: "viimeinen tg"
   id: "430"
   description: ""
   lang: "fi"
-program_descriptions--609149498:
+program_descriptions--609257978:
   program_id: "216"
   title: "Sankari by Senseless Bricklayer Animations"
   id: "431"
   description: "Assembly 2006 short film compo entry"
   lang: "en"
-program_descriptions--609149998:
+program_descriptions--609258588:
   program_id: "216"
   title: "Sankari by Senseless Bricklayer Animations"
   id: "432"
   description: "Assembly 2006 lyhytelokuvakilpailun osallistuja"
   lang: "fi"
-program_descriptions--609150608:
+program_descriptions--609259088:
   program_id: "217"
   title: "Caffeine by wbs"
   id: "433"
   description: "Fifth in ASSEMLBY'06 mobile demo competition"
   lang: "en"
-program_descriptions--609151118:
+program_descriptions--609259588:
   program_id: "217"
   title: "Caffeine by wbs"
   id: "434"
   description: "Viides ASSEMBLY'06 mobiilidemokilpailussa"
   lang: "fi"
-program_descriptions--609151628:
+program_descriptions--609260088:
   program_id: "218"
   title: "Assembly 2006 Mobile Demo Compo"
   id: "435"
   description: "Demo competition for mobile devices weighting under 300 grams. Assembly 2006."
   lang: "en"
-program_descriptions--609152238:
+program_descriptions--609260698:
   program_id: "218"
   title: "Assembly 2006 Mobiilidemokilpailu"
   id: "436"
   description: "Demokilpailu mobiililaitteille, jotka painavat alle 300 grammaa. Assembly 2006."
   lang: "fi"
-program_descriptions--609152738:
+program_descriptions--609261198:
   program_id: "219"
   title: "Who's Your Favourite Clown? by Shitfaced Clowns"
   id: "437"
   description: "Second in ASSEMBLY'06 mobile demo competition with 5747 points"
   lang: "en"
-program_descriptions--609153258:
+program_descriptions--609261698:
   program_id: "219"
   title: "Who's Your Favourite Clown? by Shitfaced Clowns"
   id: "438"
   description: "Toinen ASSEMBLY'06 mobiilidemokilpailussa 5747 pisteellä"
   lang: "fi"
-program_descriptions--609153758:
+program_descriptions--609262318:
   program_id: "220"
   title: "Follow The Sign 4 by Byterapers"
   id: "439"
   description: "Third in ASSEMBLY'06 mobile demo competition with 4809 points"
   lang: "en"
-program_descriptions--609154368:
+program_descriptions--609262808:
   program_id: "220"
   title: "Follow The Sign 4 by Byterapers"
   id: "440"
   description: "Kolmas ASSEMBLY'06 mobiilidemokilpailussa 4809 pisteellä"
   lang: "fi"
-program_descriptions--609154868:
+program_descriptions--609263318:
   program_id: "221"
   title: "Pulque by Hedelmae"
   id: "441"
   description: "Winner of ASSEMBLY'06 Mobile demo compo with 8050 points"
   lang: "en"
-program_descriptions--609155388:
+program_descriptions--609263928:
   program_id: "221"
   title: "Pulque by Hedelmae"
   id: "442"
   description: "ASSEMBLY'06 mobiilidemokilpailun voittaja 8050 pisteellä"
   lang: "fi"
-program_descriptions--609155898:
+program_descriptions--609264428:
   program_id: "222"
   title: "AiES by Exile Studios"
   id: "443"
   description: "Fourth in ASSEMBLY'06 mobile demo competition"
   lang: "en"
-program_descriptions--609156498:
+program_descriptions--609264928:
   program_id: "222"
   title: "AiES by Exile Studios"
   id: "444"
   description: "Neljäs ASSEMBLY'06 mobiilidemokilpailussa"
   lang: "fi"
-program_descriptions--609157018:
+program_descriptions--609265428:
   program_id: "223"
   title: "Who Killed Travolta? by Evo Flash / Bombsquad"
   id: "445"
   description: "Winner in ASM'06 Browser demo compo"
   lang: "en"
-program_descriptions--609157518:
+program_descriptions--609266038:
   program_id: "223"
   title: "Who Killed Travolta? by Evo Flash / Bombsquad"
   id: "446"
   description: "Voittaja ASM'06 selaindemokilpailussa"
   lang: "fi"
-program_descriptions--609158138:
+program_descriptions--609266538:
   program_id: "224"
   title: "Tokyo-Bangkok-Tokyo by Pyrotech"
   id: "447"
   description: "Second in ASM'06 Browser demo compo"
   lang: "en"
-program_descriptions--609158628:
+program_descriptions--609267038:
   program_id: "224"
   title: "Tokyo-Bangkok-Tokyo by Pyrotech"
   id: "448"
   description: "Toinen ASM'06 selaindemokilpailussa"
   lang: "fi"
-program_descriptions--609159158:
+program_descriptions--609267658:
   program_id: "225"
   title: "Even More Explosions in the Sky by jac"
   id: "449"
   description: "Third in ASM'06 browser demo compo"
   lang: "en"
-program_descriptions--609159648:
+program_descriptions--609268148:
   program_id: "225"
   title: "Even More Explosions in the Sky by jac"
   id: "450"
   description: "Kolmas ASM'06 selaindemokilpailussa"
   lang: "fi"
-program_descriptions--609160268:
+program_descriptions--609268658:
   program_id: "226"
   title: "Gallions Reach by Gasman"
   id: "451"
   description: ""
   lang: "en"
-program_descriptions--609160758:
+program_descriptions--609269228:
   program_id: "226"
   title: "Gallions Reach by Gasman"
   id: "452"
   description: ""
   lang: "fi"
-program_descriptions--609161288:
+program_descriptions--609269768:
   program_id: "227"
   title: "Seed Vessel by Lootikko"
   id: "453"
   description: ""
   lang: "en"
-program_descriptions--609161788:
+program_descriptions--609270268:
   program_id: "227"
   title: "Seed Vessel by Lootikko"
   id: "454"
   description: ""
   lang: "fi"
-program_descriptions--609162398:
+program_descriptions--609270768:
   program_id: "228"
   title: "SqUaReThRuSteR by MiiKA & tEEMU BRoDUCTiONz"
   id: "455"
   description: ""
   lang: "en"
-program_descriptions--609162908:
+program_descriptions--609271378:
   program_id: "228"
   title: "SqUaReThRuSteR by MiiKA & tEEMU BRoDUCTiONz"
   id: "456"
   description: ""
   lang: "fi"
-program_descriptions--609163418:
+program_descriptions--609271878:
   program_id: "229"
   title: "demo	by Dreadful Sight"
   id: "457"
   description: ""
   lang: "en"
-program_descriptions--609164028:
+program_descriptions--609272378:
   program_id: "229"
   title: "demo	by Dreadful Sight"
   id: "458"
   description: ""
   lang: "fi"
-program_descriptions--609164528:
+program_descriptions--609272998:
   program_id: "230"
   title: "Starstruck by TBL"
   id: "459"
   description: "Assembly 2006 demo compo winner."
   lang: "en"
-program_descriptions--609165048:
+program_descriptions--609273488:
   program_id: "230"
   title: "Starstruck by TBL"
   id: "460"
   description: "Assembly 2006 democompon voittaja."
   lang: "fi"
-program_descriptions--609165548:
+program_descriptions--609273998:
   program_id: "231"
   title: "track one by fairlight"
   id: "461"
   description: "2nd place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609166168:
+program_descriptions--609274498:
   program_id: "231"
   title: "track one by fairlight"
   id: "462"
   description: "Toinen sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609166668:
+program_descriptions--609275108:
   program_id: "232"
   title: "1995 by Kewlers & mfx"
   id: "463"
   description: "Third place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609167188:
+program_descriptions--609275608:
   program_id: "232"
   title: "1995 by Kewlers & mfx"
   id: "464"
   description: "Kolmas sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609167698:
+program_descriptions--609276108:
   program_id: "233"
   title: "BOMBMAN by Matt Current"
   id: "465"
   description: "4th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609168328:
+program_descriptions--609276718:
   program_id: "233"
   title: "BOMBMAN by Matt Current"
   id: "466"
   description: "4. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609168848:
+program_descriptions--609277218:
   program_id: "234"
   title: "2^5 by Traction"
   id: "467"
   description: "5th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609169348:
+program_descriptions--609277718:
   program_id: "234"
   title: "2^5 by Traction"
   id: "468"
   description: "5th place in Assembly 2006 demo compo."
   lang: "fi"
-program_descriptions--609169978:
+program_descriptions--609278338:
   program_id: "235"
   title: "telos by portal process"
   id: "469"
   description: "6th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609170468:
+program_descriptions--609278828:
   program_id: "235"
   title: "telos by portal process"
   id: "470"
   description: "6. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609170998:
+program_descriptions--609279338:
   program_id: "236"
   title: "Primate Theory by Unknown Artists"
   id: "471"
   description: "7th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609171488:
+program_descriptions--609279838:
   program_id: "236"
   title: "Primate Theory by Unknown Artists"
   id: "472"
   description: "7. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609172118:
+program_descriptions--609280448:
   program_id: "237"
   title: "Diskoalifight by wAMMA"
   id: "473"
   description: "8th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609172608:
+program_descriptions--609280948:
   program_id: "237"
   title: "Diskoalifight by wAMMA"
   id: "474"
   description: "8. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609173138:
+program_descriptions--609281448:
   program_id: "238"
   title: "Iterate by imbusy  &  xerxes"
   id: "475"
   description: "9th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609173638:
+program_descriptions--609282058:
   program_id: "238"
   title: "Iterate by imbusy  &  xerxes"
   id: "476"
   description: "9. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609174258:
+program_descriptions--609282558:
   program_id: "239"
   title: "The barythymia by Division"
   id: "477"
   description: "10th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609174768:
+program_descriptions--609283058:
   program_id: "239"
   title: "The barythymia by Division"
   id: "478"
   description: "10th place in Assembly 2006 demo compo."
   lang: "fi"
-program_descriptions--609175278:
+program_descriptions--609283678:
   program_id: "240"
   title: "Bacardi Cola by Moonhazard"
   id: "479"
   description: "11th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609175898:
+program_descriptions--609284168:
   program_id: "240"
   title: "Bacardi Cola by Moonhazard"
   id: "480"
   description: "11. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609176398:
+program_descriptions--609284678:
   program_id: "241"
   title: "Da Scene by Deagrace"
   id: "481"
   description: "12th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609176918:
+program_descriptions--609285178:
   program_id: "241"
   title: "Da Scene by Deagrace"
   id: "482"
   description: "12. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609177418:
+program_descriptions--609285788:
   program_id: "242"
   title: "Formal Obsessions by Adapt"
   id: "483"
   description: "13th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609178038:
+program_descriptions--609286278:
   program_id: "242"
   title: "Formal Obsessions by Adapt"
   id: "484"
   description: "13. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609178538:
+program_descriptions--609286788:
   program_id: "243"
   title: "The Winter Party by IT-Forge"
   id: "485"
   description: "14th place in Assembly 2006 demo compo."
   lang: "en"
-program_descriptions--609179058:
+program_descriptions--609287398:
   program_id: "243"
   title: "The Winter Party by IT-Forge"
   id: "486"
   description: "14. sija Assembly 2006 democompossa."
   lang: "fi"
-program_descriptions--609179568:
+program_descriptions--609287898:
   program_id: "244"
   title: "dead ringer by fairlight"
   id: "487"
   description: "Winner of the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--609180178:
+program_descriptions--609288398:
   program_id: "244"
   title: "dead ringer by fairlight"
   id: "488"
   description: "Assembly '06 64k introkilpailun voittaja."
   lang: "fi"
-program_descriptions--609180698:
+program_descriptions--609289018:
   program_id: "245"
   title: "Chaos Theory by Conspiracy"
   id: "489"
   description: "2nd place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--609181198:
+program_descriptions--609289508:
   program_id: "245"
   title: "Chaos Theory by Conspiracy"
   id: "490"
   description: "2. sija Assembly '06 introkilpailussa."
   lang: "fi"
-program_descriptions--605955828:
+program_descriptions--609290018:
   program_id: "246"
   title: "Aesterozoa by Kewlers"
   id: "491"
   description: "3rd place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--605956538:
+program_descriptions--609290508:
   program_id: "246"
   title: "Aesterozoa by Kewlers"
   id: "492"
   description: "3. sija Assembly '06 64k introkilpailussa."
   lang: "fi"
-program_descriptions--605957328:
+program_descriptions--609291128:
   program_id: "247"
   title: "FR-048: Precision by Farbrausch"
   id: "493"
   description: "4th place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--605958068:
+program_descriptions--609291618:
   program_id: "247"
   title: "FR-048: Precision by Farbrausch"
   id: "494"
   description: "4. sija Assembly '06 64k introkilpailussa."
   lang: "fi"
-program_descriptions--605959008:
+program_descriptions--609292128:
   program_id: "248"
   title: "Emo Defect by Fiture Crew"
   id: "495"
   description: "5th place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--605959748:
+program_descriptions--609292738:
   program_id: "248"
   title: "Emo Defect by Fiture Crew"
   id: "496"
   description: "5. sija Assembly '06 64k introkilpailussa."
   lang: "fi"
-program_descriptions--605960558:
+program_descriptions--609293238:
   program_id: "249"
   title: "Rather Mediocre Laser Trip Experience by aspekt"
   id: "497"
   description: "6th place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--605961698:
+program_descriptions--609293738:
   program_id: "249"
   title: "Rather Mediocre Laser Trip Experience by aspekt"
   id: "498"
   description: "6. sija Assembly '06 64k introkilpailussa."
   lang: "fi"
-program_descriptions--605963928:
+program_descriptions--609294358:
   program_id: "250"
   title: "Naked blonde chicks by Immersion"
   id: "499"
   description: "7th place in the Assembly '06 64k intro compo."
   lang: "en"
-program_descriptions--605966518:
+program_descriptions--609294848:
   program_id: "250"
   title: "Naked blonde chicks by Immersion"
   id: "500"
   description: "7. sija Assembly '06 64k introkilpailussa."
   lang: "fi"
-program_descriptions--605972068:
+program_descriptions--609295358:
   program_id: "255"
   title: "Welcome to Assembly 2007"
   id: "509"
   description: "The beginning of Assembly 2007."
   lang: "en"
-program_descriptions--605975758:
+program_descriptions--609295848:
   program_id: "255"
   title: "Tervetuloa Assembly 2007:ään"
   id: "510"
   description: "Assembly 2007 -tapahtuman aloitus."
   lang: "fi"
-program_descriptions--605978208:
+program_descriptions--609296468:
   program_id: "257"
   title: "Visitor interview 3"
   id: "513"
   description: ""
   lang: "en"
-program_descriptions--605980158:
+program_descriptions--609296958:
   program_id: "257"
   title: "Kävijähaastattelu 3"
   id: "514"
   description: ""
   lang: "fi"
-program_descriptions--605982858:
+program_descriptions--609297468:
   program_id: "258"
   title: "GameDev compo"
   id: "515"
   description: "GameDev compo"
   lang: "en"
-program_descriptions--605987808:
+program_descriptions--609298078:
   program_id: "258"
   title: "GameDev-kompo"
   id: "516"
   description: ""
   lang: "fi"
-program_descriptions--605988598:
+program_descriptions--609298578:
   program_id: "259"
   title: "Assembly Update 1"
   id: "517"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Matthew Walster."
   lang: "en"
-program_descriptions--605989618:
+program_descriptions--609299078:
   program_id: "259"
   title: "Assembly Update 1"
   id: "518"
   description: ""
   lang: "fi"
-program_descriptions--605991418:
+program_descriptions--609299658:
   program_id: "260"
   title: "Fast music compo"
   id: "519"
   description: ""
   lang: "en"
-program_descriptions--605993308:
+program_descriptions--609300188:
   program_id: "260"
   title: "Fast music compo"
   id: "520"
   description: ""
   lang: "fi"
-program_descriptions--605994278:
+program_descriptions--609300698:
   program_id: "261"
   title: "TV Chat / guest Jussi Laakkonen"
   id: "521"
   description: ""
   lang: "en"
-program_descriptions--605996728:
+program_descriptions--609301188:
   program_id: "261"
   title: "TV Chat  / Vieraana Jussi Laakkonen"
   id: "522"
   description: ""
   lang: "fi"
-program_descriptions--605997808:
+program_descriptions--609301808:
   program_id: "262"
   title: "TV Chat / guest Mikko Rauhala"
   id: "523"
   description: ""
   lang: "en"
-program_descriptions--605998688:
+program_descriptions--609302298:
   program_id: "262"
   title: "TV Chat / Vieraana Mikko Rauhala"
   id: "524"
   description: ""
   lang: "fi"
-program_descriptions--605999648:
+program_descriptions--609302808:
   program_id: "263"
   title: "TV Chat / Irc-galleria"
   id: "525"
   description: ""
   lang: "en"
-program_descriptions--606000508:
+program_descriptions--609303418:
   program_id: "263"
   title: "TV Chat / Irc-galleria"
   id: "526"
   description: ""
   lang: "fi"
-program_descriptions--606001498:
+program_descriptions--609303918:
   program_id: "265"
   title: "Compo Rerun and old demos"
   id: "529"
   description: ""
   lang: "en"
-program_descriptions--606002118:
+program_descriptions--609304418:
   program_id: "265"
   title: "Compo-uusinta ja vanhoja demoja"
   id: "530"
   description: ""
   lang: "fi"
-program_descriptions--606007368:
+program_descriptions--609304928:
   program_id: "266"
   title: "Tv Chat"
   id: "531"
   description: ""
   lang: "en"
-program_descriptions--606007998:
+program_descriptions--609305528:
   program_id: "266"
   title: "Tv Chat"
   id: "532"
   description: ""
   lang: "fi"
-program_descriptions--606008838:
+program_descriptions--609306038:
   program_id: "267"
   title: "Tv Chat"
   id: "533"
   description: ""
   lang: "en"
-program_descriptions--606009708:
+program_descriptions--609306528:
   program_id: "267"
   title: "TV Chat"
   id: "534"
   description: ""
   lang: "fi"
-program_descriptions--606010578:
+program_descriptions--609307148:
   program_id: "268"
   title: "Tv Chat"
   id: "535"
   description: "Live."
   lang: "en"
-program_descriptions--606011638:
+program_descriptions--609307638:
   program_id: "268"
   title: "TV Chat"
   id: "536"
   description: "Suora lähetys AssemblyTV:n chat studiosta."
   lang: "fi"
-program_descriptions--606012298:
+program_descriptions--609308148:
   program_id: "269"
   title: "Tv Chat - Star Wreck"
   id: "537"
   description: "Interviewing Samuli Torssonen (producer) & Timo Vuorensola (director)"
   lang: "en"
-program_descriptions--606013178:
+program_descriptions--609308758:
   program_id: "269"
   title: "Tv Chat - Star Wreck"
   id: "538"
   description: "Haastattelussa Samuli Torssonen (tuottaja) & Timo Vuorensola (ohjaaja)"
   lang: "fi"
-program_descriptions--606015118:
+program_descriptions--609309258:
   program_id: "270"
   title: "Visitor Interview 2"
   id: "539"
   description: ""
   lang: "en"
-program_descriptions--606015928:
+program_descriptions--609309758:
   program_id: "270"
   title: "Kävijähaastattelu 2"
   id: "540"
   description: ""
   lang: "fi"
-program_descriptions--606016828:
+program_descriptions--609310268:
   program_id: "271"
   title: "Visitor Interview 1"
   id: "541"
   description: ""
   lang: "en"
-program_descriptions--606017548:
+program_descriptions--609310868:
   program_id: "271"
   title: "Kävijähaastattelu 1"
   id: "542"
   description: ""
   lang: "fi"
-program_descriptions--606018898:
+program_descriptions--609311378:
   program_id: "272"
   title: "Visitor interview 4"
   id: "543"
   description: ""
   lang: "en"
-program_descriptions--606019768:
+program_descriptions--609311868:
   program_id: "272"
   title: "Kävijähaastattelu 4"
   id: "544"
   description: ""
   lang: "fi"
-program_descriptions--606020538:
+program_descriptions--609312488:
   program_id: "273"
   title: "Visitor interview 6"
   id: "545"
   description: ""
   lang: "en"
-program_descriptions--606022888:
+program_descriptions--609312978:
   program_id: "273"
   title: "Kävijähaastattelu 6"
   id: "546"
   description: ""
   lang: "fi"
-program_descriptions--606027048:
+program_descriptions--609313488:
   program_id: "274"
   title: "Visitor Interview 5"
   id: "547"
   description: ""
   lang: "en"
-program_descriptions--606028778:
+program_descriptions--609314108:
   program_id: "274"
   title: "Kävijähaastattelu 5"
   id: "548"
   description: ""
   lang: "fi"
-program_descriptions--606035228:
+program_descriptions--609314608:
   program_id: "275"
   title: "Fast graphics compo"
   id: "549"
   description: ""
   lang: "en"
-program_descriptions--606044528:
+program_descriptions--609315108:
   program_id: "275"
   title: "Fast-grafiikka-kompo"
   id: "550"
   description: ""
   lang: "fi"
-program_descriptions--606051568:
+program_descriptions--609315608:
   program_id: "276"
   title: "Instrumental music compo"
   id: "551"
   description: ""
   lang: "en"
-program_descriptions--606052988:
+program_descriptions--609316248:
   program_id: "276"
   title: "Instrumentaalimusiikkikompo"
   id: "552"
   description: ""
   lang: "fi"
-program_descriptions--606055408:
+program_descriptions--609316748:
   program_id: "277"
   title: "Drawn themed graphics compo"
   id: "553"
   description: ""
   lang: "en"
-program_descriptions--606060098:
+program_descriptions--609317248:
   program_id: "277"
   title: "Piirretty grafiikka -kompo"
   id: "554"
   description: ""
   lang: "fi"
-program_descriptions--606065788:
+program_descriptions--609317878:
   program_id: "278"
   title: "4k intro compo"
   id: "555"
   description: ""
   lang: "en"
-program_descriptions--606071768:
+program_descriptions--609318368:
   program_id: "278"
   title: "4k intro kompo"
   id: "556"
   description: ""
   lang: "fi"
-program_descriptions--606075498:
+program_descriptions--609318878:
   program_id: "279"
   title: "Oldskool music compo"
   id: "557"
   description: ""
   lang: "en"
-program_descriptions--606079558:
+program_descriptions--609319448:
   program_id: "279"
   title: "Oldskool musiikki kompo"
   id: "558"
   description: ""
   lang: "fi"
-program_descriptions--606082818:
+program_descriptions--609319998:
   program_id: "280"
   title: "AssemblyTV training"
   id: "559"
   description: "Training for our TV crew"
   lang: "en"
-program_descriptions--606084448:
+program_descriptions--609320498:
   program_id: "280"
   title: "AssemblyTV:n harjoittelu"
   id: "560"
   description: "TV-tekijöiden treeniä"
   lang: "fi"
-program_descriptions--606086288:
+program_descriptions--609320998:
   program_id: "281"
   title: "Oldskool graphics compo"
   id: "561"
   description: ""
   lang: "en"
-program_descriptions--606089678:
+program_descriptions--609321618:
   program_id: "281"
   title: "Oldskool-grafiikkakompo"
   id: "562"
   description: ""
   lang: "fi"
-program_descriptions--606093618:
+program_descriptions--609322118:
   program_id: "282"
   title: "Oldskool demo compo"
   id: "563"
   description: ""
   lang: "en"
-program_descriptions--606096478:
+program_descriptions--609322618:
   program_id: "282"
   title: "Oldskool demo kompo"
   id: "564"
   description: ""
   lang: "fi"
-program_descriptions--606098828:
+program_descriptions--609323248:
   program_id: "284"
   title: "Assembly Update 2"
   id: "567"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Giles Constant"
   lang: "en"
-program_descriptions--606101138:
+program_descriptions--609323738:
   program_id: "284"
   title: "Assembly Update 2"
   id: "568"
   description: ""
   lang: "fi"
-program_descriptions--606106338:
+program_descriptions--609324248:
   program_id: "285"
   title: "Freestyle graphics compo"
   id: "569"
   description: ""
   lang: "en"
-program_descriptions--606108108:
+program_descriptions--609324748:
   program_id: "285"
   title: "Freestyle grafiikka kompo"
   id: "570"
   description: ""
   lang: "fi"
-program_descriptions--606112428:
+program_descriptions--609325368:
   program_id: "286"
   title: "Browser demo compo"
   id: "571"
   description: ""
   lang: "en"
-program_descriptions--606116178:
+program_descriptions--609325868:
   program_id: "286"
   title: "Selain demo kompo"
   id: "572"
   description: ""
   lang: "fi"
-program_descriptions--606117178:
+program_descriptions--609326368:
   program_id: "287"
   title: "Assembly Update 3"
   id: "573"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Sanna Paaso."
   lang: "en"
-program_descriptions--606118108:
+program_descriptions--609326988:
   program_id: "287"
   title: "Assembly Update 3"
   id: "574"
   description: ""
   lang: "fi"
-program_descriptions--606119068:
+program_descriptions--609327488:
   program_id: "288"
   title: "Mobile demo compo"
   id: "575"
   description: ""
   lang: "en"
-program_descriptions--606119808:
+program_descriptions--609327988:
   program_id: "288"
   title: "Mobiili demo kompo"
   id: "576"
   description: ""
   lang: "fi"
-program_descriptions--606124428:
+program_descriptions--609328618:
   program_id: "289"
   title: "Assembly Update 4"
   id: "577"
   description: ""
   lang: "en"
-program_descriptions--606125908:
+program_descriptions--609329108:
   program_id: "289"
   title: "Assembly Update 4"
   id: "578"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Matthew Walster."
   lang: "fi"
-program_descriptions--606127638:
+program_descriptions--609329618:
   program_id: "290"
   title: "Short film compo"
   id: "579"
   description: ""
   lang: "en"
-program_descriptions--606128848:
+program_descriptions--609330108:
   program_id: "290"
   title: "Lyhytelokuvakompo"
   id: "580"
   description: ""
   lang: "fi"
-program_descriptions--606130378:
+program_descriptions--609330738:
   program_id: "291"
   title: "Assembly Update 5"
   id: "581"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Matthew Walster"
   lang: "en"
-program_descriptions--606132078:
+program_descriptions--609331228:
   program_id: "291"
   title: "Assembly Update 5"
   id: "582"
   description: ""
   lang: "fi"
-program_descriptions--606134068:
+program_descriptions--609331738:
   program_id: "292"
   title: "Assembly Update 6"
   id: "583"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Sanna Paaso."
   lang: "en"
-program_descriptions--606135558:
+program_descriptions--609332358:
   program_id: "292"
   title: "Assembly Update 6"
   id: "584"
   description: ""
   lang: "fi"
-program_descriptions--606136828:
+program_descriptions--609332858:
   program_id: "293"
   title: "64k intro compo"
   id: "585"
   description: ""
   lang: "en"
-program_descriptions--606139768:
+program_descriptions--609333358:
   program_id: "293"
   title: "64k intro kompo"
   id: "586"
   description: ""
   lang: "fi"
-program_descriptions--606143808:
+program_descriptions--609333978:
   program_id: "294"
   title: "Assembly Update 7"
   id: "587"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Sanna Paaso."
   lang: "en"
-program_descriptions--606147948:
+program_descriptions--609334478:
   program_id: "294"
   title: "Assembly Update 7"
   id: "588"
   description: ""
   lang: "fi"
-program_descriptions--606151978:
+program_descriptions--609334988:
   program_id: "295"
   title: "Assembly Update 8"
   id: "589"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Sanna."
   lang: "en"
-program_descriptions--606156418:
+program_descriptions--609335478:
   program_id: "295"
   title: "Assembly Update 8"
   id: "590"
   description: ""
   lang: "fi"
-program_descriptions--606158998:
+program_descriptions--609336098:
   program_id: "296"
   title: "Assembly Update 9"
   id: "591"
   description: "A brief look at what's coming up on AssemblyTV in the next few hours, including news and updates to the schedule. Presented by Sanna Paaso."
   lang: "en"
-program_descriptions--606159748:
+program_descriptions--609336588:
   program_id: "296"
   title: "Assembly Update 9"
   id: "592"
   description: ""
   lang: "fi"
-program_descriptions--606160878:
+program_descriptions--609337098:
   program_id: "297"
   title: "Demo compo"
   id: "593"
   description: ""
   lang: "en"
-program_descriptions--606161778:
+program_descriptions--609337718:
   program_id: "297"
   title: "Demo kompo"
   id: "594"
   description: ""
   lang: "fi"
-program_descriptions--606162748:
+program_descriptions--609338218:
   program_id: "298"
   title: "Regular Visitors interview"
   id: "595"
@@ -3034,13 +3034,13 @@ program_descriptions--606162748:
 religiosa + osqari
 DAY 1"
   lang: "en"
-program_descriptions--606165568:
+program_descriptions--609338718:
   program_id: "298"
   title: "Kävijähaastattelu"
   id: "596"
   description: ""
   lang: "fi"
-program_descriptions--606167128:
+program_descriptions--609339228:
   program_id: "299"
   title: "Demos from previous years, part 1"
   id: "597"
@@ -3050,253 +3050,253 @@ program_descriptions--606167128:
 3) ASM 03: Pc demo
 4) ASM 03: Pc demo"
   lang: "en"
-program_descriptions--606194058:
+program_descriptions--609339828:
   program_id: "299"
   title: "Demoja edellisiltä vuosilta, osa 1"
   id: "598"
   description: "Vanhoja demoja edellisiltä vuosilta, osa yksi."
   lang: "fi"
-program_descriptions--606198218:
+program_descriptions--609340338:
   program_id: "300"
   title: "Demos from previous years, part 2"
   id: "599"
   description: "ASM 03: Pc demo"
   lang: "en"
-program_descriptions--606199428:
+program_descriptions--609340828:
   program_id: "300"
   title: "Demoja edellisiltä vuosilta, osa 2"
   id: "600"
   description: ""
   lang: "fi"
-program_descriptions--606201588:
+program_descriptions--609341448:
   program_id: "301"
   title: "Motion Capture in Animation"
   id: "601"
   description: ""
   lang: "en"
-program_descriptions--606202478:
+program_descriptions--609341938:
   program_id: "301"
   title: "Motion Capture in Animation"
   id: "602"
   description: ""
   lang: "fi"
-program_descriptions--606207698:
+program_descriptions--609342448:
   program_id: "302"
   title: "Grids - The world is just about enough"
   id: "603"
   description: ""
   lang: "en"
-program_descriptions--606209898:
+program_descriptions--609343058:
   program_id: "302"
   title: "Grids - The world is just about enough"
   id: "604"
   description: ""
   lang: "fi"
-program_descriptions--606213058:
+program_descriptions--609343558:
   program_id: "303"
   title: "Non-photorealistic rendering"
   id: "605"
   description: ""
   lang: "en"
-program_descriptions--606214078:
+program_descriptions--609344058:
   program_id: "303"
   title: "Non-photorealistic rendering"
   id: "606"
   description: ""
   lang: "fi"
-program_descriptions--606216248:
+program_descriptions--609344568:
   program_id: "304"
   title: "Immediate Mode Graphical User Interfaces (IMGUI)"
   id: "607"
   description: ""
   lang: "en"
-program_descriptions--606217818:
+program_descriptions--609345178:
   program_id: "304"
   title: "Immediate Mode Graphical User Interfaces (IMGUI)"
   id: "608"
   description: ""
   lang: "fi"
-program_descriptions--606218338:
+program_descriptions--609345678:
   program_id: "305"
   title: "Opening ceremony"
   id: "609"
   description: ""
   lang: "en"
-program_descriptions--606218878:
+program_descriptions--609346178:
   program_id: "305"
   title: "Avajaisseremonia"
   id: "610"
   description: ""
   lang: "fi"
-program_descriptions--606219398:
+program_descriptions--609346808:
   program_id: "306"
   title: "Demoscene outreach panel"
   id: "611"
   description: "Bent Stamnes, Sir Garbagetruck, Gergely Szelei Kis and Mika Rautio talk about demoscene."
   lang: "en"
-program_descriptions--606220028:
+program_descriptions--609347298:
   program_id: "306"
   title: "Demoscene outreach -paneeli"
   id: "612"
   description: "Bent Stamnes, Sir Garbagetruck, Gergely Szelei Kis ja Mika Rautio keskustelevat demoscenestä."
   lang: "fi"
-program_descriptions--606220548:
+program_descriptions--609347808:
   program_id: "307"
   title: "Anima - animation studio from Sörnäinen"
   id: "613"
   description: ""
   lang: "en"
-program_descriptions--606221088:
+program_descriptions--609348428:
   program_id: "307"
   title: "Anima - animaatiostudio Sörnäisistä"
   id: "614"
   description: ""
   lang: "fi"
-program_descriptions--606221738:
+program_descriptions--609348928:
   program_id: "308"
   title: ".NET: Silverlight"
   id: "615"
   description: ""
   lang: "en"
-program_descriptions--606222258:
+program_descriptions--609349428:
   program_id: "308"
   title: ".NET: Silverlight"
   id: "616"
   description: ""
   lang: "fi"
-program_descriptions--606222808:
+program_descriptions--609349928:
   program_id: "309"
   title: ".NET: XNA - .NET for the Xbox 360!"
   id: "617"
   description: ""
   lang: "en"
-program_descriptions--606223318:
+program_descriptions--609350558:
   program_id: "309"
   title: ".NET: XNA - .NET Xbox 360:lle!"
   id: "618"
   description: ""
   lang: "fi"
-program_descriptions--606223978:
+program_descriptions--609351058:
   program_id: "310"
   title: "Next Generation GPU's - What to expect"
   id: "619"
   description: ""
   lang: "en"
-program_descriptions--606224488:
+program_descriptions--609351558:
   program_id: "310"
   title: "Next Generation GPU's - What to expect"
   id: "620"
   description: ""
   lang: "fi"
-program_descriptions--606225018:
+program_descriptions--609352188:
   program_id: "311"
   title: "Efficient development for OpenGL ES 2.0"
   id: "621"
   description: ""
   lang: "en"
-program_descriptions--606225508:
+program_descriptions--609352678:
   program_id: "311"
   title: "Efficient development for OpenGL ES 2.0"
   id: "622"
   description: ""
   lang: "fi"
-program_descriptions--606226138:
+program_descriptions--609353188:
   program_id: "312"
   title: "AMD's DirectX 10 Hardware in details"
   id: "623"
   description: ""
   lang: "en"
-program_descriptions--606226648:
+program_descriptions--609353758:
   program_id: "312"
   title: "AMD's DirectX 10 Hardware in details"
   id: "624"
   description: ""
   lang: "fi"
-program_descriptions--606227198:
+program_descriptions--609354298:
   program_id: "313"
   title: "Utilizing the PS3 hardware in Super Stardust HD"
   id: "625"
   description: ""
   lang: "en"
-program_descriptions--606228988:
+program_descriptions--609354798:
   program_id: "313"
   title: "Utilizing the PS3 hardware in Super Stardust HD"
   id: "626"
   description: ""
   lang: "fi"
-program_descriptions--606229538:
+program_descriptions--609355298:
   program_id: "314"
   title: "From Finland to USA and China - a game developer's journey"
   id: "627"
   description: ""
   lang: "en"
-program_descriptions--606230048:
+program_descriptions--609355918:
   program_id: "314"
   title: "From Finland to USA and China - a game developer's journey"
   id: "628"
   description: ""
   lang: "fi"
-program_descriptions--606230558:
+program_descriptions--609356418:
   program_id: "315"
   title: "Next-gen Game Design"
   id: "629"
   description: ""
   lang: "en"
-program_descriptions--606231178:
+program_descriptions--609356918:
   program_id: "315"
   title: "Next-gen Game Design"
   id: "630"
   description: ""
   lang: "fi"
-program_descriptions--606231828:
+program_descriptions--609357558:
   program_id: "316"
   title: "Coding for 64 kilobytes in GNU/Linux"
   id: "631"
   description: ""
   lang: "en"
-program_descriptions--606232528:
+program_descriptions--609358048:
   program_id: "316"
   title: "Coding for 64 kilobytes in GNU/Linux"
   id: "632"
   description: ""
   lang: "fi"
-program_descriptions--606233078:
+program_descriptions--609358558:
   program_id: "317"
   title: "Building the Colossus: Iron Sky"
   id: "633"
   description: "Energia productions team members talk about the Iron Sky."
   lang: "en"
-program_descriptions--606234258:
+program_descriptions--609359058:
   program_id: "317"
   title: "Building the Colossus: Iron Sky"
   id: "634"
   description: ""
   lang: "fi"
-program_descriptions--606235518:
+program_descriptions--609359668:
   program_id: "318"
   title: "Computer graphics research at TKK"
   id: "635"
   description: ""
   lang: "en"
-program_descriptions--606236048:
+program_descriptions--609360168:
   program_id: "318"
   title: "Computer graphics research at TKK"
   id: "636"
   description: ""
   lang: "fi"
-program_descriptions--606237498:
+program_descriptions--609360668:
   program_id: "319"
   title: "Demos from previous years, part 3"
   id: "637"
   description: "old demos"
   lang: "en"
-program_descriptions--606239498:
+program_descriptions--609361288:
   program_id: "319"
   title: "Vanhoja demoja, osa 3"
   id: "638"
   description: ""
   lang: "fi"
-program_descriptions--606242118:
+program_descriptions--609361788:
   program_id: "320"
   title: "Demos from previous years, part 5"
   id: "639"
@@ -3307,2318 +3307,2318 @@ Breakpoint03:  64k intro, 2rd
 Breakpoint03: Pc demo, 2rd
 Breakpoint03: Pc demo, 7th"
   lang: "en"
-program_descriptions--606245088:
+program_descriptions--609362288:
   program_id: "320"
   title: "Demoja arkistokaapista, part 5"
   id: "640"
   description: ""
   lang: "fi"
-program_descriptions--606246988:
+program_descriptions--609362928:
   program_id: "321"
   title: "Demos from previous years, part 4"
   id: "641"
   description: ""
   lang: "en"
-program_descriptions--606247958:
+program_descriptions--609363418:
   program_id: "321"
   title: "Demoja arkiston kätköstä, osa 4"
   id: "642"
   description: ""
   lang: "fi"
-program_descriptions--606249078:
+program_descriptions--609363928:
   program_id: "322"
   title: "Saunalahti -revolutionising tv"
   id: "643"
   description: "Saunalahti -revolutionising tv"
   lang: "en"
-program_descriptions--606249648:
+program_descriptions--609364428:
   program_id: "322"
   title: "Saunalahti mullistaa tv:n katselun"
   id: "644"
   description: "Saunalahti mullistaa tv:n katselun"
   lang: "fi"
-program_descriptions--606252898:
+program_descriptions--609365038:
   program_id: "323"
   title: "F-Secure"
   id: "645"
   description: ""
   lang: "en"
-program_descriptions--606254568:
+program_descriptions--609365528:
   program_id: "323"
   title: "F-Secure"
   id: "646"
   description: ""
   lang: "fi"
-program_descriptions--606256938:
+program_descriptions--606066298:
   program_id: "324"
   title: "Interview: Fennogrid"
   id: "647"
   description: ""
   lang: "en"
-program_descriptions--606258788:
+program_descriptions--606067248:
   program_id: "324"
   title: "Haastattelussa Fennogrid"
   id: "648"
   description: ""
   lang: "fi"
-program_descriptions--606260138:
+program_descriptions--606067998:
   program_id: "325"
   title: "Band interview - Re-Pulse"
   id: "649"
   description: ""
   lang: "en"
-program_descriptions--606262278:
+program_descriptions--606068748:
   program_id: "325"
   title: "Bändihaastattelu - Re-Pulse"
   id: "650"
   description: ""
   lang: "fi"
-program_descriptions--606266088:
+program_descriptions--606069678:
   program_id: "326"
   title: "Band interview - DCX"
   id: "651"
   description: ""
   lang: "en"
-program_descriptions--606269168:
+program_descriptions--606070428:
   program_id: "326"
   title: "Bändihaastattelu  - DCX"
   id: "652"
   description: ""
   lang: "fi"
-program_descriptions--606272448:
+program_descriptions--606071578:
   program_id: "327"
   title: "GameDev compostudio"
   id: "653"
   description: ""
   lang: "en"
-program_descriptions--606273728:
+program_descriptions--606073438:
   program_id: "327"
   title: "GameDev kompostudio"
   id: "654"
   description: ""
   lang: "fi"
-program_descriptions--606274778:
+program_descriptions--606076378:
   program_id: "328"
   title: "Limbo -project"
   id: "655"
   description: ""
   lang: "en"
-program_descriptions--606276208:
+program_descriptions--606081768:
   program_id: "328"
   title: "Limbo -projekti"
   id: "656"
   description: ""
   lang: "fi"
-program_descriptions--606277218:
+program_descriptions--606084778:
   program_id: "329"
   title: "demoscene.tv party reports"
   id: "657"
   description: "Demozone 05 partyreport"
   lang: "en"
-program_descriptions--606278458:
+program_descriptions--606087718:
   program_id: "329"
   title: "demoscene.tv partyraportti"
   id: "658"
   description: "Demozone 05 partyraportti"
   lang: "fi"
-program_descriptions--606279328:
+program_descriptions--606089978:
   program_id: "330"
   title: "DTV - Scene.org awards 04"
   id: "659"
   description: "Scene.org awards 2004"
   lang: "en"
-program_descriptions--605774708:
+program_descriptions--606092738:
   program_id: "330"
   title: "DTV - Scene.org awards 04"
   id: "660"
   description: "Scene.org awards 2004"
   lang: "fi"
-program_descriptions--605777108:
+program_descriptions--606097428:
   program_id: "331"
   title: "DTV - Scene.org awards 05"
   id: "661"
   description: "scene.org award ceremony 2005"
   lang: "en"
-program_descriptions--605778418:
+program_descriptions--606098498:
   program_id: "331"
   title: "DTV - Scene.org awards 05"
   id: "662"
   description: "scene.org award ceremony 2005"
   lang: "fi"
-program_descriptions--605783008:
+program_descriptions--606099438:
   program_id: "332"
   title: "Regular visitor interview"
   id: "663"
   description: ""
   lang: "en"
-program_descriptions--605784698:
+program_descriptions--606101108:
   program_id: "332"
   title: "Vakiohaastattelu"
   id: "664"
   description: ""
   lang: "fi"
-program_descriptions--605786848:
+program_descriptions--606103148:
   program_id: "333"
   title: "FennoGrid demo"
   id: "665"
   description: "Grid computing spectacle"
   lang: "en"
-program_descriptions--605788248:
+program_descriptions--606104078:
   program_id: "333"
   title: "FennoGrid-demo"
   id: "666"
   description: "Grid-laskentaa Assembly-verkossa"
   lang: "fi"
-program_descriptions--605790008:
+program_descriptions--606106518:
   program_id: "334"
   title: "Compostudio: Fast Music"
   id: "667"
   description: ""
   lang: "en"
-program_descriptions--605792538:
+program_descriptions--606107598:
   program_id: "334"
   title: "Kompostudio: Fast Musiikki"
   id: "668"
   description: ""
   lang: "fi"
-program_descriptions--605795048:
+program_descriptions--606108498:
   program_id: "335"
   title: "Compostudio: Fast graphics"
   id: "669"
   description: ""
   lang: "en"
-program_descriptions--605799608:
+program_descriptions--606109398:
   program_id: "335"
   title: "Kompostudio: Fast grafiikka"
   id: "670"
   description: ""
   lang: "fi"
-program_descriptions--605801838:
+program_descriptions--606110318:
   program_id: "336"
   title: "Compostudio: Instrumental music"
   id: "671"
   description: ""
   lang: "en"
-program_descriptions--605803788:
+program_descriptions--606111338:
   program_id: "336"
   title: "Kompostudio."
   id: "672"
   description: ""
   lang: "fi"
-program_descriptions--605807378:
+program_descriptions--606111968:
   program_id: "337"
   title: "Compostudio: Drawn themed graphics"
   id: "673"
   description: ""
   lang: "en"
-program_descriptions--605812398:
+program_descriptions--606112838:
   program_id: "337"
   title: "Kompostudio: Piirretty grafiikka"
   id: "674"
   description: ""
   lang: "fi"
-program_descriptions--605817778:
+program_descriptions--606117968:
   program_id: "338"
   title: "Compostudio: 4k intro"
   id: "675"
   description: ""
   lang: "en"
-program_descriptions--605819698:
+program_descriptions--606118568:
   program_id: "338"
   title: "Kompostudio: 4k intro"
   id: "676"
   description: ""
   lang: "fi"
-program_descriptions--605824438:
+program_descriptions--606119438:
   program_id: "339"
   title: "Compostudio: Oldskool music"
   id: "677"
   description: ""
   lang: "en"
-program_descriptions--605826868:
+program_descriptions--606120508:
   program_id: "339"
   title: "Kompostudio: Oldskool musiikki"
   id: "678"
   description: ""
   lang: "fi"
-program_descriptions--605828808:
+program_descriptions--606121358:
   program_id: "340"
   title: "Compostudio: Oldskool graphics"
   id: "679"
   description: ""
   lang: "en"
-program_descriptions--605831088:
+program_descriptions--606122108:
   program_id: "340"
   title: "Kompostudio"
   id: "680"
   description: ""
   lang: "fi"
-program_descriptions--605833648:
+program_descriptions--606122858:
   program_id: "341"
   title: "Compostudio: Oldskool demo"
   id: "681"
   description: ""
   lang: "en"
-program_descriptions--605835418:
+program_descriptions--606125058:
   program_id: "341"
   title: "Kompostudio: Oldskool demo"
   id: "682"
   description: ""
   lang: "fi"
-program_descriptions--605841168:
+program_descriptions--606125698:
   program_id: "342"
   title: "Interviewing Axes Denied"
   id: "683"
   description: ""
   lang: "en"
-program_descriptions--605855028:
+program_descriptions--606126508:
   program_id: "342"
   title: "Haastattelussa Axes Denied"
   id: "684"
   description: ""
   lang: "fi"
-program_descriptions--605864148:
+program_descriptions--606127478:
   program_id: "343"
   title: "Old demos from 2001 and 2002"
   id: "685"
   description: ""
   lang: "en"
-program_descriptions--605876678:
+program_descriptions--606128348:
   program_id: "343"
   title: "Vanhoja demoja vuodelta 2001 ja 2002"
   id: "686"
   description: ""
   lang: "fi"
-program_descriptions--605880538:
+program_descriptions--606129548:
   program_id: "345"
   title: "A Tribute to the Rolling Boulder by Kloonigames"
   id: "689"
   description: ""
   lang: "en"
-program_descriptions--605901138:
+program_descriptions--606130108:
   program_id: "345"
   title: "A Tribute to the Rolling Boulder by Kloonigames"
   id: "690"
   description: ""
   lang: "fi"
-program_descriptions--605903018:
+program_descriptions--606132278:
   program_id: "346"
   title: "APUUN! - The dark hour of the space penguins by Mayoneez and the Boyz"
   id: "691"
   description: ""
   lang: "en"
-program_descriptions--605911168:
+program_descriptions--606135748:
   program_id: "346"
   title: "APUUN! - The dark hour of the space penguins by Mayoneez and the Boyz"
   id: "692"
   description: ""
   lang: "fi"
-program_descriptions--605915108:
+program_descriptions--606138108:
   program_id: "347"
   title: "Balls on Fire by Exile Studios"
   id: "693"
   description: ""
   lang: "en"
-program_descriptions--605922658:
+program_descriptions--606143348:
   program_id: "347"
   title: "Balls on Fire by Exile Studios"
   id: "694"
   description: ""
   lang: "fi"
-program_descriptions--605927668:
+program_descriptions--606151248:
   program_id: "348"
   title: "Bounce by Tino &quot;Siiseli&quot; Myllyselkä"
   id: "695"
   description: ""
   lang: "en"
-program_descriptions--605931538:
+program_descriptions--606157808:
   program_id: "348"
   title: "Bounce by Tino &quot;Siiseli&quot; Myllyselkä"
   id: "696"
   description: ""
   lang: "fi"
-program_descriptions--605936108:
+program_descriptions--606162758:
   program_id: "349"
   title: "Cellfite by weirdwire"
   id: "697"
   description: ""
   lang: "en"
-program_descriptions--605950498:
+program_descriptions--606163638:
   program_id: "349"
   title: "Cellfite by weirdwire"
   id: "698"
   description: ""
   lang: "fi"
-program_descriptions--605952088:
+program_descriptions--606168468:
   program_id: "350"
   title: "Centripetality by Aroppuu, huamn, juhovh"
   id: "699"
   description: ""
   lang: "en"
-program_descriptions--605685318:
+program_descriptions--606172688:
   program_id: "350"
   title: "Centripetality by Aroppuu, huamn, juhovh"
   id: "700"
   description: ""
   lang: "fi"
-program_descriptions--605716358:
+program_descriptions--606178408:
   program_id: "351"
   title: "Cinnamon Beats by tAAt 2007"
   id: "701"
   description: ""
   lang: "en"
-program_descriptions--605729528:
+program_descriptions--606183498:
   program_id: "351"
   title: "Cinnamon Beats by tAAt 2007"
   id: "702"
   description: ""
   lang: "fi"
-program_descriptions--605730088:
+program_descriptions--606187348:
   program_id: "352"
   title: "Dicewars by Melw, Reko &amp; 1in10"
   id: "703"
   description: ""
   lang: "en"
-program_descriptions--605730658:
+program_descriptions--606191078:
   program_id: "352"
   title: "Dicewars by Melw, Reko &amp; 1in10"
   id: "704"
   description: ""
   lang: "fi"
-program_descriptions--605731528:
+program_descriptions--606193478:
   program_id: "353"
   title: "Extreme Wheelie Biker by J&amp;S Production"
   id: "705"
   description: ""
   lang: "en"
-program_descriptions--605735208:
+program_descriptions--606194658:
   program_id: "353"
   title: "Extreme Wheelie Biker by J&amp;S Production"
   id: "706"
   description: ""
   lang: "fi"
-program_descriptions--605738138:
+program_descriptions--606197748:
   program_id: "354"
   title: "Flaming Space Balls by Marko Kärkelä, Mikko Kärkelä, Pauli Valkeejärvi"
   id: "707"
   description: ""
   lang: "en"
-program_descriptions--605744138:
+program_descriptions--606200328:
   program_id: "354"
   title: "Flaming Space Balls by Marko Kärkelä, Mikko Kärkelä, Pauli Valkeejärvi"
   id: "708"
   description: ""
   lang: "fi"
-program_descriptions--605750258:
+program_descriptions--606204358:
   program_id: "355"
   title: "Mad Stick by Siffo &amp; co."
   id: "709"
   description: ""
   lang: "en"
-program_descriptions--605755858:
+program_descriptions--606206878:
   program_id: "355"
   title: "Mad Stick by Siffo &amp; co."
   id: "710"
   description: ""
   lang: "fi"
-program_descriptions--605761798:
+program_descriptions--606209728:
   program_id: "356"
   title: "PlayDetective Heartbreakers by Kayo Games"
   id: "711"
   description: ""
   lang: "en"
-program_descriptions--605763098:
+program_descriptions--606213128:
   program_id: "356"
   title: "PlayDetective Heartbreakers by Kayo Games"
   id: "712"
   description: ""
   lang: "fi"
-program_descriptions--605764918:
+program_descriptions--606216398:
   program_id: "357"
   title: "Sylph Wind by Pieslice Productions"
   id: "713"
   description: ""
   lang: "en"
-program_descriptions--605766508:
+program_descriptions--606218938:
   program_id: "357"
   title: "Sylph Wind by Pieslice Productions"
   id: "714"
   description: ""
   lang: "fi"
-program_descriptions--605768248:
+program_descriptions--606223228:
   program_id: "358"
   title: "Waboga by XZM"
   id: "715"
   description: ""
   lang: "en"
-program_descriptions--605769698:
+program_descriptions--606226358:
   program_id: "358"
   title: "Waboga by XZM"
   id: "716"
   description: ""
   lang: "fi"
-program_descriptions--608598528:
+program_descriptions--606227278:
   program_id: "359"
   title: "Wonders of the seven seas by Embed Creation"
   id: "717"
   description: ""
   lang: "en"
-program_descriptions--608599328:
+program_descriptions--606228248:
   program_id: "359"
   title: "Wonders of the seven seas by Embed Creation"
   id: "718"
   description: ""
   lang: "fi"
-program_descriptions--608600318:
+program_descriptions--606228988:
   program_id: "360"
   title: "Zompie by Fingersoft"
   id: "719"
   description: ""
   lang: "en"
-program_descriptions--608601138:
+program_descriptions--606229718:
   program_id: "360"
   title: "Zompie by Fingersoft"
   id: "720"
   description: ""
   lang: "fi"
-program_descriptions--608602058:
+program_descriptions--606234478:
   program_id: "361"
   title: "JetOut by Unique"
   id: "721"
   description: ""
   lang: "en"
-program_descriptions--608603018:
+program_descriptions--606236008:
   program_id: "361"
   title: "JetOut by Unique"
   id: "722"
   description: ""
   lang: "fi"
-program_descriptions--608603858:
+program_descriptions--606237428:
   program_id: "362"
   title: "Xcene Table Soccer by TimeScratchers &amp; Nivel21 Entertainment"
   id: "723"
   description: ""
   lang: "en"
-program_descriptions--608604888:
+program_descriptions--606238678:
   program_id: "362"
   title: "Xcene Table Soccer by TimeScratchers &amp; Nivel21 Entertainment"
   id: "724"
   description: ""
   lang: "fi"
-program_descriptions--608605748:
+program_descriptions--606240358:
   program_id: "363"
   title: "Kuula by Poksi Productions"
   id: "725"
   description: ""
   lang: "en"
-program_descriptions--608606568:
+program_descriptions--606241808:
   program_id: "363"
   title: "Kuula by Poksi Productions"
   id: "726"
   description: ""
   lang: "fi"
-program_descriptions--608607548:
+program_descriptions--606243518:
   program_id: "364"
   title: "Asus overclocking"
   id: "727"
   description: ""
   lang: "en"
-program_descriptions--608608498:
+program_descriptions--606245488:
   program_id: "364"
   title: "Asus ylikellotus"
   id: "728"
   description: ""
   lang: "fi"
-program_descriptions--608609478:
+program_descriptions--606246748:
   program_id: "365"
   title: "Notebook gaming"
   id: "729"
   description: ""
   lang: "en"
-program_descriptions--608610318:
+program_descriptions--606249358:
   program_id: "365"
   title: "Pelaaminen kannettavalla"
   id: "730"
   description: ""
   lang: "fi"
-program_descriptions--608611128:
+program_descriptions--606253288:
   program_id: "366"
   title: "TOM/JONES by Trilobit"
   id: "731"
   description: ""
   lang: "en"
-program_descriptions--608612208:
+program_descriptions--606257738:
   program_id: "366"
   title: "TOM/JONES by Trilobit"
   id: "732"
   description: ""
   lang: "fi"
-program_descriptions--608613018:
+program_descriptions--606261838:
   program_id: "367"
   title: "Test entry by wiba"
   id: "733"
   description: ""
   lang: "en"
-program_descriptions--608613998:
+program_descriptions--606265048:
   program_id: "367"
   title: "Test entry by wiba"
   id: "734"
   description: ""
   lang: "fi"
-program_descriptions--608614828:
+program_descriptions--606268798:
   program_id: "368"
   title: "Out of Beer Error by Dekadence"
   id: "735"
   description: ""
   lang: "en"
-program_descriptions--608615898:
+program_descriptions--606269518:
   program_id: "368"
   title: "Out of Beer Error by Dekadence"
   id: "736"
   description: ""
   lang: "fi"
-program_descriptions--608616738:
+program_descriptions--606270388:
   program_id: "369"
   title: "NO DIRECTION by Upstars"
   id: "737"
   description: ""
   lang: "en"
-program_descriptions--608617548:
+program_descriptions--606271508:
   program_id: "369"
   title: "NO DIRECTION by Upstars"
   id: "738"
   description: ""
   lang: "fi"
-program_descriptions--608618648:
+program_descriptions--606272428:
   program_id: "370"
   title: "Impossiblator 3 by PWP"
   id: "739"
   description: ""
   lang: "en"
-program_descriptions--608619448:
+program_descriptions--606275278:
   program_id: "370"
   title: "Impossiblator 3 by PWP"
   id: "740"
   description: ""
   lang: "fi"
-program_descriptions--608620288:
+program_descriptions--606276008:
   program_id: "371"
   title: "High Hopes by aspekt"
   id: "741"
   description: ""
   lang: "en"
-program_descriptions--608621248:
+program_descriptions--606301578:
   program_id: "371"
   title: "High Hopes by aspekt"
   id: "742"
   description: ""
   lang: "fi"
-program_descriptions--608622188:
+program_descriptions--606306138:
   program_id: "372"
   title: "Kartoonikum by ExHouse &amp; NecroStudios"
   id: "743"
   description: ""
   lang: "en"
-program_descriptions--608623148:
+program_descriptions--606309048:
   program_id: "372"
   title: "Kartoonikum by ExHouse &amp; NecroStudios"
   id: "744"
   description: ""
   lang: "fi"
-program_descriptions--608623988:
+program_descriptions--606311098:
   program_id: "373"
   title: "RetroPedro by PuavoHard"
   id: "745"
   description: ""
   lang: "en"
-program_descriptions--608624788:
+program_descriptions--606311968:
   program_id: "373"
   title: "RetroPedro by PuavoHard"
   id: "746"
   description: ""
   lang: "fi"
-program_descriptions--608625898:
+program_descriptions--606317318:
   program_id: "374"
   title: "Step Back by Northern Dragons"
   id: "747"
   description: ""
   lang: "en"
-program_descriptions--608626698:
+program_descriptions--606318368:
   program_id: "374"
   title: "Step Back by Northern Dragons"
   id: "748"
   description: ""
   lang: "fi"
-program_descriptions--608627688:
+program_descriptions--606321868:
   program_id: "375"
   title: "Organica by Juippi, Trilkk &amp; Warma"
   id: "749"
   description: ""
   lang: "en"
-program_descriptions--608628508:
+program_descriptions--606323328:
   program_id: "375"
   title: "Organica by Juippi, Trilkk &amp; Warma"
   id: "750"
   description: ""
   lang: "fi"
-program_descriptions--608629588:
+program_descriptions--606324308:
   program_id: "376"
   title: "Stiletto by rgba"
   id: "751"
   description: ""
   lang: "en"
-program_descriptions--608630418:
+program_descriptions--606327438:
   program_id: "376"
   title: "Stiletto by rgba"
   id: "752"
   description: ""
   lang: "fi"
-program_descriptions--608631238:
+program_descriptions--606327948:
   program_id: "377"
   title: "Bully by Unknown Artists"
   id: "753"
   description: ""
   lang: "en"
-program_descriptions--608632328:
+program_descriptions--606328458:
   program_id: "377"
   title: "Bully by Unknown Artists"
   id: "754"
   description: ""
   lang: "fi"
-program_descriptions--608633138:
+program_descriptions--606329088:
   program_id: "378"
   title: "We&#039;re Having Light Satellite Disorder by lucid"
   id: "755"
   description: ""
   lang: "en"
-program_descriptions--608633958:
+program_descriptions--606329598:
   program_id: "378"
   title: "We&#039;re Having Light Satellite Disorder by lucid"
   id: "756"
   description: ""
   lang: "fi"
-program_descriptions--608634938:
+program_descriptions--606330118:
   program_id: "379"
   title: "CLUSTERSTORM by Loonies"
   id: "757"
   description: ""
   lang: "en"
-program_descriptions--608635868:
+program_descriptions--606330618:
   program_id: "379"
   title: "CLUSTERSTORM by Loonies"
   id: "758"
   description: ""
   lang: "fi"
-program_descriptions--608636838:
+program_descriptions--606331268:
   program_id: "380"
   title: "Tsunami by kiirala"
   id: "759"
   description: ""
   lang: "en"
-program_descriptions--608637668:
+program_descriptions--606331758:
   program_id: "380"
   title: "Tsunami by kiirala"
   id: "760"
   description: ""
   lang: "fi"
-program_descriptions--608638478:
+program_descriptions--606332278:
   program_id: "381"
   title: "Hörpöntti the Blazing Red Whale by Lasi Interactive (feat. Hipo)"
   id: "761"
   description: ""
   lang: "en"
-program_descriptions--608639568:
+program_descriptions--606332918:
   program_id: "381"
   title: "Hörpöntti the Blazing Red Whale by Lasi Interactive (feat. Hipo)"
   id: "762"
   description: ""
   lang: "fi"
-program_descriptions--608640378:
+program_descriptions--606333428:
   program_id: "382"
   title: "MAAKAASU by brainlez Coders!"
   id: "763"
   description: ""
   lang: "en"
-program_descriptions--608641358:
+program_descriptions--606333928:
   program_id: "382"
   title: "MAAKAASU by brainlez Coders!"
   id: "764"
   description: ""
   lang: "fi"
-program_descriptions--608642188:
+program_descriptions--606334438:
   program_id: "383"
   title: "Candystall by Pittsburgh Stallers vs Loonies"
   id: "765"
   description: ""
   lang: "en"
-program_descriptions--608643258:
+program_descriptions--606335058:
   program_id: "383"
   title: "Candystall by Pittsburgh Stallers vs Loonies"
   id: "766"
   description: ""
   lang: "fi"
-program_descriptions--608644098:
+program_descriptions--606335548:
   program_id: "384"
   title: "Rose Shank by XZM + tAAt"
   id: "767"
   description: ""
   lang: "en"
-program_descriptions--608644908:
+program_descriptions--606336038:
   program_id: "384"
   title: "Rose Shank by XZM + tAAt"
   id: "768"
   description: ""
   lang: "fi"
-program_descriptions--608646018:
+program_descriptions--606336688:
   program_id: "385"
   title: "Robowar semifinals"
   id: "769"
   description: "Robowar semifinals
 weight categories 6, 12 & 25kg"
   lang: "en"
-program_descriptions--608646828:
+program_descriptions--606337198:
   program_id: "385"
   title: "Robosota semifinaalit"
   id: "770"
   description: "Robosota semifinaalit
 painoluokat 6, 12, 25kg"
   lang: "fi"
-program_descriptions--608647828:
+program_descriptions--606338928:
   program_id: "386"
   title: "Compo rerun"
   id: "771"
   description: "Compo rerun"
   lang: "en"
-program_descriptions--608648648:
+program_descriptions--606339428:
   program_id: "386"
   title: "Kompouusintoja"
   id: "772"
   description: "Kompouusintoja"
   lang: "fi"
-program_descriptions--608649758:
+program_descriptions--606340048:
   program_id: "387"
   title: "Outdoor compos"
   id: "773"
   description: "Outdoor compos: soccer, basketball, cd throwing etc."
   lang: "en"
-program_descriptions--608650568:
+program_descriptions--606340548:
   program_id: "387"
   title: "Ulkoilmakompot"
   id: "774"
   description: "Ulkoilmakompoja: futis, koris, cd:n heitto jne."
   lang: "fi"
-program_descriptions--608651418:
+program_descriptions--606341048:
   program_id: "388"
   title: "Prize Ceremony 1"
   id: "775"
   description: "Prize Ceremony 1"
   lang: "en"
-program_descriptions--608652378:
+program_descriptions--606341778:
   program_id: "388"
   title: "Palkintoseremonia 1"
   id: "776"
   description: "Palkintoseremonia"
   lang: "fi"
-program_descriptions--608653338:
+program_descriptions--606342468:
   program_id: "389"
   title: "Freestyle music compo"
   id: "777"
   description: "Freestyle music compo"
   lang: "en"
-program_descriptions--608654308:
+program_descriptions--606343038:
   program_id: "389"
   title: "Freestylemusiikkikompo"
   id: "778"
   description: "Freestylemusiikkikompo"
   lang: "fi"
-program_descriptions--608655158:
+program_descriptions--606344048:
   program_id: "390"
   title: "Compostudio: Freestyle Music"
   id: "779"
   description: ""
   lang: "en"
-program_descriptions--608656248:
+program_descriptions--606345468:
   program_id: "390"
   title: "Compostudio: Freestyle Music"
   id: "780"
   description: ""
   lang: "fi"
-program_descriptions--608657078:
+program_descriptions--606345978:
   program_id: "391"
   title: "Compostudio: Freestyle Graphics"
   id: "781"
   description: "Compostudio: Freestyle Graphics"
   lang: "en"
-program_descriptions--608657918:
+program_descriptions--606347148:
   program_id: "391"
   title: "Compostudio: Freestyle Graphics"
   id: "782"
   description: ""
   lang: "fi"
-program_descriptions--608658898:
+program_descriptions--606349258:
   program_id: "392"
   title: "Compostudio: Browser Demo"
   id: "783"
   description: "Compostudio: Browser Demo"
   lang: "en"
-program_descriptions--608659978:
+program_descriptions--606351488:
   program_id: "392"
   title: "Compostudio: Browser Demo"
   id: "784"
   description: ""
   lang: "fi"
-program_descriptions--608660808:
+program_descriptions--606354258:
   program_id: "393"
   title: "DTV Partyreport - Evoke05"
   id: "785"
   description: ""
   lang: "en"
-program_descriptions--608661648:
+program_descriptions--606356648:
   program_id: "393"
   title: "DTV Partyreport - Evoke05"
   id: "786"
   description: ""
   lang: "fi"
-program_descriptions--608662468:
+program_descriptions--606357708:
   program_id: "394"
   title: "Limbo -project 3/3"
   id: "787"
   description: "Interviewing youth using Limbo"
   lang: "en"
-program_descriptions--608663568:
+program_descriptions--606358678:
   program_id: "394"
   title: "Limbo -projekti 3/3"
   id: "788"
   description: "Haastattelussa nuoria Limbon käyttäjiä"
   lang: "fi"
-program_descriptions--608664538:
+program_descriptions--606359658:
   program_id: "395"
   title: "Video on Demand"
   id: "789"
   description: ""
   lang: "en"
-program_descriptions--608665388:
+program_descriptions--606362408:
   program_id: "395"
   title: "Video on Demand"
   id: "790"
   description: ""
   lang: "fi"
-program_descriptions--608666468:
+program_descriptions--606364028:
   program_id: "396"
   title: "Asus Motherboards"
   id: "791"
   description: ""
   lang: "en"
-program_descriptions--608667288:
+program_descriptions--606365918:
   program_id: "396"
   title: "Asus -emolevyt"
   id: "792"
   description: ""
   lang: "fi"
-program_descriptions--608668138:
+program_descriptions--606368178:
   program_id: "397"
   title: "Compostudio: Mobile demo"
   id: "793"
   description: ""
   lang: "en"
-program_descriptions--608669098:
+program_descriptions--606369158:
   program_id: "397"
   title: "Kompostudio"
   id: "794"
   description: ""
   lang: "fi"
-program_descriptions--608670038:
+program_descriptions--606371878:
   program_id: "398"
   title: "Compostudio: Short film"
   id: "795"
   description: ""
   lang: "en"
-program_descriptions--608670998:
+program_descriptions--606375688:
   program_id: "398"
   title: "Kompostudio: Lyhytelokuvat"
   id: "796"
   description: ""
   lang: "fi"
-program_descriptions--608671858:
+program_descriptions--606378758:
   program_id: "399"
   title: "DTV - Scene.org awards 06"
   id: "797"
   description: "DTV - Scene.org awards 06"
   lang: "en"
-program_descriptions--608672668:
+program_descriptions--606381118:
   program_id: "399"
   title: "DTV - Scene.org awards 06"
   id: "798"
   description: "DTV - Scene.org awards 06"
   lang: "fi"
-program_descriptions--608673758:
+program_descriptions--606383118:
   program_id: "400"
   title: "Compostudio: 64k intro"
   id: "799"
   description: ""
   lang: "en"
-program_descriptions--608674568:
+program_descriptions--606384468:
   program_id: "400"
   title: "Kompostudio: 64k intro"
   id: "800"
   description: ""
   lang: "fi"
-program_descriptions--608675568:
+program_descriptions--606385798:
   program_id: "401"
   title: "DTV - Tour Diary 2006"
   id: "801"
   description: "DTV - Tour Diary 2006"
   lang: "en"
-program_descriptions--608676498:
+program_descriptions--606386828:
   program_id: "401"
   title: "DTV - Tour Diary 2006"
   id: "802"
   description: "DTV - Tour Diary 2006"
   lang: "fi"
-program_descriptions--608677468:
+program_descriptions--606388108:
   program_id: "402"
   title: "Compostudio: Demo compo"
   id: "803"
   description: ""
   lang: "en"
-program_descriptions--608678318:
+program_descriptions--606388978:
   program_id: "402"
   title: "Kompostudio: Demo kompo"
   id: "804"
   description: ""
   lang: "fi"
-program_descriptions--608679138:
+program_descriptions--606389808:
   program_id: "403"
   title: "End of Assemblytv2007"
   id: "805"
   description: "It´s time to end broadcasting of AssemblyTV2007. See you in Assembly2008. WE LOVE YOU"
   lang: "en"
-program_descriptions--608680218:
+program_descriptions--605886758:
   program_id: "403"
   title: "AssemblyTV2007:n viimeinen hetki"
   id: "806"
   description: "On aika lopettaa AssemblyTV:n lähetys. Nähdään seuraavan kerran kesällä 2008. WE LOVE YOU"
   lang: "fi"
-program_descriptions--608681038:
+program_descriptions--605888218:
   program_id: "404"
   title: "Assembly Update"
   id: "807"
   description: "Assembly Update after Price Seremony"
   lang: "en"
-program_descriptions--608682028:
+program_descriptions--605888838:
   program_id: "404"
   title: "Assembly Update"
   id: "808"
   description: "Assembly Update ensimmäisen palkintojenjaon jälkeen"
   lang: "fi"
-program_descriptions--608682878:
+program_descriptions--605893188:
   program_id: "405"
   title: "Pelikone.fi"
   id: "809"
   description: "Interviewing Jessi Frey - the webmistress of Pelikone.fi"
   lang: "en"
-program_descriptions--608683958:
+program_descriptions--605896398:
   program_id: "405"
   title: "Pelikone.fi"
   id: "810"
   description: "Haastattelussa Jessi Frey - Pelikone.fi tuotepäällikkö"
   lang: "fi"
-program_descriptions--608684798:
+program_descriptions--605897758:
   program_id: "406"
   title: "Visitor Interview."
   id: "811"
   description: ""
   lang: "en"
-program_descriptions--608685648:
+program_descriptions--605898908:
   program_id: "406"
   title: "Kävijähaastattelu."
   id: "812"
   description: ""
   lang: "fi"
-program_descriptions--608686758:
+program_descriptions--605902228:
   program_id: "407"
   title: "Robosota jatkuu"
   id: "813"
   description: ""
   lang: "en"
-program_descriptions--608687578:
+program_descriptions--605903758:
   program_id: "407"
   title: "Robosota Jatkuu"
   id: "814"
   description: ""
   lang: "fi"
-program_descriptions--608688618:
+program_descriptions--605908038:
   program_id: "408"
   title: "After Starwreck"
   id: "815"
   description: "Is there life after Starwreck? Interviewing Samuli Torssonen & Timo Vuorensola."
   lang: "en"
-program_descriptions--608689438:
+program_descriptions--605911088:
   program_id: "408"
   title: "Starwreckin jälkeen"
   id: "816"
   description: "Missä mennään nyt 2 vuotta Starwreckin julkaisun jälkeen? Haastattelussa Samuli Torssonen & Timo Vuorensola."
   lang: "fi"
-program_descriptions--608690528:
+program_descriptions--605912898:
   program_id: "409"
   title: "Prize Ceremony 2"
   id: "817"
   description: "Second Prize Ceremony of Assembly 2007"
   lang: "en"
-program_descriptions--608691348:
+program_descriptions--605916928:
   program_id: "409"
   title: "Prize Ceremony 2"
   id: "818"
   description: ""
   lang: "fi"
-program_descriptions--608692198:
+program_descriptions--605919688:
   program_id: "410"
   title: "Guitar Hero Finals"
   id: "819"
   description: ""
   lang: "en"
-program_descriptions--608693178:
+program_descriptions--605925718:
   program_id: "410"
   title: "Guitar Hero Finals"
   id: "820"
   description: ""
   lang: "fi"
-program_descriptions--608694118:
+program_descriptions--605928818:
   program_id: "411"
   title: "Mikrobitti ITG Finals"
   id: "821"
   description: ""
   lang: "en"
-program_descriptions--608695108:
+program_descriptions--605931738:
   program_id: "411"
   title: "Mikrobitti ITG Finals"
   id: "822"
   description: ""
   lang: "fi"
-program_descriptions--608695958:
+program_descriptions--605936088:
   program_id: "412"
   title: "Youscope by tvt"
   id: "823"
   description: ""
   lang: "en"
-program_descriptions--608697028:
+program_descriptions--605937438:
   program_id: "412"
   title: "Youscope by tvt"
   id: "824"
   description: ""
   lang: "fi"
-program_descriptions--608697858:
+program_descriptions--605939488:
   program_id: "413"
   title: "Pelaamisen sietämätön keveys by JokuRandom"
   id: "825"
   description: ""
   lang: "en"
-program_descriptions--608698698:
+program_descriptions--605941718:
   program_id: "413"
   title: "Pelaamisen sietämätön keveys by JokuRandom"
   id: "826"
   description: ""
   lang: "fi"
-program_descriptions--608699518:
+program_descriptions--605943378:
   program_id: "414"
   title: "Pyllyssä Santaa by Senseless Bricklayer Animations"
   id: "827"
   description: ""
   lang: "en"
-program_descriptions--608700598:
+program_descriptions--605945758:
   program_id: "414"
   title: "Pyllyssä Santaa by Senseless Bricklayer Animations"
   id: "828"
   description: ""
   lang: "fi"
-program_descriptions--608701418:
+program_descriptions--605960848:
   program_id: "415"
   title: "Burger Time by Tekotuotanto"
   id: "829"
   description: ""
   lang: "en"
-program_descriptions--608702418:
+program_descriptions--605968318:
   program_id: "415"
   title: "Burger Time by Tekotuotanto"
   id: "830"
   description: ""
   lang: "fi"
-program_descriptions--608703238:
+program_descriptions--605981388:
   program_id: "416"
   title: "Viimeinen matka? by Saya, Aini, yms."
   id: "831"
   description: ""
   lang: "en"
-program_descriptions--608704148:
+program_descriptions--605985398:
   program_id: "416"
   title: "Viimeinen matka? by Saya, Aini, yms."
   id: "832"
   description: ""
   lang: "fi"
-program_descriptions--608705118:
+program_descriptions--605999578:
   program_id: "417"
   title: "ToyZone 2 by Random &amp; McLad &amp; Nitro"
   id: "833"
   description: ""
   lang: "en"
-program_descriptions--608705948:
+program_descriptions--606011578:
   program_id: "417"
   title: "ToyZone 2 by Random &amp; McLad &amp; Nitro"
   id: "834"
   description: ""
   lang: "fi"
-program_descriptions--608706768:
+program_descriptions--606018048:
   program_id: "418"
   title: "The Light at the End of the World by Teemu Erämaa"
   id: "835"
   description: ""
   lang: "en"
-program_descriptions--608707838:
+program_descriptions--606021548:
   program_id: "418"
   title: "The Light at the End of the World by Teemu Erämaa"
   id: "836"
   description: ""
   lang: "fi"
-program_descriptions--608708678:
+program_descriptions--606028208:
   program_id: "419"
   title: "Jack And The Bus by Alphapolygon"
   id: "837"
   description: ""
   lang: "en"
-program_descriptions--608709508:
+program_descriptions--606035308:
   program_id: "419"
   title: "Jack And The Bus by Alphapolygon"
   id: "838"
   description: ""
   lang: "fi"
-program_descriptions--608710618:
+program_descriptions--606038818:
   program_id: "420"
   title: "Star City by Team scene.ee"
   id: "839"
   description: ""
   lang: "en"
-program_descriptions--608711418:
+program_descriptions--606043548:
   program_id: "420"
   title: "Star City by Team scene.ee"
   id: "840"
   description: ""
   lang: "fi"
-program_descriptions--608712418:
+program_descriptions--606057998:
   program_id: "421"
   title: "Vahapurnukan taukotuokio by Kurppel of Plaumau pluki pluki"
   id: "841"
   description: ""
   lang: "en"
-program_descriptions--608713228:
+program_descriptions--606060618:
   program_id: "421"
   title: "Vahapurnukan taukotuokio by Kurppel of Plaumau pluki pluki"
   id: "842"
   description: ""
   lang: "fi"
-program_descriptions--608714328:
+program_descriptions--606062178:
   program_id: "422"
   title: "Realtime demo wannabe by maxon / fake."
   id: "843"
   description: ""
   lang: "en"
-program_descriptions--608715138:
+program_descriptions--605794538:
   program_id: "422"
   title: "Realtime demo wannabe by maxon / fake."
   id: "844"
   description: ""
   lang: "fi"
-program_descriptions--608715998:
+program_descriptions--605824288:
   program_id: "423"
   title: "raivoNapina by tAAt"
   id: "845"
   description: ""
   lang: "en"
-program_descriptions--608716818:
+program_descriptions--605839778:
   program_id: "423"
   title: "raivoNapina by tAAt"
   id: "846"
   description: ""
   lang: "fi"
-program_descriptions--608717928:
+program_descriptions--605840438:
   program_id: "424"
   title: "Asm live act demo by rbits"
   id: "847"
   description: ""
   lang: "en"
-program_descriptions--608718748:
+program_descriptions--605841018:
   program_id: "424"
   title: "Asm live act demo by rbits"
   id: "848"
   description: ""
   lang: "fi"
-program_descriptions--608719698:
+program_descriptions--605841778:
   program_id: "425"
   title: "Closing ceremony"
   id: "849"
   description: ""
   lang: "en"
-program_descriptions--608720528:
+program_descriptions--605845768:
   program_id: "425"
   title: "Päättäjäisseremonia"
   id: "850"
   description: ""
   lang: "fi"
-program_descriptions--608721488:
+program_descriptions--605849828:
   program_id: "426"
   title: "A by A"
   id: "851"
   description: ""
   lang: "en"
-program_descriptions--608722268:
+program_descriptions--605855098:
   program_id: "426"
   title: "A by A"
   id: "852"
   description: ""
   lang: "fi"
-program_descriptions--608723048:
+program_descriptions--605861728:
   program_id: "427"
   title: "Break Dance not Hearts by Time Scratchers"
   id: "853"
   description: ""
   lang: "en"
-program_descriptions--608724058:
+program_descriptions--605865368:
   program_id: "427"
   title: "Break Dance not Hearts by Time Scratchers"
   id: "854"
   description: ""
   lang: "fi"
-program_descriptions--608724828:
+program_descriptions--605867538:
   program_id: "428"
   title: "LifeForce by Andromeda Software Development"
   id: "855"
   description: ""
   lang: "en"
-program_descriptions--608725618:
+program_descriptions--605872738:
   program_id: "428"
   title: "LifeForce by Andromeda Software Development"
   id: "856"
   description: ""
   lang: "fi"
-program_descriptions--608726578:
+program_descriptions--605873908:
   program_id: "429"
   title: "Helium Copper by wAMMA"
   id: "857"
   description: ""
   lang: "en"
-program_descriptions--608727468:
+program_descriptions--605875748:
   program_id: "429"
   title: "Helium Copper by wAMMA"
   id: "858"
   description: ""
   lang: "fi"
-program_descriptions--608728398:
+program_descriptions--605877748:
   program_id: "430"
   title: "The Sky is the Limit by Brainstorm + Traction"
   id: "859"
   description: ""
   lang: "en"
-program_descriptions--608729218:
+program_descriptions--605879218:
   program_id: "430"
   title: "The Sky is the Limit by Brainstorm + Traction"
   id: "860"
   description: ""
   lang: "fi"
-program_descriptions--608730018:
+program_descriptions--605882588:
   program_id: "431"
   title: "STS-06: Microdots by Synesthetics"
   id: "861"
   description: ""
   lang: "en"
-program_descriptions--608731058:
+program_descriptions--605883608:
   program_id: "431"
   title: "STS-06: Microdots by Synesthetics"
   id: "862"
   description: ""
   lang: "fi"
-program_descriptions--608731858:
+program_descriptions--608783318:
   program_id: "432"
   title: "f07 by Conspiracy"
   id: "863"
   description: ""
   lang: "en"
-program_descriptions--608732658:
+program_descriptions--608784378:
   program_id: "432"
   title: "f07 by Conspiracy"
   id: "864"
   description: ""
   lang: "fi"
-program_descriptions--608733708:
+program_descriptions--608785198:
   program_id: "433"
   title: "evoid droid by excess process"
   id: "865"
   description: ""
   lang: "en"
-program_descriptions--608734538:
+program_descriptions--608786008:
   program_id: "433"
   title: "evoid droid by excess process"
   id: "866"
   description: ""
   lang: "fi"
-program_descriptions--608735558:
+program_descriptions--608786828:
   program_id: "434"
   title: "these dreams fuel my anger by jumalauta"
   id: "867"
   description: ""
   lang: "en"
-program_descriptions--608736388:
+program_descriptions--608787888:
   program_id: "434"
   title: "these dreams fuel my anger by jumalauta"
   id: "868"
   description: ""
   lang: "fi"
-program_descriptions--608737488:
+program_descriptions--608788708:
   program_id: "435"
   title: "Sundown 07 Invite by Bobby Davro Snooker Experience"
   id: "869"
   description: ""
   lang: "en"
-program_descriptions--608738318:
+program_descriptions--608789508:
   program_id: "435"
   title: "Sundown 07 Invite by Bobby Davro Snooker Experience"
   id: "870"
   description: ""
   lang: "fi"
-program_descriptions--608739178:
+program_descriptions--608790588:
   program_id: "436"
   title: "Sokuseki by XPLSV"
   id: "871"
   description: ""
   lang: "en"
-program_descriptions--608739998:
+program_descriptions--608791388:
   program_id: "436"
   title: "Sokuseki by XPLSV"
   id: "872"
   description: ""
   lang: "fi"
-program_descriptions--608741108:
+program_descriptions--608792358:
   program_id: "437"
   title: "The Chasm by Division"
   id: "873"
   description: ""
   lang: "en"
-program_descriptions--608741888:
+program_descriptions--608793278:
   program_id: "437"
   title: "The Chasm by Division"
   id: "874"
   description: ""
   lang: "fi"
-program_descriptions--608742848:
+program_descriptions--608794088:
   program_id: "438"
   title: "Alt 2007 Invitation by FLO"
   id: "875"
   description: ""
   lang: "en"
-program_descriptions--608743648:
+program_descriptions--608795058:
   program_id: "438"
   title: "Alt 2007 Invitation by FLO"
   id: "876"
   description: ""
   lang: "fi"
-program_descriptions--608744538:
+program_descriptions--608795868:
   program_id: "439"
   title: "It&#039;s Red Outside by Unknown Artists"
   id: "877"
   description: ""
   lang: "en"
-program_descriptions--608745488:
+program_descriptions--608796928:
   program_id: "439"
   title: "It&#039;s Red Outside by Unknown Artists"
   id: "878"
   description: ""
   lang: "fi"
-program_descriptions--608746338:
+program_descriptions--608797748:
   program_id: "440"
   title: "The Inner Flame by Adapt"
   id: "879"
   description: ""
   lang: "en"
-program_descriptions--608747378:
+program_descriptions--608798558:
   program_id: "440"
   title: "The Inner Flame by Adapt"
   id: "880"
   description: ""
   lang: "fi"
-program_descriptions--608748168:
+program_descriptions--608799638:
   program_id: "441"
   title: "TiVi by Dope"
   id: "881"
   description: ""
   lang: "en"
-program_descriptions--608748978:
+program_descriptions--608800438:
   program_id: "441"
   title: "TiVi by Dope"
   id: "882"
   description: ""
   lang: "fi"
-program_descriptions--608749768:
+program_descriptions--608801258:
   program_id: "442"
   title: "The Stellarea by mfx"
   id: "883"
   description: ""
   lang: "en"
-program_descriptions--608750808:
+program_descriptions--608802068:
   program_id: "442"
   title: "The Stellarea by mfx"
   id: "884"
   description: ""
   lang: "fi"
-program_descriptions--608751598:
+program_descriptions--608803138:
   program_id: "443"
   title: "media error by cncd, fairlight and orange"
   id: "885"
   description: ""
   lang: "en"
-program_descriptions--608752558:
+program_descriptions--608803938:
   program_id: "443"
   title: "media error by cncd, fairlight and orange"
   id: "886"
   description: ""
   lang: "fi"
-program_descriptions--608753348:
+program_descriptions--608804908:
   program_id: "444"
   title: "En Kikkare by PuavoHard"
   id: "887"
   description: ""
   lang: "en"
-program_descriptions--608754408:
+program_descriptions--608805828:
   program_id: "444"
   title: "En Kikkare by PuavoHard"
   id: "888"
   description: ""
   lang: "fi"
-program_descriptions--608755018:
+program_descriptions--608806638:
   program_id: "445"
   title: "Basic Facts About Design by Immersion"
   id: "889"
   description: ""
   lang: "en"
-program_descriptions--608755598:
+program_descriptions--608807608:
   program_id: "445"
   title: "Basic Facts About Design by Immersion"
   id: "890"
   description: ""
   lang: "fi"
-program_descriptions--608756148:
+program_descriptions--608808428:
   program_id: "446"
   title: "GERM by Atomic Destruction"
   id: "891"
   description: ""
   lang: "en"
-program_descriptions--608756778:
+program_descriptions--608809488:
   program_id: "446"
   title: "GERM by Atomic Destruction"
   id: "892"
   description: ""
   lang: "fi"
-program_descriptions--608757418:
+program_descriptions--608810318:
   program_id: "447"
   title: "."
   id: "893"
   description: ""
   lang: "en"
-program_descriptions--608757938:
+program_descriptions--608811128:
   program_id: "447"
   title: "."
   id: "894"
   description: ""
   lang: "fi"
-program_descriptions--608763748:
-  lang: "en"
+program_descriptions--608820268:
+  title: "Demos from previous years"
   program_id: "448"
-  title: "Demos from previous years"
+  lang: "en"
   id: "895"
-program_descriptions--608764108:
-  lang: "en"
+program_descriptions--608821008:
+  title: "Demos from previous years"
   program_id: "449"
-  title: "Demos from previous years"
+  lang: "en"
   id: "896"
-program_descriptions--608764408:
-  lang: "en"
+program_descriptions--608821618:
+  title: "Demos from previous years"
   program_id: "450"
-  title: "Demos from previous years"
+  lang: "en"
   id: "897"
-program_descriptions--608770378:
-  lang: "en"
-  program_id: "451"
+program_descriptions--608830938:
   title: "Test lead from Areena Studio"
+  program_id: "451"
+  lang: "en"
   id: "898"
-program_descriptions--608770698:
-  lang: "en"
-  program_id: "452"
+program_descriptions--608831558:
   title: "Test Interview from Loading doors"
+  program_id: "452"
+  lang: "en"
   id: "899"
-program_descriptions--608771118:
-  lang: "en"
-  program_id: "453"
+program_descriptions--608832028:
   title: "Test report from Areena Studio"
+  program_id: "453"
+  lang: "en"
   id: "900"
-program_descriptions--608771528:
-  lang: "en"
-  program_id: "454"
+program_descriptions--608832638:
   title: "Test insert for Areena Studio report"
+  program_id: "454"
+  lang: "en"
   id: "901"
-program_descriptions--608771858:
-  lang: "en"
-  program_id: "455"
+program_descriptions--608833178:
   title: "Test interview from Areena Studio"
+  program_id: "455"
+  lang: "en"
   id: "902"
-program_descriptions--608775298:
-  lang: "en"
-  program_id: "456"
+program_descriptions--608838728:
   title: "Welcome to Assembly!"
+  program_id: "456"
+  lang: "en"
   id: "903"
-program_descriptions--608775728:
-  lang: "en"
-  program_id: "457"
+program_descriptions--608839208:
   title: "People at loading doors + interviews"
+  program_id: "457"
+  lang: "en"
   id: "904"
-program_descriptions--608776038:
-  lang: "en"
-  program_id: "458"
+program_descriptions--608839928:
   title: "Basic info about compos"
+  program_id: "458"
+  lang: "en"
   id: "905"
-program_descriptions--608776338:
-  lang: "en"
-  program_id: "459"
+program_descriptions--608840388:
   title: "Compo explanation continues"
+  program_id: "459"
+  lang: "en"
   id: "906"
-program_descriptions--608776768:
-  lang: "en"
-  program_id: "460"
+program_descriptions--608840998:
   title: "People at loading doors + interviews 2"
+  program_id: "460"
+  lang: "en"
   id: "907"
-program_descriptions--608777088:
-  lang: "en"
-  program_id: "461"
+program_descriptions--608841478:
   title: "What’s new at Assembly this year"
+  program_id: "461"
+  lang: "en"
   id: "908"
-program_descriptions--608777388:
-  lang: "en"
-  program_id: "462"
+program_descriptions--608841938:
   title: "People at loading doors + interviews 3"
+  program_id: "462"
+  lang: "en"
   id: "909"
-program_descriptions--608777828:
-  lang: "en"
-  program_id: "463"
+program_descriptions--608842668:
   title: "Welcome to Assembly - Lead out"
+  program_id: "463"
+  lang: "en"
   id: "910"
-program_descriptions--608779138:
-  lang: "en"
-  program_id: "464"
+program_descriptions--608844628:
   title: "Oldskool demo compo"
+  program_id: "464"
+  lang: "en"
   id: "911"
-program_descriptions--608779418:
-  lang: "en"
-  program_id: "465"
+program_descriptions--608845228:
   title: "TOM/JONES by Trilobit"
+  program_id: "465"
+  lang: "en"
   id: "912"
-program_descriptions--608779628:
-  lang: "en"
-  program_id: "466"
+program_descriptions--608845688:
   title: "Out of Beer Error by Dekadence"
+  program_id: "466"
+  lang: "en"
   id: "913"
-program_descriptions--608779938:
-  lang: "en"
-  program_id: "467"
+program_descriptions--608846038:
   title: "NO DIRECTION by Upstars"
+  program_id: "467"
+  lang: "en"
   id: "914"
-program_descriptions--608780128:
-  lang: "en"
-  program_id: "468"
+program_descriptions--608846388:
   title: "Impossiblator 3 by PWP"
+  program_id: "468"
+  lang: "en"
   id: "915"
-program_descriptions--608780318:
-  lang: "en"
-  program_id: "469"
+program_descriptions--608846738:
   title: "High Hopes by aspekt"
+  program_id: "469"
+  lang: "en"
   id: "916"
-program_descriptions--608785738:
-  lang: "en"
-  program_id: "470"
+program_descriptions--608855228:
   title: "A Tribute to the Rolling Boulder by Kloonigames"
+  program_id: "470"
+  lang: "en"
   id: "917"
-program_descriptions--608785928:
-  lang: "en"
-  program_id: "471"
+program_descriptions--608855578:
   title: "APUUN! - The dark hour of the space penguins by Mayoneez and the Boyz"
+  program_id: "471"
+  lang: "en"
   id: "918"
-program_descriptions--608786128:
-  lang: "en"
-  program_id: "472"
+program_descriptions--608855928:
   title: "Balls on Fire by Exile Studios"
+  program_id: "472"
+  lang: "en"
   id: "919"
-program_descriptions--608786448:
-  lang: "en"
-  program_id: "473"
+program_descriptions--608856278:
   title: "Bounce by Tino &quot;Siiseli&quot; Myllyselkä"
+  program_id: "473"
+  lang: "en"
   id: "920"
-program_descriptions--608786758:
-  lang: "en"
-  program_id: "474"
+program_descriptions--608856638:
   title: "Cellfite by weirdwire"
+  program_id: "474"
+  lang: "en"
   id: "921"
-program_descriptions--608786948:
-  lang: "en"
-  program_id: "475"
+program_descriptions--608856988:
   title: "Centripetality by Aroppuu, huamn, juhovh"
+  program_id: "475"
+  lang: "en"
   id: "922"
-program_descriptions--608787138:
-  lang: "en"
-  program_id: "476"
+program_descriptions--608857178:
   title: "Cinnamon Beats by tAAt 2007"
+  program_id: "476"
+  lang: "en"
   id: "923"
-program_descriptions--608787348:
-  lang: "en"
-  program_id: "477"
+program_descriptions--608857538:
   title: "Dicewars by Melw, Reko &amp; 1in10"
+  program_id: "477"
+  lang: "en"
   id: "924"
-program_descriptions--608787568:
-  lang: "en"
-  program_id: "478"
+program_descriptions--608858148:
   title: "Extreme Wheelie Biker by J&amp;S Production"
+  program_id: "478"
+  lang: "en"
   id: "925"
-program_descriptions--608787768:
-  lang: "en"
-  program_id: "479"
+program_descriptions--608858488:
   title: "Flaming Space Balls by Marko Kärkelä, Mikko Kärkelä, Pauli Valkeejärvi"
+  program_id: "479"
+  lang: "en"
   id: "926"
-program_descriptions--608787958:
-  lang: "en"
-  program_id: "480"
+program_descriptions--608858688:
   title: "Mad Stick by Siffo &amp; co."
+  program_id: "480"
+  lang: "en"
   id: "927"
-program_descriptions--608788148:
-  lang: "en"
-  program_id: "481"
+program_descriptions--608859038:
   title: "PlayDetective Heartbreakers by Kayo Games"
+  program_id: "481"
+  lang: "en"
   id: "928"
-program_descriptions--608788598:
-  lang: "en"
-  program_id: "482"
+program_descriptions--608859388:
   title: "Sylph Wind by Pieslice Productions"
+  program_id: "482"
+  lang: "en"
   id: "929"
-program_descriptions--608788788:
-  lang: "en"
-  program_id: "483"
+program_descriptions--608859748:
   title: "Waboga by XZM"
+  program_id: "483"
+  lang: "en"
   id: "930"
-program_descriptions--608788978:
-  lang: "en"
-  program_id: "484"
+program_descriptions--608860098:
   title: "Wonders of the seven seas by Embed Creation"
+  program_id: "484"
+  lang: "en"
   id: "931"
-program_descriptions--608789168:
-  lang: "en"
-  program_id: "485"
+program_descriptions--608860448:
   title: "Zompie by Fingersoft"
+  program_id: "485"
+  lang: "en"
   id: "932"
-program_descriptions--608789358:
-  lang: "en"
-  program_id: "486"
+program_descriptions--608860808:
   title: "JetOut by Unique"
+  program_id: "486"
+  lang: "en"
   id: "933"
-program_descriptions--608789588:
-  lang: "en"
-  program_id: "487"
+program_descriptions--608861258:
   title: "Xcene Table Soccer by TimeScratchers &amp; Nivel21 Entertainment"
+  program_id: "487"
+  lang: "en"
   id: "934"
-program_descriptions--608789798:
-  lang: "en"
-  program_id: "488"
+program_descriptions--608861608:
   title: "Kuula by Poksi Productions"
+  program_id: "488"
+  lang: "en"
   id: "935"
-program_descriptions--608791858:
-  lang: "en"
-  program_id: "489"
+program_descriptions--608864748:
   title: "dead ringer by fairlight"
+  program_id: "489"
+  lang: "en"
   id: "936"
-program_descriptions--608792168:
-  lang: "en"
-  program_id: "490"
+program_descriptions--608865378:
   title: "Chaos Theory by Conspiracy"
+  program_id: "490"
+  lang: "en"
   id: "937"
-program_descriptions--608792608:
-  lang: "en"
-  program_id: "491"
+program_descriptions--608865858:
   title: "Aesterozoa by Kewlers"
+  program_id: "491"
+  lang: "en"
   id: "938"
-program_descriptions--608793038:
-  lang: "en"
-  program_id: "492"
+program_descriptions--608866508:
   title: "FR-048: Precision by Farbrausch"
+  program_id: "492"
+  lang: "en"
   id: "939"
-program_descriptions--608793348:
-  lang: "en"
-  program_id: "493"
+program_descriptions--608867088:
   title: "Emo Defect by Fiture Crew"
+  program_id: "493"
+  lang: "en"
   id: "940"
-program_descriptions--608793688:
-  lang: "en"
-  program_id: "494"
+program_descriptions--608867728:
   title: "Rather Mediocre Laser Trip Experience by aspekt"
+  program_id: "494"
+  lang: "en"
   id: "941"
-program_descriptions--608794028:
-  lang: "en"
-  program_id: "495"
+program_descriptions--608868198:
   title: "Naked blonde chicks by Immersion"
+  program_id: "495"
+  lang: "en"
   id: "942"
-program_descriptions--608805948:
-  lang: "en"
+program_descriptions--608887058:
+  title: "gma juonto"
   program_id: "496"
-  title: "gma juonto"
+  lang: "en"
   id: "943"
-program_descriptions--608806378:
-  lang: "en"
-  program_id: "497"
+program_descriptions--608887688:
   title: "Gaming: Variety of Assembly games"
+  program_id: "497"
+  lang: "en"
   id: "944"
-program_descriptions--608806708:
-  lang: "en"
-  program_id: "498"
+program_descriptions--608888158:
   title: "Host: Feelings"
+  program_id: "498"
+  lang: "en"
   id: "945"
-program_descriptions--608807018:
-  lang: "en"
-  program_id: "499"
+program_descriptions--608888788:
   title: "Gallup part 1"
+  program_id: "499"
+  lang: "en"
   id: "946"
-program_descriptions--608807358:
-  lang: "en"
-  program_id: "500"
+program_descriptions--608889528:
   title: "Gaming: World Gamemaster Tournament"
+  program_id: "500"
+  lang: "en"
   id: "947"
-program_descriptions--608807748:
-  lang: "en"
-  program_id: "501"
+program_descriptions--608890008:
   title: "Gma: interview"
+  program_id: "501"
+  lang: "en"
   id: "948"
-program_descriptions--608808098:
-  lang: "en"
-  program_id: "502"
+program_descriptions--608890468:
   title: "insert; Street Basketball"
+  program_id: "502"
+  lang: "en"
   id: "949"
-program_descriptions--608810458:
-  lang: "en"
-  program_id: "503"
+program_descriptions--608894218:
   title: "Hosting"
+  program_id: "503"
+  lang: "en"
   id: "950"
-program_descriptions--608810758:
-  lang: "en"
-  program_id: "504"
+program_descriptions--608894678:
   title: "Wednesday building"
+  program_id: "504"
+  lang: "en"
   id: "951"
-program_descriptions--608818688:
-  lang: "en"
-  program_id: "505"
+program_descriptions--608907028:
   title: "Pulque by Hedelmae"
+  program_id: "505"
+  lang: "en"
   id: "952"
-program_descriptions--608819008:
-  lang: "en"
-  program_id: "506"
+program_descriptions--608907748:
   title: "Who's Your Favourite Clown? by Shitfaced Clowns"
+  program_id: "506"
+  lang: "en"
   id: "953"
-program_descriptions--608819338:
-  lang: "en"
-  program_id: "507"
+program_descriptions--608908198:
   title: "Follow The Sign 4 by Byterapers"
+  program_id: "507"
+  lang: "en"
   id: "954"
-program_descriptions--608819668:
-  lang: "en"
-  program_id: "508"
+program_descriptions--608908788:
   title: "AiES by Exile Studios"
+  program_id: "508"
+  lang: "en"
   id: "955"
-program_descriptions--608820108:
-  lang: "en"
-  program_id: "509"
+program_descriptions--608909248:
   title: "Caffeine by wbs"
+  program_id: "509"
+  lang: "en"
   id: "956"
-program_descriptions--608825868:
-  lang: "en"
-  program_id: "510"
+program_descriptions--608918238:
   title: "Tokyo-Bangkok-Tokyo by Pyrotech"
+  program_id: "510"
+  lang: "en"
   id: "957"
-program_descriptions--608826328:
-  lang: "en"
-  program_id: "511"
+program_descriptions--608918898:
   title: "Who Killed Travolta? by Evo Flash / Bombsquad"
+  program_id: "511"
+  lang: "en"
   id: "958"
-program_descriptions--608826638:
-  lang: "en"
-  program_id: "512"
+program_descriptions--608919378:
   title: "SqUaReThRuSteR by MiiKA  &  tEEMU BRoDUCTiONz"
+  program_id: "512"
+  lang: "en"
   id: "959"
-program_descriptions--608831698:
-  lang: "en"
+program_descriptions--608927458:
+  title: "Demos from previous years"
   program_id: "513"
-  title: "Demos from previous years"
+  lang: "en"
   id: "960"
-program_descriptions--608832118:
-  lang: "en"
+program_descriptions--608928068:
+  title: "Demos from previous years"
   program_id: "514"
-  title: "Demos from previous years"
+  lang: "en"
   id: "961"
-program_descriptions--608832418:
-  lang: "en"
-  program_id: "515"
+program_descriptions--608928518:
   title: "Demos from previous years"
+  program_id: "515"
+  lang: "en"
   id: "962"
-program_descriptions--608837588:
-  lang: "en"
+program_descriptions--608936758:
+  title: "gma juonto"
   program_id: "516"
-  title: "gma juonto"
+  lang: "en"
   id: "963"
-program_descriptions--608838148:
-  lang: "en"
-  program_id: "517"
+program_descriptions--608937368:
   title: "Feelings from the doors, Asm is open!"
+  program_id: "517"
+  lang: "en"
   id: "964"
-program_descriptions--608838458:
-  lang: "en"
+program_descriptions--608937828:
+  title: "gma juonto 2min"
   program_id: "518"
-  title: "gma juonto 2min"
+  lang: "en"
   id: "965"
-program_descriptions--608838778:
-  lang: "en"
-  program_id: "519"
+program_descriptions--608938478:
   title: "Kï¿½vijï¿½haastattelu"
+  program_id: "519"
+  lang: "en"
   id: "966"
-program_descriptions--608839128:
-  lang: "en"
-  program_id: "520"
+program_descriptions--608938968:
   title: "Morning interview: Ihmiskunnan Ainoa Toivo"
+  program_id: "520"
+  lang: "en"
   id: "967"
-program_descriptions--608839428:
-  lang: "en"
-  program_id: "521"
+program_descriptions--608939298:
   title: "meita on kasiteltava varovasti"
+  program_id: "521"
+  lang: "en"
   id: "968"
-program_descriptions--608839868:
-  lang: "en"
-  program_id: "522"
+program_descriptions--608939638:
   title: "Commercial content"
+  program_id: "522"
+  lang: "en"
   id: "969"
-program_descriptions--608840298:
-  lang: "en"
-  program_id: "523"
+program_descriptions--608939978:
   title: "Hosting: Coming up \"our colleques on DTV\""
+  program_id: "523"
+  lang: "en"
   id: "970"
-program_descriptions--608840598:
-  lang: "en"
-  program_id: "524"
+program_descriptions--608940298:
   title: "Jingle DTV Tour 06 - specific to Assembly"
+  program_id: "524"
+  lang: "en"
   id: "971"
-program_descriptions--608841488:
-  lang: "en"
-  program_id: "525"
+program_descriptions--608941408:
   title: "4k intro compo"
+  program_id: "525"
+  lang: "en"
   id: "972"
-program_descriptions--608841888:
-  lang: "en"
-  program_id: "526"
+program_descriptions--608941698:
   title: "Kartoonikum by ExHouse &amp; NecroStudios"
+  program_id: "526"
+  lang: "en"
   id: "973"
-program_descriptions--608842088:
-  lang: "en"
-  program_id: "527"
+program_descriptions--608941898:
   title: "RetroPedro by PuavoHard"
+  program_id: "527"
+  lang: "en"
   id: "974"
-program_descriptions--608842378:
-  lang: "en"
-  program_id: "528"
+program_descriptions--608942088:
   title: "Step Back by Northern Dragons"
+  program_id: "528"
+  lang: "en"
   id: "975"
-program_descriptions--608842568:
-  lang: "en"
-  program_id: "529"
+program_descriptions--608942288:
   title: "Organica by Juippi, Trilkk &amp; Warma"
+  program_id: "529"
+  lang: "en"
   id: "976"
-program_descriptions--608842788:
-  lang: "en"
-  program_id: "530"
+program_descriptions--608942608:
   title: "Stiletto by rgba"
+  program_id: "530"
+  lang: "en"
   id: "977"
-program_descriptions--608842978:
-  lang: "en"
-  program_id: "531"
+program_descriptions--608942918:
   title: "Bully by Unknown Artists"
+  program_id: "531"
+  lang: "en"
   id: "978"
-program_descriptions--608843188:
-  lang: "en"
-  program_id: "532"
+program_descriptions--608943108:
   title: "We&#039;re Having Light Satellite Disorder by lucid"
+  program_id: "532"
+  lang: "en"
   id: "979"
-program_descriptions--608843388:
-  lang: "en"
-  program_id: "533"
+program_descriptions--608943298:
   title: "CLUSTERSTORM by Loonies"
+  program_id: "533"
+  lang: "en"
   id: "980"
-program_descriptions--608843648:
-  lang: "en"
-  program_id: "534"
+program_descriptions--608943498:
   title: "Tsunami by kiirala"
+  program_id: "534"
+  lang: "en"
   id: "981"
-program_descriptions--608843898:
-  lang: "en"
-  program_id: "535"
+program_descriptions--608943698:
   title: "Hörpöntti the Blazing Red Whale by Lasi Interactive (feat. Hipo)"
+  program_id: "535"
+  lang: "en"
   id: "982"
-program_descriptions--608844088:
-  lang: "en"
-  program_id: "536"
+program_descriptions--608943888:
   title: "MAAKAASU by brainlez Coders!"
+  program_id: "536"
+  lang: "en"
   id: "983"
-program_descriptions--608844388:
-  lang: "en"
-  program_id: "537"
+program_descriptions--608944088:
   title: "Candystall by Pittsburgh Stallers vs Loonies"
+  program_id: "537"
+  lang: "en"
   id: "984"
-program_descriptions--608844578:
-  lang: "en"
-  program_id: "538"
+program_descriptions--608944398:
   title: "Rose Shank by XZM + tAAt"
+  program_id: "538"
+  lang: "en"
   id: "985"
-program_descriptions--608849728:
-  lang: "en"
-  program_id: "539"
+program_descriptions--608949488:
   title: "Sankari by Senseless Bricklayer Animations"
+  program_id: "539"
+  lang: "en"
   id: "986"
-program_descriptions--608850038:
-  lang: "en"
-  program_id: "540"
+program_descriptions--608949918:
   title: "X Rules by CyBrod"
+  program_id: "540"
+  lang: "en"
   id: "987"
-program_descriptions--608850348:
-  lang: "en"
-  program_id: "541"
+program_descriptions--608950228:
   title: "First Contact by Hazel / Future Vision"
+  program_id: "541"
+  lang: "en"
   id: "988"
-program_descriptions--608850798:
-  lang: "en"
-  program_id: "542"
+program_descriptions--608950678:
   title: "Korch Fu by Innovators"
+  program_id: "542"
+  lang: "en"
   id: "989"
-program_descriptions--608851108:
-  lang: "en"
-  program_id: "543"
+program_descriptions--608950988:
   title: "Wild Food by Tekotuotanto"
+  program_id: "543"
+  lang: "en"
   id: "990"
-program_descriptions--608851488:
-  lang: "en"
-  program_id: "544"
+program_descriptions--608951378:
   title: "Lelulaatikon demohetki by Plaumau pluki pluki"
+  program_id: "544"
+  lang: "en"
   id: "991"
-program_descriptions--608851888:
-  lang: "en"
-  program_id: "545"
+program_descriptions--608951738:
   title: "Unknown Media by TimeScratchers"
+  program_id: "545"
+  lang: "en"
   id: "992"
-program_descriptions--608852198:
-  lang: "en"
-  program_id: "546"
+program_descriptions--608952048:
   title: "Confront by HOViNET team"
+  program_id: "546"
+  lang: "en"
   id: "993"
-program_descriptions--608852528:
-  lang: "en"
-  program_id: "547"
+program_descriptions--608952498:
   title: "Tekopohjavesi - Artificial Bilge by tAAt"
+  program_id: "547"
+  lang: "en"
   id: "994"
-program_descriptions--608852958:
-  lang: "en"
-  program_id: "548"
+program_descriptions--608952808:
   title: "Whats up with adults by maxon"
+  program_id: "548"
+  lang: "en"
   id: "995"
-program_descriptions--608861838:
-  lang: "en"
-  program_id: "549"
+program_descriptions--608961578:
   title: "Starstruck by TBL"
+  program_id: "549"
+  lang: "en"
   id: "996"
-program_descriptions--608862148:
-  lang: "en"
-  program_id: "550"
+program_descriptions--608961898:
   title: "track one by fairlight"
+  program_id: "550"
+  lang: "en"
   id: "997"
-program_descriptions--608862518:
-  lang: "en"
-  program_id: "551"
+program_descriptions--608962438:
   title: "1995 by Kewlers  &  mfx"
+  program_id: "551"
+  lang: "en"
   id: "998"
-program_descriptions--608862828:
-  lang: "en"
-  program_id: "552"
+program_descriptions--608962748:
   title: "BOMBMAN by Matt Current"
+  program_id: "552"
+  lang: "en"
   id: "999"
-program_descriptions--608863158:
-  lang: "en"
-  program_id: "553"
+program_descriptions--608963058:
   title: "2^5 by Traction"
+  program_id: "553"
+  lang: "en"
   id: "1000"
-program_descriptions--608863688:
-  lang: "en"
-  program_id: "554"
+program_descriptions--608963388:
   title: "telos by portal process"
+  program_id: "554"
+  lang: "en"
   id: "1001"
-program_descriptions--608863998:
-  lang: "en"
-  program_id: "555"
+program_descriptions--608963698:
   title: "Primate Theory by Unknown Artists"
+  program_id: "555"
+  lang: "en"
   id: "1002"
-program_descriptions--608864338:
-  lang: "en"
-  program_id: "556"
+program_descriptions--608964248:
   title: "Diskoalifight by wAMMA"
+  program_id: "556"
+  lang: "en"
   id: "1003"
-program_descriptions--608864678:
-  lang: "en"
-  program_id: "557"
+program_descriptions--608964558:
   title: "Iterate by imbusy  &  xerxes"
+  program_id: "557"
+  lang: "en"
   id: "1004"
-program_descriptions--608864988:
-  lang: "en"
-  program_id: "558"
+program_descriptions--608964868:
   title: "The barythymia by Division"
+  program_id: "558"
+  lang: "en"
   id: "1005"
-program_descriptions--608865488:
-  lang: "en"
-  program_id: "559"
+program_descriptions--608965198:
   title: "Bacardi Cola by Moonhazard"
+  program_id: "559"
+  lang: "en"
   id: "1006"
-program_descriptions--608865848:
-  lang: "en"
-  program_id: "560"
+program_descriptions--608965508:
   title: "Da Scene by Deagrace"
+  program_id: "560"
+  lang: "en"
   id: "1007"
-program_descriptions--608866158:
-  lang: "en"
-  program_id: "561"
+program_descriptions--608966048:
   title: "Formal Obsessions by Adapt"
+  program_id: "561"
+  lang: "en"
   id: "1008"
-program_descriptions--608866518:
-  lang: "en"
-  program_id: "562"
+program_descriptions--608966368:
   title: "The Winter Party by IT-Forge"
+  program_id: "562"
+  lang: "en"
   id: "1009"
-program_descriptions--608871668:
-  lang: "en"
-  program_id: "563"
+program_descriptions--608971448:
   title: "Short film compo"
+  program_id: "563"
+  lang: "en"
   id: "1010"
-program_descriptions--608872048:
-  lang: "en"
-  program_id: "564"
+program_descriptions--608971838:
   title: "Youscope by tvt"
+  program_id: "564"
+  lang: "en"
   id: "1011"
-program_descriptions--608872268:
-  lang: "en"
-  program_id: "565"
+program_descriptions--608972028:
   title: "Pelaamisen sietämätön keveys by JokuRandom"
+  program_id: "565"
+  lang: "en"
   id: "1012"
-program_descriptions--608872458:
-  lang: "en"
-  program_id: "566"
+program_descriptions--608972228:
   title: "Pyllyssä Santaa by Senseless Bricklayer Animations"
+  program_id: "566"
+  lang: "en"
   id: "1013"
-program_descriptions--608872648:
-  lang: "en"
-  program_id: "567"
+program_descriptions--608972418:
   title: "Burger Time by Tekotuotanto"
+  program_id: "567"
+  lang: "en"
   id: "1014"
-program_descriptions--608872858:
-  lang: "en"
-  program_id: "568"
+program_descriptions--608972608:
   title: "Viimeinen matka? by Saya, Aini, yms."
+  program_id: "568"
+  lang: "en"
   id: "1015"
-program_descriptions--608873188:
-  lang: "en"
-  program_id: "569"
+program_descriptions--608972818:
   title: "ToyZone 2 by Random &amp; McLad &amp; Nitro"
+  program_id: "569"
+  lang: "en"
   id: "1016"
-program_descriptions--608873378:
-  lang: "en"
-  program_id: "570"
+program_descriptions--608973118:
   title: "The Light at the End of the World by Teemu Erämaa"
+  program_id: "570"
+  lang: "en"
   id: "1017"
-program_descriptions--608873568:
-  lang: "en"
-  program_id: "571"
+program_descriptions--608973308:
   title: "Jack And The Bus by Alphapolygon"
+  program_id: "571"
+  lang: "en"
   id: "1018"
-program_descriptions--608873768:
-  lang: "en"
-  program_id: "572"
+program_descriptions--608973498:
   title: "Star City by Team scene.ee"
+  program_id: "572"
+  lang: "en"
   id: "1019"
-program_descriptions--608874078:
-  lang: "en"
-  program_id: "573"
+program_descriptions--608973798:
   title: "Vahapurnukan taukotuokio by Kurppel of Plaumau pluki pluki"
+  program_id: "573"
+  lang: "en"
   id: "1020"
-program_descriptions--608874278:
-  lang: "en"
-  program_id: "574"
+program_descriptions--608973998:
   title: "Realtime demo wannabe by maxon / fake."
+  program_id: "574"
+  lang: "en"
   id: "1021"
-program_descriptions--608874468:
-  lang: "en"
-  program_id: "575"
+program_descriptions--608974188:
   title: "raivoNapina by tAAt"
+  program_id: "575"
+  lang: "en"
   id: "1022"
-program_descriptions--608874658:
-  lang: "en"
-  program_id: "576"
+program_descriptions--608974378:
   title: "Asm live act demo by rbits"
+  program_id: "576"
+  lang: "en"
   id: "1023"
-program_descriptions--608880818:
-  lang: "en"
-  program_id: "577"
+program_descriptions--608980548:
   title: "64k intro compo"
+  program_id: "577"
+  lang: "en"
   id: "1024"
-program_descriptions--608881218:
-  lang: "en"
-  program_id: "578"
+program_descriptions--608980828:
   title: "En Kikkare by PuavoHard"
+  program_id: "578"
+  lang: "en"
   id: "1025"
-program_descriptions--608881428:
-  lang: "en"
-  program_id: "579"
+program_descriptions--608981018:
   title: "Basic Facts About Design by Immersion"
+  program_id: "579"
+  lang: "en"
   id: "1026"
-program_descriptions--608881628:
-  lang: "en"
-  program_id: "580"
+program_descriptions--608981228:
   title: "GERM by Atomic Destruction"
+  program_id: "580"
+  lang: "en"
   id: "1027"
-program_descriptions--608887508:
-  lang: "en"
-  program_id: "581"
+program_descriptions--608987028:
   title: "gma juonto"
+  program_id: "581"
+  lang: "en"
   id: "1028"
-program_descriptions--608887858:
-  lang: "en"
-  program_id: "582"
+program_descriptions--608987548:
   title: "Feelings from the visitors"
+  program_id: "582"
+  lang: "en"
   id: "1029"
-program_descriptions--608888178:
-  lang: "en"
-  program_id: "583"
+program_descriptions--608987858:
   title: "GMA Interview: Paivola lukion vaihtoehtona"
+  program_id: "583"
+  lang: "en"
   id: "1030"
-program_descriptions--608888488:
-  lang: "en"
-  program_id: "584"
+program_descriptions--608988168:
   title: "Mediagallery content"
+  program_id: "584"
+  lang: "en"
   id: "1031"
-program_descriptions--608889038:
-  lang: "en"
-  program_id: "585"
+program_descriptions--608988498:
   title: "gma juonto 2min"
+  program_id: "585"
+  lang: "en"
   id: "1032"
-program_descriptions--608890448:
-  lang: "en"
-  program_id: "586"
+program_descriptions--608990088:
   title: "Demo compo"
+  program_id: "586"
+  lang: "en"
   id: "1033"
-program_descriptions--608890818:
-  lang: "en"
-  program_id: "587"
+program_descriptions--608990388:
   title: "A by A"
+  program_id: "587"
+  lang: "en"
   id: "1034"
-program_descriptions--608891148:
-  lang: "en"
-  program_id: "588"
+program_descriptions--608990578:
   title: "Break Dance not Hearts by Time Scratchers"
+  program_id: "588"
+  lang: "en"
   id: "1035"
-program_descriptions--608891338:
-  lang: "en"
-  program_id: "589"
+program_descriptions--608990778:
   title: "LifeForce by Andromeda Software Development"
+  program_id: "589"
+  lang: "en"
   id: "1036"
-program_descriptions--608891528:
-  lang: "en"
-  program_id: "590"
+program_descriptions--608991198:
   title: "Helium Copper by wAMMA"
+  program_id: "590"
+  lang: "en"
   id: "1037"
-program_descriptions--608891718:
-  lang: "en"
-  program_id: "591"
+program_descriptions--608991388:
   title: "The Sky is the Limit by Brainstorm + Traction"
+  program_id: "591"
+  lang: "en"
   id: "1038"
-program_descriptions--608891958:
-  lang: "en"
-  program_id: "592"
+program_descriptions--608991578:
   title: "STS-06: Microdots by Synesthetics"
+  program_id: "592"
+  lang: "en"
   id: "1039"
-program_descriptions--608892158:
-  lang: "en"
-  program_id: "593"
+program_descriptions--608991768:
   title: "f07 by Conspiracy"
+  program_id: "593"
+  lang: "en"
   id: "1040"
-program_descriptions--608892348:
-  lang: "en"
-  program_id: "594"
+program_descriptions--608991968:
   title: "evoid droid by excess process"
+  program_id: "594"
+  lang: "en"
   id: "1041"
-program_descriptions--608892538:
-  lang: "en"
-  program_id: "595"
+program_descriptions--608992168:
   title: "these dreams fuel my anger by jumalauta"
+  program_id: "595"
+  lang: "en"
   id: "1042"
-program_descriptions--608892848:
-  lang: "en"
-  program_id: "596"
+program_descriptions--608992358:
   title: "Sundown 07 Invite by Bobby Davro Snooker Experience"
+  program_id: "596"
+  lang: "en"
   id: "1043"
-program_descriptions--608893148:
-  lang: "en"
-  program_id: "597"
+program_descriptions--608992558:
   title: "Sokuseki by XPLSV"
+  program_id: "597"
+  lang: "en"
   id: "1044"
-program_descriptions--608893338:
-  lang: "en"
-  program_id: "598"
+program_descriptions--608992878:
   title: "The Chasm by Division"
+  program_id: "598"
+  lang: "en"
   id: "1045"
-program_descriptions--608893528:
-  lang: "en"
-  program_id: "599"
+program_descriptions--608993168:
   title: "Alt 2007 Invitation by FLO"
+  program_id: "599"
+  lang: "en"
   id: "1046"
-program_descriptions--608893738:
-  lang: "en"
-  program_id: "600"
+program_descriptions--608993358:
   title: "It&#039;s Red Outside by Unknown Artists"
+  program_id: "600"
+  lang: "en"
   id: "1047"
-program_descriptions--608893938:
-  lang: "en"
-  program_id: "601"
+program_descriptions--608993548:
   title: "The Inner Flame by Adapt"
+  program_id: "601"
+  lang: "en"
   id: "1048"
-program_descriptions--608894158:
-  lang: "en"
-  program_id: "602"
+program_descriptions--608993748:
   title: "TiVi by Dope"
+  program_id: "602"
+  lang: "en"
   id: "1049"
-program_descriptions--608894348:
-  lang: "en"
-  program_id: "603"
+program_descriptions--608993938:
   title: "The Stellarea by mfx"
+  program_id: "603"
+  lang: "en"
   id: "1050"
-program_descriptions--608894548:
-  lang: "en"
-  program_id: "604"
+program_descriptions--608994138:
   title: "media error by cncd, fairlight and orange"
+  program_id: "604"
+  lang: "en"
   id: "1051"
-program_descriptions--608897248:
-  lang: "en"
-  program_id: "605"
+program_descriptions--608996818:
   title: "Demo-content 20min"
-  id: "1052"
-program_descriptions--608897628:
+  program_id: "605"
   lang: "en"
-  program_id: "606"
+  id: "1052"
+program_descriptions--608997178:
   title: "Demo-content 10min"
+  program_id: "606"
+  lang: "en"
   id: "1053"

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
 	has_many :programs_users
 	has_many :programs, :through => :programs_users
+	has_many :own_programs, :class_name => "Program", :foreign_key => "orner_id"
   
 
   # HACK HACK HACK -- how to do attr_accessible from here?

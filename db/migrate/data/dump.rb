@@ -61,7 +61,6 @@ dump_tbl("program_categories") { |name, val|
 	[name, val]
 } 
 
-@programs_users = Array.new
 
 #Fetch all programs & events & links
 #if exactly one event for program then merge data
@@ -101,10 +100,11 @@ res.each { |row|
 				else; ""
 				end
 		end
-		if name == "owner_id"
-			@programs_users << {:program_id => row["id"], :user_id => val, :usertype => "Owner"}
-			next
-		end
+		#if name == "owner_id"
+		#	@programs_users << {:program_id => row["id"], :user_id => val, :usertype => "Owner"}
+		#	next
+		#end
+
 		r[name] = val
 	}
 	programs[row["id"]] = r
@@ -201,7 +201,7 @@ programs.each { |pid, prog|
 
 
 new_tbl("programs", newprograms)
-new_tbl("programs_users", @programs_users)
+#new_tbl("programs_users", @programs_users)
 new_tbl("program_descriptions", progdesc)
 
 dump_tbl("playlists") { |name, val|
@@ -223,7 +223,7 @@ dump_tbl("tapes") { |name, val|
 dump_tbl("users") { |name, val|
 	#TODO: permissions 
 	#TODO: any of these needed?
-	next if name == 'verified' || name == 'role' || name == 'content_filter_date' || name == 'language' || name == 'channel_id'
+	next if name == 'verified' || name == 'role' || name == 'language' || name == 'content_filter_date' || name == 'channel_id'
 
 	if name == "firstname"
 		@name = val

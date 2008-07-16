@@ -4,13 +4,12 @@ class ProgramsController < ApplicationController
     @search = "1=1 "
     @searchparams = Hash.new
 
-		#FIXME
-    #if params[:find_by_user] && params[:find_by_user] != "0"
-    #  @user = User.find(params[:find_by_user])
-    #  @user = @user.id unless @user.nil?
-    #  @search += " AND programs.owner_id = :owner_id "
-    #  @searchparams[:owner_id] = @user
-    #end
+    if params[:find_by_user] && params[:find_by_user] != "0"
+      @user = User.find(params[:find_by_user])
+      @user = @user.id unless @user.nil?
+      @search += " AND programs.owner_id = :owner_id "
+      @searchparams[:owner_id] = @user
+    end
 
     if params[:find_by_category] && params[:find_by_category] != "0"
       @category = ProgramCategory.find(params[:find_by_category])
@@ -78,7 +77,7 @@ class ProgramsController < ApplicationController
     @programs = Program.roots.paginate \
 			:page => params[:page], 
 			:order => sort, 
-			:include => [:program_descriptions, :program_category, :users, :children],
+			:include => [:program_descriptions, :program_category, :owner],
 			:conditions => [@search, @searchparams]
 
 
@@ -113,6 +112,8 @@ class ProgramsController < ApplicationController
   # GET /programs/new.xml
   def new
     @program = Program.new
+		@program.owner = current_user
+		@program.program_descriptions << ProgramDescription.Defaults
 
     respond_to do |format|
       format.html # new.html.erb
@@ -129,6 +130,12 @@ class ProgramsController < ApplicationController
   # POST /programs.xml
   def create
     @program = Program.new(params[:program])
+
+		params[:program_description].each { |id, pdata|
+			pd = ProgramDescription.new(pdata)
+			@program.program_descriptions << pd
+		}
+		
 
     respond_to do |format|
       if @program.save
@@ -147,10 +154,19 @@ class ProgramsController < ApplicationController
   def update
     @program = Program.find(params[:id])
 
+		params[:program_description].each { |id, pdata|
+			pd = ProgramDescription.find(id)
+			unless pd.update_attributes(pdata)
+				flash[:notice] = 'Program description update failed.'
+				render :action => "edit"
+				return
+			end
+		}
+
     respond_to do |format|
       if @program.update_attributes(params[:program])
         flash[:notice] = 'Program was successfully updated.'
-        format.html { redirect_to(@program) }
+        format.html { redirect_to(program_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

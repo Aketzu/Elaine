@@ -1,4 +1,4 @@
-<h1>Editing program</h1>
+<h1>Editing program <%= @program.program_descriptions.first.title%></h1>
 
 <% form_for(@program) do |f| %>
 
@@ -7,6 +7,23 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
+
+<table class="editing">
+<tr class="other">
+  <th class="edit">Subprograms:</th>
+  <td>
+
+    <div id="events">
+    <%= render(:partial => 'subprograms', :object => @program.children) %>
+    </div>
+
+    <%= error_messages_for 'program_children' %>
+  </td>
+</tr>
+</table>
+
+TODO: Add subprog<br />
+
 
 <%= link_to 'Show', @program %> |
 <%= link_to 'Back', programs_path %>

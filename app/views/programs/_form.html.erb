@@ -1,54 +1,120 @@
   <%= form.error_messages %>
 
-  <p>
-    <%= form.label :program_category_id %><br />
-    <%= form.select :program_category_id, ProgramCategory.find(:all).collect { |p| [p.name, p.id] } %>
-  </p>
-  <p>
-    <%= form.label :status %><br />
-    <%= form.select  :status, Program.ProgramStatusList %>
-  </p>
-  <p>
-    <%= form.label :programtype %><br />
-    <%= form.select :programtype, Program.ProgramTypeList %>
-  </p>
-  <p>
-    <%= form.label :notes %><br />
-    <%= form.text_area :notes %>
-  </p>
-  <p>
-    <%= form.label :quarantine %><br />
-    <%= form.datetime_select :quarantine %>
-  </p>
-  <p>
-    <%= form.label "Filename (base part)" %><br />
-    <%= form.text_field :filename %>
-  </p>
-  <p>
-    <%= form.label :file_exists %><br />
-    <%= @program.file_exists ? "Yes" : "No" %>
-  </p>
-  <p>
-    <%= form.label :file_status_updated %><br />
-    <%= @program.file_status_updated ? "Yes" : "No" %>
-  </p>
-  <p>
-    <%= form.label "File info" %><br />
-		<%= @program.file_resx%> x <%= @program.file_resy %> (<%= @program.file_aspect %>)
-  </p>
-  <p>
-    <%= form.label :target_length %><br />
-    <%= form.text_field :target_length %> (detected <%=@program.file_length_time %>)
-  </p>
-  <p>
-    <%= form.label :preview_image_offset %><br />
-    <%= form.text_field :preview_image_offset %>
-  </p>
-  <p>
-    <%= form.label :do_vod %><br />
-    <%= form.check_box :do_vod %>
-  </p>
-  <p>
-    <%= form.label :hidden %><br />
-    <%= form.check_box :hidden %>
-  </p>
+<% unless @program.created_at.nil? %>
+	<p>
+	<span style="color: #ccc;">Created: </span><span style="color: #555; font-weight: bold;"><%= @program.created_at.strftime("%d.%m.%Y, %H:%M") %>, </span>
+	<span style="color: #ccc;">Modified: </span><span style="color: #555; font-weight: bold;"><%= @program.updated_at.strftime("%d.%m.%Y, %H:%M") %></span></p>
+<% end %>
+
+
+<table>
+<% @program.program_descriptions.each { |pd| %>
+	<% langname = ProgramDescription.Languages[pd.lang]
+		@program_description = pd
+ %>
+	<tr>
+	<th colspan="2" onclick="toggleVisibility('desc_<%=pd.lang%>')" class="header"><%=langname%></th>
+	</tr>
+
+	<tr class="desc_<%=pd.lang%>">
+	<th class="edit"></th>
+	<td class="edit"><% index = pd.id || pd.lang %><%= hidden_field 'program_description', 'lang', 'index' => index %></td>
+	</tr>
+
+	<tr class="desc_<%=pd.lang%>">
+	<th class="edit"><%= langname %> Title</th>
+	<td class="edit"><%= text_field 'program_description', 'title', 'index' => index %></td>
+	</tr>
+
+	<tr class="desc_<%=pd.lang%>">
+	<th class="edit"><%= langname %> description</th>
+	<td class="edit"><%= text_area 'program_description', 'description', 'index' => index %></td>
+	</tr>
+
+<% } %>
+
+
+<tr>
+<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic <%=tooltip_collapsable%></th>
+</tr>
+
+<tr class="generic">
+<th class="edit">Owner</th>
+<td class="edit"><%= form.select :owner_id, User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"} %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Program category</th>
+<td class="edit"><%= form.select :program_category_id, ProgramCategory.SelectList, {}, {"class" => "options"} %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Target length <%=tooltip_format_time%></th>
+<td class="edit"><%= form.text_field :formatted_target_length, :class => "time",
+    'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
+</tr>
+
+<%# TODO: is "actual length" realistic with current db %>
+<tr class="generic">
+<th class="edit">Actual length <%=tooltip "This is the length of all subprograms in the program"%></th>
+<td class="edit"><%= @program.formatted_length %>
+</td>
+</tr>
+
+<tr class="generic">
+<%# TODO: update tooltip %>
+<th class="edit">Status <%= tooltip "Planning = A program idea or script exists.<br>Production = Filming, editing or setting up the studio has started.<br>Done = The program exists on the file server." %></th>
+<td class="edit"><%= form.select  :status, Program.ProgramStatusList %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Program type</th>
+<td class="edit"><%= form.select  :programtype, Program.ProgramTypeList %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Notes</th>
+<td class="edit"><%= form.text_area 'notes',
+                       "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
+</tr>
+<tr class="generic">
+<th class="edit">Quarantine</th>
+<td class="edit"><%= form.datetime_select :quarantine %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Do vod</th>
+<td class="edit"><%= form.check_box :do_vod %></td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Hidden</th>
+<td class="edit"><%= form.check_box :hidden %></td>
+</tr>
+
+<tr>
+<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">File information <%=tooltip_collapsable%></th>
+</tr>
+
+<tr class="fileinfo">
+<th class="edit">Preview image offset (hh:mm:ss) <%=tooltip_format_time%></th>
+<td class="edit"><%= form.text_field 'formatted_preview_image_offset', 'class' => "time", 'onChange' => "javascript:this.value = FormatLength(this.value)"  %></td>
+</tr>
+
+<tr class="fileinfo">
+<th class="edit"><label for"event_filename">Filename (descriptive part)</th>
+<td class="edit"><%= form.text_field 'filename', 'class' => "text" %></td>
+</tr>
+
+<tr class="fileinfo">
+<th class="edit">Actual filename</th>
+<td class="edit"><%= @program.full_filename %> <%=@program.file_exists? ? "(found)" : "(not found)" %>, status updated: <%= @program.file_status_updated ? "Yes" : "No"%></td>
+</tr>
+<% if @program.file_status_updated %>
+<tr class="fileinfo">
+<th class="edit">Info</th>
+<td class="edit">Resolution: <%= @program.file_resx%> x <%= @program.file_resy %> (<%= @program.file_aspect %>)</td>
+</tr>
+<% end %>
+  
+</table>

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   create_table "programs", :force => true do |t|
     t.integer  "program_category_id"
     t.integer  "program_id"
+    t.integer  "owner_id"
     t.string   "status"
     t.string   "programtype"
     t.text     "notes"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
     t.datetime "updated_at"
   end
 
+  add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
   add_index "programs", ["program_id"], :name => "index_programs_on_program_id"
   add_index "programs", ["program_category_id"], :name => "index_programs_on_program_category_id"
   add_index "programs", ["do_vod"], :name => "index_programs_on_do_vod"
