@@ -2,7 +2,15 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.xml
   def index
-    @playlists = Playlist.find(:all)
+		cond = nil
+		cond = ['start_at > ?', Time.now - 3600 ] if params[:show_past] != '1'
+
+    @playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :conditions => cond)
+		@playlist = Playlist.new
+		@playlist.channel_id = params[:channel_id]
+		@playlist.start_at = Playlist.find(:first, :order => 'start_at desc').end_time
+
+		@current = Playlist.for_channel(params[:channel_id]).find(:first, :conditions => [ "start_at < ?", Time.now ], :order => "start_at desc")
 
     respond_to do |format|
       format.html # index.html.erb

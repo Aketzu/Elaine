@@ -1,26 +1,26 @@
-<h1>Listing playlists</h1>
+<div></div>
+<h2><%= Channel.find(params[:channel_id]).name %> playlist</h2>
 
-<table>
-  <tr>
-    <th>Program</th>
-    <th>Channel</th>
-    <th>Start at</th>
-    <th>Movable</th>
-  </tr>
+<% form_tag :action => 'list' do %>
+  <select name="channel_id" onChange="javascript: this.form.submit()">
+    <%= options_from_collection_for_select(Channel.find(:all), "id", "name", params[:channel_id]) %>
+  </select>
+<%= submit_tag "Update", 'name' => 'update' %>
 
-<% for playlist in @playlists %>
-  <tr>
-    <td><%=h playlist.program_id %></td>
-    <td><%=h playlist.channel_id %></td>
-    <td><%=h playlist.start_at %></td>
-    <td><%=h playlist.movable %></td>
-    <td><%= link_to 'Show', playlist %></td>
-    <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
-    <td><%= link_to 'Destroy', playlist, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if params[:show_past].nil? %>
+<%= link_to "Show past items", :show_past => 1 %>
+<% else %>
+<%= link_to "Hide past items", :show_past => 0 %>
 <% end %>
-</table>
 
-<br />
+<% end %>
 
-<%= link_to 'New playlist', new_playlist_path %>
+<%= render :partial => 'playlists' %>
+
+<br>
+
+<h2>Add new item</h2>
+<div id="playlist">
+<%= render :partial => 'playlist', :object => @playlist %>
+</div>
+

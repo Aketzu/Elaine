@@ -1,0 +1,30 @@
+<% form_remote_tag :url => channel_playlists_path, :before => 'javascript:this.commit.disabled=true' do %>
+<%= error_messages_for 'playlist' %>
+<%= hidden_field(:playlist, :channel_id) %>
+
+<div class="playlist">
+  <div class="playlist_header">
+    <div class="playlist_cell">Program</div>
+    <div class="playlist_cell">Start time</div>
+    <div class="playlist_cell">Movable</div>
+    <div class="playlist_cell"></div>
+  </div>
+
+  <div class="playlist_even">
+    <div class="playlist_cell"><%= select("playlist", "program_id", Program.find(:all, :include => :program_descriptions, :order => "strftime('%Y', created_at) desc" ).collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %></div>
+    <%#= select("playlist", "program_id", Program.find(:all, :include => :program_descriptions).sort{|a,b| b.created_at.year == a.created_at.year ? a.title <=> b.title : b.created_at.year <=> a.created_at.year}.collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
+    <div class="playlist_cell"><%= datetime_select 'playlist', 'start_at' %></div>
+    <div class="playlist_cell"><select id="playlist_movable" name="playlist[movable]"><option value="true" <%= 'selected="selected"' if playlist.movable %> >True</option><option value="false" <%= 'selected="selected"' unless playlist.movable %> >False</option></select></div>
+    <div class="playlist_cell">
+    <% if controller.action_name == "edit" %>
+    <%= submit_tag "Update" %>
+    <% else %>
+    <%= submit_tag "Add to Playlist" %>
+    <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+<% end %>

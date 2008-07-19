@@ -23,6 +23,11 @@ class Program < ActiveRecord::Base
 		program_descriptions.first.title
 	end
 
+	def tooltip
+		title + " " + formatted_length + "<br />" + programtype
+	end
+
+
 
 	def timesize(secs)
 		secs ||= 0
@@ -65,6 +70,11 @@ class Program < ActiveRecord::Base
 	def full_filename
 		#FIXME
 		filename
+	end
+
+	def length
+		#FIXME
+		target_length
 	end
 
 	named_scope :roots, :conditions => {:program_id => nil}

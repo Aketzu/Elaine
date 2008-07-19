@@ -17,7 +17,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tapes
 
-  map.resources :channels
+  map.resources :channels do |ch|
+		ch.resources :playlists, :as => 'playlist'
+	end
 
   map.resources :playlists, :collection => {:timeline => :get}
 
