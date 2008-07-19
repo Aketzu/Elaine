@@ -3,25 +3,8 @@
 <% form_for(@playlist) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :program_id %><br />
-    <%= f.text_field :program_id %>
-  </p>
-  <p>
-    <%= f.label :channel_id %><br />
-    <%= f.text_field :channel_id %>
-  </p>
-  <p>
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
-  </p>
-  <p>
-    <%= f.label :movable %><br />
-    <%= f.check_box :movable %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+	<%= render :partial => 'form', :object => f %>
+
 <% end %>
 
 <%= link_to 'Show', @playlist %> |

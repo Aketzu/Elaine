@@ -3,9 +3,9 @@
     <th width="100px"><h2>Elaine3</h2></th>
     <td width="*"></td>
     <td class="header_menu">
-			<% if logged_in? %>
+<% if logged_in? -%>
 			<div class="clearFix" style="width:45em;padding:0;background:#FFFFFF;border:1px solid;border-color:#5c5c5c;position: relative;">
-				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"><%= @clock %></div>
+				<div id="clock0" style="position: absolute; right: 5px; top: 2px;"><%= Time.now %></div>
 				<ul id="Menu1" class="MM">
 					<li>
 						<%= link_to 'Elaine', root_path %>
@@ -16,56 +16,50 @@
 							<li><%= link_to 'View Tickets', 'https://bugs.nodeta.fi/trac/elaine/report/1?sort=created&asc=1' %></li>
 						</ul>
 					</li>
-					
-					
-					<% if authorized?(:controller => "playlists") %>
+<% if authorized?(:controller => "playlists") -%>
 					<li>
-						<%= link_to 'Playlists', playlists_path %>
+						<%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %>
 						<ul>
-							<li><%= link_to 'Playlists', playlists_path %></li>
+							<li><%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %></li>
 							<li><%= link_to 'Timeline', timeline_playlists_path %></li>
 							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
-							<% if authorized?(:controller => "channel") -%>
+<% if authorized?(:controller => "channel") -%>
 							<li><%= link_to 'Edit channels', channels_path %></li>
-							<% end %>
+<% end -%>
 						</ul>
 					</li>
-					<% end %>
+<% end -%>
 					
-					
-					<% if authorized?(:controller => "programs") %>
+<% if authorized?(:controller => "programs") -%>
 					<li>
 						<%= link_to 'Programs', programs_path %>
 						<ul>
 							<li><%= link_to 'List Programs', programs_path %></li>
 							<li><%= link_to 'User\'s Programs', programs_path( :find_by_user => self.current_user.id ) %></li>
-							<% if authorized?(:controller => 'programs', :action => 'new') %>
-								<li><%= link_to 'New Program', new_program_path %></li>
-							<% end %>
-
-              <% if authorized?(:controller => "admin") -%>
-              <li><%= link_to 'Program categories', program_categories_path %></li> 
-              <li><%= link_to 'Import PMS data', import_programs_path %></li> 
-              <% end %> 
+<% if authorized?(:controller => 'programs', :action => 'new') -%>
+							<li><%= link_to 'New Program', new_program_path %></li>
+<% end -%>
+<% if authorized?(:controller => "admin") -%>
+							<li><%= link_to 'Program categories', program_categories_path %></li> 
+							<li><%= link_to 'Import PMS data', import_programs_path %></li> 
+<% end -%> 
 						</ul>
 					</li>
-					<% end %>
+<% end -%>
 					
-					<% if authorized?(:controller => "tapes") %>
+<% if authorized?(:controller => "tapes") -%>
 					<li>
 						<%= link_to 'Tapes', tapes_path %>
 						<ul>
 							<li><%= link_to 'List Tapes', tapes_path %></li>
 							<li><%= link_to 'User\'s Tapes', tapes_path(:list => :user) %></li>
-							<% if authorized?(:controller => 'tapes', :action => 'new') %>
+<% if authorized?(:controller => 'tapes', :action => 'new') -%>
 							<li><%= link_to 'New Tape', new_tape_path %></li>
-							<% end %>
+<% end -%>
 						</ul>
 					</li>
-					<% end %>
-					
-					
-					<% if authorized?(:controller => "admin") %>
+<% end -%>
+<% if authorized?(:controller => "admin") -%>
 					<li>
 						<%= link_to 'Vods', vods_path %>
 						<ul>
@@ -74,10 +68,8 @@
 							<li><%= link_to 'Vod files', vod_files_path %></li>
 						</ul>
 					</li>
-					<% end %>
-
-					
-					<% if authorized?(:controller => "admin") %>
+<% end -%>
+<% if authorized?(:controller => "admin") -%>
 					<li>
 						<a href="#">Admin</a>
 						<ul>
@@ -94,50 +86,13 @@
 							<li><%= link_to 'Locations', :controller => 'locations', :action => 'list' %></li>
 						</ul>
 					</li>
-					<% end %>
-
-					
+<% end -%>
 					<li>
-						<%= link_to 'Logout', :controller => 'account', :action => 'logout' %>
+						<%= link_to 'Logout', logout_path %>
 					</li>
-
-					
-					
-<% if false %>
-<div class='menuitem level0' onclick="docum='/elaine';" >Elaine<div id='sub_1' class='submenu'><div style='width:auto' id='mn_2' class='menuitem level1' onclick="document.location.href='/elaine';" >Home page</div>
-<div class='menuitem level1' onclick="docum='/user/edit';" >Personal info<br/><span class="description">Edit your details in Elaine</span></div>
-<div class='menuitem level1' onclick="docum='/elaine/issues';" >Elaine Known Issues<br/><span class="description">..if you have a problem</span></div>
-<div class='menuitem level1' onclick="docum='/elaine/todo';" >Elaine TODO<br/><span class="description">Things to be done</span></div>
-<div class='menuitem level1' onclick="docum='/elaine/new_ticket';" >New Ticket<br/><span class="description">Add a new bug report to Trac.</span></div>
-<div class='menuitem level1' onclick="docum='/user/logout';" >Log out</div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/playlists/list';" >Playlist<div id='sub_8' class='submenu'><div style='width:auto' id='mn_9' class='menuitem level1' onclick="document.location.href='/playlists/list';" >Playlist<br/><span class="description">View/Edit Playlist</span></div>
-<div  class='menuitem level1' onclick="docuf='/playlists/timeline';" >Timeline<br/><span class="description">Observe Playlist as a Timeline</span></div>
-<div  class='menuitem level1' onclick="docuf='/broadcast_logs/list';" >Broadcast log<br/><span class="description">View broadcast log</span></div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/programs/list';" >Programs<div id='sub_12' class='submenu'><div style='width:auto' id='mn_13' class='menuitem level1' onclick="document.location.href='/programs/list';" >List Programs</div>
-<div class='menuitem level1' onclick="docum='/programs/list_by_user';" >User's Programs</div>
-<div class='menuitem level1' onclick="docum='/programs/new';" >New Program<br/><span class="description">Add a new program</span></div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/events/list';" >Events<div id='sub_16' class='submenu'><div style='width:auto' id='mn_17' class='menuitem level1' onclick="document.location.href='/events/list';" >List Events</div>
-<div class='menuitem level1' onclick="docum='/events/new';" >New Event<br/><span class="description">Add a new event</span></div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/tapes/list';" >Tapes<div id='sub_19' class='submenu'><div style='width:auto' id='mn_20' class='menuitem level1' onclick="document.location.href='/tapes/list';" >List Tapes</div>
-<div class='menuitem level1' onclick="docum='/tapes/list_by_user';" >User's Tapes</div>
-<div class='menuitem level1' onclick="docum='/tapes/new';" >New Tape<br/><span class="description">Add a new tape</span></div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/vods/list';" >Vods<div id='sub_23' class='submenu'><div style='width:auto' id='mn_24' class='menuitem level1' onclick="document.location.href='/vods/list';" >List Vods</div>
-<div class='menuitem level1' onclick="docum='/vod_groups/list';" >List Vod Groups</div>
-<div class='menuitem level1' onclick="docum='/vod_formats/list';" >List Vod Formats</div>
-</div></div>
-<div class='menuitem level0' onclick="docum='/user/list';" >Admin<div id='sub_27' class='submenu'><div style='width:auto' id='mn_28' class='menuitem level1' onclick="document.location.href='/user/list';" >Users</div>
-<div class='menuitem level1' onclick="docum='/permission/list';" >Permissions</div>
-<div class='menuitem level1' onclick="docum='/role/list';" >Roles</div>
-
-<% end %>
 				</ul>
 			</div>
-			<% end %>
+<% end -%>
 		</td>
     <td width="*"></td>
   </tr>

@@ -34,11 +34,10 @@ class ProgramsController < ApplicationController
       @searchparams[:title] = "%#{@filter}%"
     end
 
-		#FIXME
-    #unless params[:ignore_date_filter] && params[:ignore_date_filter] != 'false'
-    #  @search += " AND programs.created_at > :created_at "
-    #  @searchparams[:created_at] = @date_filter = self.current_user.content_filter_date
-    #end
+    unless params[:ignore_date_filter] && params[:ignore_date_filter] != 'false'
+      @search += " AND programs.created_at > :created_at "
+      @searchparams[:created_at] = @date_filter = CONTENT_FILTER
+    end
 
   end
 

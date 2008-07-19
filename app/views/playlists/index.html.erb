@@ -20,7 +20,9 @@
 <br>
 
 <h2>Add new item</h2>
+<% form_for @playlist do |f| %>
 <div id="playlist">
-<%= render :partial => 'playlist', :object => @playlist %>
+<%= render :partial => 'form', :object => f %>
 </div>
+<% end %>
 
