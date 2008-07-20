@@ -71,19 +71,11 @@
 <% end -%>
 <% if authorized?(ADMIN) -%>
 					<li>
-						<a href="#">Admin</a>
+						<%= link_to 'Users', users_path%>
 						<ul>
-							<li><%= link_to 'Send \'Change password\' links', :controller => 'admin', :action => 'send_change_password_link' %></li>
-							<li><%= link_to 'Roles', :controller => 'role', :action => 'list' %></li>
-							<li><%= link_to 'Permissions', :controller => 'permission', :action => 'list' %></li>
-							<li><a href="#">Users</a>
-								<ul>
-									<li><%= link_to 'List users', users_path %></li>
-									<li><%= link_to 'Add new user', new_user_path %></li>
-								</ul>
-							</li>
-							<li><%= link_to 'Languages', :controller => 'languages', :action => 'list' %></li>
-							<li><%= link_to 'Locations', :controller => 'locations', :action => 'list' %></li>
+							<li><%= link_to 'List users', users_path %></li>
+							<li><%= link_to 'Send \'Change password\' links', reset_passwords_users_path %></li>
+							<li><%= link_to 'Add new user', new_user_path %></li>
 						</ul>
 					</li>
 <% end -%>

@@ -1,0 +1,35 @@
+<h1>User details</h1>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <td><%=h @user.login %></td>
+  <tr>
+  </tr>
+    <th>Name</th>
+    <td><%=h @user.name %></td>
+  <tr>
+  </tr>
+    <th>Email</th>
+    <td><%=h @user.email %></td>
+  <tr>
+  </tr>
+    <th>Level</th>
+    <td><%=h User.UserLevels[@user.level] %></td>
+  </tr>
+  </tr>
+    <th>Created</th>
+    <td><%=h @user.created_at %></td>
+  </tr>
+  </tr>
+    <th>Updated</th>
+    <td><%=h @user.updated_at %></td>
+  </tr>
+
+</table>
+
+<br />
+<%= link_to 'Edit', edit_user_path(@user) %><br />
+<%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %><br />
+<%= link_to 'Back', users_path%>
+

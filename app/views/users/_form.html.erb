@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Login</th>
+    <td><%=form.text_field :login %></td>
+  <tr>
+  </tr>
+    <th>Name</th>
+    <td><%=form.text_field :name %></td>
+  <tr>
+  </tr>
+    <th>Email</th>
+    <td><%=form.text_field :email %></td>
+  <tr>
+  </tr>
+    <th>Level</th>
+    <td><%=form.select :level, User.UserLevelSelectList %></td>
+  </tr>
+
+</table>

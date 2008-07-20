@@ -41,6 +41,17 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
+
+	def self.UserLevels
+		{ ADMIN => "Admin", DIRECTOR => "Director", REPORTER => "Reporter", GUEST => "Guest", DISABLED => "Disabled" }
+	end
+
+	def self.UserLevelSelectList
+		self.UserLevels.map { |id, name|
+			[name, id]
+		}
+	end
+
   protected
     
 
