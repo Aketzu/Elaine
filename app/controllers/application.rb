@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def authorized?(action=nil, resource=nil, *args) 
+		return true if self.class.required_level == 0
 		if action.is_a? Hash and !action[:controller].nil?
 			controller = action[:controller].camelize + "Controller"
 			req = eval "#{controller}.required_level"
@@ -31,6 +32,7 @@ class ApplicationController < ActionController::Base
 		if action.is_a? Fixnum
 			return current_user.level >= action
 		end
+		return false unless current_user
 		return current_user.level >= self.class.required_level
 	end
 
