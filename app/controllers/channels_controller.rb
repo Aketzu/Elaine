@@ -1,4 +1,6 @@
 class ChannelsController < ApplicationController
+	require_permission ADMIN
+
   # GET /channels
   # GET /channels.xml
   def index

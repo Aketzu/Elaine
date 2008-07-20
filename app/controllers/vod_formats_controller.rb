@@ -1,4 +1,5 @@
 class VodFormatsController < ApplicationController
+	require_permission ADMIN
   # GET /vod_formats
   # GET /vod_formats.xml
   def index

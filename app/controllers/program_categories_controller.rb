@@ -1,4 +1,6 @@
 class ProgramCategoriesController < ApplicationController
+	require_permission ADMIN
+
   # GET /program_categories
   # GET /program_categories.xml
   def index

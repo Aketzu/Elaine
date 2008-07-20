@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	require_permission ADMIN
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   

@@ -220,10 +220,20 @@ dump_tbl("tapes") { |name, val|
 
 	[name, val]
 }
+
+user_roles = Hash.new
+res = @conn.exec('select * from users_roles')
+res.each { |row|
+	id = row["user_id"]
+	user_roles[id] ||= Array.new
+	user_roles[id] << row["role_id"]
+}
+require '../../../config/initializers/elaine.rb'
+
 dump_tbl("users") { |name, val|
 	#TODO: permissions 
 	#TODO: any of these needed?
-	next if name == 'verified' || name == 'role' || name == 'language' || name == 'content_filter_date' || name == 'channel_id'
+	next if name == 'verified' || name == 'language' || name == 'content_filter_date' || name == 'channel_id'
 
 	if name == "firstname"
 		@name = val
@@ -232,6 +242,24 @@ dump_tbl("users") { |name, val|
 	if name == "lastname"
 		val = @name + " " + val if @name
 		name = "name"
+	end
+
+	if name == "role"
+		name = "level"
+		val = 0
+		user_roles[@curid].each { |r|
+			case r.to_i
+				when 2; v = ADMIN
+				when 1; v = GUEST
+				when 4; v = REPORTER
+				when 7; v = REPORTER
+				when 5; v = DIRECTOR
+				when 3; v = GUEST
+				else; v = DISABLED
+			end
+			val = v if v > val
+		}
+		val = val.to_s
 	end
 
 	[name, val]

@@ -1,4 +1,6 @@
 class ProgramDescriptionsController < ApplicationController
+	require_permission REPORTER
+
   # GET /program_descriptions
   # GET /program_descriptions.xml
   def index

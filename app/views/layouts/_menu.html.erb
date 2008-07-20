@@ -23,7 +23,7 @@
 							<li><%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %></li>
 							<li><%= link_to 'Timeline', timeline_playlists_path %></li>
 							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
-<% if authorized?(:controller => "channel") -%>
+<% if authorized?(:controller => "channels") -%>
 							<li><%= link_to 'Edit channels', channels_path %></li>
 <% end -%>
 						</ul>
@@ -39,7 +39,7 @@
 <% if authorized?(:controller => 'programs', :action => 'new') -%>
 							<li><%= link_to 'New Program', new_program_path %></li>
 <% end -%>
-<% if authorized?(:controller => "admin") -%>
+<% if authorized?(ADMIN) -%>
 							<li><%= link_to 'Program categories', program_categories_path %></li> 
 							<li><%= link_to 'Import PMS data', import_programs_path %></li> 
 <% end -%> 
@@ -59,7 +59,7 @@
 						</ul>
 					</li>
 <% end -%>
-<% if authorized?(:controller => "admin") -%>
+<% if authorized?(ADMIN) -%>
 					<li>
 						<%= link_to 'Vods', vods_path %>
 						<ul>
@@ -69,7 +69,7 @@
 						</ul>
 					</li>
 <% end -%>
-<% if authorized?(:controller => "admin") -%>
+<% if authorized?(ADMIN) -%>
 					<li>
 						<a href="#">Admin</a>
 						<ul>

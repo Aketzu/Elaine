@@ -1,4 +1,5 @@
 class TapesController < ApplicationController
+	require_permission DIRECTOR
   # GET /tapes
   # GET /tapes.xml
   def index

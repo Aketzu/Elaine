@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+	require_permission REPORTER
 
 	def buildsearch
     @search = "1=1 "

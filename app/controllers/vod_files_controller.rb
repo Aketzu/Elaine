@@ -1,4 +1,5 @@
 class VodFilesController < ApplicationController
+	require_permission ADMIN
   # GET /vod_files
   # GET /vod_files.xml
   def index

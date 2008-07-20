@@ -16,4 +16,34 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 	
 	before_filter :login_required
+	before_filter :check_auth
+
+	def check_auth
+		authorized? || access_denied
+	end
+
+	def authorized?(action=nil, resource=nil, *args) 
+		if action.is_a? Hash and !action[:controller].nil?
+			controller = action[:controller].camelize + "Controller"
+			req = eval "#{controller}.required_level"
+			return current_user.level >= req
+		end
+		if action.is_a? Fixnum
+			return current_user.level >= action
+		end
+		return current_user.level >= self.class.required_level
+	end
+
+	def self.required_level
+		#Default level
+		ADMIN
+	end
+
+	def self.require_permission(level)
+		class_eval <<-END
+			def self.required_level
+				#{level}
+			end
+		END
+	end
 end

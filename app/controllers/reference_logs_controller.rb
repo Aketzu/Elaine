@@ -1,4 +1,6 @@
 class ReferenceLogsController < ApplicationController
+	require_permission DIRECTOR
+
   # GET /reference_logs
   # GET /reference_logs.xml
   def index

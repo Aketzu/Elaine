@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+	require_permission DIRECTOR
+
   # GET /playlists
   # GET /playlists.xml
   def index
