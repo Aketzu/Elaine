@@ -68,6 +68,7 @@ class PlaylistsController < ApplicationController
   def create
 		params[:playlist].delete :program
     @playlist = Playlist.new(params[:playlist])
+		params[:channel_id] = @playlist.channel_id
 
     respond_to do |format|
       if @playlist.save
@@ -105,6 +106,7 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist = Playlist.find(params[:id])
     @playlist.destroy
+		params[:channel_id] = @playlist.channel_id
 				
 		(index; return) if request.xhr?
 
