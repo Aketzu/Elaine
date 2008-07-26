@@ -1,6 +1,7 @@
 <div></div>
 <h2><%= Channel.find(params[:channel_id]).name %> playlist</h2>
 
+<%#FIXME %>
 <% form_tag :action => 'list' do %>
   <select name="channel_id" onChange="javascript: this.form.submit()">
     <%= options_from_collection_for_select(Channel.find(:all), "id", "name", params[:channel_id]) %>

@@ -4,6 +4,8 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.xml
   def index
+		(redirect_to(channel_playlists_path(DEFAULT_CHANNEL));return) unless params[:channel_id]
+
 		cond = nil
 		cond = ['start_at > ?', Time.now - 3600 ] if params[:show_past] != '1'
 
@@ -64,7 +66,7 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       if @playlist.save
         flash[:notice] = 'Playlist was successfully created.'
-        format.html { redirect_to(@playlist) }
+        format.html { redirect_to(channel_playlists_path(@playlist.channel_id)) }
         format.xml  { render :xml => @playlist, :status => :created, :location => @playlist }
       else
         format.html { render :action => "new" }
@@ -81,7 +83,7 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       if @playlist.update_attributes(params[:playlist])
         flash[:notice] = 'Playlist was successfully updated.'
-        format.html { redirect_to(@playlist) }
+        format.html { redirect_to(channel_playlists_path(@playlist.channel_id)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

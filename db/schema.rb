@@ -18,16 +18,16 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   end
 
   create_table "playlists", :force => true do |t|
-    t.integer  "program_id"
-    t.integer  "channel_id"
+    t.integer  "program_id", :limit => 11
+    t.integer  "channel_id", :limit => 11
     t.datetime "start_at"
     t.boolean  "movable"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "playlists", ["start_at"], :name => "index_playlists_on_start_at"
   add_index "playlists", ["program_id", "channel_id"], :name => "index_playlists_on_program_id_and_channel_id"
+  add_index "playlists", ["start_at"], :name => "index_playlists_on_start_at"
 
   create_table "program_categories", :force => true do |t|
     t.string   "name"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   end
 
   create_table "program_descriptions", :force => true do |t|
-    t.integer  "program_id"
+    t.integer  "program_id",  :limit => 11
     t.string   "lang"
     t.string   "title"
     t.string   "description"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   add_index "program_descriptions", ["program_id"], :name => "index_program_descriptions_on_program_id"
 
   create_table "programs", :force => true do |t|
-    t.integer  "program_category_id"
-    t.integer  "program_id"
-    t.integer  "owner_id"
+    t.integer  "program_category_id",  :limit => 11
+    t.integer  "program_id",           :limit => 11
+    t.integer  "owner_id",             :limit => 11
     t.string   "status"
     t.string   "programtype"
     t.text     "notes"
@@ -61,45 +61,45 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
     t.boolean  "file_exists"
     t.boolean  "file_status_updated"
     t.string   "file_aspect"
-    t.integer  "file_resx"
-    t.integer  "file_resy"
-    t.integer  "file_length"
-    t.integer  "target_length"
-    t.integer  "pms_id"
-    t.integer  "preview_image_offset"
+    t.integer  "file_resx",            :limit => 11
+    t.integer  "file_resy",            :limit => 11
+    t.integer  "file_length",          :limit => 11
+    t.integer  "target_length",        :limit => 11
+    t.integer  "pms_id",               :limit => 11
+    t.integer  "preview_image_offset", :limit => 11
     t.boolean  "do_vod"
     t.boolean  "hidden"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
-  add_index "programs", ["program_id"], :name => "index_programs_on_program_id"
-  add_index "programs", ["program_category_id"], :name => "index_programs_on_program_category_id"
-  add_index "programs", ["do_vod"], :name => "index_programs_on_do_vod"
   add_index "programs", ["pms_id"], :name => "index_programs_on_pms_id"
+  add_index "programs", ["do_vod"], :name => "index_programs_on_do_vod"
+  add_index "programs", ["program_category_id"], :name => "index_programs_on_program_category_id"
+  add_index "programs", ["program_id"], :name => "index_programs_on_program_id"
+  add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
 
   create_table "programs_tapes", :force => true do |t|
-    t.integer "program_id"
-    t.integer "tape_id"
-    t.integer "start_at"
+    t.integer "program_id", :limit => 11
+    t.integer "tape_id",    :limit => 11
+    t.integer "start_at",   :limit => 11
   end
 
   add_index "programs_tapes", ["program_id", "tape_id"], :name => "index_programs_tapes_on_program_id_and_tape_id"
 
   create_table "programs_users", :force => true do |t|
-    t.integer "program_id"
-    t.integer "user_id"
+    t.integer "program_id", :limit => 11
+    t.integer "user_id",    :limit => 11
     t.string  "usertype"
   end
 
   add_index "programs_users", ["program_id", "user_id"], :name => "index_programs_users_on_program_id_and_user_id"
 
   create_table "reference_logs", :force => true do |t|
-    t.integer  "channel_id"
-    t.integer  "tape_id"
-    t.integer  "start_at"
-    t.integer  "end_at"
+    t.integer  "channel_id", :limit => 11
+    t.integer  "tape_id",    :limit => 11
+    t.integer  "start_at",   :limit => 11
+    t.integer  "end_at",     :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,13 +113,13 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "tapes", :force => true do |t|
     t.string   "code"
     t.string   "title"
-    t.integer  "length"
+    t.integer  "length",     :limit => 11
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.integer  "level",                                    :default => 0
+    t.integer  "level",                     :limit => 11,  :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
@@ -156,11 +156,11 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
     t.string   "vcodec"
     t.string   "acodec"
     t.string   "container"
-    t.integer  "vbitrate"
-    t.integer  "abitrate"
-    t.integer  "width"
-    t.integer  "height"
-    t.decimal  "framerate"
+    t.integer  "vbitrate",       :limit => 11
+    t.integer  "abitrate",       :limit => 11
+    t.integer  "width",          :limit => 11
+    t.integer  "height",         :limit => 11
+    t.integer  "framerate",      :limit => 10, :precision => 10, :scale => 0
     t.string   "mime_type"
     t.string   "file_extension"
     t.datetime "created_at"
@@ -171,15 +171,15 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
 
   create_table "vods", :force => true do |t|
     t.string   "filename"
-    t.integer  "program_id"
-    t.integer  "vod_format_id"
-    t.integer  "filesize"
-    t.integer  "length"
+    t.integer  "program_id",    :limit => 11
+    t.integer  "vod_format_id", :limit => 11
+    t.integer  "filesize",      :limit => 11
+    t.integer  "length",        :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "vods", ["filename"], :name => "index_vods_on_filename"
   add_index "vods", ["program_id"], :name => "index_vods_on_program_id"
+  add_index "vods", ["filename"], :name => "index_vods_on_filename"
 
 end

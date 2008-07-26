@@ -10,8 +10,11 @@
   </div>
 
   <div class="playlist_even">
-    <div class="playlist_cell"><%= form.select("program_id", Program.find(:all, :include => :program_descriptions, :order => "strftime('%Y', created_at) desc" ).collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %></div>
-    <%#= select("playlist", "program_id", Program.find(:all, :include => :program_descriptions).sort{|a,b| b.created_at.year == a.created_at.year ? a.title <=> b.title : b.created_at.year <=> a.created_at.year}.collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
+    <div class="playlist_cell">
+		<%#FIXME%>
+		<%#= form.select("program_id", Program.find(:all, :include => :program_descriptions, :order => "strftime('%Y', created_at) desc" ).collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
+    <%= select("playlist", "program_id", Program.find(:all, :include => :program_descriptions).sort{|a,b| b.created_at.year == a.created_at.year ? a.title <=> b.title : b.created_at.year <=> a.created_at.year}.collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
+		</div>
     <div class="playlist_cell"><%= form.datetime_select 'start_at' %></div>
     <div class="playlist_cell"><%= form.check_box :movable%></div>
     <div class="playlist_cell">
