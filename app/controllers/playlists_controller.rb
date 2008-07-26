@@ -13,8 +13,13 @@ class PlaylistsController < ApplicationController
 		@playlist = Playlist.new
 		@playlist.channel_id = params[:channel_id]
 		@playlist.start_at = Playlist.find(:first, :order => 'start_at desc').end_time
+		@playlist.start_at += (60 - @playlist.start_at.to_i % 60)
 
 		@current = Playlist.for_channel(params[:channel_id]).find(:first, :conditions => [ "start_at < ?", Time.now ], :order => "start_at desc")
+
+		@current ||= Playlist.new
+
+		(render :partial => "playlists"; return) if request.xhr?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -61,11 +66,13 @@ class PlaylistsController < ApplicationController
   # POST /playlists
   # POST /playlists.xml
   def create
+		params[:playlist].delete :program
     @playlist = Playlist.new(params[:playlist])
 
     respond_to do |format|
       if @playlist.save
         flash[:notice] = 'Playlist was successfully created.'
+				(index; return) if request.xhr?
         format.html { redirect_to(channel_playlists_path(@playlist.channel_id)) }
         format.xml  { render :xml => @playlist, :status => :created, :location => @playlist }
       else
@@ -78,6 +85,7 @@ class PlaylistsController < ApplicationController
   # PUT /playlists/1
   # PUT /playlists/1.xml
   def update
+		params[:playlist].delete :program
     @playlist = Playlist.find(params[:id])
 
     respond_to do |format|

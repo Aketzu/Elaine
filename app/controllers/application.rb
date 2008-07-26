@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '078937ff8fa0da0000eacaef19d083d7'
+
+
+	def indexed_auto_complete_result(entries, entityType, field, index)
+		return unless entries
+		items = entries.map { |entry| content_tag("li", entry, "id" => entityType+'::'+entry[index].to_s) }
+		content_tag("ul", items.uniq)
+	end
   
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters

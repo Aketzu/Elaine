@@ -20,7 +20,13 @@
 					<li>
 						<%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %>
 						<ul>
-							<li><%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %></li>
+							<li><%= link_to 'Playlists', channel_playlists_path(DEFAULT_CHANNEL) %>
+							<ul>
+							<% Channel.find(:all, :order => :name).each { |ch| %>
+								<li><%= link_to ch.name, channel_playlists_path(ch) %></li>
+							<% } %>
+							</ul>
+							</li>
 							<li><%= link_to 'Timeline', timeline_playlists_path %></li>
 							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
 <% if authorized?(:controller => "channels") -%>

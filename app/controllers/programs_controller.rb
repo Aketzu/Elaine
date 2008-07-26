@@ -140,7 +140,7 @@ class ProgramsController < ApplicationController
     respond_to do |format|
       if @program.save
         flash[:notice] = 'Program was successfully created.'
-        format.html { redirect_to(@program) }
+        format.html { redirect_to(programs_path) }
         format.xml  { render :xml => @program, :status => :created, :location => @program }
       else
         format.html { render :action => "new" }
@@ -166,7 +166,7 @@ class ProgramsController < ApplicationController
     respond_to do |format|
       if @program.update_attributes(params[:program])
         flash[:notice] = 'Program was successfully updated.'
-        format.html { redirect_to(program_path) }
+        format.html { redirect_to(programs_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -181,9 +181,20 @@ class ProgramsController < ApplicationController
     @program = Program.find(params[:id])
     @program.destroy
 
+		(index; return) if request.xhr?
+
     respond_to do |format|
       format.html { redirect_to(programs_url) }
       format.xml  { head :ok }
     end
   end
+
+	skip_before_filter :verify_authenticity_token, :only => :autocomplete
+
+	def autocomplete
+		data = params[:playlist][:program]
+		@programdesc = ProgramDescription.find(:all, :conditions => ['(title LIKE :q OR description LIKE :q)', {:q => "%#{data}%"}], :order => :title, :limit => 50, :include => :program)
+		@programdesc.sort!{|a,b| b.program.created_at.year == a.program.created_at.year ? a.title <=> b.title : b.program.created_at.year <=> a.program.created_at.year}
+		render :inline => '<%= content_tag("ul", @programdesc.map { |pd| content_tag("li", "[#{pd.program.created_at.year}] #{pd.title}", "id" => "playlist_program_id::#{pd.program_id}") }.uniq) %>'
+	end
 end

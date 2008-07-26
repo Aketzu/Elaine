@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :program_categories
 
-  map.resources :programs, :collection => {:import => :get}
+  map.resources :programs, :collection => {:import => :get, :autocomplete => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

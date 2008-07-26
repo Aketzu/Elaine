@@ -28,6 +28,11 @@ class Program < ActiveRecord::Base
 	end
 
 
+	def to_s
+		"[" + created_at.year.to_s + "] " + title
+	end
+
+
 
 	def timesize(secs)
 		secs ||= 0

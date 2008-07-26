@@ -1,28 +1,27 @@
-<div></div>
 <h2><%= Channel.find(params[:channel_id]).name %> playlist</h2>
 
-<%#FIXME %>
-<% form_tag :action => 'list' do %>
-  <select name="channel_id" onChange="javascript: this.form.submit()">
-    <%= options_from_collection_for_select(Channel.find(:all), "id", "name", params[:channel_id]) %>
-  </select>
-<%= submit_tag "Update", 'name' => 'update' %>
+<div id="playlist">
+<%= render :partial => 'playlists' %>
+</div>
 
-<% if params[:show_past].nil? %>
+<% if params[:show_past] != "1" %>
 <%= link_to "Show past items", :show_past => 1 %>
 <% else %>
 <%= link_to "Hide past items", :show_past => 0 %>
 <% end %>
 
-<% end %>
-
-<%= render :partial => 'playlists' %>
-
 <br>
 
-<h2>Add new item</h2>
-<% form_for @playlist do |f| %>
-<div id="playlist">
+<h2>Add new item
+<%= image_tag("spinner.gif",
+		:align => 'middle',
+		:border=> 0,
+		:id => "spinner",
+		:style=>"display: none;") %>
+</h2>
+
+<% remote_form_for @playlist, :update => :playlist, :before => "Element.show('spinner')", :success => "Element.hide('spinner')" do |f| %>
+<div id="add_entry">
 <%= render :partial => 'form', :object => f %>
 </div>
 <% end %>

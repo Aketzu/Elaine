@@ -11,10 +11,14 @@
 
   <div class="playlist_even">
     <div class="playlist_cell">
-		<%#FIXME%>
-		<%#= form.select("program_id", Program.find(:all, :include => :program_descriptions, :order => "strftime('%Y', created_at) desc" ).collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
-    <%= select("playlist", "program_id", Program.find(:all, :include => :program_descriptions).sort{|a,b| b.created_at.year == a.created_at.year ? a.title <=> b.title : b.created_at.year <=> a.created_at.year}.collect {|t| [ "[" + t.created_at.year.to_s + "] " + t.title, t.id ] }) %>
+		<%=form.text_field :program %><div class="auto_complete" id="playlist_program_auto_complete"></div>
+		<%=auto_complete_field 'playlist_program', {:url => autocomplete_programs_path, :after_update_element => 'auto_complete_on_select' } %>
+		<%=form.hidden_field :program_id %>
+
 		</div>
+
+		
+
     <div class="playlist_cell"><%= form.datetime_select 'start_at' %></div>
     <div class="playlist_cell"><%= form.check_box :movable%></div>
     <div class="playlist_cell">

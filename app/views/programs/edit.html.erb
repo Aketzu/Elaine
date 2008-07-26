@@ -25,5 +25,37 @@
 TODO: Add subprog<br />
 
 
+<table class="editing">
+<tr class="other">
+  <th class="edit">Playlists:</th>
+  <td>
+	<table>
+		<tr class="header">
+			 <td>Channel</td>
+			 <td>Start time</td>
+			 <td>Movable</td>
+			 <td>Actions</td>
+		</tr>
+		<% @program.playlists.each { |pl| %>
+			<tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+			<td><%= pl.channel.name %></td>
+			<td><%= pl.start_at %></td>
+			<td><%= pl.movable %></td>
+				<td>
+				[
+				<%# TODO: implement unlink %>
+				<%= link_to 'edit', edit_playlist_path(pl) %>
+				<%= link_to 'destroy', pl,
+						:confirm => 'Are you sure you want to destroy the item?',
+															 :method => :delete %>
+				]
+				</td>
+			</tr>
+		<% } %>
+	</table>
+  </td>
+</tr>
+</table>
+
 <%= link_to 'Show', @program %> |
 <%= link_to 'Back', programs_path %>
