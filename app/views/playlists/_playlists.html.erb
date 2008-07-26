@@ -97,7 +97,13 @@ end
     <td class="playlist_cell" align="center"><% if playlist.movable %>&times;<% end %></td>
     <td class="playlist_cell">[
       <%= link_to 'Move', :action => 'edit', :id => playlist %>
-      <%= link_to_remote 'Remove', :url => { :action => :destroy, :id => playlist, :channel_id => params[:channel_id] }, :confirm => 'Are you sure you want to destroy the item?' %>
+			<%= link_to_remote 'Remove',
+				:update => 'playlist',
+				:url => params.merge(:id => playlist.id, :action => :destroy),
+				:confirm => 'Are you sure you want to destroy the item?',
+				:method => :delete,
+				:before => "Element.show('spinner')",
+				:success => "Element.hide('spinner')" %>
     ]</td>
   </tr>
 
