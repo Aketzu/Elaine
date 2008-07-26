@@ -179,9 +179,19 @@ class ProgramsController < ApplicationController
   # DELETE /programs/1.xml
   def destroy
     @program = Program.find(params[:id])
+		parent = @program.parent
     @program.destroy
 
-		(index; return) if request.xhr?
+		if request.xhr?
+			if params["src"] == "subprograms"
+				@program = parent
+				render :partial => "subprograms", :object => @program.children
+				return
+			else
+				index
+			end
+			return
+		end
 
     respond_to do |format|
       format.html { redirect_to(programs_url) }
@@ -192,9 +202,30 @@ class ProgramsController < ApplicationController
 	skip_before_filter :verify_authenticity_token, :only => :autocomplete
 
 	def autocomplete
-		data = params[:playlist][:program]
+		@key = "subprog_id" unless params[:subprog].nil?
+		@key = "playlist_program_id" unless params[:playlist].nil?
+		data = params[:subprog]
+		data ||= params[:playlist][:program]
 		@programdesc = ProgramDescription.find(:all, :conditions => ['(title LIKE :q OR description LIKE :q)', {:q => "%#{data}%"}], :order => :title, :limit => 50, :include => :program)
 		@programdesc.sort!{|a,b| b.program.created_at.year == a.program.created_at.year ? a.title <=> b.title : b.program.created_at.year <=> a.program.created_at.year}
-		render :inline => '<%= content_tag("ul", @programdesc.map { |pd| content_tag("li", "[#{pd.program.created_at.year}] #{pd.title}", "id" => "playlist_program_id::#{pd.program_id}") }.uniq) %>'
+		render :inline => '<%= content_tag("ul", @programdesc.map { |pd| content_tag("li", "[#{pd.program.created_at.year}] #{pd.title}", "id" => "#{@key}::#{pd.program_id}") }.uniq) %>'
+	end
+
+
+	def link
+    @program = Program.find(params[:id])
+		@subprog = Program.find(params[:subprog_id])
+		@program.children << @subprog
+		flash[:error] = 'Error linking program' unless @program.save!
+		render :partial => "subprograms", :object => @program.children if request.xhr?
+
+	end
+
+	def unlink
+		@subprog = Program.find(params[:subprog_id])
+   	@subprog.program_id = nil 
+		flash[:error] = 'Error unlinking program' unless @subprog.save!
+		@program = Program.find(params[:id])
+		render :partial => "subprograms", :object => @program.children if request.xhr?
 	end
 end

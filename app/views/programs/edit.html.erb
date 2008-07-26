@@ -13,17 +13,20 @@
   <th class="edit">Subprograms:</th>
   <td>
 
-    <div id="events">
+    <div id="subprograms">
     <%= render(:partial => 'subprograms', :object => @program.children) %>
     </div>
 
     <%= error_messages_for 'program_children' %>
+		<%= image_tag("spinner.gif",
+				:align => 'middle',
+				:border=> 0,
+				:id => "spinner",
+				:style=>"display: none;") %>
+
   </td>
 </tr>
 </table>
-
-TODO: Add subprog<br />
-
 
 <table class="editing">
 <tr class="other">

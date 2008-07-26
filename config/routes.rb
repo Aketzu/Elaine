@@ -29,6 +29,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :programs, :collection => {:import => :get, :autocomplete => :get}
 
+	map.link_program 'programs/:id/link/:subprog_id', :controller => 'programs', :action => 'link'
+	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
