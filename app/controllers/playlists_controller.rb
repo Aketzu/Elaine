@@ -44,7 +44,20 @@ class PlaylistsController < ApplicationController
       format.html # show.html.erb
       #format.xml  { render :xml => @playlist }
     end
+	end
 
+	skip_before_filter :login_required, :only => :schedule
+	skip_before_filter :check_auth, :only => :schedule
+
+	def schedule
+		return unless params[:channel_id]
+    
+		@playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :order => :start_at)
+		
+    respond_to do |format|
+      #format.html
+      format.xml  { render :xml => @playlist }
+    end
 	end
 
   # GET /playlists/new

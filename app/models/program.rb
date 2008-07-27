@@ -67,20 +67,26 @@ class Program < ActiveRecord::Base
 			next if ch.length.nil?
 			len += ch.length
 		}
-		timesize(len)
+		len
+	end
+	def formatted_total_length
+		timesize(total_length)
 	end
 
 	def formatted_target_length
 		timesize(target_length)
 	end
-	def formatted_total_target_length
+	def total_target_length
 		len = target_length
 		len ||= 0
 		children.each { |ch|
 			next if ch.target_length.nil?
 			len += ch.target_length
 		}
-		timesize(len)
+		len
+	end
+	def formatted_total_target_length
+		timesize(total_target_length)
 	end
 
 	def formatted_target_length=(formatted)
