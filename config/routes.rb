@@ -31,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.link_program 'programs/:id/link/:subprog_id', :controller => 'programs', :action => 'link'
 	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'
+	map.move_program_up 'programs/:id/moveup/:subprog_id', :controller => 'programs', :action => 'move', :dir => "up"
+	map.move_program_down 'programs/:id/movedown/:subprog_id', :controller => 'programs', :action => 'move', :dir => "down"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

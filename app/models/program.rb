@@ -1,5 +1,6 @@
 class Program < ActiveRecord::Base
-	acts_as_tree :foreign_key => :program_id, :include => :program_descriptions
+	#acts_as_tree :foreign_key => :program_id, :include => :program_descriptions
+
 	belongs_to :program_category
 	belongs_to :owner, :class_name => "User"
 
@@ -10,6 +11,10 @@ class Program < ActiveRecord::Base
 	has_many :vods
 	has_many :programs_users
 	has_many :users, :through => :programs_users
+
+	has_many :children, :through => :programs_programs, :source => :subprogram, :order => :position
+	has_many :parents, :through => :programs_programs, :source => :program
+	has_many :programs_programs
 
 	def self.ProgramStatusList
 		["Planning", "Production", "Ready for showing", "Done"]

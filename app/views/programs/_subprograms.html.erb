@@ -36,9 +36,22 @@
 			
 			<%= link_to_remote 'destroy',
 				:update => 'subprograms',
-				:url => url_for(prog) + "?src=subprograms",
+				:url => url_for(prog) + "?src=subprograms&parent=" + @program.id.to_s,
 				:confirm => 'Are you sure you want to destroy the whole program?',
 				:method => :delete,
+				:before => "Element.show('spinner')",
+				:success => "Element.hide('spinner')" %>
+			
+			<%= link_to_remote 'up',
+				:update => 'subprograms',
+				:url => move_program_up_path(@program, prog),
+				:method => :get,
+				:before => "Element.show('spinner')",
+				:success => "Element.hide('spinner')" %>
+			<%= link_to_remote 'down',
+				:update => 'subprograms',
+				:url => move_program_down_path(@program, prog),
+				:method => :get,
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
 
@@ -48,6 +61,7 @@
   <% end %>
 
 	<tr>
+	<%#FIXME: Mysterious bug of wrong subprog id when adding after unlink%>
 		<th>Add</th>
 		<td colspan="6">
 			<% form_remote_tag :url => {:action => "link", :id => @program.id},

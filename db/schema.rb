@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080709173345) do
+ActiveRecord::Schema.define(:version => 20080727152332) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   add_index "programs", ["program_category_id"], :name => "index_programs_on_program_category_id"
   add_index "programs", ["program_id"], :name => "index_programs_on_program_id"
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
+
+  create_table "programs_programs", :force => true do |t|
+    t.integer  "program_id",    :limit => 11
+    t.integer  "subprogram_id", :limit => 11
+    t.integer  "position",      :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "programs_programs", ["subprogram_id"], :name => "fk_programs_programs_subprogram_id"
+  add_index "programs_programs", ["program_id"], :name => "index_programs_programs_on_program_id"
 
   create_table "programs_tapes", :force => true do |t|
     t.integer "program_id", :limit => 11

@@ -18,7 +18,7 @@ module MigrationHelpers
 		end
 
 		def drop_foreign_key(table, field)
-			execute "ALTER TABLE #{table} DROP CONTRAINT fk_#{table}_#{field}"
+			execute "ALTER TABLE #{table} DROP FOREIGN KEY fk_#{table}_#{field}"
 		end
 	end
 end

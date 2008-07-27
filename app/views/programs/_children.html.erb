@@ -10,22 +10,35 @@
                       :id => @curprog.id,
                       :program_event_id => program.id %>
 
-[
-<%= link_to_remote 'unlink',
-:update => 'programs',
-:url => url_for(unlink_program_path(program.parent, program)) + "?src=programs",
-:confirm => 'Are you sure you want to unlink?',
-:method => :get,
-:before => "Element.show('spinner')",
-:success => "Element.hide('spinner')" %>
+	[
+	<%= link_to_remote 'unlink',
+		:update => 'programs',
+		:url => url_for(unlink_program_path(@curprog, program)) + "?src=programs",
+		:confirm => 'Are you sure you want to unlink?',
+		:method => :get,
+		:before => "Element.show('spinner')",
+		:success => "Element.hide('spinner')" %>
 
- <%= link_to_remote 'destroy',
-:update => 'programs',
-:url => url_for(program),
-:confirm => 'Are you sure you want to destroy the whole program?',
-:method => :delete,
-:before => "Element.show('spinner')",
-:success => "Element.hide('spinner')" %>
+	<%= link_to_remote 'destroy',
+		:update => 'programs',
+		:url => url_for(program),
+		:confirm => 'Are you sure you want to destroy the whole program?',
+		:method => :delete,
+		:before => "Element.show('spinner')",
+		:success => "Element.hide('spinner')" %>
+				
+	<%= link_to_remote 'up',
+		:update => 'programs',
+		:url => url_for(move_program_up_path(@curprog, program)) + "?src=programs",
+		:method => :get,
+		:before => "Element.show('spinner')",
+		:success => "Element.hide('spinner')" %>
+	<%= link_to_remote 'down',
+		:update => 'programs',
+		:url => url_for(move_program_down_path(@curprog, program)) + "?src=programs",
+		:method => :get,
+		:before => "Element.show('spinner')",
+		:success => "Element.hide('spinner')" %>
 
   ]
   </div>

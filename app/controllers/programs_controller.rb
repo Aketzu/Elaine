@@ -179,7 +179,7 @@ class ProgramsController < ApplicationController
   # DELETE /programs/1.xml
   def destroy
     @program = Program.find(params[:id])
-		parent = @program.parent
+		parent = Program.find(params[:parent]) if params[:parent]
     @program.destroy
 
 		if request.xhr?
@@ -222,9 +222,18 @@ class ProgramsController < ApplicationController
 	end
 
 	def unlink
-		@subprog = Program.find(params[:subprog_id])
-   	@subprog.program_id = nil 
-		flash[:error] = 'Error unlinking program' unless @subprog.save!
+		@link = ProgramsProgram.find(:first, :conditions => { :program_id => params[:id], :subprogram_id => params[:subprog_id]})
+		@link.remove_from_list
+		flash[:error] = 'Error unlinking program' unless ProgramsProgram.delete @link
+		@program = Program.find(params[:id])
+		(index; return) if params["src"] == "programs"
+		render :partial => "subprograms", :object => @program.children if request.xhr?
+	end
+	
+	def move
+		@link = ProgramsProgram.find(:first, :conditions => { :program_id => params[:id], :subprogram_id => params[:subprog_id]})
+		@link.move_higher if params[:dir] == "up"
+		@link.move_lower if params[:dir] == "down"
 		@program = Program.find(params[:id])
 		(index; return) if params["src"] == "programs"
 		render :partial => "subprograms", :object => @program.children if request.xhr?

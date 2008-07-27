@@ -1,7 +1,7 @@
 <h1>Listing programs</h1>
 
 <% form_tag programs_path, :id => :search, :method => :get do %>
-	Find: <%= text_field :program_description, :title %>
+	Find: <%= text_field :program_description, :title  %>
 	<%# TODO %>
 	<%#= text_field_with_auto_complete :program_description, :title, {:skip_style => true, :value => @filter}, {:with => 'element=value + "&ignore_date_filter=" + $("ignore_date_filter").checked'}  %>
 
