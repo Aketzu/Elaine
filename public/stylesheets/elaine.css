@@ -111,11 +111,10 @@ div.listing_content {
 #footer {
   clear:      both;
   text-align: right;
-  margin:     0;
+  margin:     0px;
   padding:    .5em;
   position:   absolute;
-  bottom:     0 !important;
-  bottom:     -1px; /* For Certain IE widths */
+  bottom:     0px;
   border-top: 2px solid #ddeafe;
   background: #eff8ff;
   color:      #888;

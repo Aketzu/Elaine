@@ -1,3 +1,5 @@
+require 'migration_helpers'
+
 class CreatePrograms < ActiveRecord::Migration
   def self.up
     create_table :programs do |t|
@@ -28,9 +30,16 @@ class CreatePrograms < ActiveRecord::Migration
 		add_index :programs, :program_category_id
 		add_index :programs, :program_id
 		add_index :programs, :owner_id
+
+		foreign_key :programs, :program_category_id, :delete => "set null"
+		foreign_key :programs, :owner_id, :foreign_table => :users
+		foreign_key :programs, :program_id, :delete => "set null"
   end
 
   def self.down
+		drop_foreign_key :programs, :program_category_id
+		drop_foreign_key :programs, :owner_id
+		drop_foreign_key :programs, :program_id
     drop_table :programs
   end
 end

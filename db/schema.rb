@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
 
   add_index "playlists", ["program_id", "channel_id"], :name => "index_playlists_on_program_id_and_channel_id"
   add_index "playlists", ["start_at"], :name => "index_playlists_on_start_at"
+  add_index "playlists", ["channel_id"], :name => "fk_playlists_channel_id"
 
   create_table "program_categories", :force => true do |t|
     t.string   "name"
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   end
 
   add_index "programs_tapes", ["program_id", "tape_id"], :name => "index_programs_tapes_on_program_id_and_tape_id"
+  add_index "programs_tapes", ["tape_id"], :name => "fk_programs_tapes_tape_id"
 
   create_table "programs_users", :force => true do |t|
     t.integer "program_id", :limit => 11
@@ -94,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   end
 
   add_index "programs_users", ["program_id", "user_id"], :name => "index_programs_users_on_program_id_and_user_id"
+  add_index "programs_users", ["user_id"], :name => "fk_programs_users_user_id"
 
   create_table "reference_logs", :force => true do |t|
     t.integer  "channel_id", :limit => 11
@@ -105,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
   end
 
   add_index "reference_logs", ["channel_id", "tape_id"], :name => "index_reference_logs_on_channel_id_and_tape_id"
+  add_index "reference_logs", ["tape_id"], :name => "fk_reference_logs_tape_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -181,5 +185,6 @@ ActiveRecord::Schema.define(:version => 20080709173345) do
 
   add_index "vods", ["program_id"], :name => "index_vods_on_program_id"
   add_index "vods", ["filename"], :name => "index_vods_on_filename"
+  add_index "vods", ["vod_format_id"], :name => "fk_vods_vod_format_id"
 
 end

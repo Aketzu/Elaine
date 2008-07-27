@@ -52,12 +52,30 @@ class Program < ActiveRecord::Base
 	end
 
 	def formatted_length
-		#TODO: get from subprog lengths...
-		timesize(target_length)
+		timesize(file_length)
+	end
+	
+	def formatted_total_length
+		len = length
+		len ||= 0
+		children.each { |ch|
+			next if ch.length.nil?
+			len += ch.length
+		}
+		timesize(len)
 	end
 
 	def formatted_target_length
 		timesize(target_length)
+	end
+	def formatted_total_target_length
+		len = target_length
+		len ||= 0
+		children.each { |ch|
+			next if ch.target_length.nil?
+			len += ch.target_length
+		}
+		timesize(len)
 	end
 
 	def formatted_target_length=(formatted)
@@ -79,7 +97,7 @@ class Program < ActiveRecord::Base
 
 	def length
 		#FIXME
-		target_length
+		file_length
 	end
 
 	named_scope :roots, :conditions => {:program_id => nil}

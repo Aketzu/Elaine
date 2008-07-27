@@ -49,13 +49,13 @@
 
 	<tr>
 		<th>Add</th>
-		<td colspan="4">
+		<td colspan="6">
 			<% form_remote_tag :url => {:action => "link", :id => @program.id},
 				:update => 'subprograms', 
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" do %>
 
-				<%=text_field_tag :subprog %><div class="auto_complete" id="subprog_auto_complete"></div>
+				<%=text_field_tag :subprog, nil, :size => 30 %><div class="auto_complete" id="subprog_auto_complete"></div>
 				<%=auto_complete_field 'subprog', {:url => autocomplete_programs_path, :after_update_element => 'auto_complete_on_select' } %>
 				<%=hidden_field_tag :subprog_id %>
 

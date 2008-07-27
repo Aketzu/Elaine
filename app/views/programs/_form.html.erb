@@ -54,10 +54,15 @@
     'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
 </tr>
 
-<%# TODO: is "actual length" realistic with current db %>
 <tr class="generic">
-<th class="edit">Actual length <%=tooltip "This is the length of all subprograms in the program"%></th>
-<td class="edit"><%= @program.formatted_length %>
+<th class="edit">Subprog target length <%=tooltip "This is the target length of all subprograms in this program"%></th>
+<td class="edit"><%= @program.formatted_total_target_length %>
+</td>
+</tr>
+
+<tr class="generic">
+<th class="edit">Detected length <%=tooltip "This is the length of all files in the program"%></th>
+<td class="edit"><%= @program.formatted_length %> (incl. subprog <%=@program.formatted_total_length %>)
 </td>
 </tr>
 
@@ -74,7 +79,7 @@
 
 <tr class="generic">
 <th class="edit">Notes</th>
-<td class="edit"><%= form.text_area 'notes',
+<td class="edit"><%= form.text_area 'notes', :rows => 5,
                        "onChange" => 'this.value=this.value.replace("&", " & ")' %></td>
 </tr>
 <tr class="generic">

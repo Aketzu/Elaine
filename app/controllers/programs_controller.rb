@@ -226,6 +226,7 @@ class ProgramsController < ApplicationController
    	@subprog.program_id = nil 
 		flash[:error] = 'Error unlinking program' unless @subprog.save!
 		@program = Program.find(params[:id])
+		(index; return) if params["src"] == "programs"
 		render :partial => "subprograms", :object => @program.children if request.xhr?
 	end
 end
