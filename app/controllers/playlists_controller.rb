@@ -9,7 +9,7 @@ class PlaylistsController < ApplicationController
 		cond = nil
 		cond = ['start_at > ?', Time.now - 3600 ] if params[:show_past] != '1'
 
-    @playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :conditions => cond)
+    @playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :conditions => cond, :order => :start_at)
 		@playlist = Playlist.new
 		@playlist.channel_id = params[:channel_id]
 		@playlist.start_at = Playlist.find(:first, :order => 'start_at desc').end_time
