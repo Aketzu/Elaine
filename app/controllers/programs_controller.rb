@@ -108,6 +108,15 @@ class ProgramsController < ApplicationController
     end
 	end
 
+	caches_page :vods
+	def vods
+		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
+		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
+    respond_to do |format|
+      format.xml 
+    end
+	end
+
   # GET /programs/new
   # GET /programs/new.xml
   def new
@@ -135,7 +144,7 @@ class ProgramsController < ApplicationController
 			pd = ProgramDescription.new(pdata)
 			@program.program_descriptions << pd
 		}
-		
+		expire_page :controller => :programs, :action => :vods	
 
     respond_to do |format|
       if @program.save
@@ -153,6 +162,7 @@ class ProgramsController < ApplicationController
   # PUT /programs/1.xml
   def update
     @program = Program.find(params[:id])
+		expire_page :controller => :programs, :action => :vods	
 
 		params[:program_description].each { |id, pdata|
 			pd = ProgramDescription.find(id)

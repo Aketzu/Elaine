@@ -42,6 +42,7 @@ class VodsController < ApplicationController
   # POST /vods.xml
   def create
     @vod = Vod.new(params[:vod])
+		expire_page :controller => :programs, :action => :vods	
 
     respond_to do |format|
       if @vod.save
@@ -59,6 +60,7 @@ class VodsController < ApplicationController
   # PUT /vods/1.xml
   def update
     @vod = Vod.find(params[:id])
+		expire_page :controller => :programs, :action => :vods	
 
     respond_to do |format|
       if @vod.update_attributes(params[:vod])

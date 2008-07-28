@@ -49,15 +49,19 @@ class PlaylistsController < ApplicationController
 	skip_before_filter :login_required, :only => [:schedule, :next]
 	skip_before_filter :check_auth, :only => [:schedule, :next]
 
+	caches_page :schedule
+
+	def next
+		@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at,
+			:limit => 10, :conditions => ["start_at > (now() - interval 5 minute)"])
+
+		render :action => :schedule
+	end
+
 	def schedule
 		return unless params[:channel_id]
    	
-		if params[:next].nil?
-			@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at)
-		else
-			@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at,
-				:limit => 10, :conditions => ["start_at > (now() - interval 5 minute)"])
-		end
+		@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at)
 		
     respond_to do |format|
       #format.html
@@ -66,7 +70,7 @@ class PlaylistsController < ApplicationController
     end
 	end
 	
-	def next
+	def gdata
 		return unless params[:channel_id]
     
 		@playlists = Playlist.for_channel(params[:channel_id]).find(:all,
@@ -103,6 +107,9 @@ class PlaylistsController < ApplicationController
 		params[:playlist].delete :program
     @playlist = Playlist.new(params[:playlist])
 		params[:channel_id] = @playlist.channel_id
+		
+		expire_page schedule_channel_playlists_path(@playlist.channel_id)
+		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
 
     respond_to do |format|
       if @playlist.save
@@ -123,6 +130,9 @@ class PlaylistsController < ApplicationController
 		params[:playlist].delete :program
     @playlist = Playlist.find(params[:id])
 
+		expire_page schedule_channel_playlists_path(@playlist.channel_id)
+		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
+
     respond_to do |format|
       if @playlist.update_attributes(params[:playlist])
         flash[:notice] = 'Playlist was successfully updated.'
@@ -141,6 +151,9 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @playlist.destroy
 		params[:channel_id] = @playlist.channel_id
+		
+		expire_page schedule_channel_playlists_path(@playlist.channel_id)
+		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
 				
 		(index; return) if request.xhr?
 

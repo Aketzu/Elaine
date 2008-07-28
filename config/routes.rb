@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tapes
 
   map.resources :channels do |ch|
-		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get}
+		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get, :gdata => :get}
 	end
 
   map.resources :playlists, :collection => {:timeline => :get}
@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :program_categories
 
-  map.resources :programs, :collection => {:import => :get, :autocomplete => :get}
+  map.resources :programs, :collection => {:import => :get, :autocomplete => :get, :vods => :get}
 
 	map.link_program 'programs/:id/link/:subprog_id', :controller => 'programs', :action => 'link'
 	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'

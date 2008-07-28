@@ -57,7 +57,6 @@
 						<%= link_to 'Tapes', tapes_path %>
 						<ul>
 							<li><%= link_to 'List Tapes', tapes_path %></li>
-							<li><%= link_to 'User\'s Tapes', tapes_path(:list => :user) %></li>
 <% if authorized?(:controller => 'tapes', :action => 'new') -%>
 							<li><%= link_to 'New Tape', new_tape_path %></li>
 <% end -%>
