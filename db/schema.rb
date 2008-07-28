@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080727152332) do
+ActiveRecord::Schema.define(:version => 20080728142650) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -157,15 +157,6 @@ ActiveRecord::Schema.define(:version => 20080727152332) do
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
-  create_table "vod_files", :force => true do |t|
-    t.string   "filename"
-    t.string   "full_path"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "vod_files", ["filename"], :name => "index_vod_files_on_filename"
-
   create_table "vod_formats", :force => true do |t|
     t.string   "name"
     t.string   "vcodec"
@@ -192,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20080727152332) do
     t.integer  "length",        :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "full_path"
   end
 
   add_index "vods", ["program_id"], :name => "index_vods_on_program_id"

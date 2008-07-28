@@ -18,14 +18,10 @@ xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss") do
 				 # TODO: Hardcoded host and proto
 				xml.guid("http://elaine.assembly.org" + url_for(program))
 				xml.media(:group) do
-					#FIXME
-					#url = program.vods.first.FileLocation.url
-					url = "http://foo/"
-
-					xml.media(:thumbnail, :url => url + program.id.to_s + '_' + program.filename + '_preview.jpg') # TODO: store dimensions
-					# TODO: Use an explicit join to include the relevant formats in the initial select for the collection
+					base = (program.vods.first.full_path || "").gsub /\/[^\/]*$/, "/"
+					xml.media(:thumbnail, :url => base + program.id.to_s + '_' + program.filename + '_preview.jpg')
 					for vod in program.vods
-						xml.media(:content, :duration => vod.length, :url => url + vod.filename, :fileSize => vod.filesize.to_s, :bitrate => vod.vod_format.vbitrate.to_s, :type => vod.vod_format.mime_type, :expression => "full")
+						xml.media(:content, :duration => vod.length, :url => vod.full_path, :fileSize => vod.filesize.to_s, :bitrate => vod.vod_format.vbitrate.to_s, :type => vod.vod_format.mime_type, :expression => "full")
 					end
 				end
 				xml.category("Assembly")
