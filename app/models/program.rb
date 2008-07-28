@@ -27,6 +27,9 @@ class Program < ActiveRecord::Base
 	def title
 		program_descriptions.first.title
 	end
+	def description
+		program_descriptions.first.description
+	end
 
 	def tooltip
 		title + " " + formatted_length + "<br />" + programtype
@@ -60,7 +63,7 @@ class Program < ActiveRecord::Base
 		timesize(file_length)
 	end
 	
-	def formatted_total_length
+	def total_length
 		len = length
 		len ||= 0
 		children.each { |ch|
@@ -108,7 +111,7 @@ class Program < ActiveRecord::Base
 
 	def length
 		#FIXME
-		file_length
+		file_length || 0
 	end
 
 	named_scope :roots, :conditions => {:program_id => nil}

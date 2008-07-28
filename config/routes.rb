@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tapes
 
   map.resources :channels do |ch|
-		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get}
+		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get}
 	end
 
   map.resources :playlists, :collection => {:timeline => :get}
@@ -33,6 +33,9 @@ ActionController::Routing::Routes.draw do |map|
 	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'
 	map.move_program_up 'programs/:id/moveup/:subprog_id', :controller => 'programs', :action => 'move', :dir => "up"
 	map.move_program_down 'programs/:id/movedown/:subprog_id', :controller => 'programs', :action => 'move', :dir => "down"
+
+	map.ical 'info/:channel', :controller => 'info', :action => 'ical'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 

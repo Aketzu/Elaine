@@ -46,13 +46,34 @@ class PlaylistsController < ApplicationController
     end
 	end
 
-	skip_before_filter :login_required, :only => :schedule
-	skip_before_filter :check_auth, :only => :schedule
+	skip_before_filter :login_required, :only => [:schedule, :next]
+	skip_before_filter :check_auth, :only => [:schedule, :next]
 
 	def schedule
 		return unless params[:channel_id]
+   	
+		if params[:next].nil?
+			@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at)
+		else
+			@playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at,
+				:limit => 10, :conditions => ["start_at > (now() - interval 5 minute)"])
+		end
+		
+    respond_to do |format|
+      #format.html
+      format.xml  { render :xml => @playlist }
+      format.ics  #{ render :xml => @playlist }
+    end
+	end
+	
+	def next
+		return unless params[:channel_id]
     
-		@playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :order => :start_at)
+		@playlists = Playlist.for_channel(params[:channel_id]).find(:all,
+			:conditions => ["start_at > (now() - interval 5 minute)"],
+			:include => [:program => [:children, :program_descriptions]],
+			:order => :start_at,
+			:limit => 10)
 		
     respond_to do |format|
       #format.html
