@@ -12,7 +12,8 @@ class PlaylistsController < ApplicationController
     @playlists = Playlist.find_all_by_channel_id(params[:channel_id], :include => [:program => [:children, :program_descriptions]], :conditions => cond, :order => :start_at)
 		@playlist = Playlist.new
 		@playlist.channel_id = params[:channel_id]
-		@playlist.start_at = Playlist.find(:first, :order => 'start_at desc').end_time || Time.now
+		@playlist.start_at = Playlist.find(:first, :order => 'start_at desc').end_time
+		@playlist.start_at ||= Time.now
 		@playlist.start_at += (60 - @playlist.start_at.to_i % 60)
 
 		@current = Playlist.for_channel(params[:channel_id]).find(:first, :conditions => [ "start_at < ?", Time.now ], :order => "start_at desc")
