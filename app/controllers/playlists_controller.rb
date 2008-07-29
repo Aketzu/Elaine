@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-	require_permission DIRECTOR
+	require_permission REPORTER
 
   # GET /playlists
   # GET /playlists.xml
@@ -107,6 +107,8 @@ class PlaylistsController < ApplicationController
 		params[:playlist].delete :program
     @playlist = Playlist.new(params[:playlist])
 		params[:channel_id] = @playlist.channel_id
+	
+		require_permission(DIRECTOR) || return
 		
 		expire_page schedule_channel_playlists_path(@playlist.channel_id)
 		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
@@ -132,6 +134,8 @@ class PlaylistsController < ApplicationController
 
 		expire_page schedule_channel_playlists_path(@playlist.channel_id)
 		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
+		
+		require_permission(DIRECTOR) || return
 
     respond_to do |format|
       if @playlist.update_attributes(params[:playlist])
@@ -154,6 +158,8 @@ class PlaylistsController < ApplicationController
 		
 		expire_page schedule_channel_playlists_path(@playlist.channel_id)
 		expire_page formatted_schedule_channel_playlists_path(@playlist.channel_id, :xml)
+		
+		require_permission(DIRECTOR) || return
 				
 		(index; return) if request.xhr?
 

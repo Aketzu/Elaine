@@ -48,6 +48,11 @@ class ApplicationController < ActionController::Base
 		ADMIN
 	end
 
+	def require_permission(level)
+		(access_denied; return false) unless current_user.level >= level
+		return true
+	end
+
 	def self.require_permission(level)
 		class_eval <<-END
 			def self.required_level

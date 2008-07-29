@@ -27,8 +27,8 @@
 							</ul>
 							</li>
 							<!--<li><%= link_to 'Timeline', timeline_playlists_path %></li>-->
-							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
 <% if authorized?(:controller => "channels") -%>
+							<li><%= link_to 'Reference Logs', reference_logs_path  %></li>
 							<li><%= link_to 'Edit channels', channels_path %></li>
 <% end -%>
 						</ul>
