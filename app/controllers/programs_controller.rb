@@ -123,6 +123,7 @@ class ProgramsController < ApplicationController
     @program = Program.new
 		@program.owner = current_user
 		@program.program_descriptions << ProgramDescription.Defaults
+		@program.program_category_id = cookies[:progcategory].to_i || 10
 
     respond_to do |format|
       format.html # new.html.erb
@@ -145,6 +146,8 @@ class ProgramsController < ApplicationController
 			@program.program_descriptions << pd
 		}
 		expire_page :controller => :programs, :action => :vods	
+		
+		cookies[:progcategory] = @program.program_category_id.to_s
 
     respond_to do |format|
       if @program.save
@@ -163,6 +166,7 @@ class ProgramsController < ApplicationController
   def update
     @program = Program.find(params[:id])
 		expire_page :controller => :programs, :action => :vods	
+		cookies[:progcategory] = @program.program_category_id.to_s
 
 		params[:program_description].each { |id, pdata|
 			pd = ProgramDescription.find(id)
