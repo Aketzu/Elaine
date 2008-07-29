@@ -109,8 +109,8 @@ class ProgramsController < ApplicationController
 	end
 
 	caches_page :vods
-	skip_before_filter :login_required, :only => vods
-	skip_before_filter :check_auth, :only => vods
+	skip_before_filter :login_required, :only => :vods
+	skip_before_filter :check_auth, :only => :vods
 	def vods
 		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
 		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
