@@ -17,6 +17,9 @@
   <%= stylesheet_link_tag 'elaine' %>
   <%= stylesheet_link_tag 'smartmenu' %>
   <%= stylesheet_link_tag 'lightbox' %>
+	<% if ENV['RAILS_ENV'] == "development" %> 
+	<%= stylesheet_link_tag 'development' %>
+	<% end %>
 
 <% if @timeline %>
   <script src="/javascripts/timeline-api/timeline-api.js" type="text/javascript"></script>
@@ -55,7 +58,7 @@
   </div>
 
   <div id="footer">	
-  Elaine3.0 (<%=elaine_version%>), Assembly 2008<br/>
+  Elaine3.0 (<%=elaine_version%>, <%=ENV['RAILS_ENV'].camelize%>), Assembly 2008<br/>
   If you have comments or a critical bug to report, feel free to join the IRC-channel <b style="color:#444;">#elaine</b> @ IRCNet.
   </div>
 
