@@ -1,0 +1,71 @@
+{
+<% index = 1 %>
+       items: [ <% @playlists.each{ |pl| %>
+<% index += 1 %>
+           {
+               "index"      : <%= index %>,
+               "label"      : "#<%= index %> <%= (pl.program.title.length < 2 ? "no name" : pl.program.title) %>",
+               "type"       : "<%= pl.program.programtype %>",
+               "imageURL"   : "http://nobelprize.org/nobel_prizes/physics/laureates/1998/tsui_thumb.jpg",
+               "start_at"   : <%= pl.start_at.to_json %>,
+               "end_at"     : <%= (pl.start_at + pl.program.target_length).to_json %>,
+               "day"        : "<%= pl.start_at.strftime("%d.%m. %A")%>"
+           }<%= (pl != @playlists.last ? "," : "") %>
+           <% } %>
+       ]
+}
+
+
+<% if false %>
+{
+    "items" : [
+        {   type :                  "Nobelist",
+            label :                 "Burton Richter",
+            discipline :            "Physics",
+            shared :                "yes",
+            "last-name" :           "Richter",
+            "nobel-year" :          "1976",
+            relationship :          "alumni",
+            "co-winner" :           "Samuel C.C. Ting",
+            "relationship-detail" : "MIT S.B. 1952, Ph.D. 1956",
+            imageURL :              "http://nobelprize.org/nobel_prizes/physics/laureates/1976/richter_thumb.jpg"
+        },
+        {   type :                  "Nobelist",
+            label :                 "George A. Akerlof",
+            discipline :            "Economics",
+            shared :                "yes",
+            "last-name" :           "Akerlof",
+            "nobel-year" :          "2001",
+            relationship :          "alumni",
+            "relationship-detail" : "MIT Ph.D. 1966",
+            imageURL :              "http://nobelprize.org/nobel_prizes/economics/laureates/2001/akerlof_thumb.jpg"
+        },
+        {   type :                  "Nobelist",
+            label :                 "William Shockley",
+            discipline :            "Physics",
+            shared :                "yes",
+            "last-name" :           "Shockley",
+            "nobel-year" :          "1956",
+            relationship :          "alumni",
+            "deceased" :            "yes",
+            "relationship-detail" : "MIT Ph.D. 1936 (deceased)",
+            imageURL :              "http://nobelprize.org/nobel_prizes/physics/laureates/1956/shockley_thumb.jpg"
+        },
+        {   type :                  "Nobelist",
+            label :                 "Daniel C. Tsui",
+            discipline :            "Physics",
+            shared :                "yes",
+            "last-name" :           "Tsui",
+            "nobel-year" :          "1998",
+            relationship :          "research",
+            "co-winner" :           [
+                "Horst L. St\u00F6rmer",
+                "Robert B. Laughlin"
+            ],
+            "relationship-detail" : "MIT researcher at MIT Magnet Lab",
+            imageURL :              "http://nobelprize.org/nobel_prizes/physics/laureates/1998/tsui_thumb.jpg"
+        }
+    ]
+}
+<% end %>
+

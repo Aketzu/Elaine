@@ -18,14 +18,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tapes
 
   map.resources :channels do |ch|
-		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get, :gdata => :get}
+		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get, :gdata => :get, :timeline => :get}
 	end
-
-  map.resources :playlists, :collection => {:timeline => :get}
 
   map.resources :program_descriptions
 
   map.resources :program_categories
+  
+  map.resources :playlists
 
   map.resources :programs, :collection => {:import => :get, :autocomplete => :get, :vods => :get}
 

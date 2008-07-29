@@ -15,10 +15,10 @@
 
 <h2>Add new item
 <%= image_tag("spinner.gif",
-		:align => 'middle',
-		:border=> 0,
-		:id => "spinner",
-		:style=>"display: none;") %>
+        :align => 'middle',
+        :border=> 0,
+        :id => "spinner",
+        :style=>"display: none;") %>
 </h2>
 
 <% remote_form_for @playlist, :update => :playlist, :before => "Element.show('spinner')", :success => "Element.hide('spinner')" do |f| %>

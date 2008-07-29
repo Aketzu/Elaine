@@ -1,3 +1,68 @@
-<h1>Timeline</h1>
+<h1><%= @channel.name %></h1>
+   <table width="100%">
+       <tr valign="top">
+           <td ex:role="viewPanel">
+               <table ex:role="lens" class="nobelist">
+                   <tr>
+                       <td><img ex:src-content=".imageURL" /></td>
+                       <td>
+                           <div ex:content=".label" class="name"></div>
+                           <div>
+                               <span ex:content=".start_at"></span>
+                               <span ex:content=".end_at"></span>
+                           </div>
+                           <div ex:if-exists=".subprogram" class="subprogram">
+                               <span ex:content=".subprogram"></span>
+                           </div>
+                       </td>
+                   </tr>
+               </table>
+               <div ex:role="exhibit-view"
+                    ex:viewClass="Timeline"
+                    ex:start=".start_at"
+                    ex:end=".end_at"
+                    ex:colorKey=".type"
+                    ex:topBandIntervalPixels="250"
+                    ex:bottomBandIntervalPixels="400"
+                    ex:densityFactor="1">
+               </div>
+               <div ex:role="view"
+                    ex:viewClass="Exhibit.TabularView"
+                    ex:columns=".index, .label, .imageURL, .start_at, .end_at"
+                    ex:columnLabels="Index, Program, Preview, Starts, Ends"
+                    ex:columnFormats="list, list, image, date, date"
+                    ex:sortColumn="3"
+                    ex:sortAscending="true">
+               </div>
+               <!--
+               <div ex:role="view"
+                   ex:orders=".discipline, .nobel-year"
+                   ex:possibleOrders=".label, .last-name, .discipline, .relationship, .shared, .deceased, .nobel-year">
+               </div>
+               -->
+            </td>
+           <td width="25%">
+               <div ex:role="facet" ex:facetClass="TextSearch"></div>
+               <div ex:role="facet" ex:expression=".type" ex:facetLabel="Type"></div>
+               <div ex:role="facet" ex:expression=".day" ex:facetLabel="Day"></div>
+           </td>
+       </tr>
+   </table>
+<!--
 
-TODO
+<table width="100%">
+  <tr valign="top">
+    <td ex:role="viewPanel">
+      <div ex:role="view"
+           ex:viewClass="Timeline"
+           ex:start=".start_at"
+           ex:colorKey=".discipline">
+      </div>
+    </td>
+    <td width="25%">
+      browsing controls here...
+    </td>
+  </tr>
+</table>
+
+-->
