@@ -140,6 +140,10 @@ class ProgramsController < ApplicationController
 		@rl.program = @program
   end
 
+	def print
+		@program = Program.find(params[:id])
+	end
+
   # POST /programs
   # POST /programs.xml
   def create

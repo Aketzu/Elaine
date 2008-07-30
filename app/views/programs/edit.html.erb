@@ -1,4 +1,5 @@
 <h1>Editing program <%= @program.program_descriptions.first.title%></h1>
+<%=link_to "Print", print_program_path(@program)%>
 
 <% form_for(@program) do |f| %>
 
@@ -66,4 +67,5 @@
 </table>
 
 <%= link_to 'Show', @program %> |
-<%= link_to 'Back', programs_path %>
+<%= link_to 'Back', programs_path %> |
+<%= link_to "Print", print_program_path(@program)%>

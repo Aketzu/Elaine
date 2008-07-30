@@ -1,0 +1,14 @@
+.header_links, #footer {
+	display:none;
+}
+
+textarea {
+	height: 5ex !important;
+}
+
+.runlist {
+	border-collapse: collapse;
+}
+.runlist td {
+	border: 1px solid #aaa;
+}

@@ -1,0 +1,64 @@
+<h1><%= @program.program_descriptions.first.title%></h1>
+
+<% @program.program_descriptions.each { |pd|
+	langname = ProgramDescription.Languages[pd.lang] %>
+<%=pd.title%> (<%=pd.description%>) <%="/" unless pd == @program.program_descriptions.last %>
+<% } %>
+<br /><br />
+<b>Created</b> <%= @program.created_at.strftime("%d.%m.%Y, %H:%M") %>, 
+<b>Modified</b>, <%= @program.updated_at.strftime("%d.%m.%Y, %H:%M") %> <br />
+<b>Info</b>: <%=@program.program_category.name%>, <%=@program.programtype%>, Status: <%=@program.status %>, Owner: <%=@program.owner.login%>, quarantine until <%=@program.quarantine%><br />
+
+<%=h(@program.notes).gsub /\n/, "<br />"  %>
+
+<% if @program.children.count > 0 %>
+<h3>Contains subprograms</h3>
+<%
+offset = 0
+@program.children.each { |prog| %>
+	<%= format_length(offset) %> - 
+	<% offset +=	prog.target_length%><%=format_length(offset)%>
+	(length: <%= format_length(prog.target_length) %>)
+	<b><%=prog.title%></b> (<%= prog.programtype%>, <%= prog.status %>) <br />
+<% } %>
+<% end %>
+
+<h3>Runlist</h3>
+<table class="runlist">
+  <tr class="header">
+     <td>Nr</td>
+     <td>Src</td>
+     <td>Video</td>
+     <td>Audio</td>
+     <td>Content</td>
+     <td>Length</td>
+     <td>Total</td>
+     <td>Notes</td>
+  </tr>
+  <%
+	offset = 0
+	for run in @program.runlists %>
+    <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+		<td><%= run.position %></td>
+		<td><%=h run.source %></td>
+		<td><%=h run.video %></td>
+		<td><%=h run.audio %></td>
+		<td><%=h run.content %></td>
+    <td><%= format_length(run.length) %></td>
+    <% offset += run.length %>
+    <td><%= format_length(offset) %></td>
+		<td><%=h(run.info).gsub /\n/, "<br />" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @program.playlists.count > 0 %>
+<h3>In playlists</h3>
+<% @program.playlists.each { |pl| %>
+<%=pl.start_at %> @<%= pl.channel.name%><br />
+<% } %>
+<% end %>
+
+<%javascript_tag do %>
+window.print();
+<% end %>
