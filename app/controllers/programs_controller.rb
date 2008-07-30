@@ -136,6 +136,8 @@ class ProgramsController < ApplicationController
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
+		@rl = Runlist.new
+		@rl.program = @program
   end
 
   # POST /programs

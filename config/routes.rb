@@ -28,6 +28,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :playlists
 
   map.resources :programs, :collection => {:import => :get, :autocomplete => :get, :vods => :get}
+	
+  map.resources :runlists, :member => {:up => :get, :down => :get }
 
 	map.link_program 'programs/:id/link/:subprog_id', :controller => 'programs', :action => 'link'
 	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'

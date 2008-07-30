@@ -11,6 +11,7 @@ class Program < ActiveRecord::Base
 	has_many :vods
 	has_many :programs_users
 	has_many :users, :through => :programs_users
+	has_many :runlists, :order => :position
 
 	has_many :children, :through => :programs_programs, :source => :subprogram, :order => :position
 	has_many :parents, :through => :programs_programs, :source => :program
@@ -34,14 +35,6 @@ class Program < ActiveRecord::Base
 	def tooltip
 		title + " " + formatted_length + "<br />" + programtype
 	end
-
-
-	def to_s
-		"[" + created_at.year.to_s + "] " + title
-	end
-
-
-
 	def timesize(secs)
 		secs ||= 0
 		"%02d:%02d:%02d" % [ secs/3600, secs/60%60, secs%60 ]
@@ -54,6 +47,14 @@ class Program < ActiveRecord::Base
 		}
 		secs
 	end
+
+
+	def to_s
+		"[" + created_at.year.to_s + "] " + title
+	end
+
+
+
 
 	def file_length_time
 		timesize(file_length)

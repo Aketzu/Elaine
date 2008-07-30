@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  program_id: 1
+  position: 1
+  source: MyString
+  video: MyText
+  audio: MyText
+  content: MyText
+  length: 1
+  info: MyText
+
+two:
+  program_id: 1
+  position: 1
+  source: MyString
+  video: MyText
+  audio: MyText
+  content: MyText
+  length: 1
+  info: MyText

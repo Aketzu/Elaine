@@ -79,9 +79,7 @@ td.edit {
 }
 
 textarea {
-  height:           4em;
-    width:          80%;
-  min-width:    30em;
+  height:			4em;
 }
 
 input.time {

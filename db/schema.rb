@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080728142650) do
+ActiveRecord::Schema.define(:version => 20080730101733) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -120,6 +120,21 @@ ActiveRecord::Schema.define(:version => 20080728142650) do
 
   add_index "reference_logs", ["channel_id", "tape_id"], :name => "index_reference_logs_on_channel_id_and_tape_id"
   add_index "reference_logs", ["tape_id"], :name => "fk_reference_logs_tape_id"
+
+  create_table "runlists", :force => true do |t|
+    t.integer  "program_id", :limit => 11
+    t.integer  "position",   :limit => 11
+    t.string   "source"
+    t.text     "video"
+    t.text     "audio"
+    t.text     "content"
+    t.integer  "length",     :limit => 11
+    t.text     "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "runlists", ["program_id"], :name => "index_runlists_on_program_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
