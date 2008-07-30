@@ -3,7 +3,7 @@ html, body {
   width: 100%; /* Required */
 }
 
-body { 
+body {
   background: #fff;
   color: #333;
   margin:  0px;
@@ -13,11 +13,11 @@ body {
 h1 {
   font-size: 20pt;
   margin-top: 10px;
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 h2 {
   font-size: 15pt;
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 h3 {
   font-size: 13pt;
@@ -38,7 +38,7 @@ table.header_links {
   text-align: center;
 }
 table.editing {
-	width:			100%;
+    width:          100%;
 }
 
 tr {
@@ -67,8 +67,8 @@ th {
   font-size: 90%;
 }
 th.edit {
-  text-align: 		right;
-	width:					22em;
+  text-align:       right;
+    width:                  22em;
 }
 
 td {
@@ -79,9 +79,9 @@ td.edit {
 }
 
 textarea {
-  height:			4em;
-	width:			80%;
-  min-width:	30em;
+  height:           4em;
+    width:          80%;
+  min-width:    30em;
 }
 
 input.time {
@@ -105,7 +105,7 @@ div.listing_content {
 #content {
   margin:  30px;
   padding-bottom: 5em;
-	margin-top: 0px;
+    margin-top: 0px;
 }
 
 #footer {
@@ -186,11 +186,11 @@ td.playlist_error_overlap_nonmovable {
 }
 
 span.events {
-	font-size: 80%;
+    font-size: 80%;
 }
 
 A.playlist_error {
-	color: #222;
+    color: #222;
 }
 
 /**
@@ -245,13 +245,13 @@ div.events_in_program_list {
   margin-left: 30px;
   width: 80%;
   float: left;
-	position: relative;
+    position: relative;
 }
 
 .events_in_program_list .actions {
-	display: block;
-	position: absolute;
-	left: 70%;
+    display: block;
+    position: absolute;
+    left: 70%;
 }
 
 /*
@@ -259,9 +259,9 @@ div.events_in_program_list {
  */
 
 body, p, ol, ul, td, input, textarea, select {
-	font-family:	Tahoma, "Western", fantasy;
-  font-size:		12pt;
-  float:				none;
+    font-family:    Tahoma, "Western", fantasy;
+  font-size:        12pt;
+  float:                none;
 }
 
 pre {
@@ -270,7 +270,7 @@ pre {
   font-size: 11px;
 }
 
-a { 
+a {
   color: #000;
   text-decoration: underline;
 }
@@ -323,20 +323,20 @@ a:hover {
 
 div.flash {
   color: green;
-	/*
+    /*
   height: 15px;
   margin-bottom: -15px;
-	*/
+    */
   padding-left: 30px;
 }
 
 div.flash_error {
   color: red;
   /*
-	height: 15px;
+    height: 15px;
   margin-bottom: -15px;
   */
-	padding-left: 30px;
+    padding-left: 30px;
 }
 
 div.uploadStatus {
@@ -361,32 +361,32 @@ div.progressBar div.background {
 
 
 th.header {
-	background: #eee;
-	text-align: left;
-	border-bottom: 1px solid black;
-	
+    background: #eee;
+    text-align: left;
+    border-bottom: 1px solid black;
+
 }
 div.auto_complete {
-	width: 350px;
-	background: #fff;
+    width: 350px;
+    background: #fff;
 }
 div.auto_complete ul {
-	border:1px solid #888;
-	margin:0;
-	padding:0;
-	width:100%;
-	list-style-type:none;
+    border:1px solid #888;
+    margin:0;
+    padding:0;
+    width:100%;
+    list-style-type:none;
 }
 div.auto_complete ul li {
-	margin:0;
-	padding:3px;
+    margin:0;
+    padding:3px;
 }
 div.auto_complete ul li.selected {
-	background-color: #ffb;
+    background-color: #ffb;
 }
 div.auto_complete ul strong.highlight {
-	color: #800;
-	margin:0;
-	padding:0;
+    color: #800;
+    margin:0;
+    padding:0;
 }
 
