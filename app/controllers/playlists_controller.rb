@@ -51,8 +51,8 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  skip_before_filter :login_required, :only => [:schedule, :next]
-  skip_before_filter :check_auth, :only => [:schedule, :next]
+  skip_before_filter :login_required, :only => [:schedule, :next, :gdata]
+  skip_before_filter :check_auth, :only => [:schedule, :next, :gdata]
 
   def next
     @playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at,
