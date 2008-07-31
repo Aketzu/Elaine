@@ -12,3 +12,7 @@ textarea {
 .runlist td {
 	border: 1px solid #aaa;
 }
+
+td {
+	vertical-align: top;
+}
