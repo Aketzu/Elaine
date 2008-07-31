@@ -28,9 +28,10 @@
                </div>
                <div ex:role="view"
                     ex:viewClass="Exhibit.TabularView"
-                    ex:columns=".index, .label, .imageURL, .start_at, .end_at"
-                    ex:columnLabels="Index, Program, Preview, Starts, Ends"
-                    ex:columnFormats="list, list, image, date, date"
+                    ex:columns=".label, .start_at, .end_at"
+                    ex:columnLabels="Program, Starts, Ends"
+                    ex:columnFormats="list, date, date"
+										ex:formats="date {template: 'EEE d.MM.yyyy HH:mm:ss'}"
                     ex:sortColumn="3"
                     ex:sortAscending="true">
                </div>
