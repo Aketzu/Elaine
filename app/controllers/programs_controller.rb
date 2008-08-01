@@ -335,8 +335,8 @@ class ProgramsController < ApplicationController
 	end
 	
 	caches_page :vods
-	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod]
-	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod]
+	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone]
+	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone]
 	def vods
 		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
 		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
@@ -406,12 +406,13 @@ class ProgramsController < ApplicationController
 	def voddone
 		prog = Program.find(params[:progid])
 
-		vod = Vod.new
+		vod = Vod.find_by_filename(params[:filename])
+		vod ||= Vod.new
 		vod.program = prog
 		vod.filename = params[:filename]
 		vod.filesize = params[:size]
 		vod.length = params[:length]
-		vod.vod_format_id = 1 #FIXME
+		vod.vod_format = VodFormat.find_by_name("2008_" + params[:format])
 
 		vod.save!
 
