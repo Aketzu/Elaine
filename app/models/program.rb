@@ -26,10 +26,14 @@ class Program < ActiveRecord::Base
 	end
 
 	def title
-		program_descriptions.first.title
+		lang = program_descriptions.first.lang
+		program_descriptions.first.title if lang == "en"
+		program_descriptions.last.title if lang != "en"
 	end
 	def description
-		program_descriptions.first.description
+		lang = program_descriptions.first.lang
+		program_descriptions.first.description if lang == "en"
+		program_descriptions.last.description if lang != "en"
 	end
 
 	def tooltip
