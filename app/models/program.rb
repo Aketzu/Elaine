@@ -16,6 +16,11 @@ class Program < ActiveRecord::Base
 	has_many :children, :through => :programs_programs, :source => :subprogram, :order => :position
 	has_many :parents, :through => :programs_programs, :source => :program
 	has_many :programs_programs
+	
+	named_scope :roots, :conditions => {:program_id => nil}
+	named_scope :children_of, lambda { |prog| { :conditions => { :program_id => prog } } }
+	
+	named_scope :file_exists, :conditions => {:file_exists => true}
 
 	def self.ProgramStatusList
 		["Planning", "Production", "Ready for showing", "Done"]
@@ -27,13 +32,13 @@ class Program < ActiveRecord::Base
 
 	def title
 		lang = program_descriptions.first.lang
-		program_descriptions.first.title if lang == "en"
-		program_descriptions.last.title if lang != "en"
+		return program_descriptions.first.title if lang == "en"
+		return program_descriptions.last.title if lang != "en"
 	end
 	def description
 		lang = program_descriptions.first.lang
-		program_descriptions.first.description if lang == "en"
-		program_descriptions.last.description if lang != "en"
+		return program_descriptions.first.description if lang == "en"
+		return program_descriptions.last.description if lang != "en"
 	end
 
 	def tooltip
@@ -110,8 +115,7 @@ class Program < ActiveRecord::Base
 
 
 	def full_filename
-		#FIXME
-		filename
+		id.to_s + "_" + filename
 	end
 
 	def length
@@ -119,6 +123,4 @@ class Program < ActiveRecord::Base
 		file_length || 0
 	end
 
-	named_scope :roots, :conditions => {:program_id => nil}
-	named_scope :children_of, lambda { |prog| { :conditions => { :program_id => prog } } }
 end
