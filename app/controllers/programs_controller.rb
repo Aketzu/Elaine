@@ -102,10 +102,93 @@ class ProgramsController < ApplicationController
 
 
 	def import 
-		#TODO: implement
     respond_to do |format|
       format.html # show.html.erb
     end
+	end
+
+	def doimport
+	  @xml = "nada"
+    return if params[:pmsdata].nil?
+
+    quarantine = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute], params[:date][:second])
+
+    xml = REXML::Document.new params[:pmsdata]
+
+    @compos = Array.new
+    xml.elements.each("pms-export/compos/compo") { |c|
+        
+			parent_id = Program.find_by_pms_id(c.attributes["id"]).id
+
+      events = Array.new
+      eevents = Array.new
+
+      c.elements.each("entries/entry") { |e|
+        events << { :id => e.attributes["id"],
+          :name => e.attributes["name"],
+          :author => e.attributes["credit"]
+        }
+
+        if params[:doit] then
+          ee = Program.find_by_pms_id(e.attributes["id"])
+          ee = Program.new if ee.nil?
+
+          ee.pms_id = e.attributes["id"]
+					title = e.attributes["name"]
+          title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
+					ee.owner = current_user
+					ee.program_descriptions << ProgramDescription.Defaults
+					ee.program_descriptions.each { |pd|
+						pd.title = title
+					}
+					ee.program_category_id = 9
+					ee.do_vod = true
+
+          ee.target_length = 60 if ee.target_length.nil?
+          ee.programtype = "Insert"
+					ee.status = "Production"
+          ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
+          ee.quarantine = quarantine
+					ee.program_id = parent_id
+          ee.save!
+          eevents << ee
+        end
+      }
+     @compos << {:id => c.attributes["id"],
+        :name => c.attributes["name"],
+        :desc => c.attributes["description"],
+        :events => events}
+
+      if params[:doit] then
+        ep = Program.find_by_pms_id(c.attributes["id"])
+        if ep.nil?
+          ep = Program.new
+          ep.pms_id = e.attributes["id"]
+					title = e.attributes["name"]
+          title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
+					ep.owner = current_user
+					ep.program_descriptions << ProgramDescription.Defaults
+					ep.program_descriptions.each { |pd|
+						pd.title = title
+					}
+					ep.program_category_id = 9
+
+          ep.target_length = 60 if ee.target_length.nil?
+          ep.programtype = "Insert"
+					ep.status = "Production"
+          ep.filename = ep.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
+          ep.quarantine = quarantine
+
+          ep.do_vod   = false
+        end
+
+        ep.pms_id = c.attributes["id"]
+				ep.children << eevents
+        ep.save!
+      end
+    }
+
+		render :action => 'import'
 	end
 
 
