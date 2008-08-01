@@ -108,16 +108,6 @@ class ProgramsController < ApplicationController
     end
 	end
 
-	caches_page :vods
-	skip_before_filter :login_required, :only => :vods
-	skip_before_filter :check_auth, :only => :vods
-	def vods
-		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
-		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
-    respond_to do |format|
-      format.xml 
-    end
-	end
 
   # GET /programs/new
   # GET /programs/new.xml
@@ -221,7 +211,7 @@ class ProgramsController < ApplicationController
     end
   end
 
-	skip_before_filter :verify_authenticity_token, :only => :autocomplete
+	skip_before_filter :verify_authenticity_token, :only => [:autocomplete, :update_files]
 
 	def autocomplete
 		@key = "subprog_id" unless params[:subprog].nil?
@@ -259,5 +249,89 @@ class ProgramsController < ApplicationController
 		@program = Program.find(params[:id])
 		(index; return) if params["src"] == "programs"
 		render :partial => "subprograms", :object => @program.children if request.xhr?
+	end
+	
+	caches_page :vods
+	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod]
+	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod]
+	def vods
+		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
+		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
+    respond_to do |format|
+      format.xml 
+    end
+	end
+
+	def update_files
+		return if request.raw_post.nil?
+
+		Program.transaction do 
+			request.raw_post.each { |f|
+				match = f.match(/.*\/([0-9]*)_(.*)\.([a-z]*)$/)
+				next unless match
+
+				obj = nil
+
+				begin
+					obj = Program.find(match[1])
+				rescue
+					next
+				end
+
+        if obj.nil? then
+          logger.info "Couldn't find object for " + match[0]
+          next
+        end
+
+        #if obj.filename != match[3] then
+        #  logger.info "Filename mismatch " + obj.filename + " vs. " + match[0]
+        #  next
+        #end
+
+				obj.filename = match[2] + "." + match[3];
+        obj.file_exists = true
+        obj.file_status_updated = Time.now
+        obj.save!
+			}
+		end
+		render :text => "Done"
+	end
+
+	def nextvod
+		prog = Program.to_vod.find(:all, :include => [:vods], :conditions => ["file_resy is null"])
+		prog.each { |p|
+			next unless p.vods.count == 0
+			result = Array.new
+
+			result << "VOD"
+			result << p.id
+			result << p.preview_image_offset
+			result << p.filename.gsub(/\.[A-Za-z0-9]*$/, "").gsub(/ /, "_")
+			result << p.full_filename
+
+			#Hack
+			p.file_resy = 0;
+			p.save!
+
+			render :text => result.join("|")
+			return
+		}
+		render :text => "nada"
+
+	end
+
+	def voddone
+		prog = Program.find(params[:progid])
+
+		vod = Vod.new
+		vod.program = prog
+		vod.filename = params[:filename]
+		vod.filesize = params[:size]
+		vod.length = params[:length]
+		vod.vod_format_id = 1 #FIXME
+
+		vod.save!
+
+		render :text => "OK"
 	end
 end

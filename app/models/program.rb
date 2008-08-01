@@ -20,7 +20,7 @@ class Program < ActiveRecord::Base
 	named_scope :roots, :conditions => {:program_id => nil}
 	named_scope :children_of, lambda { |prog| { :conditions => { :program_id => prog } } }
 	
-	named_scope :file_exists, :conditions => {:file_exists => true}
+	named_scope :to_vod, :conditions => {:file_exists => true, :do_vod => true}
 
 	def self.ProgramStatusList
 		["Planning", "Production", "Ready for showing", "Done"]
@@ -115,6 +115,7 @@ class Program < ActiveRecord::Base
 
 
 	def full_filename
+		return "" if id.nil?
 		id.to_s + "_" + filename
 	end
 
