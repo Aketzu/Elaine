@@ -9,10 +9,10 @@ xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss") do
 		for program in @programs
 			xml.item do
 				#desc = program.program_descriptions.find(:first, :conditions => ["language_id = ?", @language.id])
-				desc = program.program_descriptions.first
-
-				xml.title(desc.title, :'xml:lang' => desc.lang)
-				xml.description((desc.description || "").gsub(/[\n\r]/,''), :'xml:lang' => desc.lang)      
+				program.program_descriptions.each { |desc|
+					xml.title(desc.title, :'xml:lang' => desc.lang)
+					xml.description((desc.description || "").gsub(/[\n\r]/,''), :'xml:lang' => desc.lang)      
+				}
 				xml.link # TODO: Additional info is where?
 				xml.pubDate(xmldatetime(program.updated_at))
 				 # TODO: Hardcoded host and proto

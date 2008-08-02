@@ -338,7 +338,11 @@ class ProgramsController < ApplicationController
 	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone]
 	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone]
 	def vods
-		pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
+		if params[:id]
+			pids = Vod.find(:all, :group => :program_id, :conditions => ["created_at > '#{params[:id]}-01-01'"]).map { |v| v.program_id }
+		else 
+			pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
+		end
 		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
     respond_to do |format|
       format.xml 
@@ -415,6 +419,7 @@ class ProgramsController < ApplicationController
 		vod.vod_format = VodFormat.find_by_name("2008_" + params[:format])
 
 		vod.save!
+		expire_page :controller => :programs, :action => :vods, :id => 2008, :format => :xml
 
 		render :text => "OK"
 	end
