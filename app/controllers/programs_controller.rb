@@ -335,18 +335,23 @@ class ProgramsController < ApplicationController
 	end
 	
 	caches_page :vods
-	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone]
-	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone]
+	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone, :published]
+	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone, :published]
 	def vods
 		if params[:id]
 			pids = Vod.find(:all, :group => :program_id, :conditions => ["created_at > '#{params[:id]}-01-01'"]).map { |v| v.program_id }
 		else 
 			pids = Vod.find(:all, :group => :program_id).map { |v| v.program_id }
 		end
-		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?)", pids])
+		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?) AND quarantine < now()", pids])
     respond_to do |format|
       format.xml 
     end
+	end
+	
+	def published
+		@programs = Program.find(:all, :conditions => ["quarantine < now() AND do_vod"])
+		render :text => ";" + @programs.map{|p| p.id}.sort.join(";") + ";";
 	end
 
 	def update_files
