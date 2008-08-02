@@ -395,6 +395,7 @@ class ProgramsController < ApplicationController
 			result << p.preview_image_offset
 			result << p.filename.gsub(/\.[A-Za-z0-9]*$/, "").gsub(/ /, "_")
 			result << p.full_filename
+			result << p.program_category.name
 
 			#Hack
 			p.file_resy = 0;
