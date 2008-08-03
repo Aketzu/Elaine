@@ -82,7 +82,9 @@ class PlaylistsController < ApplicationController
                                                                  :include => [:program => [:children, :program_descriptions]],
                                                                  :order => :start_at,
                                                                  :limit => 10)
-
+		while @playlists.length < 10
+			@playlists << Playlist.new
+		end
     respond_to do |format|
       #format.html
       format.xml  { render :xml => @playlist }

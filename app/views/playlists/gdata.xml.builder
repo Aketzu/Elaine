@@ -5,6 +5,11 @@ xml.data("protocol-version" => "1.6") do
 			xml.title(@playlists.first.channel.name)
 			@playlists.each { |item|
 				program = item.program
+				unless program
+					xml.body("", :time => "")
+					
+					next
+				end
 				xml.body(:time => item.start_at.strftime("%H%M")) do
 					xml.cdata!(program.title + "  ")
 				end
