@@ -422,10 +422,10 @@ class ProgramsController < ApplicationController
 		vod.filename = params[:filename]
 		vod.filesize = params[:size]
 		vod.length = params[:length]
-		vod.vod_format = VodFormat.find_by_name("2008_" + params[:format])
+		vod.vod_format = VodFormat.find_by_name("2009_" + params[:format])
 
 		vod.save!
-		expire_page :controller => :programs, :action => :vods, :id => 2008, :format => :xml
+		expire_page :controller => :programs, :action => :vods, :id => 2009, :format => :xml
 
 		render :text => "OK"
 	end
