@@ -4,7 +4,7 @@
 <% index += 1 %>
            {
                "index"      : <%= index %>,
-               "label"      : "#<%= index %> <%= (pl.program.title.length < 2 ? "no name" : pl.program.title) %>",
+               "label"      : "#<%= index %> <%=h (pl.program.title.length < 2 ? "no name" : pl.program.title) %>",
                "type"       : "<%= pl.program.programtype %>",
                "imageURL"   : "http://nobelprize.org/nobel_prizes/physics/laureates/1998/tsui_thumb.jpg",
                "start_at"   : <%= pl.start_at.to_json %>,
