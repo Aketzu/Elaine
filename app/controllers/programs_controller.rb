@@ -20,7 +20,7 @@ class ProgramsController < ApplicationController
     end
 
     @filter ||= params[:search]
-    @filter ||= params[:program_description][:title] unless params[:program_description].nil?
+    @filter ||= params[:desc] unless params[:desc].nil?
     @filter ||= ""
 
     unless @filter.empty?
