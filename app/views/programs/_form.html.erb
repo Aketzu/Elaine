@@ -40,7 +40,7 @@
 
 <tr class="generic">
 <th class="edit">Owner</th>
-<td class="edit"><%= form.select :owner_id, User.find(:all, :order => "login ASC").collect {|t| [ t.login, t.id ] }, {}, {"class" => "options"} %></td>
+<td class="edit"><%= form.select :owner_id, User.find(:all, :order => "login ASC").collect {|t| [ t.to_s, t.id ] }, {}, {"class" => "options"} %></td>
 </tr>
 
 <tr class="generic">

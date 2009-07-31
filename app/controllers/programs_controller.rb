@@ -198,7 +198,7 @@ class ProgramsController < ApplicationController
     @program = Program.new
 		@program.owner = current_user
 		@program.program_descriptions << ProgramDescription.Defaults
-		@program.program_category_id = cookies[:progcategory].to_i || 10
+		@program.program_category_id = (cookies[:progcategory] || DEFAULT_CATEGORY).to_i
 
     respond_to do |format|
       format.html # new.html.erb

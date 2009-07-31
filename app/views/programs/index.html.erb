@@ -8,7 +8,7 @@
 	User:
 	<select name="find_by_user">
 	<option value="0">All</option>
-	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "login", @user) %>
+	<%= options_from_collection_for_select(User.find(:all, :order => "login ASC"), "id", "to_s", @user) %>
 	</select>
 
 	Category:

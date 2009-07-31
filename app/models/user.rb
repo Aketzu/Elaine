@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :level
 
+	def to_s
+		return login + " (" + name + ")" unless name.empty?
+		return login
+	end
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
