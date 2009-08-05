@@ -9,13 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080730101733) do
+ActiveRecord::Schema.define(:version => 20090805111923) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "flashinfos", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flashinfos", ["key"], :name => "index_flashinfos_on_key"
 
   create_table "playlists", :force => true do |t|
     t.integer  "program_id", :limit => 11

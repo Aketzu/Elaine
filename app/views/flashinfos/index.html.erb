@@ -1,0 +1,19 @@
+<h1>Comingup Flash config</h1>
+
+<% form_tag :action => "save" do -%>
+Background music: <%=text_field_tag F_BGMusic, @infos[F_BGMusic], :size => 50 %> (URL)<br />
+Background image: <%=text_field_tag F_BGImage, @infos[F_BGImage], :size => 50 %> (URL)<br />
+Infotext (view 3): <%=text_field_tag F_Infotext, @infos[F_Infotext], :size => 50 %> <br />
+<br />
+Image scroller pictures: <br />
+<% (1..5).each { |i| %>
+<%=text_field_tag F_ImageN + i.to_s, @infos[F_ImageN + i.to_s], :size => 50 %> (URL)<br />
+<% } %>
+<br />
+Extra views: <br />
+<% (4..9).each { |i| %>
+View <%=i%>: <%=text_field_tag F_ViewN + i.to_s, @infos[F_ViewN + i.to_s], :size => 50 %> (URL, .jpg, .swf etc..)<br />
+<% } %>
+
+<%=submit_tag "Save" %>
+<% end %>

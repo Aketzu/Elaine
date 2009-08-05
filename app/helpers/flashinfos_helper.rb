@@ -1,0 +1,2 @@
+module FlashinfosHelper
+end
