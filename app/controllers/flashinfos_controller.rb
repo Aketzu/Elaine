@@ -25,13 +25,13 @@ class FlashinfosController < ApplicationController
 		channel = DEFAULT_CHANNEL
 		
 		@current = Playlist.for_channel(channel).find(:all,
-				:conditions => ["start_at <= now()"],
+				:conditions => ["start_at <= now() and programs.hidden = false"],
 				:include => [:program => [:children, :program_descriptions]],
 				:order => "start_at desc",
 				:limit => 1).first
 
 		@playlists = Playlist.for_channel(channel).find(:all,
-				:conditions => ["start_at > now()"],
+				:conditions => ["start_at > now() and programs.hidden = false"],
 				:include => [:program => [:children, :program_descriptions]],
 				:order => :start_at,
 				:limit => 10)
