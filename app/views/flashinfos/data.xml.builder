@@ -15,6 +15,8 @@ xml.comingup do
 		type="next"
 		@playlists.each { |pl|
 			next unless pl.start_at
+			logger.info (pl.start_at - Time.now)
+			next if (pl.start_at - Time.now) > (18*60*60)
 			xml.program(:type => type) do
 				xml.time(pl.start_at.strftime("%H:%M"))
 				xml.title(pl.program.title)
