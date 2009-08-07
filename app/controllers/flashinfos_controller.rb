@@ -1,4 +1,5 @@
 class FlashinfosController < ApplicationController
+	require_permission DIRECTOR
 	skip_before_filter :login_required, :only => [:data]
   skip_before_filter :check_auth, :only => [:data]
 
