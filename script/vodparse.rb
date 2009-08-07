@@ -4,8 +4,9 @@ require File.dirname(__FILE__) + '/../config/environment'
 
 #Parse vod filenames from moukari (find-style output) and update DB
 
-File.open("script/vods.txt","r") { |f|
-	f.each { |r|
+#File.open("script/vods.txt","r") { |f|
+#	f.each { |r|
+	STDIN.read.each { |r|
 		r.chomp!
 		p = r.split "/"
 		
@@ -30,4 +31,4 @@ File.open("script/vods.txt","r") { |f|
 			v.save!
 		end
 	}
-}
+#}
