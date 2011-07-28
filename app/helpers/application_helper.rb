@@ -75,12 +75,17 @@ module ApplicationHelper
 
 	def elaine_version
 		return @elaine_version if @elaine_version
+		File.open(".git/refs/heads/master", "r") { |f|
+			@elaine_version = f.gets[0..8]
+		}
+=begin SVN rev
 		File.open(".svn/entries", "r") { |f|
 			3.times do
 				f.gets
 			end
 			@elaine_version = "r" + f.gets.chomp
 		}
+=end
 		return @elaine_version 
 	end
 
