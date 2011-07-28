@@ -1,5 +1,8 @@
 set :application, "Elaine3"
-set :repository,  "https://svn.nodeta.fi/elaine2006/trunk"
+set :scm, "git"
+set :repository, "git@github.com:Aketzu/Elaine.git"  # Your clone URL
+set :branch, "master"
+
 
 #set :rails_env, "development"
 set :rails_env, "production"
