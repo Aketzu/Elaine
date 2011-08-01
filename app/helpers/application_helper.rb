@@ -115,4 +115,8 @@ module ApplicationHelper
     end
   end
 
+	def tickimage(val)
+		image_tag 'icons/' + (val ? 'tick' : 'cross') + '.png', :alt => (val ? 'Yes' : 'No')
+	end
+
 end

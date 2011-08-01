@@ -13,7 +13,7 @@
 		@program_description = pd
  %>
 	<tr>
-	<th colspan="2" onclick="toggleVisibility('desc_<%=pd.lang%>')" class="header"><%=langname%></th>
+	<th colspan="2" onclick="toggleVisibility('desc_<%=pd.lang%>')" class="header"><%=image_tag 'icons/resultset_next.png', :alt => "Collapse" %> <%=langname%></th>
 	</tr>
 
 	<tr class="desc_<%=pd.lang%>">
@@ -35,7 +35,7 @@
 
 
 <tr>
-<th colspan="2" onclick="toggleVisibility('generic')" class="header">Generic <%=tooltip_collapsable%></th>
+<th colspan="2" onclick="toggleVisibility('generic')" class="header"><%=image_tag 'icons/resultset_next.png', :alt => "Collapse" %> Generic</th>
 </tr>
 
 <tr class="generic">
@@ -98,7 +98,7 @@
 </tr>
 
 <tr>
-<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header">File information <%=tooltip_collapsable%></th>
+<th colspan="2" onclick="toggleVisibility('fileinfo')" class="header"><%=image_tag 'icons/resultset_next.png', :alt => "Collapse" %> File information</th>
 </tr>
 
 <tr class="fileinfo">

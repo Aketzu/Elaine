@@ -32,16 +32,15 @@
     <td><%= format_length(offset) %></td>
 		<td><%=h(run.info).gsub /\n/, "<br />" %></td>
 		<td>
-      [
 			<%#= link_to 'edit',
 				:url => edit_runlist_path(run) %>
-			<%= link_to_remote 'edit',
+			<%= link_to_remote (image_tag 'icons/pencil.png', :alt => 'edit'),
 				:update => 'runlist',
 				:method => 'get',
 				:url => url_for(edit_runlist_path(run)) + "?src=runlist",
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
-			<%= link_to_remote 'delete',
+			<%= link_to_remote (image_tag 'icons/delete.png'),
 				:update => 'runlist',
 				:url => url_for(run) + "?src=runlist",
 				:confirm => 'Are you sure you want to destroy the entry?',
@@ -49,20 +48,18 @@
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
 			
-			<%= link_to_remote 'up',
+			<%= link_to_remote (image_tag 'icons/arrow_up.png'),
 				:update => 'runlist',
 				:url => up_runlist_path(run),
 				:method => :get,
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
-			<%= link_to_remote 'down',
+			<%= link_to_remote (image_tag 'icons/arrow_down.png'),
 				:update => 'runlist',
 				:url => down_runlist_path(run),
 				:method => :get,
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
-
-      ]
       </td>
     </tr>
   <% end %>
@@ -77,7 +74,7 @@
 		    'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
     <td></td>
 		<td><%=form.text_area :info, :cols => 20, :rows => 5 %></td>
-		<th><%=form.submit %></th>
+		<th><%=form.submit 'Apply'%></th>
 	</tr>
 </table>
 

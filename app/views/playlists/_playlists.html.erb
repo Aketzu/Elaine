@@ -1,15 +1,14 @@
 <table class="playlist" id="playlists">
   <tr class="playlist_header">
     <th class="playlist_cell" style="width: 13em;">Program</th>
-    <th class="playlist_cell" style="width: 10em;">Status</th>
-    <th class="playlist_cell" style="width: 10em;">Type</th>
-    <th class="playlist_cell" style="width: 1em;">Show&nbsp;in listing</th>
-    <th class="playlist_cell" style="width: 12em;">Start time</th>
+    <th class="playlist_cell" style="width: 10em; text-align: left;">Status</th>
+    <th class="playlist_cell" style="width: 10em; text-align: left;">Type</th>
+    <th class="playlist_cell" style="width: 11em;">Start time</th>
     <th class="playlist_cell" style="width: 5em;">Length<br><i>Target</i></th>
     <th class="playlist_cell" style="width: 1em;">Dif</th>
-    <th class="playlist_cell" style="width: 12em;">End time</th>
-    <th class="playlist_cell" style="width: 6em;">Movable</th>
-    <th class="playlist_cell" style="width: 9.5em;">Actions</th>
+    <th class="playlist_cell" style="width: 11em;">End time</th>
+    <th class="playlist_cell" style="width: 4em;">Movable</th>
+    <th class="playlist_cell" style="width: 4em;">Actions</th>
   </tr>
 
 <%
@@ -93,16 +92,15 @@ end
         -%>
         </span></td>
     <td class="playlist_cell"><%= playlist.program.programtype %></td>
-    <td class="playlist_cell"><%#= link_to playlist.no_listing ? "No" : "Yes" , :action => :toggle_show, :id => playlist %></td>
     <td class="playlist_cell"><%= playlist.start_at.strftime("%d.%m.%Y %H:%M:%S") %></td>
     <td class="playlist_cell"><%= playlist.program.formatted_length %><br><span style="font-style: italic; font-size: 80%;">(<%= playlist.program.formatted_target_length unless playlist.program.formatted_target_length.empty? %>)</span></td>
     <td class="playlist_cell"><%= tooltip format_length(playlist.program.target_length - playlist.program.length) unless playlist.program.formatted_target_length.empty? %></td>
     <td class="playlist_cell"><%= playlist.end_time.strftime("%d.%m.%Y %H:%M:%S") %></td>
-    <td class="playlist_cell" align="center"><% if playlist.movable %>&times;<% end %></td>
-    <td class="playlist_cell">[
+    <td class="playlist_cell" align="center"><%=(image_tag 'icons/tick.png', :alt => "Movable") if playlist.movable %></td>
+    <td class="playlist_cell" align="center">
 <% if current_user.level >= DIRECTOR %>
-      <%= link_to 'Move', :action => 'edit', :id => playlist %>
-            <%= link_to_remote 'Remove',
+      <%= link_to (image_tag 'icons/pencil.png', :alt => 'Move'), :action => 'edit', :id => playlist %>
+            <%= link_to_remote (image_tag 'icons/delete.png'),
                 :update => 'playlist',
                 :url => params.merge(:id => playlist.id, :action => :destroy),
                 :confirm => 'Are you sure you want to destroy the item?',
@@ -110,7 +108,7 @@ end
                 :before => "Element.show('spinner')",
                 :success => "Element.hide('spinner')" %>
 <% end %>
-    ]</td>
+    </td>
   </tr>
 
   <% end_time = playlist.end_time %>

@@ -23,10 +23,9 @@
       <%= link_to prog.title, prog %>
     </td>
     <td><%= prog.programtype %> (<%= prog.status %>)</td>
-    <td><%= prog.file_exists? %></td>
+    <td><%= tickimage prog.file_exists? %></td>
       <td>
-      [
-			<%= link_to_remote 'unlink',
+			<%= link_to_remote (image_tag 'icons/link_break.png'),
 				:update => 'subprograms',
 				:url => unlink_program_path(@program, prog),
 				:confirm => 'Are you sure you want to unlink?',
@@ -34,7 +33,7 @@
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
 			
-			<%= link_to_remote 'destroy',
+			<%= link_to_remote (image_tag 'icons/delete.png'),
 				:update => 'subprograms',
 				:url => url_for(prog) + "?src=subprograms&parent=" + @program.id.to_s,
 				:confirm => 'Are you sure you want to destroy the whole program?',
@@ -42,20 +41,18 @@
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
 			
-			<%= link_to_remote 'up',
+			<%= link_to_remote (image_tag 'icons/arrow_up.png'),
 				:update => 'subprograms',
 				:url => move_program_up_path(@program, prog),
 				:method => :get,
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
-			<%= link_to_remote 'down',
+			<%= link_to_remote (image_tag 'icons/arrow_down.png'),
 				:update => 'subprograms',
 				:url => move_program_down_path(@program, prog),
 				:method => :get,
 				:before => "Element.show('spinner')",
 				:success => "Element.hide('spinner')" %>
-
-      ]
       </td>
     </tr>
   <% end %>
