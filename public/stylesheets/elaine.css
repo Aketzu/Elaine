@@ -257,7 +257,7 @@ div.events_in_program_list {
  */
 
 body, p, ol, ul, td, input, textarea, select {
-    font-family:    Tahoma, "Western", fantasy;
+    font-family:    Tahoma, "Western", "Arial";
   font-size:        12pt;
   float:                none;
 }
