@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090805111923) do
+ActiveRecord::Schema.define(:version => 20110801090643) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,24 @@ ActiveRecord::Schema.define(:version => 20090805111923) do
     t.boolean  "hidden"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mcu_auxout"
+    t.string   "mcu_auxres"
+    t.boolean  "mcu_studiolaptop"
+    t.boolean  "mcu_hallpgm"
+    t.boolean  "mcu_stagepic"
+    t.boolean  "mcu_recorded"
+    t.boolean  "mcu_hastg"
+    t.integer  "cam_studio",           :limit => 11
+    t.integer  "cam_foh",              :limit => 11
+    t.integer  "cam_stage",            :limit => 11
+    t.boolean  "is_broadcast"
+    t.boolean  "bu_recorded"
+    t.boolean  "hall_stagepic"
+    t.boolean  "hall_bupgm"
+    t.boolean  "hall_mcuaux"
+    t.integer  "hall_sauna",           :limit => 11
+    t.boolean  "stage_mcuaux"
+    t.string   "stage_output"
   end
 
   add_index "programs", ["pms_id"], :name => "index_programs_on_pms_id"

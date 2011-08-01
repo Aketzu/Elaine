@@ -121,5 +121,47 @@
 <td class="edit">Resolution: <%= @program.file_resx%> x <%= @program.file_resy %> (<%= @program.file_aspect %>)</td>
 </tr>
 <% end %>
+
+<tr>
+<th colspan="2" onclick="toggleVisibility('tech')" class="header"><%=image_tag 'icons/resultset_next.png', :alt => "Collapse" %> Technical checklist</th>
+</tr>
+
+<tr class="tech">
+<td colspan="2"><b>Main Control Unit (MCU)</b></td>
+</tr>
+<%=tech_text_field form, :mcu_auxout, "AUX output", "Default: PGM"%>
+<%=tech_text_field form, :mcu_auxres, "AUX ImagePro resolution", "Default: 1080i50"%>
+
+<%=tech_boolean_field form, :mcu_studiolaptop, "Studio laptop in use?"%>
+<%=tech_boolean_field form, :mcu_hallpgm, "Hall AV PGM in use?"%>
+<%=tech_boolean_field form, :mcu_stagepic, "Stage picture in use?"%>
+<%=tech_boolean_field form, :mcu_recorded, "Program recorded at MCU?"%>
+<%=tech_boolean_field form, :mcu_hastg, "Progam has TGs?"%>
+
+<%=tech_number_field form, :cam_studio, "Cameras in studio", (0..3) %>
+<%=tech_number_field form, :cam_foh, "Cameras in FOH", (0..2) %>
+<%=tech_number_field form, :cam_stage, "Cameras on stage", (0..2) %>
+
+<tr class="tech">
+<td colspan="2"><b>Broadcasting Unit (BU)</b></td>
+</tr>
+<%=tech_boolean_field form, :is_broadcast, "Program is broadcast?"%>
+<%=tech_boolean_field form, :bu_recorded, "Progam recorded at BU?"%>
+
+<tr class="tech">
+<td colspan="2"><b>Hall AV</b></td>
+</tr>
+<%=tech_boolean_field form, :hall_stagepic, "Stage picture in use?"%>
+<%=tech_boolean_field form, :hall_bupgm, "BU PGM in use?"%>
+<%=tech_boolean_field form, :hall_mcuaux, "MCU AUX in use?"%>
+<%=tech_select_field form, :hall_sauna, "SAUNA SELECT output", { "Unknown" => 0, "BU PGM" => 1, "Hall AV PGM" => 2 } %>
+
+<tr class="tech">
+<td colspan="2"><b>Stage</b></td>
+</tr>
+<%=tech_boolean_field form, :stage_mcuaux, "MCU AUX in use?"%>
+<%=tech_text_field form, :stage_output, "Stage output, please specify"%>
+
+
   
 </table>

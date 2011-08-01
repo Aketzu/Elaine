@@ -200,6 +200,9 @@ class ProgramsController < ApplicationController
 		@program.program_descriptions << ProgramDescription.Defaults
 		@program.program_category_id = (cookies[:progcategory] || DEFAULT_CATEGORY).to_i
 
+		@program.mcu_auxout = "PGM";
+		@program.mcu_auxres = "1080i50";
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @program }

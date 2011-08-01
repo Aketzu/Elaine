@@ -10,8 +10,7 @@
                       :id => @curprog.id,
                       :program_event_id => program.id %>
 
-	[
-	<%= link_to_remote 'unlink',
+	<%= link_to_remote (image_tag 'icons/link_break.png'),
 		:update => 'programs',
 		:url => url_for(unlink_program_path(@curprog, program)) + "?src=programs",
 		:confirm => 'Are you sure you want to unlink?',
@@ -19,7 +18,7 @@
 		:before => "Element.show('spinner')",
 		:success => "Element.hide('spinner')" %>
 
-	<%= link_to_remote 'destroy',
+	<%= link_to_remote (image_tag 'icons/delete.png'),
 		:update => 'programs',
 		:url => url_for(program),
 		:confirm => 'Are you sure you want to destroy the whole program?',
@@ -27,20 +26,19 @@
 		:before => "Element.show('spinner')",
 		:success => "Element.hide('spinner')" %>
 				
-	<%= link_to_remote 'up',
+	<%= link_to_remote (image_tag 'icons/arrow_up.png'),
 		:update => 'programs',
 		:url => url_for(move_program_up_path(@curprog, program)) + "?src=programs",
 		:method => :get,
 		:before => "Element.show('spinner')",
 		:success => "Element.hide('spinner')" %>
-	<%= link_to_remote 'down',
+	<%= link_to_remote (image_tag 'icons/arrow_down.png'),
 		:update => 'programs',
 		:url => url_for(move_program_down_path(@curprog, program)) + "?src=programs",
 		:method => :get,
 		:before => "Element.show('spinner')",
 		:success => "Element.hide('spinner')" %>
 
-  ]
   </div>
   <div><b><%= index += 1 %>.</b>
   <%= format_length(offset) %>
