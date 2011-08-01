@@ -367,6 +367,8 @@ th.header {
 div.auto_complete {
     width: 350px;
     background: #fff;
+		position: absolute;
+		z-index: 2;
 }
 div.auto_complete ul {
     border:1px solid #888;
