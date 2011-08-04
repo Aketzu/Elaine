@@ -124,7 +124,7 @@ class ProgramsController < ApplicationController
     quarantine = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute], params[:date][:second])  if params[:doit]
 
 		parent = Program.find_by_pms_path(@party + "/" + @compo)
-		unless parent
+		if !parent and params[:doit]
 			parent = Program.new
 			parent.owner = current_user
 			parent.program_descriptions << ProgramDescription.Defaults
@@ -137,7 +137,7 @@ class ProgramsController < ApplicationController
 			parent.programtype = "Insert"
 			parent.status = "Production"
 			parent.quarantine = quarantine
-			parent.filename = ep.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
+			parent.filename = parent.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
 			parent.save!
 		end
 
