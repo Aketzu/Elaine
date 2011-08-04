@@ -102,91 +102,80 @@ class ProgramsController < ApplicationController
 
 
 	def import 
+		@party = "asm11"
+		pms = Pms.new
+		@compos = pms.compos(@party).parsed_response
+
     respond_to do |format|
       format.html # show.html.erb
     end
 	end
 
 	def doimport
-	  @xml = "nada"
-    return if params[:pmsdata].nil?
+		@party = "asm11"
+		@compo = params[:id]
 
-    quarantine = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute], params[:date][:second])
+		pms = Pms.new
+		return if params[:id].nil?
 
-    xml = REXML::Document.new params[:pmsdata]
+		@entries = pms.entries(@party, @compo).parsed_response
+		@entries ||= []
 
-    @compos = Array.new
-    xml.elements.each("pms-export/compos/compo") { |c|
-        
-			parent_id = Program.find_by_pms_id(c.attributes["id"]).id
+    quarantine = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute], params[:date][:second])  if params[:doit]
 
-      events = Array.new
-      eevents = Array.new
+		parent = Program.find_by_pms_path(@party + "/" + @compo)
+		unless parent
+			parent = Program.new
+			parent.owner = current_user
+			parent.program_descriptions << ProgramDescription.Defaults
+			parent.program_descriptions.each { |pd|
+				pd.title = @party + "/" + @compo
+			}
+			parent.pms_path = @party + "/" + @compo
+			parent.program_category_id = 21
+			parent.do_vod = false
+			parent.programtype = "Insert"
+			parent.status = "Production"
+			parent.quarantine = quarantine
+			parent.filename = ep.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
+			parent.save!
+		end
 
-      c.elements.each("entries/entry") { |e|
-        events << { :id => e.attributes["id"],
-          :name => e.attributes["name"],
-          :author => e.attributes["credit"]
-        }
 
-        if params[:doit] then
-          ee = Program.find_by_pms_id(e.attributes["id"])
-          ee = Program.new if ee.nil?
+		events = Array.new
+		eevents = Array.new
 
-          ee.pms_id = e.attributes["id"]
-					title = e.attributes["name"]
-          title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
-					ee.owner = current_user
-					ee.program_descriptions << ProgramDescription.Defaults
-					ee.program_descriptions.each { |pd|
-						pd.title = title
-					}
-					ee.program_category_id = 9
-					ee.do_vod = true
+		@entries.each { |e|
+			if params[:doit] then
+				ee = Program.find_by_pms_path(@party + "/" + @compo + "/" + e["id"].to_s)
+				ee = Program.new if ee.nil?
 
-          ee.target_length = 60 if ee.target_length.nil?
-          ee.programtype = "Insert"
-					ee.status = "Production"
-          ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
-          ee.quarantine = quarantine
-					ee.program_id = parent_id
-          ee.save!
-          eevents << ee
-        end
-      }
-     @compos << {:id => c.attributes["id"],
-        :name => c.attributes["name"],
-        :desc => c.attributes["description"],
-        :events => events}
+				ee.pms_path = @party + "/" + @compo + "/" + e["id"].to_s
+				title = e["name"]
+				title += " by " + e["credits"] unless e["credits"].empty?
+				ee.owner = current_user
+				ee.program_descriptions << ProgramDescription.Defaults
+				ee.program_descriptions.each { |pd|
+					pd.title = title
+				}
+				ee.program_category_id = 21
+				ee.do_vod = true
 
-      if params[:doit] then
-        ep = Program.find_by_pms_id(c.attributes["id"])
-        if ep.nil?
-          ep = Program.new
-          ep.pms_id = e.attributes["id"]
-					title = e.attributes["name"]
-          title += " by " + e.attributes["credit"] unless e.attributes["credit"].empty?
-					ep.owner = current_user
-					ep.program_descriptions << ProgramDescription.Defaults
-					ep.program_descriptions.each { |pd|
-						pd.title = title
-					}
-					ep.program_category_id = 9
+				ee.target_length = 60 if ee.target_length.nil?
+				ee.programtype = "Insert"
+				ee.status = "Production"
+				ee.filename = ee.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
+				ee.quarantine = quarantine
+				ee.program_id = parent.id
+				ee.save!
+				eevents << ee
+			end
+		}
 
-          ep.target_length = 60 if ee.target_length.nil?
-          ep.programtype = "Insert"
-					ep.status = "Production"
-          ep.filename = ep.title.scan(/./).map { |ch| ch.gsub(/ /, '_').gsub(/[^A-Za-z0-9_]/,'')  }.flatten.join("")
-          ep.quarantine = quarantine
-
-          ep.do_vod   = false
-        end
-
-        ep.pms_id = c.attributes["id"]
-				ep.children << eevents
-        ep.save!
-      end
-    }
+		if params[:doit] then
+			parent.children = eevents
+			parent.save!
+		end
 
 		render :action => 'import'
 	end

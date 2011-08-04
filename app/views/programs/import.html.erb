@@ -1,41 +1,45 @@
 <h2>Import PMS data</h2>
 
-<%form_tag ({:action => :doimport}, {:multipart => true}) do %>
-
-Upload PMS XML file: <br />
-<%= file_field_tag :pmsdata %><br />
-
-Quarantine until:<br />
-<%=select_datetime%> <br />
-<br />
-<%=check_box_tag :doit %>Really make the changes<br />
-
-<%= submit_tag %>
-
-
-<%end%>
-
 <% if @compos %>
+Select compo: <br />
+<% @compos.each {|c| %>
+<%= link_to c["name"], doimport_programs_path(:id => c["slug"])  %><br />
+<% } %>
+
+<% end %>
+
+
+
+<% if @entries%>
 <% if params[:doit] %>
 <h2>Imported data</h2>
 <% else %>
 <h2>Data preview, check box and upload again to set</h2>
+
+<%form_tag ({:action => :doimport}, {:multipart => true}) do %>
+Quarantine until:<br />
+<%=select_datetime%> <br />
+<br />
+<%=check_box_tag :doit %>Really make the changes<br />
+<%=hidden_field_tag :id, params[:id] %>
+<%= submit_tag %>
+ 
+<% end %>
 <% end %>
 
-<%@compos.each { |c|
-ep = Program.find(:first, :conditions => [ "pms_id = ?", c[:id] ])
+<%
+ep = Program.find(:first, :conditions => [ "pms_path = ?", @party + "/" + @compo ])
 %>
-Program: <%=c[:name]%> (<%=c[:desc]%>)<br />
+Compo: <%=@party + "/" + @compo %><br />
 Elaine program: <%=ep.nil? ? "(new)" : link_to(ep.title, edit_program_path(ep) ) %><br />
 Subprogs: 
 <ul>
-<% c[:events].each { |e|
-	ee = Program.find(:first, :conditions => [ "pms_id = ?", e[:id]])
+<% @entries.each { |e|
+	ee = Program.find(:first, :conditions => [ "pms_path = ?", @party + "/" + @compo + "/" + e["id"].to_s])
 %>
-	<li><%=e[:name] %> (@elaine: <%=ee.nil? ? "(new)" : link_to(ee.title, edit_program_path(ee))%>)</li>
+	<li><%=e["name"] %> (@elaine: <%=ee.nil? ? "(new)" : link_to(ee.title, edit_program_path(ee))%>)</li>
 <%}%>
 </ul>
-<%}%>
 
 <%end%>
 

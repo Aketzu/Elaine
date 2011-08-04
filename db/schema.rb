@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801090643) do
+ActiveRecord::Schema.define(:version => 20110804171049) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20110801090643) do
     t.integer  "hall_sauna",           :limit => 11
     t.boolean  "stage_mcuaux"
     t.string   "stage_output"
+    t.string   "pms_path"
   end
 
   add_index "programs", ["pms_id"], :name => "index_programs_on_pms_id"

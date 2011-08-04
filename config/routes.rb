@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :playlists
 
-  map.resources :programs, :collection => {:import => :get, :doimport => :post, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :published => :get}, :member => {:print => :get}
+  map.resources :programs, :collection => {:import => :get, :doimport => :get, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :published => :get}, :member => {:print => :get}
 	
   map.resources :runlists, :member => {:up => :get, :down => :get }
 
