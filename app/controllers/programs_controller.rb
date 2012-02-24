@@ -77,7 +77,7 @@ class ProgramsController < ApplicationController
     @programs = Program.roots.paginate \
 			:page => params[:page], 
 			:order => sort, 
-			:include => [:program_descriptions, :program_category, :owner],
+			:include => [:program_descriptions, :program_category, :owner, {:children => [:program_descriptions]}],
 			:conditions => [@search, @searchparams]
 
 
@@ -87,6 +87,18 @@ class ProgramsController < ApplicationController
 			}
       format.xml  { render :xml => @programs }
     end
+  end
+
+  def all
+    @programs = Program.all(:include => [:program_descriptions, :owner, :children, :playlists, :program_category], :order => "program_category_id asc, created_at")
+
+    respond_to do |format|
+      format.html {
+					render :partial => "list" if request.xhr?
+			}
+      format.xml  { render :xml => @programs }
+    end
+
   end
 
   # GET /programs/1

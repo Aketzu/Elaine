@@ -1,0 +1,46 @@
+<table>
+  <tr class="header">
+    <th>Category</th>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Owner</th>
+    <th>DoVOD</th>
+    <th>Playlists</th>
+  </tr>
+
+<% for program in @programs 
+	@curprog = program
+  title = program.title
+  alttitle = ""
+  alttitle = program.program_descriptions.last.title if program.program_descriptions.last.title != title
+
+  title = title[0..50] + "..." if title.length > 50
+  alttitle = alttitle[0..50] + "..." if alttitle.length > 50
+
+  alttitle = " (" + alttitle + ")" unless alttitle.empty?
+
+  %>
+  <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
+    <td><%=program.program_category.name%></td>
+    <td><%=program.id %></td>
+    <td><%= link_to title, edit_program_path(program) %><%=h alttitle%></td>
+    <td><%=program.owner.login%></td>
+    <td><%=h program.do_vod %></td>
+    <td><% program.playlists.each {|pl| %>
+      <%=pl.start_at.strftime("%a %H:%M")%><br />
+    <%}%></td>
+  </tr>
+
+  <% unless true || program.children.empty? then %>
+  <tr class="<%= @current_cycle %>">
+    <td colspan="12">
+      <ol>
+      <% program.children.each {|ch| %>
+        <li><%=link_to ch.title, edit_program_path(ch)%> </li>
+      <%}%>
+      </ol></td>
+  </tr>
+  <% end %>
+
+<% end %>
+</table>
