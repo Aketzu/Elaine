@@ -76,20 +76,32 @@ class PlaylistsController < ApplicationController
   def pmsschedule
     return unless params[:channel_id]
 
-    @playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at)
+    @playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => {:program => [:children, :program_descriptions, :program_category]}, :order => :start_at)
 
     pms = { :schedules => { 1 => { :id => 1, :name => "AssemblyTV"}},
       :events => [],
       :locations => { 1 => { :id => 1, :name => "AssemblyTV"} } }
 
     @playlists.each { |pl|
+      title = {}
+      desc = {}
+      pl.program.program_descriptions.each {|pd|
+        title[pd.lang.to_sym] = pd.title
+        desc[pd.lang.to_sym] = pd.description
+      }
+      title[:fi] = title[:en] unless title[:fi]
+      desc[:fi] = desc[:en] unless desc[:fi]
+
       ev = { :id => pl.id,
         :location_id => 1,
         :schedule_id => 1,
         :time => pl.start_at,
-        :end_time => pl.start_at + pl.program.length,
-        :name => pl.program.title,
-        :description => pl.program.description
+        :end_time => pl.start_at + pl.program.total_target_length,
+        :name => title[:en],
+        :description => desc[:en],
+        :name_fi => title[:fi],
+        :description_fi => desc[:fi],
+        :tags => pl.program.program_category.tag,
         }
 
       pms[:events] << ev
