@@ -3,6 +3,9 @@ set :scm, "git"
 set :repository, "git@github.com:Aketzu/Elaine.git"  # Your clone URL
 set :branch, "master"
 
+ssh_options[:forward_agent] = true
+
+
 
 #set :rails_env, "development"
 set :rails_env, "production"
