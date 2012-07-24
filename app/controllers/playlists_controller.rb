@@ -51,8 +51,8 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  skip_before_filter :login_required, :only => [:schedule, :next, :gdata]
-  skip_before_filter :check_auth, :only => [:schedule, :next, :gdata]
+  skip_before_filter :login_required, :only => [:schedule, :next, :gdata, :pmsschedule]
+  skip_before_filter :check_auth, :only => [:schedule, :next, :gdata, :pmsschedule]
 
   def next
     @playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at,
@@ -70,7 +70,34 @@ class PlaylistsController < ApplicationController
       #format.html
       format.xml  { render :xml => @playlist }
       format.ics  #{ render :xml => @playlists }
-      format.json
+      format.json { render :layout => false }
+    end
+  end
+  def pmsschedule
+    return unless params[:channel_id]
+
+    @playlists = Playlist.for_channel(params[:channel_id]).find(:all, :include => [:program => [:children, :program_descriptions]], :order => :start_at)
+
+    pms = { :schedules => { 1 => { :id => 1, :name => "AssemblyTV"}},
+      :events => [],
+      :locations => { 1 => { :id => 1, :name => "AssemblyTV"} } }
+
+    @playlists.each { |pl|
+      ev = { :id => pl.id,
+        :location_id => 1,
+        :schedule_id => 1,
+        :time => pl.start_at,
+        :end_time => pl.start_at + pl.program.length,
+        :name => pl.program.title,
+        :description => pl.program.description
+        }
+
+      pms[:events] << ev
+    }
+
+    respond_to do |format|
+      #format.json { render :layout => false }
+      format.json { render :json => pms }
     end
   end
 

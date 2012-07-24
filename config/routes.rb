@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tapes
 
   map.resources :channels do |ch|
-		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :next => :get, :gdata => :get, :timeline => :get}
+		ch.resources :playlists, :as => 'playlist', :collection => {:schedule => :get, :pmsschedule => :get, :next => :get, :gdata => :get, :timeline => :get}
 	end
 
   map.resources :program_descriptions
