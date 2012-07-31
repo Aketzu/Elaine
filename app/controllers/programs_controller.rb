@@ -452,6 +452,7 @@ class ProgramsController < ApplicationController
       CSV.generate_row([p.position, p.video, p.audio, p.content, p.info, format_length(p.length), format_length(totlen), p.tg], 8, csvs)
     }
     response.content_type = Mime::CSV
+    headers["Content-Disposition"] = "attachment; filename=\"prog_"+prog.id.to_s+".csv\""
     render :text => csvs
 
   end
