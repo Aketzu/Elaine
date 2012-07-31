@@ -84,4 +84,10 @@ class ChannelsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def caspar
+		@channel= Channel.find(params[:id])
+
+    render :layout => false
+  end
 end
