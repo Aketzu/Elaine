@@ -1,3 +1,5 @@
+require 'csv'
+
 class RunlistsController < ApplicationController
 	require_permission REPORTER
 
@@ -33,6 +35,48 @@ class RunlistsController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @runlist }
     end
+  end
+
+  def savecsv
+    return unless params[:runlist]
+    @program = Program.find(params[:runlist][:program_id])
+    return unless @program
+
+    redirect_to edit_program_path(@program)
+
+    return unless params[:runlist][:runlistcsv]
+    
+    hdr = []
+
+    @program.runlists = {}
+    @program.save
+
+    cc=0
+    CSV.open(params[:runlist][:runlistcsv].path, 'r') { |rr|
+      if hdr.empty?
+        hdr = rr
+        next
+      end
+
+      cc=cc+1
+
+      rl = Runlist.new(:program_id => @program.id, :position => cc)
+      
+
+      (0..hdr.length).each {|c|
+
+        rl.video = rr[c] if hdr[c] =~ /^video/i
+        rl.audio = rr[c] if hdr[c] =~ /^audio/i
+        rl.content = rr[c] if hdr[c] =~ /^content/i
+        rl.info = rr[c] if hdr[c] =~ /^notes/i
+        rl.formatted_length = rr[c] if hdr[c] =~ /^length/i and rr[c]
+        rl.tg = rr[c] if hdr[c] =~ /^tg/i
+      }
+      rl.content ||= ""
+
+      rl.save unless rl.content.empty?
+    }
+
   end
 
   # GET /Runlists/1/edit

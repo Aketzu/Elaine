@@ -11,26 +11,26 @@
   <% offset = 0 %>
   <tr class="header">
      <td>Nr</td>
-     <td>Src</td>
      <td>Video</td>
      <td>Audio</td>
      <td>Content</td>
+     <td>Notes</td>
      <td>Length</td>
      <td>Total</td>
-     <td>Notes</td>
+     <td>TG</td>
      <td>Actions</td>
   </tr>
   <% for run in runlist %>
     <tr class="<%= @current_cycle = cycle('even', 'odd') %>">
 		<td><%= run.position %></td>
-		<td><%=h run.source %></td>
 		<td><%=h run.video %></td>
 		<td><%=h run.audio %></td>
 		<td><%=h run.content %></td>
-    <td><%= format_length(run.length) %></td>
-    <% offset += run.length %>
-    <td><%= format_length(offset) %></td>
 		<td><%=h(run.info).gsub /\n/, "<br />" %></td>
+    <td><%= format_length(run.length) %></td>
+    <% offset += run.length rescue 0%>
+    <td><%= format_length(offset) %></td>
+		<td><%=h(run.tg).gsub /\n/, "<br />" %></td>
 		<td>
 			<%#= link_to 'edit',
 				:url => edit_runlist_path(run) %>
@@ -66,16 +66,27 @@
 
 	<tr>
 		<td></td>
-		<td><%=form.text_field :source, :size => 3 %></td>
-		<td><%=form.text_area :video, :cols => 20, :rows => 5 %></td>
+		<td><%=form.text_field :video, :size => 5 %></td>
 		<td><%=form.text_field :audio, :size => 3 %></td>
-		<td><%=form.text_field :content, :size => 30 %></td>
+		<td><%=form.text_field :content, :size => 40 %></td>
+		<td><%=form.text_area :info, :cols => 50, :rows => 5 %></td>
     <td><%=form.text_field :formatted_length, :size => 5, :class => "time",
 		    'onChange' => "javascript:this.value = FormatLength(this.value)" %></td>
     <td></td>
-		<td><%=form.text_area :info, :cols => 20, :rows => 5 %></td>
+		<td><%=form.text_area :tg, :cols => 30, :rows => 5 %></td>
 		<th><%=form.submit 'Apply'%></th>
 	</tr>
 </table>
 
+<% end %>
+
+<% form_for @rl,
+	:url => savecsv_runlists_path, 
+  :update => 'runlist',
+  :html => { :multipart => true },
+	:before => "Element.show('spinner')",
+	:success => "Element.hide('spinner')" do |form| %>
+<%=form.hidden_field :program_id %>
+Upload CSV to runlist: <%=form.file_field "runlistcsv" %>
+<%=form.submit 'Upload & replace', :confirm => "This will destroy all existing runlist data for this program. Continue?" %>
 <% end %>
