@@ -1,3 +1,4 @@
+require 'csv'
 class ProgramsController < ApplicationController
 	require_permission REPORTER
 
@@ -439,4 +440,19 @@ class ProgramsController < ApplicationController
 
 		render :text => "OK"
 	end
+
+  def runlistcsv
+		prog = Program.find(params[:id])
+    #csvs = CSV.generate { |csv|
+    csvs=""
+    CSV.generate_row(["Pos", "Video", "Audio", "Content", "Notes", "Length", "Total", "TG"], 8, csvs)
+    totlen=0
+    prog.runlists.each { |p|
+      totlen += p.length if p.length
+      CSV.generate_row([p.position, p.video, p.audio, p.content, p.info, format_length(p.length), format_length(totlen), p.tg], 8, csvs)
+    }
+    response.content_type = Mime::CSV
+    render :text => csvs
+
+  end
 end

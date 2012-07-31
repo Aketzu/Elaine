@@ -90,3 +90,4 @@
 Upload CSV to runlist: <%=form.file_field "runlistcsv" %>
 <%=form.submit 'Upload & replace', :confirm => "This will destroy all existing runlist data for this program. Continue?" %>
 <% end %>
+<%=link_to "Download CSV runlist", runlistcsv_program_path %>

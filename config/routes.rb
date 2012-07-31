@@ -29,9 +29,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :playlists
 
-  map.resources :programs, :collection => {:import => :get, :doimport => :get, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :published => :get, :vodlist => :get, :all => :get}, :member => {:print => :get}
-	
-  map.resources :runlists, :member => {:up => :get, :down => :get }, :collection => {:savecsv => :post }
+  map.resources :programs, :collection => {:import => :get, :doimport => :get, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :published => :get, :vodlist => :get, :all => :get}, :member => {:print => :get, :runlistcsv => :get}
+
+  map.resources :runlists, :member => {:up => :get, :down => :get }, :collection => {:savecsv => :post}
 
 	map.link_program 'programs/:id/link/:subprog_id', :controller => 'programs', :action => 'link'
 	map.unlink_program 'programs/:id/unlink/:subprog_id', :controller => 'programs', :action => 'unlink'
