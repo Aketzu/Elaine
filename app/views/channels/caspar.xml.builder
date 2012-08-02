@@ -1,7 +1,8 @@
 xml.instruct!
 xml.programs {
-  @channel.playlists.each { |pl|
-    prog = pl.program
+  #@channel.playlists.each { |pl|
+  @programs.each { |prog|
+    #prog = pl.program
     xml.program {
       xml.name prog.title
       #xml.clips {
@@ -12,35 +13,40 @@ xml.programs {
       #    }
       #  }
       #}
-      prog.runlists.find(:all, :conditions => {:video => "KN"}).each {|rl|
-        cl = rl.content.split ";"
-        xml.clip {
-          xml.name cl[1] ? cl[1] : cl[0]
-          xml.filename cl[2]
+      xml.clips {
+        prog.runlists.find(:all, :conditions => {:video => "KN"}).each {|rl|
+          cl = rl.content.split ";"
+          xml.clip {
+            xml.name cl[1] ? cl[1] : cl[0]
+            xml.filename cl[2]
+          }
         }
       }
+
       
       xml.TG {
         prog.runlists.each {|rl|
           next if !rl.tg || rl.tg.empty?
-          xml.TGClip {
-            nn = "?"
-            nn = "Ohjelman nimi" if rl.tg.start_with? "1;"
-            nn = "Nimiplanssi" if rl.tg.start_with? "2;"
-            nn = "Kokoruutu" if rl.tg.start_with? "3;"
-            nn = "Lopputekstit" if rl.tg.start_with? "4;"
-            xml.name nn
-            xml.filename ""
-            xml.parameters {
-              cc=-1
-              longtext=false
+          longtext=false
+          titleparam=""
+          cc=-1
 
-              rl.tg.each_line {|tg|
-                next if tg.empty?
-                next if longtext
-                next unless tg =~ /^[0-9]/
-                titleparam=""
-                cc=cc+1
+          rl.tg.each_line {|tg|
+            next if tg.empty?
+            next if longtext
+            next unless tg =~ /^[0-9]/
+            cc=cc+1
+
+            xml.TGClip {
+              nn = "?"
+              nn = "Ohjelman nimi" if rl.tg.start_with? "1;"
+              nn = "Nimiplanssi" if rl.tg.start_with? "2;"
+              nn = "Kokoruutu" if rl.tg.start_with? "3;"
+              nn = "Lopputekstit" if rl.tg.start_with? "4;"
+              xml.name nn
+              xml.filename ""
+              xml.parameters {
+
                 xml.parameter {
                   if tg.start_with? "1;"
                     xml.id "f" + cc.to_s

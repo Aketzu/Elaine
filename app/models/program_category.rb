@@ -1,5 +1,5 @@
 class ProgramCategory < ActiveRecord::Base
-	has_many :program
+	has_many :programs
 
 	def self.SelectList
 		find(:all, :order => 'name').collect {|t| [ t.name, t.id ] }

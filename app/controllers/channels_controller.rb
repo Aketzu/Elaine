@@ -89,7 +89,8 @@ class ChannelsController < ApplicationController
   skip_before_filter :check_auth, :only => [:caspar]
   
   def caspar
-		@channel= Channel.find(params[:id])
+		channel= Channel.find(params[:id])
+    @programs = channel.playlists.map {|c| c.program }
 
     render :layout => false
   end

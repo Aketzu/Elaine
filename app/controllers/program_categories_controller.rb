@@ -84,4 +84,13 @@ class ProgramCategoriesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  skip_before_filter :login_required, :only => [:caspar]
+  skip_before_filter :check_auth, :only => [:caspar]
+  
+  def caspar
+		@programs = ProgramCategory.find(params[:id]).programs
+
+    render :layout => false, :template => 'channels/caspar'
+  end
 end
