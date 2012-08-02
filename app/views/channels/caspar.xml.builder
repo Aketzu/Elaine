@@ -17,8 +17,8 @@ xml.programs {
         prog.runlists.find(:all, :conditions => {:video => "KN"}).each {|rl|
           cl = rl.content.split ";"
           xml.clip {
-            xml.name cl[1] ? cl[1] : cl[0]
-            xml.filename cl[2]
+            xml.name cl[0]
+            xml.filename cl[1]
           }
         }
       }
