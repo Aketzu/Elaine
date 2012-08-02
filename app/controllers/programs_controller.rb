@@ -115,7 +115,7 @@ class ProgramsController < ApplicationController
 
 
 	def import 
-		@party = "asm11"
+		@party = "asm12"
 		pms = Pms.new
 		@compos = pms.compos(@party).parsed_response
 
