@@ -84,6 +84,9 @@ class ChannelsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  skip_before_filter :login_required, :only => [:caspar]
+  skip_before_filter :check_auth, :only => [:caspar]
   
   def caspar
 		@channel= Channel.find(params[:id])

@@ -115,7 +115,7 @@ class Program < ActiveRecord::Base
 
 
 	def full_filename
-		return "" if id.nil?
+		return "" if id.nil? or !filename
 		id.to_s + "_" + filename
 	end
 
