@@ -125,7 +125,7 @@ class ProgramsController < ApplicationController
 	end
 
 	def doimport
-		@party = "asm11"
+		@party = "asm12"
 		@compo = params[:id]
 
 		pms = Pms.new

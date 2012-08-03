@@ -43,6 +43,7 @@ xml.programs {
               nn = "Nimiplanssi" if rl.tg.start_with? "2;"
               nn = "Kokoruutu" if rl.tg.start_with? "3;"
               nn = "Lopputekstit" if rl.tg.start_with? "4;"
+              nn = "Kanavalogo" if rl.tg.start_with? "5;"
               xml.name nn
               xml.filename ""
               xml.parameters {
@@ -74,6 +75,11 @@ xml.programs {
                     xml.value rl.tg[2..-1].gsub("\n", "<br />")
                     longtext = true
                     xml.type "INPUTAREA"
+                  elsif tg.start_with? "5;"
+                    xml.id "f" + cc.to_s
+                    xml.label "kanavalogo_animaatio"
+                    xml.value rl.tg[2..-1]
+                    xml.type "INPUTBOX"
                   end
                 }
                 xml.parameter {
