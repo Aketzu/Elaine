@@ -1,4 +1,4 @@
-require 'csv'
+require 'fastercsv'
 
 class RunlistsController < ApplicationController
 	require_permission REPORTER
@@ -52,7 +52,7 @@ class RunlistsController < ApplicationController
     @program.save
 
     cc=0
-    CSV.open(params[:runlist][:runlistcsv].path, 'r') { |rr|
+    FasterCSV.foreach(params[:runlist][:runlistcsv].path, :col_sep => ';', :quote_char => '"') { |rr|
       if hdr.empty?
         hdr = rr
         next
