@@ -51,8 +51,13 @@ class RunlistsController < ApplicationController
     @program.runlists = {}
     @program.save
 
+    dd = File.readlines(params[:runlist][:runlistcsv].path).join("\n").gsub(/\r/, "")
+    Iconv.open("UTF-8", "ISO-8859-1") { |cd|
+      dd = cd.iconv(dd)
+    }
+
     cc=0
-    FasterCSV.foreach(params[:runlist][:runlistcsv].path, :col_sep => ';', :quote_char => '"') { |rr|
+    FasterCSV.parse(dd, :col_sep => ';', :quote_char => '"') { |rr|
       if hdr.empty?
         hdr = rr
         next
