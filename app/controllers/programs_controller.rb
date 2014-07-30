@@ -394,6 +394,8 @@ class ProgramsController < ApplicationController
 				obj.filename = match[2] + "." + match[3];
         obj.file_exists = true
         obj.file_status_updated = Time.now
+
+        obj.vod_status = 1 if obj.vod_status < 1
         obj.save!
 			}
 		end
@@ -401,9 +403,10 @@ class ProgramsController < ApplicationController
 	end
 
 	def nextvod
-		prog = Program.to_vod.find(:all, :include => [:vods], :conditions => ["file_resy is null"])
+		#prog = Program.to_vod.find(:all, :include => [:vods], :conditions => ["file_resy is null"])
+    prog = Program.find(:all, :include => [:vods], :conditions => ["vod_status = 1"])
 		prog.each { |p|
-			next unless p.vods.count == 0
+			#next unless p.vods.count == 0
 			result = Array.new
 
 			result << "VOD"
@@ -414,7 +417,8 @@ class ProgramsController < ApplicationController
 			result << p.program_category.name
 
 			#Hack
-			p.file_resy = 0;
+			#p.file_resy = 0;
+      p.vod_status = 2
 			p.save!
 
 			render :text => result.join("|")
@@ -427,6 +431,9 @@ class ProgramsController < ApplicationController
 	def voddone
 		prog = Program.find(params[:progid])
 
+    prog.vod_status = 3
+    prog.save
+
 		vod = Vod.find_by_filename(params[:filename])
 		vod ||= Vod.new
 		vod.program = prog
@@ -437,6 +444,15 @@ class ProgramsController < ApplicationController
 
 		vod.save!
 		expire_page :controller => :programs, :action => :vods, :id => 2009, :format => :xml
+
+		render :text => "OK"
+	end
+
+	def update_status
+		prog = Program.find(params[:progid])
+
+    prog.vod_status = params[:status]
+    prog.save
 
 		render :text => "OK"
 	end

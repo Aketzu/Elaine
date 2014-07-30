@@ -30,6 +30,11 @@ class Program < ActiveRecord::Base
 		["Insert", "Insert+Live", "Live"]
 	end
 
+  def self.VodStatusList
+    # 0                 1                   2           3                4                      5
+    ["No source data", "Waiting encoding", "Encoding", "Encoding done", "Youtube upload done", "All done"]
+  end
+
 	def title
 		lang = program_descriptions.first.lang
 		return program_descriptions.first.title if lang == "en"
