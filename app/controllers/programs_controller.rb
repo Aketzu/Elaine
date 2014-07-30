@@ -226,6 +226,7 @@ class ProgramsController < ApplicationController
   # POST /programs.xml
   def create
     @program = Program.new(params[:program])
+    @program.vod_status = 0
 
 		params[:program_description].each { |id, pdata|
 			pd = ProgramDescription.new(pdata)
@@ -395,7 +396,7 @@ class ProgramsController < ApplicationController
         obj.file_exists = true
         obj.file_status_updated = Time.now
 
-        obj.vod_status = 1 if obj.vod_status < 1
+        obj.vod_status = 1 if obj.vod_status.to_i < 1
         obj.save!
 			}
 		end
