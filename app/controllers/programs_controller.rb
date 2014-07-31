@@ -405,7 +405,10 @@ class ProgramsController < ApplicationController
 
 	def nextvod
 		#prog = Program.to_vod.find(:all, :include => [:vods], :conditions => ["file_resy is null"])
-    prog = Program.find(:all, :include => [:vods], :conditions => ["vod_status = 1"])
+    vs = 1
+    vs = params[:status].to_i if params[:status] != ""
+
+    prog = Program.find(:all, :include => [:vods], :conditions => ["vod_status = " + vs.to_s])
 		prog.each { |p|
 			#next unless p.vods.count == 0
 			result = Array.new
@@ -419,7 +422,7 @@ class ProgramsController < ApplicationController
 
 			#Hack
 			#p.file_resy = 0;
-      p.vod_status = 2
+      p.vod_status = vs+1
 			p.save!
 
 			render :text => result.join("|")
