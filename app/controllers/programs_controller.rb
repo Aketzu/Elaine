@@ -341,8 +341,8 @@ class ProgramsController < ApplicationController
 	end
 	
 	caches_page :vods
-	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone, :published, :vodlist]
-	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone, :published, :vodlist]
+	skip_before_filter :login_required, :only => [:vods, :update_files, :nextvod, :voddone, :published, :vodlist, :update_status]
+	skip_before_filter :check_auth, :only => [:vods, :update_files, :nextvod, :voddone, :published, :vodlist, :update_status]
 	def vods
 		if params[:id]
 			pids = Vod.find(:all, :group => :program_id, :conditions => ["created_at > '#{params[:id]}-01-01'"]).map { |v| v.program_id }
@@ -456,6 +456,10 @@ class ProgramsController < ApplicationController
 		prog = Program.find(params[:progid])
 
     prog.vod_status = params[:status]
+    tubeid=""
+    tubeid = params[:tube] if params[:tube]
+    tubeid.gsub! /http:..www.youtube.com.watch.v./, ""
+    prog.tube = tubeid
     prog.save
 
 		render :text => "OK"
