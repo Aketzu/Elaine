@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :playlists
 
 
-  map.resources :programs, :collection => {:import => :get, :doimport => :get, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :update_status => :get, :published => :get, :vodlist => :get, :all => :get}, :member => {:print => :get, :runlistcsv => :get}
+  map.resources :programs, :collection => {:import => :get, :doimport => :get, :autocomplete => :get, :vods => :get, :update_files => :post, :nextvod => :get, :voddone => :get, :update_status => :get, :published => :get, :vodlist => :get, :all => :get, :filenames => :get}, :member => {:print => :get, :runlistcsv => :get}
 
   map.resources :runlists, :member => {:up => :get, :down => :get }, :collection => {:savecsv => :post}
 

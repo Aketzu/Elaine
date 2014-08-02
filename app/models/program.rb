@@ -1,3 +1,4 @@
+# encoding: ASCII-8BIT
 class Program < ActiveRecord::Base
 	#acts_as_tree :foreign_key => :program_id, :include => :program_descriptions
 
@@ -122,6 +123,27 @@ class Program < ActiveRecord::Base
 	def full_filename
 		return "" if id.nil? or !filename
 		id.to_s + "_" + filename
+	end
+	def guess_filename
+    fn = filename
+    fn = title if fn==""
+
+    x=""
+    ch = ProgramsProgram.find(:all, :conditions => "subprogram_id = #{id}", :include => [:program])
+    if ch.first
+      pp = ch.first.program
+      fn = pp.title.gsub(/(demo )?compo/i, "") + "_" + fn
+    end
+
+
+    fn.gsub!(/ /, "_")
+    fn.gsub!(/ä/, "a")
+    fn.gsub!(/ö/, "o")
+    fn.gsub!(/[^A-Z0-9a-z_-]/, "")
+    fn.gsub!(/_-_/, "_")
+    fn.gsub!(/__/, "_")
+
+		id.to_s + "_" + x + fn
 	end
 
 	def length

@@ -415,7 +415,7 @@ class ProgramsController < ApplicationController
 
 			result << "VOD"
 			result << p.id
-			result << p.preview_image_offset
+			result << p.title
 			result << p.filename.gsub(/\.[A-Za-z0-9]*$/, "").gsub(/ /, "_")
 			result << p.full_filename
 			result << p.program_category.name
@@ -431,6 +431,10 @@ class ProgramsController < ApplicationController
 		render :text => "nada"
 
 	end
+
+  def filenames
+    @programs = Program.all(:include => [:program_descriptions, :parents])
+  end
 
 	def voddone
 		prog = Program.find(params[:progid])

@@ -1,0 +1,13 @@
+<h1>Filename listing</h1>
+
+<table>
+
+<% @programs.each { |p|%>
+<tr>
+<td><%=p.id%></td>
+<td><%=p.created_at.year%></td>
+<td><%=p.title%></td>
+<td><%=p.guess_filename%></td>
+</tr>
+<% } %>
+</table>
