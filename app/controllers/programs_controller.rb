@@ -115,7 +115,7 @@ class ProgramsController < ApplicationController
 
 
 	def import 
-		@party = "asm12"
+		@party = "asm14"
 		pms = Pms.new
 		@compos = pms.compos(@party).parsed_response
 
@@ -125,7 +125,7 @@ class ProgramsController < ApplicationController
 	end
 
 	def doimport
-		@party = "asm12"
+		@party = "asm14"
 		@compo = params[:id]
 
 		pms = Pms.new
@@ -145,7 +145,7 @@ class ProgramsController < ApplicationController
 				pd.title = @party + "/" + @compo
 			}
 			parent.pms_path = @party + "/" + @compo
-			parent.program_category_id = 21
+			parent.program_category_id = 35
 			parent.do_vod = false
 			parent.programtype = "Insert"
 			parent.status = "Production"
@@ -351,7 +351,7 @@ class ProgramsController < ApplicationController
 		end
 		@programs = Program.find(:all, :include => [{:vods => :vod_format}, :program_descriptions, :program_category], :conditions => ["id in (?) AND quarantine < now()", pids])
     respond_to do |format|
-      format.xml 
+      format.xml { render :layout => false }
     end
 	end
 	

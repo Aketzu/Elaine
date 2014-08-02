@@ -17,6 +17,8 @@ xml.rss(:version => "2.0", :'xmlns:media' => "http://search.yahoo.com/mrss") do
 				xml.pubDate(xmldatetime(program.updated_at))
 				 # TODO: Hardcoded host and proto
 				xml.guid("http://elaine.assembly.org" + url_for(program))
+				xml.youtube(program.tube)
+				xml.pms_path(program.pms_path)
 				xml.media(:group) do
 					base = (program.vods.first.full_path || "").gsub /\/[^\/]*$/, "/"
 					xml.media(:thumbnail, :url => base + program.id.to_s + '_' + program.filename + '_preview.jpg')
