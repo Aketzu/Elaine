@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140730174434) do
+ActiveRecord::Schema.define(:version => 20140731133016) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20140730174434) do
     t.string   "stage_output"
     t.string   "pms_path"
     t.integer  "vod_status"
+    t.string   "tube"
   end
 
   add_index "programs", ["do_vod"], :name => "index_programs_on_do_vod"
