@@ -171,7 +171,7 @@ class ProgramsController < ApplicationController
 				ee.program_descriptions.each { |pd|
 					pd.title = title
 				}
-				ee.program_category_id = 21
+				ee.program_category_id = 35
 				ee.do_vod = true
 
 				ee.target_length = 60 if ee.target_length.nil?
@@ -461,7 +461,7 @@ class ProgramsController < ApplicationController
 
     prog.vod_status = params[:status]
     tubeid=""
-    tubeid = params[:tube] if params[:tube]
+    tubeid = params[:tube] if params[:tube] && params[:tube] != ""
     tubeid.gsub! /http:..www.youtube.com.watch.v./, ""
     prog.tube = tubeid
     prog.save

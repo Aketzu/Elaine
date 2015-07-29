@@ -131,7 +131,7 @@ class Program < ActiveRecord::Base
     ch = ProgramsProgram.find(:all, :conditions => "subprogram_id = #{id}", :include => [:program])
     if ch.first
       pp = ch.first.program
-      fn = pp.title.gsub(/(demo )?(compo|intro)/i, "") + "_" + fn
+      fn = pp.title.gsub(/(compo|intro)/i, "") + "_" + fn
     end
 
     fn.gsub!(/ /, "_")
