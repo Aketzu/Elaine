@@ -115,7 +115,7 @@ class ProgramsController < ApplicationController
 
 
 	def import 
-		@party = "asm14"
+		@party = "asm15"
 		pms = Pms.new
 		@compos = pms.compos(@party).parsed_response
 
@@ -125,7 +125,7 @@ class ProgramsController < ApplicationController
 	end
 
 	def doimport
-		@party = "asm14"
+		@party = "asm15"
 		@compo = params[:id]
 
 		pms = Pms.new
@@ -371,7 +371,7 @@ class ProgramsController < ApplicationController
 
 		Program.transaction do 
 			request.raw_post.each { |f|
-				match = f.match(/.*\/([0-9]*)_(.*)\.([a-z]*)$/)
+				match = f.match(/.*\/([0-9]*)_(.*)\.([a-z0-9]*)$/)
 				next unless match
 
 				obj = nil
